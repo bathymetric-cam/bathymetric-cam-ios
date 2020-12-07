@@ -10,7 +10,7 @@
 		E64FDE8A257D22D200B303C6 /* BathymetryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE89257D22D200B303C6 /* BathymetryApp.swift */; };
 		E64FDE8C257D22D200B303C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE8B257D22D200B303C6 /* ContentView.swift */; };
 		E64FDE8E257D22D200B303C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E64FDE8D257D22D200B303C6 /* Assets.xcassets */; };
-		E64FDE96257D22D200B303C6 /* bathymetry.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE94257D22D200B303C6 /* bathymetry.xcdatamodeld */; };
+		E64FDE96257D22D200B303C6 /* Bathymetry.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE94257D22D200B303C6 /* Bathymetry.xcdatamodeld */; };
 		E64FDEA1257D22D200B303C6 /* BathymetryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDEA0257D22D200B303C6 /* BathymetryTests.swift */; };
 		E64FDEAC257D22D200B303C6 /* BathymetryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDEAB257D22D200B303C6 /* BathymetryUITests.swift */; };
 		E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69BBD11257E50170048050C /* Preview Assets.xcassets */; };
@@ -39,7 +39,7 @@
 		E64FDE89257D22D200B303C6 /* BathymetryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryApp.swift; sourceTree = "<group>"; };
 		E64FDE8B257D22D200B303C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E64FDE8D257D22D200B303C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E64FDE95257D22D200B303C6 /* bathymetry.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = bathymetry.xcdatamodel; sourceTree = "<group>"; };
+		E64FDE95257D22D200B303C6 /* Bathymetry.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bathymetry.xcdatamodel; sourceTree = "<group>"; };
 		E64FDE97257D22D200B303C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E64FDE9C257D22D200B303C6 /* bathymetryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bathymetryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64FDEA0257D22D200B303C6 /* BathymetryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTests.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 				E64FDE8B257D22D200B303C6 /* ContentView.swift */,
 				E64FDE8D257D22D200B303C6 /* Assets.xcassets */,
 				E64FDE97257D22D200B303C6 /* Info.plist */,
-				E64FDE94257D22D200B303C6 /* bathymetry.xcdatamodeld */,
+				E64FDE94257D22D200B303C6 /* Bathymetry.xcdatamodeld */,
 				E69BBD10257E50170048050C /* Preview Content */,
 			);
 			path = bathymetry;
@@ -270,7 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E64FDE96257D22D200B303C6 /* bathymetry.xcdatamodeld in Sources */,
+				E64FDE96257D22D200B303C6 /* Bathymetry.xcdatamodeld in Sources */,
 				E64FDE8C257D22D200B303C6 /* ContentView.swift in Sources */,
 				E64FDE8A257D22D200B303C6 /* BathymetryApp.swift in Sources */,
 			);
@@ -615,13 +615,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		E64FDE94257D22D200B303C6 /* bathymetry.xcdatamodeld */ = {
+		E64FDE94257D22D200B303C6 /* Bathymetry.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E64FDE95257D22D200B303C6 /* bathymetry.xcdatamodel */,
+				E64FDE95257D22D200B303C6 /* Bathymetry.xcdatamodel */,
 			);
-			currentVersion = E64FDE95257D22D200B303C6 /* bathymetry.xcdatamodel */;
-			path = bathymetry.xcdatamodeld;
+			currentVersion = E64FDE95257D22D200B303C6 /* Bathymetry.xcdatamodel */;
+			path = Bathymetry.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
