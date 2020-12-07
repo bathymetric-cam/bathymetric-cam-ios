@@ -1,14 +1,8 @@
-//
-//  bathymetryTests.swift
-//  bathymetryTests
-//
-//  Created by Kenzan Hase on 12/6/20.
-//
-
 import XCTest
 @testable import bathymetry
 
-class bathymetryTests: XCTestCase {
+// MARK: - BathymetryTests
+class BathymetryTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
