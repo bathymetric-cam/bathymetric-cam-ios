@@ -15,6 +15,7 @@
 		E64FDEAC257D22D200B303C6 /* BathymetryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDEAB257D22D200B303C6 /* BathymetryUITests.swift */; };
 		E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69BBD11257E50170048050C /* Preview Assets.xcassets */; };
 		E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E6A63801257E4D2200751BF5 /* Alamofire */; };
+		E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E6F8C1F425811ED70051E68F /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */,
 				E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +155,7 @@
 			name = bathymetry;
 			packageProductDependencies = (
 				E6A63801257E4D2200751BF5 /* Alamofire */,
+				E6F8C1F425811ED70051E68F /* ComposableArchitecture */,
 			);
 			productName = bathymetry;
 			productReference = E64FDE86257D22D200B303C6 /* bathymetry.app */;
@@ -227,6 +230,7 @@
 			mainGroup = E64FDE7D257D22D200B303C6;
 			packageReferences = (
 				E6A63800257E4D2200751BF5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				E6F8C1F325811ED70051E68F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = E64FDE87257D22D200B303C6 /* Products */;
 			projectDirPath = "";
@@ -604,6 +608,14 @@
 				minimumVersion = 5.4.0;
 			};
 		};
+		E6F8C1F325811ED70051E68F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -611,6 +623,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E6A63800257E4D2200751BF5 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		E6F8C1F425811ED70051E68F /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E6F8C1F325811ED70051E68F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
 		};
 /* End XCSwiftPackageProductDependency section */
 
