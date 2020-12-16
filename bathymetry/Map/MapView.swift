@@ -1,5 +1,5 @@
-import SwiftUI
 import Mapbox
+import SwiftUI
 
 // MARK: - MapView
 struct MapView: UIViewRepresentable {
@@ -16,6 +16,9 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MGLMapView, context: UIViewRepresentableContext<MapView>) {
+    }
+    
+    static func dismantleUIView(_ uiView: MapView.UIViewType, coordinator: MapView.Coordinator) {
     }
     
     func makeCoordinator() -> MapView.Coordinator {
