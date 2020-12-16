@@ -15,7 +15,8 @@
 		E64FDEAC257D22D200B303C6 /* BathymetryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDEAB257D22D200B303C6 /* BathymetryUITests.swift */; };
 		E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69BBD11257E50170048050C /* Preview Assets.xcassets */; };
 		E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E6A63801257E4D2200751BF5 /* Alamofire */; };
-		E6F10609258A2C8A000DDD25 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = E6F10608258A2C8A000DDD25 /* ARCL */; };
+		E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1060D258A2E05000DDD25 /* ARView.swift */; };
+		E6F10617258A3068000DDD25 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = E6F10616258A3068000DDD25 /* ARCL */; };
 		E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E6F8C1F425811ED70051E68F /* ComposableArchitecture */; };
 		E6FE7AC025824B2700C47C2B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FE7ABF25824B2700C47C2B /* MapView.swift */; };
 		E6FE7AC42582507900C47C2B /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FE7AB225823FE800C47C2B /* Mapbox.framework */; };
@@ -70,6 +71,7 @@
 		E64FDEAB257D22D200B303C6 /* BathymetryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryUITests.swift; sourceTree = "<group>"; };
 		E64FDEAD257D22D200B303C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E69BBD11257E50170048050C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E6F1060D258A2E05000DDD25 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		E6FE7AB225823FE800C47C2B /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
 		E6FE7AB325823FE800C47C2B /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapboxMobileEvents.framework; sourceTree = "<group>"; };
 		E6FE7ABF25824B2700C47C2B /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -81,7 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6FE7AC72582507A00C47C2B /* MapboxMobileEvents.framework in Frameworks */,
-				E6F10609258A2C8A000DDD25 /* ARCL in Frameworks */,
+				E6F10617258A3068000DDD25 /* ARCL in Frameworks */,
 				E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */,
 				E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */,
 				E6FE7AC42582507900C47C2B /* Mapbox.framework in Frameworks */,
@@ -135,6 +137,7 @@
 				E64FDE97257D22D200B303C6 /* Info.plist */,
 				E64FDE94257D22D200B303C6 /* Bathymetry.xcdatamodeld */,
 				E6FE7ABE25824AF000C47C2B /* Map */,
+				E6F1060C258A2DDB000DDD25 /* AR */,
 				E69BBD10257E50170048050C /* Preview Content */,
 			);
 			path = bathymetry;
@@ -164,6 +167,14 @@
 				E69BBD11257E50170048050C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E6F1060C258A2DDB000DDD25 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				E6F1060D258A2E05000DDD25 /* ARView.swift */,
+			);
+			path = AR;
 			sourceTree = "<group>";
 		};
 		E6FE7AB125823FBA00C47C2B /* Frameworks */ = {
@@ -204,7 +215,7 @@
 			packageProductDependencies = (
 				E6A63801257E4D2200751BF5 /* Alamofire */,
 				E6F8C1F425811ED70051E68F /* ComposableArchitecture */,
-				E6F10608258A2C8A000DDD25 /* ARCL */,
+				E6F10616258A3068000DDD25 /* ARCL */,
 			);
 			productName = bathymetry;
 			productReference = E64FDE86257D22D200B303C6 /* bathymetry.app */;
@@ -280,7 +291,7 @@
 			packageReferences = (
 				E6A63800257E4D2200751BF5 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				E6F8C1F325811ED70051E68F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
-				E6F10607258A2C8A000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
+				E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
 			);
 			productRefGroup = E64FDE87257D22D200B303C6 /* Products */;
 			projectDirPath = "";
@@ -344,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */,
 				E64FDE96257D22D200B303C6 /* Bathymetry.xcdatamodeld in Sources */,
 				E6FE7AC025824B2700C47C2B /* MapView.swift in Sources */,
 				E64FDE8C257D22D200B303C6 /* ContentView.swift in Sources */,
@@ -687,7 +699,7 @@
 				minimumVersion = 5.4.0;
 			};
 		};
-		E6F10607258A2C8A000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */ = {
+		E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ProjectDent/ARKit-CoreLocation.git";
 			requirement = {
@@ -711,9 +723,9 @@
 			package = E6A63800257E4D2200751BF5 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		E6F10608258A2C8A000DDD25 /* ARCL */ = {
+		E6F10616258A3068000DDD25 /* ARCL */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E6F10607258A2C8A000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */;
+			package = E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */;
 			productName = ARCL;
 		};
 		E6F8C1F425811ED70051E68F /* ComposableArchitecture */ = {

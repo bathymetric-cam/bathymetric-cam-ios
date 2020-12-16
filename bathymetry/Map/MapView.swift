@@ -34,4 +34,9 @@ struct MapView: UIViewRepresentable {
     
 }
 
-
+// MARK: - MapView_Previews
+struct MapView_Previews: PreviewProvider {
+    static var previews: some View {
+        MapView()
+    }
+}
