@@ -6,21 +6,20 @@ struct ContentView: View {
     // MARK: - property
     
     var body: some View {
-        GeometryReader { metrics in
-            ZStack(alignment: .bottom) {
+            ZStack {
                 ARView()
-                    .edgesIgnoringSafeArea(.all)
-                MapView()
-                    .frame(
-                        width: metrics.size.width,
-                        height: metrics.size.width
-                    )
-                    .cornerRadius(metrics.size.width / 2.0)
-                    .offset(y: metrics.size.width / 2.0)
+                GeometryReader { metrics in
+                    MapView()
+                        .frame(
+                            width: metrics.size.width,
+                            height: metrics.size.width
+                        )
+                        .cornerRadius(metrics.size.width / 2.0)
+                        .offset(y: metrics.size.height - metrics.size.width / 2.0)
+                }
             }
-            .frame(height: metrics.size.height)
+            .edgesIgnoringSafeArea(.all)
         }
-    }
 }
 
 // MARK: - ContentView_Previews
