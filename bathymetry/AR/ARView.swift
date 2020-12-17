@@ -11,6 +11,7 @@ struct ARView: UIViewRepresentable {
     // MARK: - UIViewRepresentable
     
     func makeUIView(context: UIViewRepresentableContext<ARView>) -> SceneLocationView {
+        sceneLocationView.run()
         return sceneLocationView
     }
     
@@ -18,23 +19,17 @@ struct ARView: UIViewRepresentable {
     }
     
     static func dismantleUIView(_ uiView: ARView.UIViewType, coordinator: ARView.Coordinator) {
+        uiView.pause()
     }
     
-    /*
     func makeCoordinator() -> ARView.Coordinator {
-        Coordinator(self)
+        Coordinator()
     }
     
-    // MARK: -
+    // MARK: - Coordinator
     
-    final class Coordinator: NSObject {
-        var control: ARView
-        
-        init(_ control: ARView) {
-            self.control = control
-        }
+    final class Coordinator {
     }
-    */
 }
 
 // MARK: - ARView_Previews

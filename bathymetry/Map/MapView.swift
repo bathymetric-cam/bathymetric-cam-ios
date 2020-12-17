@@ -11,6 +11,7 @@ struct MapView: UIViewRepresentable {
     // MARK: - UIViewRepresentable
     
     func makeUIView(context: UIViewRepresentableContext<MapView>) -> MGLMapView {
+        MGLAccountManager.accessToken = "pk.eyJ1Ijoia2VuemFuODAwMCIsImEiOiJja2Rva2R5aHgxdDYxMndxM2p4d20wMDRwIn0.waANNEC_jYG1_Hk5OExA3A"
         mapView.delegate = context.coordinator
         return mapView
     }
@@ -25,7 +26,7 @@ struct MapView: UIViewRepresentable {
         Coordinator(self)
     }
     
-    // MARK: - MGLMapViewDelegate
+    // MARK: - Coordinator, MGLMapViewDelegate
     
     final class Coordinator: NSObject, MGLMapViewDelegate {
         var control: MapView
