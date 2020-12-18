@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E612C2D4258CCF700093FBC4 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E612C2C1258CCE850093FBC4 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E612C2D7258CCF710093FBC4 /* MapboxMobileEvents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E612C2C0258CCE850093FBC4 /* MapboxMobileEvents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E64FDE8A257D22D200B303C6 /* BathymetryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE89257D22D200B303C6 /* BathymetryApp.swift */; };
 		E64FDE8C257D22D200B303C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE8B257D22D200B303C6 /* ContentView.swift */; };
 		E64FDE8E257D22D200B303C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E64FDE8D257D22D200B303C6 /* Assets.xcassets */; };
@@ -19,10 +21,6 @@
 		E6F10617258A3068000DDD25 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = E6F10616258A3068000DDD25 /* ARCL */; };
 		E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E6F8C1F425811ED70051E68F /* ComposableArchitecture */; };
 		E6FE7AC025824B2700C47C2B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FE7ABF25824B2700C47C2B /* MapView.swift */; };
-		E6FE7AC42582507900C47C2B /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FE7AB225823FE800C47C2B /* Mapbox.framework */; };
-		E6FE7AC52582507900C47C2B /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6FE7AB225823FE800C47C2B /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E6FE7AC72582507A00C47C2B /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FE7AB325823FE800C47C2B /* MapboxMobileEvents.framework */; };
-		E6FE7AC82582507A00C47C2B /* MapboxMobileEvents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6FE7AB325823FE800C47C2B /* MapboxMobileEvents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,14 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E6FE7AC62582507900C47C2B /* Embed Frameworks */ = {
+		E612C2D5258CCF700093FBC4 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E6FE7AC82582507A00C47C2B /* MapboxMobileEvents.framework in Embed Frameworks */,
-				E6FE7AC52582507900C47C2B /* Mapbox.framework in Embed Frameworks */,
+				E612C2D7258CCF710093FBC4 /* MapboxMobileEvents.framework in Embed Frameworks */,
+				E612C2D4258CCF700093FBC4 /* Mapbox.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +56,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E612C2C0258CCE850093FBC4 /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapboxMobileEvents.framework; sourceTree = "<group>"; };
+		E612C2C1258CCE850093FBC4 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
 		E64FDE86257D22D200B303C6 /* bathymetry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bathymetry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64FDE89257D22D200B303C6 /* BathymetryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryApp.swift; sourceTree = "<group>"; };
 		E64FDE8B257D22D200B303C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,8 +72,6 @@
 		E64FDEAD257D22D200B303C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E69BBD11257E50170048050C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E6F1060D258A2E05000DDD25 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
-		E6FE7AB225823FE800C47C2B /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
-		E6FE7AB325823FE800C47C2B /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapboxMobileEvents.framework; sourceTree = "<group>"; };
 		E6FE7ABF25824B2700C47C2B /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,11 +80,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6FE7AC72582507A00C47C2B /* MapboxMobileEvents.framework in Frameworks */,
 				E6F10617258A3068000DDD25 /* ARCL in Frameworks */,
 				E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */,
 				E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */,
-				E6FE7AC42582507900C47C2B /* Mapbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,8 +176,8 @@
 		E6FE7AB125823FBA00C47C2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E6FE7AB225823FE800C47C2B /* Mapbox.framework */,
-				E6FE7AB325823FE800C47C2B /* MapboxMobileEvents.framework */,
+				E612C2C1258CCE850093FBC4 /* Mapbox.framework */,
+				E612C2C0258CCE850093FBC4 /* MapboxMobileEvents.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -204,8 +200,8 @@
 				E64FDE82257D22D200B303C6 /* Sources */,
 				E64FDE83257D22D200B303C6 /* Frameworks */,
 				E64FDE84257D22D200B303C6 /* Resources */,
-				E6FE7AC62582507900C47C2B /* Embed Frameworks */,
 				E61F780725878D74001EDAC5 /* ShellScript */,
+				E612C2D5258CCF700093FBC4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -399,6 +395,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -432,6 +429,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -446,7 +444,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -501,7 +499,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -514,12 +512,15 @@
 		E64FDEB1257D22D200B303C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"bathymetry/Preview Content\"";
 				DEVELOPMENT_TEAM = 6RYZ4RB738;
+				ENABLE_BITCODE = YES;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -535,6 +536,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -546,6 +548,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"bathymetry/Preview Content\"";
 				DEVELOPMENT_TEAM = 6RYZ4RB738;
+				ENABLE_BITCODE = YES;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -562,6 +565,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};
