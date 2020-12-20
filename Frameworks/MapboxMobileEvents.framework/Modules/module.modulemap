@@ -1,6 +1,0 @@
-framework module MapboxMobileEvents {
-  umbrella header "MapboxMobileEvents.h"
-
-  export *
-  module * { export * }
-}

@@ -19,3 +19,4 @@ Thumbs.db
 .gitconfig
 *.ipa
 *.app
+Frameworks/*

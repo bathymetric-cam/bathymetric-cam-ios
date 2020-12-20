@@ -17,6 +17,7 @@
 		E64FDEAC257D22D200B303C6 /* BathymetryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDEAB257D22D200B303C6 /* BathymetryUITests.swift */; };
 		E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69BBD11257E50170048050C /* Preview Assets.xcassets */; };
 		E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E6A63801257E4D2200751BF5 /* Alamofire */; };
+		E6C95EB2258F7D9D00319FA0 /* GEOSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E6C95EB1258F7D9D00319FA0 /* GEOSwift */; };
 		E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1060D258A2E05000DDD25 /* ARView.swift */; };
 		E6F10617258A3068000DDD25 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = E6F10616258A3068000DDD25 /* ARCL */; };
 		E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E6F8C1F425811ED70051E68F /* ComposableArchitecture */; };
@@ -80,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6C95EB2258F7D9D00319FA0 /* GEOSwift in Frameworks */,
 				E6F10617258A3068000DDD25 /* ARCL in Frameworks */,
 				E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */,
 				E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */,
@@ -212,6 +214,7 @@
 				E6A63801257E4D2200751BF5 /* Alamofire */,
 				E6F8C1F425811ED70051E68F /* ComposableArchitecture */,
 				E6F10616258A3068000DDD25 /* ARCL */,
+				E6C95EB1258F7D9D00319FA0 /* GEOSwift */,
 			);
 			productName = bathymetry;
 			productReference = E64FDE86257D22D200B303C6 /* bathymetry.app */;
@@ -288,6 +291,7 @@
 				E6A63800257E4D2200751BF5 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				E6F8C1F325811ED70051E68F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
+				E6C95EB0258F7D9D00319FA0 /* XCRemoteSwiftPackageReference "GEOSwift" */,
 			);
 			productRefGroup = E64FDE87257D22D200B303C6 /* Products */;
 			projectDirPath = "";
@@ -703,6 +707,14 @@
 				minimumVersion = 5.4.0;
 			};
 		};
+		E6C95EB0258F7D9D00319FA0 /* XCRemoteSwiftPackageReference "GEOSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/GEOSwift/GEOSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.2.0;
+			};
+		};
 		E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ProjectDent/ARKit-CoreLocation.git";
@@ -726,6 +738,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E6A63800257E4D2200751BF5 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		E6C95EB1258F7D9D00319FA0 /* GEOSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E6C95EB0258F7D9D00319FA0 /* XCRemoteSwiftPackageReference "GEOSwift" */;
+			productName = GEOSwift;
 		};
 		E6F10616258A3068000DDD25 /* ARCL */ = {
 			isa = XCSwiftPackageProductDependency;
