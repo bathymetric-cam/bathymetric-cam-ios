@@ -1,6 +1,9 @@
+import ComposableArchitecture
+
 // MARK: - AppAction
 enum AppAction: Equatable {
-  case loadGeoJson
+  case loadGeoJSON
+  case geoJSONResult(Result<String, AppError>)
 }
 
 // MARK: - AppError

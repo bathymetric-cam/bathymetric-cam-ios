@@ -30,7 +30,7 @@ struct AppView: View {
             }
             .edgesIgnoringSafeArea(.all)
             .onAppear {
-                viewStore.send(.loadGeoJson)
+                viewStore.send(.loadGeoJSON)
             }
         }
     }
@@ -42,7 +42,10 @@ struct AppView_Previews: PreviewProvider {
         AppView(store: Store(
             initialState: AppState(),
             reducer: appReducer,
-            environment: AppEnvironment(mainQueue: DispatchQueue.main.eraseToAnyScheduler())
+            environment: AppEnvironment(
+                mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
+                geoJSON: { json, error in Effect(value: json ?? "") }
+            )
         ))
     }
 }
