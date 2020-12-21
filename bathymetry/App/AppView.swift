@@ -1,7 +1,7 @@
 import SwiftUI
 
-// MARK: - ContentView
-struct ContentView: View {
+// MARK: - AppView
+struct AppView: View {
 
     // MARK: - property
     
@@ -29,9 +29,9 @@ struct ContentView: View {
         }
 }
 
-// MARK: - ContentView_Previews
-struct ContentView_Previews: PreviewProvider {
+// MARK: - AppView_Previews
+struct AppView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        AppView()
     }
 }

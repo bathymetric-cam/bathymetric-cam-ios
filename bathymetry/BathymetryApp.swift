@@ -6,7 +6,7 @@ struct BathymetryApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppView()
         }
     }
 }
