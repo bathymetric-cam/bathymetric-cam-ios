@@ -1,3 +1,4 @@
+import ComposableArchitecture
 import SwiftUI
 
 // MARK: - AppView
@@ -5,9 +6,11 @@ struct AppView: View {
 
     // MARK: - property
     
+    let store: Store<AppState, AppAction>
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
+        WithViewStore(store) { viewStore in
             ZStack {
                 ARView()
                 GeometryReader { metrics in
@@ -26,12 +29,20 @@ struct AppView: View {
                 }
             }
             .edgesIgnoringSafeArea(.all)
+            .onAppear {
+                viewStore.send(.loadGeoJson)
+            }
         }
+    }
 }
 
 // MARK: - AppView_Previews
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
-        AppView()
+        AppView(store: Store(
+            initialState: AppState(),
+            reducer: appReducer,
+            environment: AppEnvironment(mainQueue: DispatchQueue.main.eraseToAnyScheduler())
+        ))
     }
 }
