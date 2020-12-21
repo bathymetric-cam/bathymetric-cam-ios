@@ -2,5 +2,7 @@ import ComposableArchitecture
 
 // MARK: - AppEnvironment
 struct AppEnvironment {
-  var mainQueue: AnySchedulerOf<DispatchQueue>
+    // MARK: - property
+    
+    var mainQueue: AnySchedulerOf<DispatchQueue>
 }

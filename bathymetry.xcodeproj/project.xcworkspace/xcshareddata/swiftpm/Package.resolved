@@ -29,6 +29,24 @@
         }
       },
       {
+        "package": "geos",
+        "repositoryURL": "https://github.com/GEOSwift/geos.git",
+        "state": {
+          "branch": null,
+          "revision": "709a4853594e43f894371ae57b96de9beda9872f",
+          "version": "5.1.0"
+        }
+      },
+      {
+        "package": "GEOSwift",
+        "repositoryURL": "https://github.com/GEOSwift/GEOSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "f9a5ba78df8899876aff59eb4d8a6b3abae8ff1a",
+          "version": "7.2.0"
+        }
+      },
+      {
         "package": "swift-case-paths",
         "repositoryURL": "https://github.com/pointfreeco/swift-case-paths",
         "state": {

@@ -6,8 +6,8 @@ struct AppView: View {
 
     // MARK: - property
     
-    let store: Store<AppState, AppAction>
     @Environment(\.colorScheme) var colorScheme
+    let store: Store<AppState, AppAction>
     
     var body: some View {
         WithViewStore(store) { viewStore in
