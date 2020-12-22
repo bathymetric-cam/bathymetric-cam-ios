@@ -4,7 +4,7 @@ import GEOSwift
 // MARK: - AppAction
 enum AppAction: Equatable {
     case loadGeoJSON
-    case geoJSONResult(Result<FeatureCollection, AppError>)
+    case geoJSONResult(Result<GeoJSON, AppError>)
 }
 
 // MARK: - AppError

@@ -20,24 +20,6 @@
         }
       },
       {
-        "package": "CodableGeoJSON",
-        "repositoryURL": "https://github.com/guykogus/CodableGeoJSON.git",
-        "state": {
-          "branch": null,
-          "revision": "67f7d9ce2ad7c809d87f77c428f0a6a058e55668",
-          "version": "2.0.0"
-        }
-      },
-      {
-        "package": "CodableJSON",
-        "repositoryURL": "https://github.com/guykogus/CodableJSON.git",
-        "state": {
-          "branch": null,
-          "revision": "b7074f465e9bd782aab4a7c979297bfa0125f11e",
-          "version": "2.0.0"
-        }
-      },
-      {
         "package": "combine-schedulers",
         "repositoryURL": "https://github.com/pointfreeco/combine-schedulers",
         "state": {

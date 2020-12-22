@@ -5,14 +5,13 @@ import GEOSwift
 let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
     switch action {
     case .loadGeoJSON:
-        var featureCollection: FeatureCollection?
+        var json: GeoJSON?
         if let geoJSONURL = Bundle.main.url(forResource: "DepthContour", withExtension: "geojson"),
             let data = try? Data(contentsOf: geoJSONURL),
-            let geoJSON = try? JSONDecoder().decode(GeoJSON.self, from: data),
-            case let .featureCollection(value) = geoJSON {
-            featureCollection = value
+            let result = try? JSONDecoder().decode(GeoJSON.self, from: data) {
+            json = result
         }
-        return environment.geoJSON(featureCollection)
+        return environment.geoJSON(json)
             .receive(on: environment.mainQueue)
             .catchToEffect()
             .map(AppAction.geoJSONResult)

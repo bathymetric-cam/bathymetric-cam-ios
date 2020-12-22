@@ -6,5 +6,5 @@ struct AppEnvironment {
     // MARK: - property
     
     var mainQueue: AnySchedulerOf<DispatchQueue>
-    var geoJSON: (FeatureCollection?) -> Effect<FeatureCollection, AppError>
+    var geoJSON: (GeoJSON?) -> Effect<GeoJSON, AppError>
 }
