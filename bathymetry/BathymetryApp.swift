@@ -10,7 +10,12 @@ struct BathymetryApp: App {
         reducer: appReducer,
         environment: AppEnvironment(
             mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-            geoJSON: { json, error in Effect(value: json ?? "") }
+            geoJSON: { featureCollection in
+                guard let featureCollection = featureCollection else {
+                    return Effect(error: AppError())
+                }
+                return Effect(value: featureCollection)
+            }
         )
     ))
     

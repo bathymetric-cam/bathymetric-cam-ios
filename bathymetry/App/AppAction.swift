@@ -1,9 +1,10 @@
 import ComposableArchitecture
+import GEOSwift
 
 // MARK: - AppAction
 enum AppAction: Equatable {
-  case loadGeoJSON
-  case geoJSONResult(Result<String, AppError>)
+    case loadGeoJSON
+    case geoJSONResult(Result<FeatureCollection, AppError>)
 }
 
 // MARK: - AppError
