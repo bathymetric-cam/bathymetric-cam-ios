@@ -44,12 +44,8 @@ struct AppView_Previews: PreviewProvider {
             reducer: appReducer,
             environment: AppEnvironment(
                 mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-                geoJSON: { json in
-                    guard let json = json else {
-                        return Effect(error: AppError())
-                    }
-                    return Effect(value: json)
-                })
+                appClient: AppClient.live
+            )
         ))
     }
 }
