@@ -22,10 +22,10 @@ extension AppClient {
                 return Effect(error: Failure())
             }
             return URLSession.shared.dataTaskPublisher(for: url)
-              .map { data, _ in data }
-              .decode(type: GeoJSON.self, decoder: JSONDecoder())
-              .mapError { _ in return Failure() }
-              .eraseToEffect()
+                .map { data, _ in data }
+                .decode(type: GeoJSON.self, decoder: JSONDecoder())
+                .mapError { _ in return Failure() }
+                .eraseToEffect()
         }
     )
 }

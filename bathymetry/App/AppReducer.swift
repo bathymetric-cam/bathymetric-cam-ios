@@ -5,7 +5,6 @@ import GEOSwift
 let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
     switch action {
     case .loadGeoJSON:
-        struct SearchLocationId: Hashable {}
         return environment.appClient
             .loadGeoJSON()
             .receive(on: environment.mainQueue)
