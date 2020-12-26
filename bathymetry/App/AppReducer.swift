@@ -12,6 +12,7 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
             .catchToEffect()
             .map(AppAction.geoJSONResult)
     case let .geoJSONResult(.success(json)):
+        state.geoJSON = json
         return .none
     case let .geoJSONResult(.failure(error)):
         return .none

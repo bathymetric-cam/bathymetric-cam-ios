@@ -88,6 +88,16 @@ struct MapView: UIViewRepresentable {
         }
     }
     
+    // MARK: - public api
+    
+    /// Updates annotations on the map
+    /// - Parameter annotations: new annotations on the map
+    /// - Returns: MapView
+    func annotations(_ annotations: [MGLPointAnnotation]) -> MapView {
+        mapView.removeAnnotations(mapView.annotations ?? [])
+        mapView.addAnnotations(annotations)
+        return self
+    }
 }
 
 // MARK: - MapView_Previews
