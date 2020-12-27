@@ -15,7 +15,6 @@ struct AppView: View {
                 ARView()
                 GeometryReader { metrics in
                     MapView()
-                        .annotations([])
                         .frame(
                             width: metrics.size.width,
                             height: metrics.size.width

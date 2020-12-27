@@ -26,8 +26,6 @@
 		E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E6A63801257E4D2200751BF5 /* Alamofire */; };
 		E6BDC3BE259600BF00184925 /* AppClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BDC3BD259600BF00184925 /* AppClient.swift */; };
 		E6E065252590CBB50032B6C8 /* GEOSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E6E065242590CBB50032B6C8 /* GEOSwift */; };
-		E6E0652A2590CCAC0032B6C8 /* geos in Frameworks */ = {isa = PBXBuildFile; productRef = E6E065292590CCAC0032B6C8 /* geos */; };
-		E6E0652B2590CCAC0032B6C8 /* geos in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E6E065292590CCAC0032B6C8 /* geos */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1060D258A2E05000DDD25 /* ARView.swift */; };
 		E6F10617258A3068000DDD25 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = E6F10616258A3068000DDD25 /* ARCL */; };
 		E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E6F8C1F425811ED70051E68F /* ComposableArchitecture */; };
@@ -59,7 +57,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				E6203F8A25920600007C8FDA /* MapboxMobileEvents.framework in Embed Frameworks */,
-				E6E0652B2590CCAC0032B6C8 /* geos in Embed Frameworks */,
 				E6203F88259205FE007C8FDA /* Mapbox.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -99,7 +96,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6203F87259205FE007C8FDA /* Mapbox.framework in Frameworks */,
-				E6E0652A2590CCAC0032B6C8 /* geos in Frameworks */,
 				E6E065252590CBB50032B6C8 /* GEOSwift in Frameworks */,
 				E6F10617258A3068000DDD25 /* ARCL in Frameworks */,
 				E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */,
@@ -249,7 +245,6 @@
 				E6F8C1F425811ED70051E68F /* ComposableArchitecture */,
 				E6F10616258A3068000DDD25 /* ARCL */,
 				E6E065242590CBB50032B6C8 /* GEOSwift */,
-				E6E065292590CCAC0032B6C8 /* geos */,
 			);
 			productName = bathymetry;
 			productReference = E64FDE86257D22D200B303C6 /* bathymetry.app */;
@@ -794,11 +789,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E6E065232590CBB50032B6C8 /* XCRemoteSwiftPackageReference "GEOSwift" */;
 			productName = GEOSwift;
-		};
-		E6E065292590CCAC0032B6C8 /* geos */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E6E065282590CCAC0032B6C8 /* XCRemoteSwiftPackageReference "geos" */;
-			productName = geos;
 		};
 		E6F10616258A3068000DDD25 /* ARCL */ = {
 			isa = XCSwiftPackageProductDependency;

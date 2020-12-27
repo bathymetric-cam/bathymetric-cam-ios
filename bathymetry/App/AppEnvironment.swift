@@ -1,5 +1,4 @@
 import ComposableArchitecture
-import GEOSwift
 
 // MARK: - AppEnvironment
 struct AppEnvironment {

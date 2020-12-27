@@ -1,3 +1,4 @@
+import GEOSwift
 import Mapbox
 import SwiftUI
 
@@ -17,7 +18,8 @@ final class UIMapView: MGLMapView {
         super.init(frame: frame, styleURL: styleURL)
         self.styleURL = traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL : MGLStyle.lightStyleURL
         showsUserLocation = true
-        zoomLevel = 15
+        // zoomLevel = 15
+        zoomLevel = 1
         isZoomEnabled = false
         isScrollEnabled = false
         isRotateEnabled = false
@@ -93,9 +95,21 @@ struct MapView: UIViewRepresentable {
     /// Updates annotations on the map
     /// - Parameter annotations: new annotations on the map
     /// - Returns: MapView
-    func annotations(_ annotations: [MGLPointAnnotation]) -> MapView {
+    func annotations(_ annotations: [MGLAnnotation]) -> MapView {
         mapView.removeAnnotations(mapView.annotations ?? [])
         mapView.addAnnotations(annotations)
+        return self
+    }
+    
+    ////// Updates annotations on the map
+    /// - Parameter geoJSON: GeoJSON?
+    /// - Returns: MapView
+    func annotations(_ geoJSON: GeoJSON?) -> MapView {
+        mapView.removeAnnotations(mapView.annotations ?? [])
+        if case let .feature(feature) = geoJSON,
+            let geometry = feature.geometry {
+            mapView.addAnnotation(geometry.mapboxShape())
+        }
         return self
     }
 }
