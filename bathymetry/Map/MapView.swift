@@ -39,14 +39,27 @@ final class UIMapView: MGLMapView {
         styleURL = traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL : MGLStyle.lightStyleURL
     }
     
+    // MARK: - public api
+    
+    /// Updates annotations on the map
+    /// - Parameter geoJSON: GeoJSON?
+    /// - Returns: MapView
+    func updateAnnotations(_ geoJSON: GeoJSON?) {
+        removeAnnotations(annotations ?? [])
+        if case let .feature(feature) = geoJSON,
+            let geometry = feature.geometry {
+            addAnnotation(geometry.mapboxShape())
+        }
+    }
 }
 
 // MARK: - MapView
 struct MapView: UIViewRepresentable {
-    
+
     // MARK: - property
     
     private let mapView: UIMapView = UIMapView(frame: .zero, styleURL: MGLStyle.streetsStyleURL)
+    @Binding var geoJSON: GeoJSON?
     
     // MARK: - UIViewRepresentable
     
@@ -56,6 +69,7 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIMapView, context: UIViewRepresentableContext<MapView>) {
+        uiView.updateAnnotations(geoJSON)
     }
     
     static func dismantleUIView(_ uiView: MapView.UIViewType, coordinator: MapView.Coordinator) {
@@ -89,34 +103,14 @@ struct MapView: UIViewRepresentable {
             control.mapView.userTrackingMode = .followWithHeading
         }
     }
-    
-    // MARK: - public api
-    
-    /// Updates annotations on the map
-    /// - Parameter annotations: new annotations on the map
-    /// - Returns: MapView
-    func annotations(_ annotations: [MGLAnnotation]) -> MapView {
-        mapView.removeAnnotations(mapView.annotations ?? [])
-        mapView.addAnnotations(annotations)
-        return self
-    }
-    
-    ////// Updates annotations on the map
-    /// - Parameter geoJSON: GeoJSON?
-    /// - Returns: MapView
-    func annotations(_ geoJSON: GeoJSON?) -> MapView {
-        mapView.removeAnnotations(mapView.annotations ?? [])
-        if case let .feature(feature) = geoJSON,
-            let geometry = feature.geometry {
-            mapView.addAnnotation(geometry.mapboxShape())
-        }
-        return self
-    }
 }
 
 // MARK: - MapView_Previews
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
+        MapView(geoJSON: Binding<GeoJSON?>(
+            get: { nil },
+            set: { _ in }
+        ))
     }
 }

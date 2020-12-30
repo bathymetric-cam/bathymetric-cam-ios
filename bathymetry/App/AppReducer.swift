@@ -15,5 +15,7 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
         return .none
     case let .geoJSONResult(.failure(error)):
         return .none
-  }
+    case let .geoJSONUpdated(geoJSON):
+        return .none
+    }
 }

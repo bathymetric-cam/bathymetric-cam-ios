@@ -14,7 +14,10 @@ struct AppView: View {
             ZStack {
                 ARView()
                 GeometryReader { metrics in
-                    MapView()
+                    MapView(geoJSON: viewStore.binding(
+                        get: { $0.geoJSON },
+                        send: AppAction.geoJSONUpdated
+                    ))
                         .frame(
                             width: metrics.size.width,
                             height: metrics.size.width
@@ -34,6 +37,7 @@ struct AppView: View {
             }
         }
     }
+    
 }
 
 // MARK: - AppView_Previews
