@@ -11,8 +11,8 @@ struct AppView: View {
     
     var body: some View {
         ZStack {
-            ARView()
             GeometryReader { metrics in
+                ARView()
                 WithViewStore(store) { viewStore in
                     MapView(geoJSON: viewStore.binding(
                         get: { $0.geoJSON },

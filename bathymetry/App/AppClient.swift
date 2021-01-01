@@ -18,7 +18,15 @@ extension AppClient {
     
     static let live = AppClient(
         loadGeoJSON: {
-            guard let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/bathymetric-cam.appspot.com/o/countries.geojson?alt=media&token=b48ca281-c969-4166-8440-91c2b3bc8382") else {
+            var components = URLComponents()
+            components.scheme = "https"
+            components.host = "firebasestorage.googleapis.com"
+            components.path = "/v0/b/bathymetric-cam.appspot.com/o/countries.geojson"
+            components.queryItems = [
+                URLQueryItem(name: "alt", value: "media"),
+                URLQueryItem(name: "token", value: "b48ca281-c969-4166-8440-91c2b3bc8382"),
+            ]
+            guard let url = components.url else {
                 return Effect(error: Failure())
             }
             return URLSession.shared.dataTaskPublisher(for: url)
