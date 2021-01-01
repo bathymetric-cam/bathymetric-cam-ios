@@ -10,10 +10,10 @@ struct AppView: View {
     let store: Store<AppState, AppAction>
     
     var body: some View {
-        WithViewStore(store) { viewStore in
-            ZStack {
-                ARView()
-                GeometryReader { metrics in
+        ZStack {
+            ARView()
+            GeometryReader { metrics in
+                WithViewStore(store) { viewStore in
                     MapView(geoJSON: viewStore.binding(
                         get: { $0.geoJSON },
                         send: AppAction.geoJSONUpdated
@@ -29,12 +29,12 @@ struct AppView: View {
                                 .stroke(Color.gray, lineWidth: 4)
                                 .offset(y: metrics.size.height - metrics.size.width / 2.0)
                         )
+                        .onAppear {
+                            viewStore.send(.loadGeoJSON)
+                        }
                 }
             }
             .edgesIgnoringSafeArea(.all)
-            .onAppear {
-                viewStore.send(.loadGeoJSON)
-            }
         }
     }
     

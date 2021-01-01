@@ -46,9 +46,13 @@ final class UIMapView: MGLMapView {
     /// - Returns: MapView
     func updateAnnotations(_ geoJSON: GeoJSON?) {
         removeAnnotations(annotations ?? [])
-        if case let .feature(feature) = geoJSON,
-            let geometry = feature.geometry {
-            addAnnotation(geometry.mapboxShape())
+        guard case let .featureCollection(featureCollection) = geoJSON else {
+            return
+        }
+        for feature in featureCollection.features {
+            if let geometry = feature.geometry {
+                addAnnotation(geometry.mapboxShape())
+            }
         }
     }
 }
