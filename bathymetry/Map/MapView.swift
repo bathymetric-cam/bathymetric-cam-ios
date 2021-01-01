@@ -72,7 +72,18 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIMapView, context: UIViewRepresentableContext<MapView>) {
-        uiView.updateAnnotations(geoJSON)
+        // uiView.updateAnnotations(geoJSON)
+        
+        guard case let .featureCollection(featureCollection) = geoJSON else {
+            return
+        }
+        let source = MGLShapeSource(
+            identifier: "hoge",
+            features: featureCollection.features.compactMap { $0.geometry?.mapboxFeature() },
+            options: nil
+        )
+        uiView.style?.addSource(source)
+        uiView.style?.addDepth(from: source)
     }
     
     static func dismantleUIView(_ uiView: MapView.UIViewType, coordinator: MapView.Coordinator) {
@@ -107,22 +118,7 @@ struct MapView: UIViewRepresentable {
         }
         
         func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
-            var components = URLComponents()
-            components.scheme = "https"
-            components.host = "firebasestorage.googleapis.com"
-            // components.path = "/v0/b/bathymetric-cam.appspot.com/o/countries.geojson"
-            components.path = "/v0/b/bathymetric-cam.appspot.com/o/depth.geojson"
-            components.queryItems = [
-                URLQueryItem(name: "alt", value: "media"),
-                // URLQueryItem(name: "token", value: "b48ca281-c969-4166-8440-91c2b3bc8382"),
-                URLQueryItem(name: "token", value: "9b988f65-3f47-4106-826a-918a77456fc4"),
-            ]
-            guard let url = components.url else {
-                return
-            }
-            let source = MGLShapeSource(identifier: "transit", url: url, options: nil)
-            style.addSource(source)
-            style.addPolygons(from: source)
+            
         }
     }
 }

@@ -15,7 +15,9 @@ struct AppView: View {
                 WithViewStore(store) { viewStore in
                     ARView()
                     MapView(geoJSON: viewStore.binding(
-                        get: { $0.geoJSON },
+                        get: {
+                            $0.geoJSON
+                        },
                         send: AppAction.geoJSONUpdated
                     ))
                         .frame(

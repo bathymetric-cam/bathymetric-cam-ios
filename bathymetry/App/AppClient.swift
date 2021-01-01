@@ -26,7 +26,7 @@ extension AppClient {
             components.queryItems = [
                 URLQueryItem(name: "alt", value: "media"),
                 // URLQueryItem(name: "token", value: "b48ca281-c969-4166-8440-91c2b3bc8382"),
-                URLQueryItem(name: "token", value: "9b988f65-3f47-4106-826a-918a77456fc4"),
+                URLQueryItem(name: "token", value: "006f71f2-e222-45fb-bdaf-79063922871a"),
             ]
             guard let url = components.url else {
                 return Effect(error: Failure())

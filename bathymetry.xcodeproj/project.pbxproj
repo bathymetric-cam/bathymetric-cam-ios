@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E61F4B76259F5E7A00E19A44 /* geos in Frameworks */ = {isa = PBXBuildFile; productRef = E61F4B75259F5E7A00E19A44 /* geos */; };
 		E61F4B77259F5E7A00E19A44 /* geos in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E61F4B75259F5E7A00E19A44 /* geos */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		E61F4B7B259F635A00E19A44 /* MGLStyle+Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61F4B7A259F635A00E19A44 /* MGLStyle+Polygon.swift */; };
+		E61F4B7B259F635A00E19A44 /* MGLStyle+Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61F4B7A259F635A00E19A44 /* MGLStyle+Depth.swift */; };
 		E6203F87259205FE007C8FDA /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F84259205FA007C8FDA /* Mapbox.framework */; };
 		E6203F88259205FE007C8FDA /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F84259205FA007C8FDA /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6203F8925920600007C8FDA /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F83259205FA007C8FDA /* MapboxMobileEvents.framework */; };
@@ -69,7 +69,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E61F4B7A259F635A00E19A44 /* MGLStyle+Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLStyle+Polygon.swift"; sourceTree = "<group>"; };
+		E61F4B7A259F635A00E19A44 /* MGLStyle+Depth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLStyle+Depth.swift"; sourceTree = "<group>"; };
 		E6203F83259205FA007C8FDA /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapboxMobileEvents.framework; sourceTree = "<group>"; };
 		E6203F84259205FA007C8FDA /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
 		E64FDE86257D22D200B303C6 /* bathymetry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bathymetry.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,7 +224,7 @@
 			children = (
 				E6FE7ABF25824B2700C47C2B /* MapView.swift */,
 				E698A32F25976A2D00596795 /* MapboxGLAnnotations.swift */,
-				E61F4B7A259F635A00E19A44 /* MGLStyle+Polygon.swift */,
+				E61F4B7A259F635A00E19A44 /* MGLStyle+Depth.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -400,7 +400,7 @@
 				E65CF4182590BBA9008A207C /* AppAction.swift in Sources */,
 				E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */,
 				E64FDE96257D22D200B303C6 /* Bathymetry.xcdatamodeld in Sources */,
-				E61F4B7B259F635A00E19A44 /* MGLStyle+Polygon.swift in Sources */,
+				E61F4B7B259F635A00E19A44 /* MGLStyle+Depth.swift in Sources */,
 				E65CF4202590BC78008A207C /* AppReducer.swift in Sources */,
 				E6FE7AC025824B2700C47C2B /* MapView.swift in Sources */,
 				E65CF4122590BB57008A207C /* AppState.swift in Sources */,
