@@ -19,11 +19,13 @@ final class UIMapView: MGLMapView {
         self.styleURL = traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL : MGLStyle.lightStyleURL
         showsUserLocation = true
         zoomLevel = 15
+        /*
         isZoomEnabled = false
         isScrollEnabled = false
         isRotateEnabled = false
         isPitchEnabled = false
         compassView.isHidden = true
+        */
     }
     
     // MARK: - destruction
@@ -49,8 +51,7 @@ final class UIMapView: MGLMapView {
             return
         }
         addAnnotations(
-            featureCollection.features.compactMap { $0.geometry?.mapboxShape() as MGLShape?
-            }
+            featureCollection.features.compactMap { $0.geometry?.mapboxShape() as MGLShape? }
         )
     }
 }
@@ -103,6 +104,25 @@ struct MapView: UIViewRepresentable {
                 control.mapView.setDirection(heading, animated: false)
             }
             control.mapView.userTrackingMode = .followWithHeading
+        }
+        
+        func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
+            var components = URLComponents()
+            components.scheme = "https"
+            components.host = "firebasestorage.googleapis.com"
+            // components.path = "/v0/b/bathymetric-cam.appspot.com/o/countries.geojson"
+            components.path = "/v0/b/bathymetric-cam.appspot.com/o/depth.geojson"
+            components.queryItems = [
+                URLQueryItem(name: "alt", value: "media"),
+                // URLQueryItem(name: "token", value: "b48ca281-c969-4166-8440-91c2b3bc8382"),
+                URLQueryItem(name: "token", value: "9b988f65-3f47-4106-826a-918a77456fc4"),
+            ]
+            guard let url = components.url else {
+                return
+            }
+            let source = MGLShapeSource(identifier: "transit", url: url, options: nil)
+            style.addSource(source)
+            style.addPolygons(from: source)
         }
     }
 }
