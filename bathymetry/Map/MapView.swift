@@ -18,8 +18,7 @@ final class UIMapView: MGLMapView {
         super.init(frame: frame, styleURL: styleURL)
         self.styleURL = traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL : MGLStyle.lightStyleURL
         showsUserLocation = true
-        // zoomLevel = 15
-        zoomLevel = 1
+        zoomLevel = 15
         isZoomEnabled = false
         isScrollEnabled = false
         isRotateEnabled = false
@@ -49,11 +48,10 @@ final class UIMapView: MGLMapView {
         guard case let .featureCollection(featureCollection) = geoJSON else {
             return
         }
-        for feature in featureCollection.features {
-            if let geometry = feature.geometry {
-                addAnnotation(geometry.mapboxShape())
+        addAnnotations(
+            featureCollection.features.compactMap { $0.geometry?.mapboxShape() as MGLShape?
             }
-        }
+        )
     }
 }
 
