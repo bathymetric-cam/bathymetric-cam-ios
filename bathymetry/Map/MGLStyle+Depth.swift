@@ -4,12 +4,13 @@ import Mapbox
 extension MGLStyle {
     
     /// Add depth layer
-    /// - Parameter source: MGLShapeSource
-    func addDepth(from source: MGLShapeSource) {
+    /// - Parameters:
+    ///   - source: MGLShapeSource
+    ///   - color: UIColor of depth layer polygon
+    func addDepthLayer(from source: MGLShapeSource, color: UIColor) {
         let polygonLayer = MGLFillStyleLayer(identifier: "depth", source: source)
-        // polygonLayer.predicate = NSPredicate(format: "depth = 1.0")
-        polygonLayer.fillColor = NSExpression(forConstantValue: UIColor(red: 0.27, green: 0.41, blue: 0.97, alpha: 0.3))
-        polygonLayer.fillOutlineColor = NSExpression(forConstantValue: UIColor(red: 0.27, green: 0.41, blue: 0.97, alpha: 1.0))
+        polygonLayer.fillColor = NSExpression(forConstantValue: color.withAlphaComponent(0.5))
+        polygonLayer.fillOutlineColor = NSExpression(forConstantValue: color)
         addLayer(polygonLayer)
     }
     

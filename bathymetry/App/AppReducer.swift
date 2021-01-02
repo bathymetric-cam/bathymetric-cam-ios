@@ -5,7 +5,7 @@ import GEOSwift
 let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
     switch action {
     case .loadGeoJSON:
-        return environment.appClient
+        return environment.bathymetryClient
             .loadGeoJSON()
             .receive(on: environment.mainQueue)
             .catchToEffect()

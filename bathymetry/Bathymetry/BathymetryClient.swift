@@ -1,8 +1,8 @@
 import ComposableArchitecture
 import GEOSwift
 
-// MARK: - AppClient Interface
-struct AppClient {
+// MARK: - BathymetryClient Interface
+struct BathymetryClient {
     // MARK: - property
     
     var loadGeoJSON: () -> Effect<GeoJSON, Failure>
@@ -12,11 +12,11 @@ struct AppClient {
     struct Failure: Error, Equatable {}
 }
 
-// MARK: - AppClient Implementation
-extension AppClient {
+// MARK: - BathymetryClient Implementation
+extension BathymetryClient {
     // MARK: - property
     
-    static let live = AppClient(
+    static let live = BathymetryClient(
         loadGeoJSON: {
             var components = URLComponents()
             components.scheme = "https"
@@ -40,8 +40,8 @@ extension AppClient {
     )
 }
 
-// MARK: - AppClient Mock
-extension AppClient {
+// MARK: - BathymetryClient Mock
+extension BathymetryClient {
     // MARK: - property
     
     static func mock(

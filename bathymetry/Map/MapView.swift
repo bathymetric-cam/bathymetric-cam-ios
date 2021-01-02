@@ -19,13 +19,11 @@ final class UIMapView: MGLMapView {
         self.styleURL = traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL : MGLStyle.lightStyleURL
         showsUserLocation = true
         zoomLevel = 15
-        /*
         isZoomEnabled = false
         isScrollEnabled = false
         isRotateEnabled = false
         isPitchEnabled = false
         compassView.isHidden = true
-        */
     }
     
     // MARK: - destruction
@@ -38,21 +36,6 @@ final class UIMapView: MGLMapView {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         styleURL = traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL : MGLStyle.lightStyleURL
-    }
-    
-    // MARK: - public api
-    
-    /// Updates annotations on the map
-    /// - Parameter geoJSON: GeoJSON?
-    /// - Returns: MapView
-    func updateAnnotations(_ geoJSON: GeoJSON?) {
-        removeAnnotations(annotations ?? [])
-        guard case let .featureCollection(featureCollection) = geoJSON else {
-            return
-        }
-        addAnnotations(
-            featureCollection.features.compactMap { $0.geometry?.mapboxShape() as MGLShape? }
-        )
     }
 }
 
@@ -72,11 +55,11 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIMapView, context: UIViewRepresentableContext<MapView>) {
-        // uiView.updateAnnotations(geoJSON)
-        
+        /*
         guard case let .featureCollection(featureCollection) = geoJSON else {
             return
         }
+        featureCollection.features.forEach { feature in print(feature.properties) }
         let source = MGLShapeSource(
             identifier: "hoge",
             features: featureCollection.features.compactMap { $0.geometry?.mapboxFeature() },
@@ -84,6 +67,7 @@ struct MapView: UIViewRepresentable {
         )
         uiView.style?.addSource(source)
         uiView.style?.addDepth(from: source)
+        */
     }
     
     static func dismantleUIView(_ uiView: MapView.UIViewType, coordinator: MapView.Coordinator) {

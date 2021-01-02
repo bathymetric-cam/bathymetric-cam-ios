@@ -24,10 +24,10 @@
 		E65CF4182590BBA9008A207C /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF4172590BBA9008A207C /* AppAction.swift */; };
 		E65CF41C2590BBFA008A207C /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF41B2590BBFA008A207C /* AppEnvironment.swift */; };
 		E65CF4202590BC78008A207C /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF41F2590BC78008A207C /* AppReducer.swift */; };
-		E698A33025976A2D00596795 /* MapboxGLAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A32F25976A2D00596795 /* MapboxGLAnnotations.swift */; };
+		E698A33025976A2D00596795 /* MGLAnnotation+GEOSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A32F25976A2D00596795 /* MGLAnnotation+GEOSwift.swift */; };
 		E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69BBD11257E50170048050C /* Preview Assets.xcassets */; };
 		E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E6A63801257E4D2200751BF5 /* Alamofire */; };
-		E6BDC3BE259600BF00184925 /* AppClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BDC3BD259600BF00184925 /* AppClient.swift */; };
+		E6BDC3BE259600BF00184925 /* BathymetryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BDC3BD259600BF00184925 /* BathymetryClient.swift */; };
 		E6E065252590CBB50032B6C8 /* GEOSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E6E065242590CBB50032B6C8 /* GEOSwift */; };
 		E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1060D258A2E05000DDD25 /* ARView.swift */; };
 		E6F10617258A3068000DDD25 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = E6F10616258A3068000DDD25 /* ARCL */; };
@@ -88,9 +88,9 @@
 		E65CF4172590BBA9008A207C /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		E65CF41B2590BBFA008A207C /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		E65CF41F2590BC78008A207C /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
-		E698A32F25976A2D00596795 /* MapboxGLAnnotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapboxGLAnnotations.swift; sourceTree = "<group>"; };
+		E698A32F25976A2D00596795 /* MGLAnnotation+GEOSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLAnnotation+GEOSwift.swift"; sourceTree = "<group>"; };
 		E69BBD11257E50170048050C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E6BDC3BD259600BF00184925 /* AppClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClient.swift; sourceTree = "<group>"; };
+		E6BDC3BD259600BF00184925 /* BathymetryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryClient.swift; sourceTree = "<group>"; };
 		E6F1060D258A2E05000DDD25 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		E6FE7ABF25824B2700C47C2B /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +158,7 @@
 				E65CF4102590BB0A008A207C /* App */,
 				E6FE7ABE25824AF000C47C2B /* Map */,
 				E6F1060C258A2DDB000DDD25 /* AR */,
+				E6DD5BAE25A08C7200860C4B /* Bathymetry */,
 				E69BBD10257E50170048050C /* Preview Content */,
 			);
 			path = bathymetry;
@@ -189,7 +190,6 @@
 				E65CF4172590BBA9008A207C /* AppAction.swift */,
 				E65CF41B2590BBFA008A207C /* AppEnvironment.swift */,
 				E65CF41F2590BC78008A207C /* AppReducer.swift */,
-				E6BDC3BD259600BF00184925 /* AppClient.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -200,6 +200,14 @@
 				E69BBD11257E50170048050C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E6DD5BAE25A08C7200860C4B /* Bathymetry */ = {
+			isa = PBXGroup;
+			children = (
+				E6BDC3BD259600BF00184925 /* BathymetryClient.swift */,
+			);
+			path = Bathymetry;
 			sourceTree = "<group>";
 		};
 		E6F1060C258A2DDB000DDD25 /* AR */ = {
@@ -223,7 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				E6FE7ABF25824B2700C47C2B /* MapView.swift */,
-				E698A32F25976A2D00596795 /* MapboxGLAnnotations.swift */,
+				E698A32F25976A2D00596795 /* MGLAnnotation+GEOSwift.swift */,
 				E61F4B7A259F635A00E19A44 /* MGLStyle+Depth.swift */,
 			);
 			path = Map;
@@ -395,8 +403,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E698A33025976A2D00596795 /* MapboxGLAnnotations.swift in Sources */,
-				E6BDC3BE259600BF00184925 /* AppClient.swift in Sources */,
+				E698A33025976A2D00596795 /* MGLAnnotation+GEOSwift.swift in Sources */,
+				E6BDC3BE259600BF00184925 /* BathymetryClient.swift in Sources */,
 				E65CF4182590BBA9008A207C /* AppAction.swift in Sources */,
 				E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */,
 				E64FDE96257D22D200B303C6 /* Bathymetry.xcdatamodeld in Sources */,
