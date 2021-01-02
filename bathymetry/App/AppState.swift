@@ -5,5 +5,5 @@ import SwiftUI
 struct AppState: Equatable {
     // MARK: - property
     
-    var geoFeatures: [Feature] = []
+    var bathymetries: [Bathymetry] = []
 }

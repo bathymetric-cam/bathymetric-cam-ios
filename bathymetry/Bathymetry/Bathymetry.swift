@@ -2,7 +2,7 @@ import GEOSwift
 import Mapbox
 
 // MARK: - Bathymetry
-final class Bathymetry {
+final class Bathymetry: Equatable {
     
     // MARK: - property
     
@@ -12,6 +12,12 @@ final class Bathymetry {
     
     var mapboxSource: MGLShapeSource
     var mapboxLayer: MGLFillStyleLayer
+    
+    // MARK: - Equatable
+    
+    static func == (lhs: Bathymetry, rhs: Bathymetry) -> Bool {
+        return lhs.mapboxSource.identifier == rhs.mapboxSource.identifier
+    }
     
     // MARK: - class method
     
@@ -55,5 +61,5 @@ final class Bathymetry {
         mapboxLayer.fillColor = NSExpression(forConstantValue: color.withAlphaComponent(0.3))
         mapboxLayer.fillOutlineColor = NSExpression(forConstantValue: color)
     }
-    
+
 }

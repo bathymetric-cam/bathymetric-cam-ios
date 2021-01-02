@@ -45,7 +45,7 @@ struct MapView: UIViewRepresentable {
     // MARK: - property
     
     private let mapView: UIMapView = UIMapView(frame: .zero, styleURL: MGLStyle.streetsStyleURL)
-    @Binding var geoFeatures: [Feature]
+    @Binding var bathymetries: [Bathymetry]
     
     // MARK: - UIViewRepresentable
     
@@ -55,13 +55,10 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIMapView, context: UIViewRepresentableContext<MapView>) {
-        let source = MGLShapeSource(
-            identifier: "depth",
-            features: geoFeatures.compactMap { ($0.properties?["depth"] == 1.0) ? $0.geometry?.mapboxFeature() : nil },
-            options: nil
-        )
-        uiView.style?.addSource(source)
-        uiView.style?.addBathymetryLayer(from: source, depth: 1.0, color: .systemBlue)
+        bathymetries.forEach {
+            uiView.style?.addSource($0.mapboxSource)
+            uiView.style?.addLayer($0.mapboxLayer)
+        }
     }
     
     static func dismantleUIView(_ uiView: MapView.UIViewType, coordinator: MapView.Coordinator) {
@@ -104,7 +101,7 @@ struct MapView: UIViewRepresentable {
 // MARK: - MapView_Previews
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(geoFeatures: Binding<[Feature]>(
+        MapView(bathymetries: Binding<[Bathymetry]>(
             get: { [] },
             set: { _ in }
         ))

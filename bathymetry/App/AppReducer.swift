@@ -12,12 +12,12 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
             .map(AppAction.geoJSONResult)
     case let .geoJSONResult(.success(geoJSON)):
         if case let .featureCollection(featureCollection) = geoJSON {
-            state.geoFeatures = featureCollection.features
+            state.bathymetries = Bathymetry.createBathymetries(color: .systemBlue, features: featureCollection.features)
         }
         return .none
     case let .geoJSONResult(.failure(error)):
         return .none
-    case let .geoFeaturesUpdated(geoFeatures):
+    case let .bathymetriesUpdated(bathymetries):
         return .none
     }
 }

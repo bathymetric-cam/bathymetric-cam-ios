@@ -14,9 +14,9 @@ struct AppView: View {
             GeometryReader { metrics in
                 WithViewStore(store) { viewStore in
                     ARView()
-                    MapView(geoFeatures: viewStore.binding(
-                        get: { $0.geoFeatures },
-                        send: AppAction.geoFeaturesUpdated
+                    MapView(bathymetries: viewStore.binding(
+                        get: { $0.bathymetries },
+                        send: AppAction.bathymetriesUpdated
                     ))
                         .frame(
                             width: metrics.size.width,

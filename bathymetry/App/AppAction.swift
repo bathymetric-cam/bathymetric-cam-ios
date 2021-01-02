@@ -6,5 +6,5 @@ import SwiftUI
 enum AppAction: Equatable {
     case loadGeoJSON
     case geoJSONResult(Result<GeoJSON, BathymetryClient.Failure>)
-    case geoFeaturesUpdated(geoFeatures: [Feature])
+    case bathymetriesUpdated(bathymetries: [Bathymetry])
 }
