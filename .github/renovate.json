@@ -1,0 +1,43 @@
+{
+  "packageRules": [
+    {
+      "groupName": "Alamofire",
+      "managers": [
+        "swift"
+      ],
+      "packageNames": [
+        "Alamofire"
+      ]
+    },
+    {
+      "groupName": "ARCL",
+      "managers": [
+        "swift"
+      ],
+      "packageNames": [
+        "ARCL"
+      ]
+    },
+    {
+      "groupName": "GEOSwift",
+      "managers": [
+        "swift"
+      ],
+      "packageNames": [
+        "GEOSwift",
+        "geos"
+      ]
+    },
+    {
+      "groupName": "swift-composable-architecture",
+      "managers": [
+        "swift"
+      ],
+      "packageNames": [
+        "combine-schedulers",
+        "swift-case-paths",
+        "swift-composable-architecture"
+      ]
+    }
+  ]
+}
