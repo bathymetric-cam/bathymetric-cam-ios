@@ -14,11 +14,9 @@ struct AppView: View {
             GeometryReader { metrics in
                 WithViewStore(store) { viewStore in
                     ARView()
-                    MapView(geoJSON: viewStore.binding(
-                        get: {
-                            $0.geoJSON
-                        },
-                        send: AppAction.geoJSONUpdated
+                    MapView(geoFeatures: viewStore.binding(
+                        get: { $0.geoFeatures },
+                        send: AppAction.geoFeaturesUpdated
                     ))
                         .frame(
                             width: metrics.size.width,

@@ -11,11 +11,13 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
             .catchToEffect()
             .map(AppAction.geoJSONResult)
     case let .geoJSONResult(.success(geoJSON)):
-        state.geoJSON = geoJSON
+        if case let .featureCollection(featureCollection) = geoJSON {
+            state.geoFeatures = featureCollection.features
+        }
         return .none
     case let .geoJSONResult(.failure(error)):
         return .none
-    case let .geoJSONUpdated(geoJSON):
+    case let .geoFeaturesUpdated(geoFeatures):
         return .none
     }
 }

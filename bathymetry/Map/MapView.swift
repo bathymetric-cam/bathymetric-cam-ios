@@ -45,7 +45,7 @@ struct MapView: UIViewRepresentable {
     // MARK: - property
     
     private let mapView: UIMapView = UIMapView(frame: .zero, styleURL: MGLStyle.streetsStyleURL)
-    @Binding var geoJSON: GeoJSON?
+    @Binding var geoFeatures: [Feature]
     
     // MARK: - UIViewRepresentable
     
@@ -55,19 +55,13 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIMapView, context: UIViewRepresentableContext<MapView>) {
-        /*
-        guard case let .featureCollection(featureCollection) = geoJSON else {
-            return
-        }
-        featureCollection.features.forEach { feature in print(feature.properties) }
         let source = MGLShapeSource(
-            identifier: "hoge",
-            features: featureCollection.features.compactMap { $0.geometry?.mapboxFeature() },
+            identifier: "depth",
+            features: geoFeatures.compactMap { ($0.properties?["depth"] == 1.0) ? $0.geometry?.mapboxFeature() : nil },
             options: nil
         )
         uiView.style?.addSource(source)
-        uiView.style?.addDepth(from: source)
-        */
+        uiView.style?.addBathymetryLayer(from: source, depth: 1.0, color: .systemBlue)
     }
     
     static func dismantleUIView(_ uiView: MapView.UIViewType, coordinator: MapView.Coordinator) {
@@ -110,8 +104,8 @@ struct MapView: UIViewRepresentable {
 // MARK: - MapView_Previews
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(geoJSON: Binding<GeoJSON?>(
-            get: { nil },
+        MapView(geoFeatures: Binding<[Feature]>(
+            get: { [] },
             set: { _ in }
         ))
     }

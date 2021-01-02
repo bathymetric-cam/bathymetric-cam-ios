@@ -5,5 +5,5 @@ import SwiftUI
 struct AppState: Equatable {
     // MARK: - property
     
-    var geoJSON: GeoJSON?
+    var geoFeatures: [Feature] = []
 }
