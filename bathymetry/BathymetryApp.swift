@@ -2,7 +2,7 @@ import ComposableArchitecture
 import os
 import SwiftUI
 
-let log = Logger(subsystem: "\(Bundle.main.bundleIdentifier ?? "").logger", category: "main")
+let logger = Logger(subsystem: "\(Bundle.main.bundleIdentifier ?? "").logger", category: "main")
 
 // MARK: - BathymetryApp
 @main
