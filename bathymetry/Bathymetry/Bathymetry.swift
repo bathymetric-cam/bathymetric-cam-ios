@@ -7,8 +7,6 @@ final class Bathymetry: Equatable {
     // MARK: - property
     
     private var features: [Feature]
-    var depth: Double
-    var color: UIColor
     
     var mapboxSource: MGLShapeSource
     var mapboxLayer: MGLFillStyleLayer
@@ -23,43 +21,44 @@ final class Bathymetry: Equatable {
     
     /// Create bathymetry by features
     /// - Parameters:
-    ///   - color: color of the layer
     ///   - features: bathymetric features
     /// - Returns: [Bathymetry]
-    class func createBathymetries(color: UIColor, features: [Feature]) -> [Bathymetry] {
-        var depths: [Double: [Feature]] = [:]
+    class func createBathymetries(features: [Feature]) -> [Bathymetry] {
+        var featuresByTile: [String: [Feature]] = [:]
         for feature in features {
-            guard case let .number(depth) = feature.properties?["depth"] else {
+            guard case let .number(x) = feature.properties?["x"],
+                  case let .number(y) = feature.properties?["y"],
+                  case let .number(zoom) = feature.properties?["zoom"] else {
                 continue
             }
-            if var features = depths[depth] {
+            let tileId = MapTile.getTileIdentifier(zoom: Int(zoom), x: Int(x), y: Int(y))
+            if var features = featuresByTile[tileId] {
                 features.append(feature)
             } else {
-                depths[depth] = [feature]
+                featuresByTile[tileId] = [feature]
             }
         }
-        return depths.map { Bathymetry(color: UIColor.systemBlue, depth: $0.key, features: $0.value) }
+        return featuresByTile.map {
+            Bathymetry(tileIdentifier: $0.key, features: $0.value)
+        }
     }
     
     // MARK: - initialization
     
     /// Initialization
     /// - Parameters:
-    ///   - color: color of the layer
-    ///   - depth: depth of bathymetric features
+    ///   - tileIdentifier: "\(zoom)/\(x)/\(y)" represents a unique map tile
     ///   - features: bathymetric features
-    init(color: UIColor, depth: Double, features: [Feature]) {
-        self.color = color
-        self.depth = depth
+    init(tileIdentifier: String, features: [Feature]) {
         self.features = features
         mapboxSource = MGLShapeSource(
-            identifier: "\(String(describing: Bundle.main.bundleIdentifier)).source-\(depth)",
+            identifier: "\(String(describing: Bundle.main.bundleIdentifier)).source.\(tileIdentifier)",
             features: features.compactMap { ($0.properties?["depth"] == 1.0) ? $0.geometry?.mapboxFeature() : nil },
             options: nil
         )
-        mapboxLayer = MGLFillStyleLayer(identifier: "\(String(describing: Bundle.main.bundleIdentifier)).layer-\(depth)", source: mapboxSource)
-        mapboxLayer.fillColor = NSExpression(forConstantValue: color.withAlphaComponent(0.3))
-        mapboxLayer.fillOutlineColor = NSExpression(forConstantValue: color)
+        mapboxLayer = MGLFillStyleLayer(identifier: "\(String(describing: Bundle.main.bundleIdentifier)).layer", source: mapboxSource)
+        mapboxLayer.fillColor = NSExpression(forConstantValue: UIColor.systemBlue.withAlphaComponent(0.3))
+        mapboxLayer.fillOutlineColor = NSExpression(forConstantValue: UIColor.systemBlue)
     }
 
 }

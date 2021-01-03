@@ -18,26 +18,31 @@ class MapTile: Equatable {
     /// - Parameters:
     ///   - coordinate: lat, lng coordinate
     ///   - zoom: zoom level
-    /// - Returns: tuple(x, y, zoom) represents a unique map tile
-    class func getTileIdentifier(coordinate: CLLocationCoordinate2D, zoom: Int) -> (x: Int, y: Int, zoom: Int) {
-        (
-            Int(floor((coordinate.longitude + 180.0) / 360.0 * pow(2.0, Double(zoom)))),
-            Int(floor((1.0 - log(tan(coordinate.latitude * .pi / 180.0) + 1.0 / cos(coordinate.latitude * .pi / 180.0)) / .pi) / 2.0 * pow(2.0, Double(zoom)))),
-            zoom
-        )
+    /// - Returns: "\(zoom)/\(x)/\(y)" represents a unique map tile
+    class func getTileIdentifier(coordinate: CLLocationCoordinate2D, zoom: Int) -> String {
+        "\(zoom)/\(Int(floor((coordinate.longitude + 180.0) / 360.0 * pow(2.0, Double(zoom)))))/\(Int(floor((1.0 - log(tan(coordinate.latitude * .pi / 180.0) + 1.0 / cos(coordinate.latitude * .pi / 180.0)) / .pi) / 2.0 * pow(2.0, Double(zoom)))))"
+    }
+    
+    /// Gets tile identifier
+    /// - Parameters:
+    ///   - zoom: zoom level
+    ///   - x: map tile x
+    ///   - y: map tile y
+    /// - Returns: "\(zoom)/\(x)/\(y)" represents a unique map tile
+    class func getTileIdentifier(zoom: Int, x: Int, y: Int) -> String {
+        "\(zoom)/\(x)/\(y)"
     }
     
     // MARK: - initialization
     
     /// Initialization
     /// - Parameters:
+    ///   - zoom: map zoomLevel 
     ///   - coordinate: lat, lng coordinate
-    ///   - zoom: map zoomLevel
-    init(coordinate: CLLocationCoordinate2D, zoom: Int) {
+    init(zoom: Int, coordinate: CLLocationCoordinate2D) {
         zoomLevel = Double(zoom)
-        let tileId = MapTile.getTileIdentifier(coordinate: coordinate, zoom: zoom)
-        x = tileId.x
-        y = tileId.y
+        x = Int(floor((coordinate.longitude + 180.0) / 360.0 * pow(2.0, Double(zoom))))
+        y = Int(floor((1.0 - log(tan(coordinate.latitude * .pi / 180.0) + 1.0 / cos(coordinate.latitude * .pi / 180.0)) / .pi) / 2.0 * pow(2.0, Double(zoom))))
         let n = pow(2.0, zoomLevel)
         nw = CLLocationCoordinate2D(
             latitude: atan(sinh(.pi - (Double(y - 1) / n) * 2.0 * .pi)) * (180.0 / .pi),
@@ -52,10 +57,10 @@ class MapTile: Equatable {
     
     /// Initialization
     /// - Parameters:
+    ///   - zoom: map zoomLevel
     ///   - x: map tile x
     ///   - y: map tile y
-    ///   - zoom: map zoomLevel
-    init(x: Int, y: Int, zoom: Int) {
+    init(zoom: Int, x: Int, y: Int) {
         zoomLevel = Double(zoom)
         let n = pow(2.0, zoomLevel)
         nw = CLLocationCoordinate2D(

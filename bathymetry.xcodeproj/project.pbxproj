@@ -24,6 +24,7 @@
 		E65CF41C2590BBFA008A207C /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF41B2590BBFA008A207C /* AppEnvironment.swift */; };
 		E65CF4202590BC78008A207C /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF41F2590BC78008A207C /* AppReducer.swift */; };
 		E682CFC725A1E9A90036E6B8 /* MapTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E682CFC625A1E9A90036E6B8 /* MapTile.swift */; };
+		E682CFCD25A203810036E6B8 /* MapBathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E682CFCC25A203810036E6B8 /* MapBathymetryTile.swift */; };
 		E698A33025976A2D00596795 /* MGLAnnotation+GEOSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A32F25976A2D00596795 /* MGLAnnotation+GEOSwift.swift */; };
 		E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69BBD11257E50170048050C /* Preview Assets.xcassets */; };
 		E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E6A63801257E4D2200751BF5 /* Alamofire */; };
@@ -89,6 +90,7 @@
 		E65CF41B2590BBFA008A207C /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		E65CF41F2590BC78008A207C /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		E682CFC625A1E9A90036E6B8 /* MapTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTile.swift; sourceTree = "<group>"; };
+		E682CFCC25A203810036E6B8 /* MapBathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBathymetryTile.swift; sourceTree = "<group>"; };
 		E698A32F25976A2D00596795 /* MGLAnnotation+GEOSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLAnnotation+GEOSwift.swift"; sourceTree = "<group>"; };
 		E69BBD11257E50170048050C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E6BDC3BD259600BF00184925 /* BathymetryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryClient.swift; sourceTree = "<group>"; };
@@ -234,8 +236,9 @@
 			isa = PBXGroup;
 			children = (
 				E6FE7ABF25824B2700C47C2B /* MapView.swift */,
-				E698A32F25976A2D00596795 /* MGLAnnotation+GEOSwift.swift */,
 				E682CFC625A1E9A90036E6B8 /* MapTile.swift */,
+				E698A32F25976A2D00596795 /* MGLAnnotation+GEOSwift.swift */,
+				E682CFCC25A203810036E6B8 /* MapBathymetryTile.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				E6FE7AC025824B2700C47C2B /* MapView.swift in Sources */,
 				E65CF4122590BB57008A207C /* AppState.swift in Sources */,
 				E65CF41C2590BBFA008A207C /* AppEnvironment.swift in Sources */,
+				E682CFCD25A203810036E6B8 /* MapBathymetryTile.swift in Sources */,
 				E64FDE8C257D22D200B303C6 /* AppView.swift in Sources */,
 				E64FDE8A257D22D200B303C6 /* BathymetryApp.swift in Sources */,
 			);
