@@ -15,7 +15,7 @@ struct BathymetryClient {
 // MARK: - BathymetryClient Implementation
 extension BathymetryClient {
     // MARK: - property
-    
+
     static let live = BathymetryClient(
         loadGeoJSON: {
             var components = URLComponents()

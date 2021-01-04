@@ -14,11 +14,12 @@
 		E6203F8925920600007C8FDA /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F83259205FA007C8FDA /* MapboxMobileEvents.framework */; };
 		E6203F8A25920600007C8FDA /* MapboxMobileEvents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F83259205FA007C8FDA /* MapboxMobileEvents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E63D2BF325A320CC00788375 /* BathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2BF225A320CC00788375 /* BathymetryTile.swift */; };
-		E63D2C0525A325DB00788375 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E63D2C0425A325DB00788375 /* FirebaseAnalytics */; };
-		E63D2C0725A325DB00788375 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = E63D2C0625A325DB00788375 /* FirebaseCrashlytics */; };
-		E63D2C0925A325DB00788375 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = E63D2C0825A325DB00788375 /* FirebaseMessaging */; };
-		E63D2C0B25A325DB00788375 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = E63D2C0A25A325DB00788375 /* FirebaseDatabase */; };
 		E63D2C0F25A326A700788375 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E63D2C0E25A326A700788375 /* GoogleService-Info.plist */; };
+		E63D2C3425A33A5D00788375 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E63D2C3325A33A5D00788375 /* FirebaseAnalytics */; };
+		E63D2C3625A33A5D00788375 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = E63D2C3525A33A5D00788375 /* FirebaseFunctions */; };
+		E63D2C3825A33A5D00788375 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = E63D2C3725A33A5D00788375 /* FirebaseCrashlytics */; };
+		E63D2C3C25A33E7D00788375 /* MGLShapeSource+BathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2C3B25A33E7D00788375 /* MGLShapeSource+BathymetryTile.swift */; };
+		E63D2C4025A33F4A00788375 /* MGLFillStyleLayer+BathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2C3F25A33F4A00788375 /* MGLFillStyleLayer+BathymetryTile.swift */; };
 		E64FDE8A257D22D200B303C6 /* BathymetryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE89257D22D200B303C6 /* BathymetryApp.swift */; };
 		E64FDE8C257D22D200B303C6 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE8B257D22D200B303C6 /* AppView.swift */; };
 		E64FDE8E257D22D200B303C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E64FDE8D257D22D200B303C6 /* Assets.xcassets */; };
@@ -33,7 +34,6 @@
 		E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69BBD11257E50170048050C /* Preview Assets.xcassets */; };
 		E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E6A63801257E4D2200751BF5 /* Alamofire */; };
 		E6BDC3BE259600BF00184925 /* BathymetryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BDC3BD259600BF00184925 /* BathymetryClient.swift */; };
-		E6DD5BC425A09B0600860C4B /* Bathymetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DD5BC325A09B0600860C4B /* Bathymetry.swift */; };
 		E6E065252590CBB50032B6C8 /* GEOSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E6E065242590CBB50032B6C8 /* GEOSwift */; };
 		E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1060D258A2E05000DDD25 /* ARView.swift */; };
 		E6F10617258A3068000DDD25 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = E6F10616258A3068000DDD25 /* ARCL */; };
@@ -79,6 +79,8 @@
 		E6203F84259205FA007C8FDA /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
 		E63D2BF225A320CC00788375 /* BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTile.swift; sourceTree = "<group>"; };
 		E63D2C0E25A326A700788375 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E63D2C3B25A33E7D00788375 /* MGLShapeSource+BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLShapeSource+BathymetryTile.swift"; sourceTree = "<group>"; };
+		E63D2C3F25A33F4A00788375 /* MGLFillStyleLayer+BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLFillStyleLayer+BathymetryTile.swift"; sourceTree = "<group>"; };
 		E64FDE86257D22D200B303C6 /* bathymetry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bathymetry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64FDE89257D22D200B303C6 /* BathymetryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryApp.swift; sourceTree = "<group>"; };
 		E64FDE8B257D22D200B303C6 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
@@ -98,7 +100,6 @@
 		E698A32F25976A2D00596795 /* MGLAnnotation+GEOSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLAnnotation+GEOSwift.swift"; sourceTree = "<group>"; };
 		E69BBD11257E50170048050C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E6BDC3BD259600BF00184925 /* BathymetryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryClient.swift; sourceTree = "<group>"; };
-		E6DD5BC325A09B0600860C4B /* Bathymetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bathymetry.swift; sourceTree = "<group>"; };
 		E6F1060D258A2E05000DDD25 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		E6FE7ABF25824B2700C47C2B /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,13 +111,12 @@
 			files = (
 				E6203F87259205FE007C8FDA /* Mapbox.framework in Frameworks */,
 				E6E065252590CBB50032B6C8 /* GEOSwift in Frameworks */,
-				E63D2C0925A325DB00788375 /* FirebaseMessaging in Frameworks */,
-				E63D2C0525A325DB00788375 /* FirebaseAnalytics in Frameworks */,
+				E63D2C3425A33A5D00788375 /* FirebaseAnalytics in Frameworks */,
+				E63D2C3625A33A5D00788375 /* FirebaseFunctions in Frameworks */,
 				E6F10617258A3068000DDD25 /* ARCL in Frameworks */,
 				E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */,
 				E6203F8925920600007C8FDA /* MapboxMobileEvents.framework in Frameworks */,
-				E63D2C0725A325DB00788375 /* FirebaseCrashlytics in Frameworks */,
-				E63D2C0B25A325DB00788375 /* FirebaseDatabase in Frameworks */,
+				E63D2C3825A33A5D00788375 /* FirebaseCrashlytics in Frameworks */,
 				E61F4B76259F5E7A00E19A44 /* geos in Frameworks */,
 				E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */,
 			);
@@ -220,7 +220,6 @@
 			children = (
 				E6BDC3BD259600BF00184925 /* BathymetryClient.swift */,
 				E63D2BF225A320CC00788375 /* BathymetryTile.swift */,
-				E6DD5BC325A09B0600860C4B /* Bathymetry.swift */,
 			);
 			path = Bathymetry;
 			sourceTree = "<group>";
@@ -247,6 +246,8 @@
 			children = (
 				E6FE7ABF25824B2700C47C2B /* MapView.swift */,
 				E698A32F25976A2D00596795 /* MGLAnnotation+GEOSwift.swift */,
+				E63D2C3B25A33E7D00788375 /* MGLShapeSource+BathymetryTile.swift */,
+				E63D2C3F25A33F4A00788375 /* MGLFillStyleLayer+BathymetryTile.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -275,10 +276,9 @@
 				E6F10616258A3068000DDD25 /* ARCL */,
 				E6E065242590CBB50032B6C8 /* GEOSwift */,
 				E61F4B75259F5E7A00E19A44 /* geos */,
-				E63D2C0425A325DB00788375 /* FirebaseAnalytics */,
-				E63D2C0625A325DB00788375 /* FirebaseCrashlytics */,
-				E63D2C0825A325DB00788375 /* FirebaseMessaging */,
-				E63D2C0A25A325DB00788375 /* FirebaseDatabase */,
+				E63D2C3325A33A5D00788375 /* FirebaseAnalytics */,
+				E63D2C3525A33A5D00788375 /* FirebaseFunctions */,
+				E63D2C3725A33A5D00788375 /* FirebaseCrashlytics */,
 			);
 			productName = bathymetry;
 			productReference = E64FDE86257D22D200B303C6 /* bathymetry.app */;
@@ -357,7 +357,7 @@
 				E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
 				E6E065232590CBB50032B6C8 /* XCRemoteSwiftPackageReference "GEOSwift" */,
 				E6E065282590CCAC0032B6C8 /* XCRemoteSwiftPackageReference "geos" */,
-				E63D2C0325A325DB00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				E63D2C3225A33A5D00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = E64FDE87257D22D200B303C6 /* Products */;
 			projectDirPath = "";
@@ -427,12 +427,13 @@
 				E6BDC3BE259600BF00184925 /* BathymetryClient.swift in Sources */,
 				E65CF4182590BBA9008A207C /* AppAction.swift in Sources */,
 				E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */,
+				E63D2C4025A33F4A00788375 /* MGLFillStyleLayer+BathymetryTile.swift in Sources */,
 				E64FDE96257D22D200B303C6 /* Bathymetry.xcdatamodeld in Sources */,
-				E6DD5BC425A09B0600860C4B /* Bathymetry.swift in Sources */,
 				E65CF4202590BC78008A207C /* AppReducer.swift in Sources */,
 				E63D2BF325A320CC00788375 /* BathymetryTile.swift in Sources */,
 				E6FE7AC025824B2700C47C2B /* MapView.swift in Sources */,
 				E65CF4122590BB57008A207C /* AppState.swift in Sources */,
+				E63D2C3C25A33E7D00788375 /* MGLShapeSource+BathymetryTile.swift in Sources */,
 				E65CF41C2590BBFA008A207C /* AppEnvironment.swift in Sources */,
 				E64FDE8C257D22D200B303C6 /* AppView.swift in Sources */,
 				E64FDE8A257D22D200B303C6 /* BathymetryApp.swift in Sources */,
@@ -775,7 +776,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E63D2C0325A325DB00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		E63D2C3225A33A5D00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -831,25 +832,20 @@
 			package = E6E065282590CCAC0032B6C8 /* XCRemoteSwiftPackageReference "geos" */;
 			productName = geos;
 		};
-		E63D2C0425A325DB00788375 /* FirebaseAnalytics */ = {
+		E63D2C3325A33A5D00788375 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E63D2C0325A325DB00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = E63D2C3225A33A5D00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
 		};
-		E63D2C0625A325DB00788375 /* FirebaseCrashlytics */ = {
+		E63D2C3525A33A5D00788375 /* FirebaseFunctions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E63D2C0325A325DB00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = E63D2C3225A33A5D00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		E63D2C3725A33A5D00788375 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E63D2C3225A33A5D00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
-		};
-		E63D2C0825A325DB00788375 /* FirebaseMessaging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E63D2C0325A325DB00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
-		};
-		E63D2C0A25A325DB00788375 /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E63D2C0325A325DB00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
 		};
 		E6A63801257E4D2200751BF5 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

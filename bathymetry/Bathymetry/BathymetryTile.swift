@@ -12,7 +12,8 @@ final class BathymetryTile: Equatable {
     let zoomLevel: Double // The zoom parameter is an integer between 0 (zoomed out) and 18 (zoomed in). 18 is normally the maximum, but some tile servers might go beyond that.
     let nw: CLLocationCoordinate2D // north and west coordinate
     let se: CLLocationCoordinate2D // south and east coordinate
-    private var features: [Feature]
+    var features: [Feature]
+    var name: String { "\(zoom)/\(x)/\(y)" }
     
     // MARK: - initialization
     

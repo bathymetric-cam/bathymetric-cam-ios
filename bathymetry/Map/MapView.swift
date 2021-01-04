@@ -18,7 +18,7 @@ final class UIMapView: MGLMapView {
         super.init(frame: frame, styleURL: styleURL)
         self.styleURL = traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL : MGLStyle.lightStyleURL
         showsUserLocation = true
-        zoomLevel = 15
+        zoomLevel = 16
         isZoomEnabled = false
         isScrollEnabled = false
         isRotateEnabled = false
@@ -45,7 +45,7 @@ struct MapView: UIViewRepresentable {
     // MARK: - property
     
     private let mapView: UIMapView = UIMapView(frame: .zero, styleURL: MGLStyle.streetsStyleURL)
-    @Binding var bathymetries: [Bathymetry]
+    @Binding var bathymetryTiles: [BathymetryTile]
     
     // MARK: - UIViewRepresentable
     
@@ -55,9 +55,19 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIMapView, context: UIViewRepresentableContext<MapView>) {
-        bathymetries.forEach {
-            uiView.style?.addSource($0.mapboxSource)
-            uiView.style?.addLayer($0.mapboxLayer)
+        uiView.style?.layers
+            .compactMap { $0.identifier.starts(with: "\(Bundle.main.bundleIdentifier ?? "")") ? $0 : nil }
+            .forEach { uiView.style?.removeLayer($0) }
+        uiView.style?.sources
+            .compactMap { $0.identifier.starts(with: "\(Bundle.main.bundleIdentifier ?? "")") ? $0 : nil }
+            .forEach { uiView.style?.removeSource($0) }
+        bathymetryTiles.forEach {
+            let mapboxSource = MGLShapeSource(bathymetryTile: $0)
+            uiView.style?.addSource(mapboxSource)
+            let mapboxLayer = MGLFillStyleLayer(bathymetryTile: $0, source: mapboxSource)
+            mapboxLayer.fillColor = NSExpression(forConstantValue: UIColor.systemBlue.withAlphaComponent(0.3))
+            mapboxLayer.fillOutlineColor = NSExpression(forConstantValue: UIColor.systemBlue)
+            uiView.style?.addLayer(mapboxLayer)
         }
     }
     
@@ -101,7 +111,7 @@ struct MapView: UIViewRepresentable {
 // MARK: - MapView_Previews
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(bathymetries: Binding<[Bathymetry]>(
+        MapView(bathymetryTiles: Binding<[BathymetryTile]>(
             get: { [] },
             set: { _ in }
         ))
