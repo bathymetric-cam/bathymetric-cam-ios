@@ -20,3 +20,4 @@ Thumbs.db
 *.ipa
 *.app
 Frameworks/*
+bathymetry/GoogleService-Info.plist

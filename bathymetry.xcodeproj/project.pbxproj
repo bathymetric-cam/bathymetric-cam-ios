@@ -14,6 +14,11 @@
 		E6203F8925920600007C8FDA /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F83259205FA007C8FDA /* MapboxMobileEvents.framework */; };
 		E6203F8A25920600007C8FDA /* MapboxMobileEvents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F83259205FA007C8FDA /* MapboxMobileEvents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E63D2BF325A320CC00788375 /* BathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2BF225A320CC00788375 /* BathymetryTile.swift */; };
+		E63D2C0525A325DB00788375 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E63D2C0425A325DB00788375 /* FirebaseAnalytics */; };
+		E63D2C0725A325DB00788375 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = E63D2C0625A325DB00788375 /* FirebaseCrashlytics */; };
+		E63D2C0925A325DB00788375 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = E63D2C0825A325DB00788375 /* FirebaseMessaging */; };
+		E63D2C0B25A325DB00788375 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = E63D2C0A25A325DB00788375 /* FirebaseDatabase */; };
+		E63D2C0F25A326A700788375 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E63D2C0E25A326A700788375 /* GoogleService-Info.plist */; };
 		E64FDE8A257D22D200B303C6 /* BathymetryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE89257D22D200B303C6 /* BathymetryApp.swift */; };
 		E64FDE8C257D22D200B303C6 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE8B257D22D200B303C6 /* AppView.swift */; };
 		E64FDE8E257D22D200B303C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E64FDE8D257D22D200B303C6 /* Assets.xcassets */; };
@@ -73,6 +78,7 @@
 		E6203F83259205FA007C8FDA /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapboxMobileEvents.framework; sourceTree = "<group>"; };
 		E6203F84259205FA007C8FDA /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
 		E63D2BF225A320CC00788375 /* BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTile.swift; sourceTree = "<group>"; };
+		E63D2C0E25A326A700788375 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E64FDE86257D22D200B303C6 /* bathymetry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bathymetry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64FDE89257D22D200B303C6 /* BathymetryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryApp.swift; sourceTree = "<group>"; };
 		E64FDE8B257D22D200B303C6 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
@@ -104,9 +110,13 @@
 			files = (
 				E6203F87259205FE007C8FDA /* Mapbox.framework in Frameworks */,
 				E6E065252590CBB50032B6C8 /* GEOSwift in Frameworks */,
+				E63D2C0925A325DB00788375 /* FirebaseMessaging in Frameworks */,
+				E63D2C0525A325DB00788375 /* FirebaseAnalytics in Frameworks */,
 				E6F10617258A3068000DDD25 /* ARCL in Frameworks */,
 				E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */,
 				E6203F8925920600007C8FDA /* MapboxMobileEvents.framework in Frameworks */,
+				E63D2C0725A325DB00788375 /* FirebaseCrashlytics in Frameworks */,
+				E63D2C0B25A325DB00788375 /* FirebaseDatabase in Frameworks */,
 				E61F4B76259F5E7A00E19A44 /* geos in Frameworks */,
 				E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */,
 			);
@@ -156,6 +166,7 @@
 				E64FDE89257D22D200B303C6 /* BathymetryApp.swift */,
 				E64FDE8D257D22D200B303C6 /* Assets.xcassets */,
 				E64FDE97257D22D200B303C6 /* Info.plist */,
+				E63D2C0E25A326A700788375 /* GoogleService-Info.plist */,
 				E64FDE94257D22D200B303C6 /* Bathymetry.xcdatamodeld */,
 				E65CF4102590BB0A008A207C /* App */,
 				E6FE7ABE25824AF000C47C2B /* Map */,
@@ -264,6 +275,10 @@
 				E6F10616258A3068000DDD25 /* ARCL */,
 				E6E065242590CBB50032B6C8 /* GEOSwift */,
 				E61F4B75259F5E7A00E19A44 /* geos */,
+				E63D2C0425A325DB00788375 /* FirebaseAnalytics */,
+				E63D2C0625A325DB00788375 /* FirebaseCrashlytics */,
+				E63D2C0825A325DB00788375 /* FirebaseMessaging */,
+				E63D2C0A25A325DB00788375 /* FirebaseDatabase */,
 			);
 			productName = bathymetry;
 			productReference = E64FDE86257D22D200B303C6 /* bathymetry.app */;
@@ -342,6 +357,7 @@
 				E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
 				E6E065232590CBB50032B6C8 /* XCRemoteSwiftPackageReference "GEOSwift" */,
 				E6E065282590CCAC0032B6C8 /* XCRemoteSwiftPackageReference "geos" */,
+				E63D2C0325A325DB00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = E64FDE87257D22D200B303C6 /* Products */;
 			projectDirPath = "";
@@ -361,6 +377,7 @@
 			files = (
 				E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */,
 				E64FDE8E257D22D200B303C6 /* Assets.xcassets in Resources */,
+				E63D2C0F25A326A700788375 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,6 +775,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E63D2C0325A325DB00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.3.1;
+			};
+		};
 		E6A63800257E4D2200751BF5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -805,6 +830,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E6E065282590CCAC0032B6C8 /* XCRemoteSwiftPackageReference "geos" */;
 			productName = geos;
+		};
+		E63D2C0425A325DB00788375 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E63D2C0325A325DB00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		E63D2C0625A325DB00788375 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E63D2C0325A325DB00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		E63D2C0825A325DB00788375 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E63D2C0325A325DB00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		E63D2C0A25A325DB00788375 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E63D2C0325A325DB00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
 		};
 		E6A63801257E4D2200751BF5 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
