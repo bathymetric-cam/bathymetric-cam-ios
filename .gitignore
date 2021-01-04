@@ -21,3 +21,4 @@ Thumbs.db
 *.app
 Frameworks/*
 bathymetry/GoogleService-Info.plist
+bathymetry/Mapbox-Info.plist

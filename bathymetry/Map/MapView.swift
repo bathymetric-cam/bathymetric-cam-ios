@@ -14,7 +14,11 @@ final class UIMapView: MGLMapView {
     }
     
     override init(frame: CGRect, styleURL: URL?) {
-        MGLAccountManager.accessToken = "pk.eyJ1Ijoia2VuemFuODAwMCIsImEiOiJja2Rva2R5aHgxdDYxMndxM2p4d20wMDRwIn0.waANNEC_jYG1_Hk5OExA3A"
+        if let path = Bundle.main.path(forResource: "Mapbox-Info", ofType: "plist"),
+           let plist = NSDictionary(contentsOfFile: path),
+           let accessToken = plist["MGLMapboxAccessToken"] {
+            MGLAccountManager.accessToken = "\(accessToken)"
+        }
         super.init(frame: frame, styleURL: styleURL)
         self.styleURL = traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL : MGLStyle.lightStyleURL
         showsUserLocation = true
