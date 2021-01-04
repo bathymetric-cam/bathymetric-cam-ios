@@ -25,6 +25,7 @@ final class Bathymetry: Equatable {
     /// - Returns: [Bathymetry]
     class func createBathymetries(features: [Feature]) -> [Bathymetry] {
         var featuresByTile: [String: [Feature]] = [:]
+        /*
         for feature in features {
             guard case let .number(x) = feature.properties?["x"],
                   case let .number(y) = feature.properties?["y"],
@@ -38,6 +39,7 @@ final class Bathymetry: Equatable {
                 featuresByTile[tileId] = [feature]
             }
         }
+        */
         return featuresByTile.map {
             Bathymetry(tileIdentifier: $0.key, features: $0.value)
         }
