@@ -48,8 +48,8 @@ struct MapView: UIViewRepresentable {
 
     // MARK: - property
     
-    private let mapView: UIMapView = UIMapView(frame: .zero, styleURL: MGLStyle.streetsStyleURL)
     @Binding var bathymetryTiles: [BathymetryTile]
+    private let mapView: UIMapView = UIMapView(frame: .zero, styleURL: MGLStyle.streetsStyleURL)
     
     // MARK: - UIViewRepresentable
     

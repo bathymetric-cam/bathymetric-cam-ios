@@ -1,4 +1,5 @@
 import ARKit_CoreLocation
+import CoreLocation
 import SwiftUI
 
 // MARK: - ARView
@@ -6,6 +7,7 @@ struct ARView: UIViewRepresentable {
     
     // MARK: - property
     
+    @Binding var bathymetryTiles: [BathymetryTile]
     private let sceneLocationView = SceneLocationView()
     
     // MARK: - UIViewRepresentable
@@ -16,6 +18,14 @@ struct ARView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: SceneLocationView, context: UIViewRepresentableContext<ARView>) {
+        sceneLocationView.locationNodes.forEach {
+            sceneLocationView.removeLocationNode(locationNode: $0)
+        }
+        /*
+        bathymetryTiles.forEach {
+            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: )
+        }
+        */
     }
     
     static func dismantleUIView(_ uiView: ARView.UIViewType, coordinator: ARView.Coordinator) {
@@ -36,6 +46,9 @@ struct ARView: UIViewRepresentable {
 struct ARView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ARView()
+        ARView(bathymetryTiles: Binding<[BathymetryTile]>(
+            get: { [] },
+            set: { _ in }
+        ))
     }
 }

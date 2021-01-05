@@ -13,7 +13,10 @@ struct AppView: View {
         ZStack {
             GeometryReader { metrics in
                 WithViewStore(store) { viewStore in
-                    ARView()
+                    ARView(bathymetryTiles: viewStore.binding(
+                        get: { $0.bathymetryTiles },
+                        send: AppAction.bathymetryTilesUpdated
+                    ))
                     MapView(bathymetryTiles: viewStore.binding(
                         get: { $0.bathymetryTiles },
                         send: AppAction.bathymetryTilesUpdated
