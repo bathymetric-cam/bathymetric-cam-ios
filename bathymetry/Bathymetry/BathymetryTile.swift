@@ -2,7 +2,7 @@ import GEOSwift
 import Mapbox
 
 // MARK: - BathymetryTile
-final class BathymetryTile: Equatable {
+final class BathymetryTile {
     
     // MARK: - property
     
@@ -61,10 +61,21 @@ final class BathymetryTile: Equatable {
         self.y = y
         self.zoom = zoom
     }
-    
-    // MARK: - Equatable
-    
+}
+
+// MARK: - Equatable
+extension BathymetryTile: Equatable {
     static func == (lhs: BathymetryTile, rhs: BathymetryTile) -> Bool {
         return lhs.x == rhs.x && lhs.y == rhs.y && lhs.zoom == rhs.zoom
+    }
+    
+}
+
+// MARK: - Comparable
+extension BathymetryTile: Comparable {
+    static func <(lhs: BathymetryTile, rhs: BathymetryTile) -> Bool {
+        lhs.zoom < rhs.zoom ||
+        lhs.zoom == rhs.zoom && lhs.x < rhs.x ||
+        lhs.zoom == rhs.zoom && lhs.x == rhs.x && lhs.y < rhs.y
     }
 }
