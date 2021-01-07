@@ -49,11 +49,11 @@ struct MapView: UIViewRepresentable {
     // MARK: - property
     
     @Binding var bathymetryTiles: [BathymetryTile]
-    private let mapView: UIMapView = UIMapView(frame: .zero, styleURL: MGLStyle.streetsStyleURL)
     
     // MARK: - UIViewRepresentable
     
     func makeUIView(context: UIViewRepresentableContext<MapView>) -> UIMapView {
+        let mapView = UIMapView(frame: .zero, styleURL: MGLStyle.streetsStyleURL)
         mapView.delegate = context.coordinator
         return mapView
     }
@@ -94,16 +94,16 @@ struct MapView: UIViewRepresentable {
         // MARK: - MGLMapViewDelegate
         
         func mapView(_ mapView: MGLMapView, didUpdate userLocation: MGLUserLocation?) {
-            if control.mapView.userTrackingMode == .followWithHeading {
+            if mapView.userTrackingMode == .followWithHeading {
                 return
             }
             if let coordinate = userLocation?.coordinate {
-                control.mapView.setCenter(coordinate, animated: false)
+                mapView.setCenter(coordinate, animated: false)
             }
             if let heading = userLocation?.heading?.trueHeading {
-                control.mapView.setDirection(heading, animated: false)
+                mapView.setDirection(heading, animated: false)
             }
-            control.mapView.userTrackingMode = .followWithHeading
+            mapView.userTrackingMode = .followWithHeading
         }
         
         func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {

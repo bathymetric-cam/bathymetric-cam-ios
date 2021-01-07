@@ -8,24 +8,22 @@ struct ARView: UIViewRepresentable {
     // MARK: - property
     
     @Binding var bathymetryTiles: [BathymetryTile]
-    private let sceneLocationView = SceneLocationView()
     
     // MARK: - UIViewRepresentable
     
     func makeUIView(context: UIViewRepresentableContext<ARView>) -> SceneLocationView {
+        let sceneLocationView = SceneLocationView()
         sceneLocationView.run()
         return sceneLocationView
     }
     
     func updateUIView(_ uiView: SceneLocationView, context: UIViewRepresentableContext<ARView>) {
-        sceneLocationView.locationNodes.forEach {
-            sceneLocationView.removeLocationNode(locationNode: $0)
+        uiView.locationNodes.forEach {
+            uiView.removeLocationNode(locationNode: $0)
         }
-        /*
         bathymetryTiles.forEach {
-            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: )
+            uiView.addLocationNodeWithConfirmedLocation(locationNode: ARBathymetryNode(bathymetryTile: $0))
         }
-        */
     }
     
     static func dismantleUIView(_ uiView: ARView.UIViewType, coordinator: ARView.Coordinator) {
