@@ -19,8 +19,8 @@ open class ARBathymetryNode: LocationNode {
     /// - Parameters:
     ///   - bathymetryTile: BathymetryTile
     init(bathymetryTile: BathymetryTile) {
-        let location = CLLocation(coordinate: bathymetryTile.nw, altitude: 0)
-        let annotationImage = UIImage(named: "annotation")/*UIImage(systemName: "map.fill")*/ ?? UIImage()
+        let location = CLLocation(coordinate: bathymetryTile.ne, altitude: 0)
+        let annotationImage = UIImage(systemName: "map.fill") ?? UIImage()
         let plane = SCNPlane(
             width: annotationImage.size.width / UIScreen.main.scale,
             height: annotationImage.size.height / UIScreen.main.scale
@@ -30,7 +30,6 @@ open class ARBathymetryNode: LocationNode {
             firstMaterial.lightingModel = .constant
         }
         
-        // annotation node
         annotationNode = SCNNode()
         annotationNode.geometry = plane
         

@@ -116,14 +116,14 @@ struct MapView: UIViewRepresentable {
             ]
                 .map { mapView.convert($0, toCoordinateFrom: nil) }
             guard let minLat = coordinates.min(by: { $0.latitude < $1.latitude })?.latitude,
-                  let minLon = coordinates.min(by: { $0.longitude < $1.longitude })?.longitude,
+                  let minLng = coordinates.min(by: { $0.longitude < $1.longitude })?.longitude,
                   let maxLat = coordinates.max(by: { $0.latitude > $1.latitude })?.latitude,
-                  let maxLon = coordinates.max(by: { $0.longitude > $1.longitude })?.longitude else {
+                  let maxLng = coordinates.max(by: { $0.longitude > $1.longitude })?.longitude else {
                 return
             }
             control.regionDidChange(
-                CLLocationCoordinate2D(latitude: minLat, longitude: minLon),
-                CLLocationCoordinate2D(latitude: maxLat, longitude: maxLon)
+                CLLocationCoordinate2D(latitude: minLat, longitude: minLng),
+                CLLocationCoordinate2D(latitude: maxLat, longitude: maxLng)
             )
         }
     }
