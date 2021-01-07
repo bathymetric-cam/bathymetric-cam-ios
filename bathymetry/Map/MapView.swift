@@ -49,6 +49,7 @@ struct MapView: UIViewRepresentable {
     // MARK: - property
     
     @Binding var bathymetryTiles: [BathymetryTile]
+    var regionDidChange: (_ sw: CLLocationCoordinate2D, _ ne: CLLocationCoordinate2D) -> Void
     
     // MARK: - UIViewRepresentable
     
@@ -106,8 +107,24 @@ struct MapView: UIViewRepresentable {
             mapView.userTrackingMode = .followWithHeading
         }
         
-        func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
-            
+        func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
+            let coordinates = [
+                CGPoint(x: 0, y: 0),
+                CGPoint(x: mapView.frame.width, y: 0),
+                CGPoint(x: 0, y: mapView.frame.height),
+                CGPoint(x: mapView.frame.width, y: mapView.frame.height),
+            ]
+                .map { mapView.convert($0, toCoordinateFrom: nil) }
+            guard let minLat = coordinates.min(by: { $0.latitude < $1.latitude })?.latitude,
+                  let minLon = coordinates.min(by: { $0.longitude < $1.longitude })?.longitude,
+                  let maxLat = coordinates.max(by: { $0.latitude > $1.latitude })?.latitude,
+                  let maxLon = coordinates.max(by: { $0.longitude > $1.longitude })?.longitude else {
+                return
+            }
+            control.regionDidChange(
+                CLLocationCoordinate2D(latitude: minLat, longitude: minLon),
+                CLLocationCoordinate2D(latitude: maxLat, longitude: maxLon)
+            )
         }
     }
 }
@@ -115,9 +132,12 @@ struct MapView: UIViewRepresentable {
 // MARK: - MapView_Previews
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(bathymetryTiles: Binding<[BathymetryTile]>(
-            get: { [] },
-            set: { _ in }
-        ))
+        MapView(
+            bathymetryTiles: Binding<[BathymetryTile]>(
+                get: { [] },
+                set: { _ in }
+            ),
+            regionDidChange: { _, _ in }
+        )
     }
 }
