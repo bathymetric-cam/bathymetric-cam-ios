@@ -7,7 +7,7 @@ open class ARBathymetryNode: LocationNode {
     
     // MARK: - property
     
-    public let annotationNode: SCNNode
+    private let node: SCNNode
 
     // MARK: - initialization
 
@@ -19,7 +19,8 @@ open class ARBathymetryNode: LocationNode {
     /// - Parameters:
     ///   - bathymetryTile: BathymetryTile
     init(bathymetryTile: BathymetryTile) {
-        let location = CLLocation(coordinate: bathymetryTile.ne, altitude: 0)
+        /*
+        let location = CLLocation(coordinate: bathymetryTile.sw, altitude: 0)
         let annotationImage = UIImage(systemName: "map.fill") ?? UIImage()
         let plane = SCNPlane(
             width: annotationImage.size.width / UIScreen.main.scale,
@@ -29,13 +30,30 @@ open class ARBathymetryNode: LocationNode {
             firstMaterial.diffuse.contents = annotationImage
             firstMaterial.lightingModel = .constant
         }
+        node = SCNNode()
+        node.geometry = plane
+         
+        super.init(location: location)
+         
+        addChildNode(node)
+        */
         
-        annotationNode = SCNNode()
-        annotationNode.geometry = plane
+        /*
+        SCNVector3(, , )
+        SCNGeometryElement(
+            data: <#T##Data?#>,
+            primitiveType: T##SCNGeometryPrimitiveType,
+            primitiveCount: <#T##Int#>,
+            bytesPerIndex: <#T##Int#>
+        )
+        */
+        let location = CLLocation(coordinate: bathymetryTile.sw, altitude: 0)
+        
+        node = SCNNode()
         
         super.init(location: location)
         
-        addChildNode(annotationNode)
+        addChildNode(node)
     }
     
 }
