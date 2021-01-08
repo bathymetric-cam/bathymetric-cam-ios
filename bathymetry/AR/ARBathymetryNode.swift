@@ -1,13 +1,10 @@
 import ARKit_CoreLocation
 import CoreLocation
+import GEOSwift
 import SceneKit
 
 // MARK: - ARBathymetryNode
 open class ARBathymetryNode: LocationNode {
-    
-    // MARK: - property
-    
-    private let node: SCNNode
 
     // MARK: - initialization
 
@@ -49,11 +46,28 @@ open class ARBathymetryNode: LocationNode {
         */
         let location = CLLocation(coordinate: bathymetryTile.sw, altitude: 0)
         
-        node = SCNNode()
-        
         super.init(location: location)
         
-        addChildNode(node)
+        let polygons = Array(
+            bathymetryTile.features
+                .compactMap { feature -> MultiPolygon? in
+                    guard case let .multiPolygon(multiPolygon) = feature.geometry else {
+                        return nil
+                    }
+                    return multiPolygon
+                }
+                .map { $0.polygons }
+                .joined()
+        )
+        polygons.forEach {
+            let node = SCNNode(geometry: SCNGeometry(
+                sources: [SCNGeometrySource(vertices:
+                    $0.exterior.points.map { SCNVector3($0.x - bathymetryTile.sw.longitude, $0.y - bathymetryTile.sw.latitude, 0) }
+                )],
+                                elements: [SCNGeometryElement(indices: $0.exterior.points.enumerated().map { i, _ in i }, primitiveType: .polygon)]
+            ))
+            addChildNode(node)
+        }
     }
     
 }
