@@ -21,11 +21,11 @@ struct AppView: View {
                         bathymetryTiles: viewStore.binding(
                             get: { $0.bathymetryTiles },
                             send: AppAction.bathymetryTilesUpdated
-                        ),
-                        regionDidChange: { _, _ in
+                        )
+                    )
+                        .regionDidChange { _ in
                             viewStore.send(.loadGeoJSON)
                         }
-                    )
                         .frame(
                             width: metrics.size.width,
                             height: metrics.size.width
@@ -37,11 +37,6 @@ struct AppView: View {
                                 .stroke(Color.gray, lineWidth: 4)
                                 .offset(y: metrics.size.height - metrics.size.width / 2.0)
                         )
-                        /*
-                        .onAppear {
-                            viewStore.send(.loadGeoJSON)
-                        }
-                        */
                 }
             }
             .edgesIgnoringSafeArea(.all)

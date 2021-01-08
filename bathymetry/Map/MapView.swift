@@ -1,3 +1,4 @@
+import Combine
 import GEOSwift
 import Mapbox
 import SwiftUI
@@ -45,11 +46,18 @@ final class UIMapView: MGLMapView {
 
 // MARK: - MapView
 struct MapView: UIViewRepresentable {
+    
+    // MARK: - struct
+    
+    struct Region {
+        var sw: CLLocationCoordinate2D
+        var ne: CLLocationCoordinate2D
+    }
 
     // MARK: - property
     
     @Binding var bathymetryTiles: [BathymetryTile]
-    var regionDidChange: (_ sw: CLLocationCoordinate2D, _ ne: CLLocationCoordinate2D) -> Void
+    let regionDidChangePublisher = PassthroughSubject<Region, Never>()
     
     // MARK: - UIViewRepresentable
     
@@ -83,7 +91,20 @@ struct MapView: UIViewRepresentable {
         Coordinator(self)
     }
     
-    // MARK: - Coordinator
+    // MARK: - public api
+    
+    /// Called when map region did change
+    /// - Parameter action: action closure
+    /// - Returns: View
+    func regionDidChange(
+        perform action: @escaping (_ region: Region) -> Void
+    ) -> some View {
+        onReceive(regionDidChangePublisher) { action($0) }
+    }
+}
+
+// MARK: - MapView+Coordinator
+extension MapView {
     
     final class Coordinator: NSObject, MGLMapViewDelegate {
         var control: MapView
@@ -121,10 +142,7 @@ struct MapView: UIViewRepresentable {
                   let maxLng = coordinates.max(by: { $0.longitude > $1.longitude })?.longitude else {
                 return
             }
-            control.regionDidChange(
-                CLLocationCoordinate2D(latitude: minLat, longitude: minLng),
-                CLLocationCoordinate2D(latitude: maxLat, longitude: maxLng)
-            )
+            control.regionDidChangePublisher.send(Region(sw: CLLocationCoordinate2D(latitude: minLat, longitude: minLng), ne: CLLocationCoordinate2D(latitude: maxLat, longitude: maxLng)))
         }
     }
 }
@@ -136,8 +154,7 @@ struct MapView_Previews: PreviewProvider {
             bathymetryTiles: Binding<[BathymetryTile]>(
                 get: { [] },
                 set: { _ in }
-            ),
-            regionDidChange: { _, _ in }
+            )
         )
     }
 }
