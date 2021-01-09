@@ -19,6 +19,7 @@ Thumbs.db
 .gitconfig
 *.ipa
 *.app
+fastlane
 Frameworks/*
 bathymetry/GoogleService-Info.plist
 bathymetry/Mapbox-Info.plist

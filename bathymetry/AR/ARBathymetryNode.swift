@@ -35,15 +35,6 @@ open class ARBathymetryNode: LocationNode {
         addChildNode(node)
         */
         
-        /*
-        SCNVector3(, , )
-        SCNGeometryElement(
-            data: <#T##Data?#>,
-            primitiveType: T##SCNGeometryPrimitiveType,
-            primitiveCount: <#T##Int#>,
-            bytesPerIndex: <#T##Int#>
-        )
-        */
         let location = CLLocation(coordinate: bathymetryTile.sw, altitude: 0)
         
         super.init(location: location)
@@ -64,7 +55,7 @@ open class ARBathymetryNode: LocationNode {
                 sources: [SCNGeometrySource(vertices:
                     $0.exterior.points.map { SCNVector3($0.x - bathymetryTile.sw.longitude, $0.y - bathymetryTile.sw.latitude, 0) }
                 )],
-                                elements: [SCNGeometryElement(indices: $0.exterior.points.enumerated().map { i, _ in i }, primitiveType: .polygon)]
+                elements: [SCNGeometryElement(indices: $0.exterior.points.enumerated().map { i, _ in i }, primitiveType: .triangles)]
             ))
             addChildNode(node)
         }

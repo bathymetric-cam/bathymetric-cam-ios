@@ -17,9 +17,13 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera access lets you have an immersive AR experience.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is used to show on the map and provide the location based AR experience.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -29,10 +33,6 @@
 	<true/>
 	<key>UILaunchScreen</key>
 	<dict/>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -42,9 +42,9 @@
 		<string>video-camera</string>
 		<string>magnetometer</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>Camera access lets you have an immersive AR experience.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your location is used to show on the map and provide the location based AR experience.</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
 </dict>
 </plist>
