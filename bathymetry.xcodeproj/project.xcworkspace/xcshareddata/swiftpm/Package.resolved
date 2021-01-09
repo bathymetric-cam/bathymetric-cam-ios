@@ -101,6 +101,24 @@
         }
       },
       {
+        "package": "iGeometry",
+        "repositoryURL": "https://github.com/iShape-Swift/iGeometry",
+        "state": {
+          "branch": null,
+          "revision": "78ba1b1717c21ec1151df66c3e3b8700764b655f",
+          "version": "1.9.0"
+        }
+      },
+      {
+        "package": "iShapeTriangulation",
+        "repositoryURL": "https://github.com/iShape-Swift/iShapeTriangulation.git",
+        "state": {
+          "branch": null,
+          "revision": "983d0d3ce9700aaaf556aec16d7529c36a20d659",
+          "version": "0.13.0"
+        }
+      },
+      {
         "package": "leveldb",
         "repositoryURL": "https://github.com/firebase/leveldb.git",
         "state": {

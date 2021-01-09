@@ -31,6 +31,7 @@
 		E65CF41C2590BBFA008A207C /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF41B2590BBFA008A207C /* AppEnvironment.swift */; };
 		E65CF4202590BC78008A207C /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF41F2590BC78008A207C /* AppReducer.swift */; };
 		E684122525A9D70400186A13 /* Euclid in Frameworks */ = {isa = PBXBuildFile; productRef = E684122425A9D70400186A13 /* Euclid */; };
+		E684122A25A9E9A700186A13 /* iShapeTriangulation in Frameworks */ = {isa = PBXBuildFile; productRef = E684122925A9E9A700186A13 /* iShapeTriangulation */; };
 		E698A33025976A2D00596795 /* MGLAnnotation+GEOSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A32F25976A2D00596795 /* MGLAnnotation+GEOSwift.swift */; };
 		E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69BBD11257E50170048050C /* Preview Assets.xcassets */; };
 		E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E6A63801257E4D2200751BF5 /* Alamofire */; };
@@ -120,6 +121,7 @@
 				E63D2C3425A33A5D00788375 /* FirebaseAnalytics in Frameworks */,
 				E63D2C3625A33A5D00788375 /* FirebaseFunctions in Frameworks */,
 				E6F10617258A3068000DDD25 /* ARCL in Frameworks */,
+				E684122A25A9E9A700186A13 /* iShapeTriangulation in Frameworks */,
 				E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */,
 				E6203F8925920600007C8FDA /* MapboxMobileEvents.framework in Frameworks */,
 				E63D2C3825A33A5D00788375 /* FirebaseCrashlytics in Frameworks */,
@@ -288,6 +290,7 @@
 				E63D2C3525A33A5D00788375 /* FirebaseFunctions */,
 				E63D2C3725A33A5D00788375 /* FirebaseCrashlytics */,
 				E684122425A9D70400186A13 /* Euclid */,
+				E684122925A9E9A700186A13 /* iShapeTriangulation */,
 			);
 			productName = bathymetry;
 			productReference = E64FDE86257D22D200B303C6 /* bathymetry.app */;
@@ -368,6 +371,7 @@
 				E6E065282590CCAC0032B6C8 /* XCRemoteSwiftPackageReference "geos" */,
 				E63D2C3225A33A5D00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				E684122325A9D70400186A13 /* XCRemoteSwiftPackageReference "Euclid" */,
+				E684122825A9E9A700186A13 /* XCRemoteSwiftPackageReference "iShapeTriangulation" */,
 			);
 			productRefGroup = E64FDE87257D22D200B303C6 /* Products */;
 			projectDirPath = "";
@@ -806,6 +810,14 @@
 				minimumVersion = 0.3.6;
 			};
 		};
+		E684122825A9E9A700186A13 /* XCRemoteSwiftPackageReference "iShapeTriangulation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iShape-Swift/iShapeTriangulation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.13.0;
+			};
+		};
 		E6A63800257E4D2200751BF5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -873,6 +885,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E684122325A9D70400186A13 /* XCRemoteSwiftPackageReference "Euclid" */;
 			productName = Euclid;
+		};
+		E684122925A9E9A700186A13 /* iShapeTriangulation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E684122825A9E9A700186A13 /* XCRemoteSwiftPackageReference "iShapeTriangulation" */;
+			productName = iShapeTriangulation;
 		};
 		E6A63801257E4D2200751BF5 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
