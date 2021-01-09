@@ -22,7 +22,6 @@ open class ARBathymetryNode: LocationNode {
         let location = CLLocation(coordinate: bathymetryTile.sw, altitude: 0)
         
         super.init(location: location)
-        
         /*
         let polygons = Array(
             bathymetryTile.features
@@ -45,6 +44,29 @@ open class ARBathymetryNode: LocationNode {
             addChildNode(node)
         }
         */
+        let triangulator = Triangulator()
+        bathymetryTile.features
+            .compactMap { feature -> MultiPolygon? in
+                guard case let .multiPolygon(multiPolygon) = feature.geometry else {
+                    return nil
+                }
+                return multiPolygon
+            }
+            .map { $0.polygons }
+            .map { polygons -> [[iGeometry.Point]] in
+                polygons.map { polygon -> [iGeometry.Point] in
+                    var points = polygon.exterior.points.map { iGeometry.Point(x: Float($0.x - bathymetryTile.sw.longitude), y: Float($0.y - bathymetryTile.sw.latitude)) }
+                    points.removeLast()
+                    return points.reversed()
+                }
+            }
+            .forEach {
+                guard let points = $0.first else {
+                    return
+                }
+                let triangles = triangulator.triangulateDelaunay(points: points)
+            }
+
         let node = SCNNode()
         let cube = Mesh.cube(size: 10, material: UIColor.red)
         node.geometry = SCNGeometry(cube)
