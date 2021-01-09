@@ -30,6 +30,7 @@
 		E65CF4182590BBA9008A207C /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF4172590BBA9008A207C /* AppAction.swift */; };
 		E65CF41C2590BBFA008A207C /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF41B2590BBFA008A207C /* AppEnvironment.swift */; };
 		E65CF4202590BC78008A207C /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF41F2590BC78008A207C /* AppReducer.swift */; };
+		E684122525A9D70400186A13 /* Euclid in Frameworks */ = {isa = PBXBuildFile; productRef = E684122425A9D70400186A13 /* Euclid */; };
 		E698A33025976A2D00596795 /* MGLAnnotation+GEOSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A32F25976A2D00596795 /* MGLAnnotation+GEOSwift.swift */; };
 		E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69BBD11257E50170048050C /* Preview Assets.xcassets */; };
 		E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E6A63801257E4D2200751BF5 /* Alamofire */; };
@@ -115,6 +116,7 @@
 			files = (
 				E6203F87259205FE007C8FDA /* Mapbox.framework in Frameworks */,
 				E6E065252590CBB50032B6C8 /* GEOSwift in Frameworks */,
+				E684122525A9D70400186A13 /* Euclid in Frameworks */,
 				E63D2C3425A33A5D00788375 /* FirebaseAnalytics in Frameworks */,
 				E63D2C3625A33A5D00788375 /* FirebaseFunctions in Frameworks */,
 				E6F10617258A3068000DDD25 /* ARCL in Frameworks */,
@@ -285,6 +287,7 @@
 				E63D2C3325A33A5D00788375 /* FirebaseAnalytics */,
 				E63D2C3525A33A5D00788375 /* FirebaseFunctions */,
 				E63D2C3725A33A5D00788375 /* FirebaseCrashlytics */,
+				E684122425A9D70400186A13 /* Euclid */,
 			);
 			productName = bathymetry;
 			productReference = E64FDE86257D22D200B303C6 /* bathymetry.app */;
@@ -364,6 +367,7 @@
 				E6E065232590CBB50032B6C8 /* XCRemoteSwiftPackageReference "GEOSwift" */,
 				E6E065282590CCAC0032B6C8 /* XCRemoteSwiftPackageReference "geos" */,
 				E63D2C3225A33A5D00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				E684122325A9D70400186A13 /* XCRemoteSwiftPackageReference "Euclid" */,
 			);
 			productRefGroup = E64FDE87257D22D200B303C6 /* Products */;
 			projectDirPath = "";
@@ -794,6 +798,14 @@
 				minimumVersion = 7.3.1;
 			};
 		};
+		E684122325A9D70400186A13 /* XCRemoteSwiftPackageReference "Euclid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nicklockwood/Euclid.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.6;
+			};
+		};
 		E6A63800257E4D2200751BF5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -856,6 +868,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E63D2C3225A33A5D00788375 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		E684122425A9D70400186A13 /* Euclid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E684122325A9D70400186A13 /* XCRemoteSwiftPackageReference "Euclid" */;
+			productName = Euclid;
 		};
 		E6A63801257E4D2200751BF5 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
