@@ -24,7 +24,7 @@ extension BathymetryClient {
             components.path = "/v0/b/bathymetric-cam.appspot.com/o/depth.geojson"
             components.queryItems = [
                 URLQueryItem(name: "alt", value: "media"),
-                URLQueryItem(name: "token", value: "00ab1d31-8fb6-49c4-8ca7-4710f28ebddc"),
+                URLQueryItem(name: "token", value: "4be6b1f3-b365-45be-9d87-3d262279c1bf"),
             ]
             guard let url = components.url else {
                 return Effect(error: Failure())
