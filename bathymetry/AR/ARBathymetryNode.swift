@@ -20,32 +20,10 @@ open class ARBathymetryNode: LocationNode {
     ///   - bathymetryTile: BathymetryTile
     init(bathymetryTile: BathymetryTile) {
         let location = CLLocation(coordinate: bathymetryTile.sw, altitude: 0)
-        
         super.init(location: location)
-        /*
-        let polygons = Array(
-            bathymetryTile.features
-                .compactMap { feature -> MultiPolygon? in
-                    guard case let .multiPolygon(multiPolygon) = feature.geometry else {
-                        return nil
-                    }
-                    return multiPolygon
-                }
-                .map { $0.polygons }
-                .joined()
-        )
-        polygons.forEach {
-            let node = SCNNode(geometry: SCNGeometry(
-                sources: [SCNGeometrySource(vertices:
-                    $0.exterior.points.map { SCNVector3($0.x - bathymetryTile.sw.longitude, $0.y - bathymetryTile.sw.latitude, 0) }
-                )],
-                elements: [SCNGeometryElement(indices: $0.exterior.points.enumerated().map { i, _ in i }, primitiveType: .triangles)]
-            ))
-            addChildNode(node)
-        }
-        */
+        
         let triangulator = Triangulator()
-        bathymetryTile.features
+        let polygonsList = bathymetryTile.features
             .compactMap { feature -> MultiPolygon? in
                 guard case let .multiPolygon(multiPolygon) = feature.geometry else {
                     return nil
@@ -53,24 +31,50 @@ open class ARBathymetryNode: LocationNode {
                 return multiPolygon
             }
             .map { $0.polygons }
+            .map { polygons -> [[Euclid.Vector]] in
+                polygons.map { polygon -> [Euclid.Vector] in
+                    var vectors = polygon.exterior.points.map { point -> Euclid.Vector in
+                        let lngDistance = CLLocation(coordinate: bathymetryTile.sw, altitude: 0).distance(from: CLLocation(coordinate: CLLocationCoordinate2D(latitude: bathymetryTile.sw.latitude, longitude: point.x), altitude: 0))
+                        let latDistance = CLLocation(coordinate: bathymetryTile.sw, altitude: 0).distance(from: CLLocation(coordinate: CLLocationCoordinate2D(latitude: point.y, longitude: bathymetryTile.sw.longitude), altitude: 0))
+                        return Euclid.Vector(lngDistance, 0, latDistance)
+                    }
+                    vectors.removeLast()
+                    return vectors
+                }
+            }
+        let indicesList = polygonsList
             .map { polygons -> [[iGeometry.Point]] in
-                polygons.map { polygon -> [iGeometry.Point] in
-                    var points = polygon.exterior.points.map { iGeometry.Point(x: Float($0.x - bathymetryTile.sw.longitude), y: Float($0.y - bathymetryTile.sw.latitude)) }
-                    points.removeLast()
-                    return points.reversed()
+                polygons.map { vectors -> [iGeometry.Point] in
+                    vectors.map { iGeometry.Point(x: Float($0.x), y: Float($0.z)) }
                 }
             }
-            .forEach {
-                guard let points = $0.first else {
-                    return
-                }
-                let triangles = triangulator.triangulateDelaunay(points: points)
+            .map {
+                $0.map { triangulator.triangulateDelaunay(points: $0) }
             }
-
-        let node = SCNNode()
-        let cube = Mesh.cube(size: 10, material: UIColor.red)
-        node.geometry = SCNGeometry(cube)
-        addChildNode(node)
+        
+        for i in 0..<indicesList.count {
+            for j in 0..<indicesList[i].count {
+                for k in 0..<indicesList[i][j].count where k % 3 == 0 {
+                    if let polygon = Euclid.Polygon([
+                        Euclid.Vertex(polygonsList[i][j][indicesList[i][j][k + 0]], Euclid.Vector(0, 0, 1)),
+                        Euclid.Vertex(polygonsList[i][j][indicesList[i][j][k + 1]], Euclid.Vector(0, 0, 1)),
+                        Euclid.Vertex(polygonsList[i][j][indicesList[i][j][k + 2]], Euclid.Vector(0, 0, 1)),
+                    ]) {
+                        addChildNode(SCNNode(geometry: SCNGeometry(Mesh([polygon]).replacing(nil, with: UIColor.blue.withAlphaComponent(0.8)))))
+                    }
+                }
+            }
+        }
+        /*
+        let polygon = Euclid.Polygon([
+            Euclid.Vertex(Euclid.Vector(10, 0, 0), Euclid.Vector(0, 0, 1)),
+            Euclid.Vertex(Euclid.Vector(10, 10, 0), Euclid.Vector(0, 0, 1)),
+            Euclid.Vertex(Euclid.Vector(10, 10, 10), Euclid.Vector(0, 0, 1)),
+        ])
+        if let polygon = polygon {
+            addChildNode(SCNNode(geometry: SCNGeometry(Mesh([polygon]).replacing(nil, with: UIColor.blue.withAlphaComponent(0.8)))))
+        }
+        */
     }
     
 }
