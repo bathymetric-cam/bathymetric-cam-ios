@@ -1,5 +1,5 @@
 //
-//  URLSession+Publisher.swift
+//  Client+Publisher.swift
 //  bathymetry
 //
 //  Created by Kenzan Hase on 1/14/21.
