@@ -11,9 +11,11 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
             .catchToEffect()
             .map(AppAction.geoJSONResult)
     case let .geoJSONResult(.success(geoJSON)):
+        /*
         if case let .featureCollection(featureCollection) = geoJSON {
             state.bathymetryTiles = [BathymetryTile(zoom: 16, x: 57483, y: 25955, features: featureCollection.features)]
         }
+        */
         return .none
     case let .geoJSONResult(.failure(error)):
         return .none

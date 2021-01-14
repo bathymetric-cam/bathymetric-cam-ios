@@ -23,3 +23,4 @@ fastlane
 Frameworks/*
 bathymetry/GoogleService-Info.plist
 bathymetry/Mapbox-Info.plist
+bathymetry/Contentful-Info.plist
