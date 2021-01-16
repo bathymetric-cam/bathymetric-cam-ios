@@ -91,7 +91,7 @@
 		E63D2C0E25A326A700788375 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E63D2C3B25A33E7D00788375 /* MGLShapeSource+BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLShapeSource+BathymetryTile.swift"; sourceTree = "<group>"; };
 		E63D2C3F25A33F4A00788375 /* MGLFillStyleLayer+BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLFillStyleLayer+BathymetryTile.swift"; sourceTree = "<group>"; };
-		E64FDE86257D22D200B303C6 /* Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E64FDE86257D22D200B303C6 /* Bathymetry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bathymetry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64FDE89257D22D200B303C6 /* BathymetryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryApp.swift; sourceTree = "<group>"; };
 		E64FDE8B257D22D200B303C6 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		E64FDE8D257D22D200B303C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 		E64FDE87257D22D200B303C6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E64FDE86257D22D200B303C6 /* Debug.app */,
+				E64FDE86257D22D200B303C6 /* Bathymetry.app */,
 				E64FDE9C257D22D200B303C6 /* bathymetryTests.xctest */,
 				E64FDEA7257D22D200B303C6 /* bathymetryUITests.xctest */,
 			);
@@ -329,7 +329,7 @@
 				E6171D5925B0574900161E28 /* Contentful */,
 			);
 			productName = bathymetry;
-			productReference = E64FDE86257D22D200B303C6 /* Debug.app */;
+			productReference = E64FDE86257D22D200B303C6 /* Bathymetry.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E64FDE9B257D22D200B303C6 /* bathymetryTests */ = {
@@ -670,8 +670,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.kenzan8000.bathymetry.debug;
-				PRODUCT_NAME = Debug;
+				PRODUCT_BUNDLE_IDENTIFIER = org.kenzan8000.bathymetry;
+				PRODUCT_NAME = Bathymetry;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_WORKSPACE = YES;
@@ -701,7 +701,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.kenzan8000.bathymetry;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Bathymetry;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_WORKSPACE = YES;
