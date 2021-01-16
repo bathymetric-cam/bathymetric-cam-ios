@@ -7,12 +7,13 @@ final class Bathymetry: EntryDecodable, FieldKeysQueryable {
 
     // MARK: - static constant
     
-    static let contentTypeId = "Bathymetry"
+    static let contentTypeId = "bathymetry"
     
     // MARK: - enum
     
     enum FieldKeys: String, CodingKey {
-        case zoom, x, y, geoJSON
+        case zoom, x, y
+        case geoJSON
     }
 
     // MARK: - property

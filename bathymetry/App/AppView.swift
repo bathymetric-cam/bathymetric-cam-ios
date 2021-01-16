@@ -24,7 +24,7 @@ struct AppView: View {
                         )
                     )
                         .regionDidChange { _ in
-                            viewStore.send(.loadGeoJSON)
+                            viewStore.send(.loadBathymetries)
                         }
                         .frame(
                             width: metrics.size.width,

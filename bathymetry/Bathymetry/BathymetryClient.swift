@@ -6,7 +6,7 @@ import Contentful
 struct BathymetryClient {
     // MARK: - property
     
-    var loadGeoJSON: () -> Effect<[Bathymetry], Failure>
+    var loadBathymetries: () -> Effect<[Bathymetry], Failure>
     
     // MARK: - Failure
 
@@ -18,7 +18,7 @@ extension BathymetryClient {
     // MARK: - property
 
     static let live = BathymetryClient(
-        loadGeoJSON: {
+        loadBathymetries: {
             Future<[Bathymetry], Failure> { promise in
                 guard let path = Bundle.main.path(forResource: "Contentful-Info", ofType: "plist"),
                    let plist = NSDictionary(contentsOfFile: path),
@@ -27,7 +27,7 @@ extension BathymetryClient {
                     promise(.failure(Failure()))
                     return
                 }
-                let client = Client(spaceId: spaceId, environmentId: "master", accessToken: accessToken)
+                let client = Client(spaceId: spaceId, accessToken: accessToken, contentTypeClasses: [Bathymetry.self])
                 let query = QueryOn<Bathymetry>
                     .where(field: .zoom, .equals("16"))
                     .where(field: .x, .isGreaterThanOrEqualTo("57483"))
@@ -35,9 +35,6 @@ extension BathymetryClient {
                     .where(field: .y, .isGreaterThanOrEqualTo("25955"))
                     .where(field: .y, .isLessThanOrEqualTo("25955"))
                 client.fetchArray(of: Bathymetry.self, matching: query) {
-                    if case let .failure(failure) = $0 {
-                        print(failure)
-                    }
                     guard case let .success(result) = $0 else {
                         promise(.failure(Failure()))
                         return
@@ -55,9 +52,9 @@ extension BathymetryClient {
     // MARK: - property
     
     static func mock(
-        loadGeoJSON: @escaping () -> Effect<[Bathymetry], Failure> = {
+        loadBathymetries: @escaping () -> Effect<[Bathymetry], Failure> = {
         fatalError("Unmocked")
     }) -> Self {
-        Self(loadGeoJSON: loadGeoJSON)
+        Self(loadBathymetries: loadBathymetries)
     }
 }
