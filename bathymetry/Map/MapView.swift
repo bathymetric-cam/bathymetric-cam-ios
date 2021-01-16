@@ -8,6 +8,8 @@ final class UIMapView: MGLMapView {
     
     // MARK: - property
     
+    var count = 0
+    
     // MARK: - initialization
     
     required init?(coder: NSCoder) {
@@ -68,20 +70,7 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIMapView, context: UIViewRepresentableContext<MapView>) {
-        uiView.style?.layers
-            .compactMap { $0.identifier.starts(with: "\(Bundle.main.bundleIdentifier ?? "")") ? $0 : nil }
-            .forEach { uiView.style?.removeLayer($0) }
-        uiView.style?.sources
-            .compactMap { $0.identifier.starts(with: "\(Bundle.main.bundleIdentifier ?? "")") ? $0 : nil }
-            .forEach { uiView.style?.removeSource($0) }
-        bathymetryTiles.forEach {
-            let mapboxSource = MGLShapeSource(bathymetryTile: $0)
-            uiView.style?.addSource(mapboxSource)
-            let mapboxLayer = MGLFillStyleLayer(bathymetryTile: $0, source: mapboxSource)
-            mapboxLayer.fillColor = NSExpression(forConstantValue: UIColor.systemBlue.withAlphaComponent(0.3))
-            mapboxLayer.fillOutlineColor = NSExpression(forConstantValue: UIColor.systemBlue)
-            uiView.style?.addLayer(mapboxLayer)
-        }
+        updateBathymetryLayers(mapView: uiView)
     }
     
     static func dismantleUIView(_ uiView: MapView.UIViewType, coordinator: MapView.Coordinator) {
@@ -100,6 +89,27 @@ struct MapView: UIViewRepresentable {
         perform action: @escaping (_ region: Region) -> Void
     ) -> some View {
         onReceive(regionDidChangePublisher) { action($0) }
+    }
+    
+    // MARK: - internal api
+    
+    /// Updates bathymetry layers
+    /// - Parameter mapView: UIKit MapView that inherits MGLMapView
+    internal func updateBathymetryLayers(mapView: MGLMapView) {
+        mapView.style?.layers
+            .compactMap { $0.identifier.starts(with: "\(Bundle.main.bundleIdentifier ?? "")") ? $0 : nil }
+            .forEach { mapView.style?.removeLayer($0) }
+        mapView.style?.sources
+            .compactMap { $0.identifier.starts(with: "\(Bundle.main.bundleIdentifier ?? "")") ? $0 : nil }
+            .forEach { mapView.style?.removeSource($0) }
+        bathymetryTiles.forEach {
+            let mapboxSource = MGLShapeSource(bathymetryTile: $0)
+            mapView.style?.addSource(mapboxSource)
+            let mapboxLayer = MGLFillStyleLayer(bathymetryTile: $0, source: mapboxSource)
+            mapboxLayer.fillColor = NSExpression(forConstantValue: UIColor.systemBlue.withAlphaComponent(0.3))
+            mapboxLayer.fillOutlineColor = NSExpression(forConstantValue: UIColor.systemBlue)
+            mapView.style?.addLayer(mapboxLayer)
+        }
     }
 }
 
@@ -143,6 +153,10 @@ extension MapView {
                 return
             }
             control.regionDidChangePublisher.send(Region(sw: CLLocationCoordinate2D(latitude: minLat, longitude: minLng), ne: CLLocationCoordinate2D(latitude: maxLat, longitude: maxLng)))
+        }
+        
+        func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
+            control.updateBathymetryLayers(mapView: mapView)
         }
     }
 }
