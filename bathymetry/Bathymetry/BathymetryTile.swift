@@ -71,10 +71,13 @@ final class BathymetryTile {
     /// - Returns: [Feature] between the range
     func getFeatures(minDepth: Double, maxDepth: Double) -> [Feature] {
         features.compactMap { feature -> Feature? in
-            guard let depthJSON = feature.properties?["depth"],
-                  case let .number(depth) = depthJSON else {
+            guard let minDepthJSON = feature.properties?["minDepth"],
+                  case let .number(low) = minDepthJSON,
+                  let maxDepthJSON = feature.properties?["maxDepth"],
+                  case let .number(hight) = maxDepthJSON else {
                 return nil
             }
+            let depth = (low + hight) / 2.0
             if depth < minDepth || depth > maxDepth {
                 return nil
             }
