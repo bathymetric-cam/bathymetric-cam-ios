@@ -12,7 +12,7 @@ final class BathymetryTile {
     let zoomLevel: Double // The zoom parameter is an integer between 0 (zoomed out) and 18 (zoomed in). 18 is normally the maximum, but some tile servers might go beyond that.
     let ne: CLLocationCoordinate2D // north and east coordinate
     let sw: CLLocationCoordinate2D // south and west coordinate
-    var features: [Feature]
+    let features: [Feature]
     var name: String { "\(zoom)/\(x)/\(y)" }
     
     // MARK: - initialization
@@ -60,6 +60,26 @@ final class BathymetryTile {
         self.x = x
         self.y = y
         self.zoom = zoom
+    }
+    
+    // MARK: - public api
+    
+    /// Gets features between minDepth and maxDepth
+    /// - Parameters:
+    ///   - minDepth: minimum depth
+    ///   - maxDepth: maximum depth
+    /// - Returns: [Feature] between the range
+    func getFeatures(minDepth: Double, maxDepth: Double) -> [Feature] {
+        features.compactMap { feature -> Feature? in
+            guard let depthJSON = feature.properties?["depth"],
+                  case let .number(depth) = depthJSON else {
+                return nil
+            }
+            if depth < minDepth || depth > maxDepth {
+                return nil
+            }
+            return feature
+        }
     }
 }
 

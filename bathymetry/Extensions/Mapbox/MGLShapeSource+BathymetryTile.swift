@@ -1,15 +1,17 @@
+import GEOSwift
 import Mapbox
 
 // MARK: - MGLShapeSource+BathymetryTile
 extension MGLShapeSource {
+    
     // MARK: - initialization
     
     /// Inits
-    /// - Parameter bathymetryTile: BathymetryTile
-    convenience init(bathymetryTile: BathymetryTile) {
+    /// - Parameter feature: Feature
+    convenience init(identifier: String, feature: Feature) {
         self.init(
-            identifier: "\(Bundle.main.bundleIdentifier ?? "").source.\(bathymetryTile.name)",
-            features: bathymetryTile.features.compactMap { $0.geometry?.mapboxFeature() },
+            identifier: identifier,
+            features: [feature].compactMap { $0.geometry?.mapboxFeature() },
             options: nil
         )
     }

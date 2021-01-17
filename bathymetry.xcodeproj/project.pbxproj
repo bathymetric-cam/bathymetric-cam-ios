@@ -22,7 +22,6 @@
 		E63D2BF325A320CC00788375 /* BathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2BF225A320CC00788375 /* BathymetryTile.swift */; };
 		E63D2C0F25A326A700788375 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E63D2C0E25A326A700788375 /* GoogleService-Info.plist */; };
 		E63D2C3C25A33E7D00788375 /* MGLShapeSource+BathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2C3B25A33E7D00788375 /* MGLShapeSource+BathymetryTile.swift */; };
-		E63D2C4025A33F4A00788375 /* MGLFillStyleLayer+BathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2C3F25A33F4A00788375 /* MGLFillStyleLayer+BathymetryTile.swift */; };
 		E64FDE8A257D22D200B303C6 /* BathymetryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE89257D22D200B303C6 /* BathymetryApp.swift */; };
 		E64FDE8C257D22D200B303C6 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE8B257D22D200B303C6 /* AppView.swift */; };
 		E64FDE8E257D22D200B303C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E64FDE8D257D22D200B303C6 /* Assets.xcassets */; };
@@ -90,7 +89,6 @@
 		E63D2BF225A320CC00788375 /* BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTile.swift; sourceTree = "<group>"; };
 		E63D2C0E25A326A700788375 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E63D2C3B25A33E7D00788375 /* MGLShapeSource+BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLShapeSource+BathymetryTile.swift"; sourceTree = "<group>"; };
-		E63D2C3F25A33F4A00788375 /* MGLFillStyleLayer+BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLFillStyleLayer+BathymetryTile.swift"; sourceTree = "<group>"; };
 		E64FDE86257D22D200B303C6 /* Bathymetry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bathymetry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64FDE89257D22D200B303C6 /* BathymetryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryApp.swift; sourceTree = "<group>"; };
 		E64FDE8B257D22D200B303C6 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 			children = (
 				E698A32F25976A2D00596795 /* MGLAnnotation+GEOSwift.swift */,
 				E63D2C3B25A33E7D00788375 /* MGLShapeSource+BathymetryTile.swift */,
-				E63D2C3F25A33F4A00788375 /* MGLFillStyleLayer+BathymetryTile.swift */,
 			);
 			path = Mapbox;
 			sourceTree = "<group>";
@@ -480,7 +477,6 @@
 				E6BDC3BE259600BF00184925 /* BathymetryClient.swift in Sources */,
 				E65CF4182590BBA9008A207C /* AppAction.swift in Sources */,
 				E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */,
-				E63D2C4025A33F4A00788375 /* MGLFillStyleLayer+BathymetryTile.swift in Sources */,
 				E64FDE96257D22D200B303C6 /* CoreData.xcdatamodeld in Sources */,
 				E65CF4202590BC78008A207C /* AppReducer.swift in Sources */,
 				E63D2BF325A320CC00788375 /* BathymetryTile.swift in Sources */,

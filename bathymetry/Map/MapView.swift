@@ -102,13 +102,17 @@ struct MapView: UIViewRepresentable {
         mapView.style?.sources
             .compactMap { $0.identifier.starts(with: "\(Bundle.main.bundleIdentifier ?? "")") ? $0 : nil }
             .forEach { mapView.style?.removeSource($0) }
-        bathymetryTiles.forEach {
-            let mapboxSource = MGLShapeSource(bathymetryTile: $0)
-            mapView.style?.addSource(mapboxSource)
-            let mapboxLayer = MGLFillStyleLayer(bathymetryTile: $0, source: mapboxSource)
-            mapboxLayer.fillColor = NSExpression(forConstantValue: UIColor.systemBlue.withAlphaComponent(0.3))
-            mapboxLayer.fillOutlineColor = NSExpression(forConstantValue: UIColor.systemBlue)
-            mapView.style?.addLayer(mapboxLayer)
+        bathymetryTiles.forEach { bathymetryTile in
+            bathymetryTile.getFeatures(minDepth: 0, maxDepth: 1)
+                .forEach {
+                    let source = MGLShapeSource(identifier: "\(Bundle.main.bundleIdentifier ?? "").source.\(bathymetryTile.name).\(1)", feature: $0)
+                    mapView.style?.addSource(source)
+                    let mapboxLayer = MGLFillStyleLayer(identifier: "\(Bundle.main.bundleIdentifier ?? "").layer.\(bathymetryTile.name).\(1)", source: source)
+                    mapboxLayer.fillColor = NSExpression(forConstantValue: UIColor.systemBlue.withAlphaComponent(0.3))
+                    mapboxLayer.fillOutlineColor = NSExpression(forConstantValue: UIColor.systemBlue)
+                    mapView.style?.addLayer(mapboxLayer)
+
+                }
         }
     }
 }
