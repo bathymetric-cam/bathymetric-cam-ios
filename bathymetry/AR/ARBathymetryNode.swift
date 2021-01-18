@@ -23,7 +23,8 @@ open class ARBathymetryNode: LocationNode {
         super.init(location: location)
         
         // get positions of polygon's vertices
-        let positionsList = bathymetryTile.getFeatures(minDepth: 0, maxDepth: 1)
+        let positionsList = bathymetryTile
+            .getFeatures(minDepth: 0, maxDepth: 1)
             .compactMap { feature -> MultiPolygon? in
                 guard case let .multiPolygon(multiPolygon) = feature.geometry else {
                     return nil
