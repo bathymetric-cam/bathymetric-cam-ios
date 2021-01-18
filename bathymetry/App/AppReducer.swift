@@ -4,9 +4,9 @@ import GEOSwift
 // MARK: - AppReducer
 let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
     switch action {
-    case .loadBathymetries:
+    case let .loadBathymetries(region):
         return environment.bathymetryClient
-            .loadBathymetries()
+            .loadBathymetries(region)
             .receive(on: environment.mainQueue)
             .catchToEffect()
             .map(AppAction.bathymetriesResult)

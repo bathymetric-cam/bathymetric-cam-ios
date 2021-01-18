@@ -48,13 +48,6 @@ final class UIMapView: MGLMapView {
 
 // MARK: - MapView
 struct MapView: UIViewRepresentable {
-    
-    // MARK: - struct
-    
-    struct Region {
-        var sw: CLLocationCoordinate2D
-        var ne: CLLocationCoordinate2D
-    }
 
     // MARK: - property
     
@@ -143,6 +136,9 @@ extension MapView {
         }
         
         func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
+            if mapView.userLocation?.location == nil {
+                return
+            }
             let coordinates = [
                 CGPoint(x: 0, y: 0),
                 CGPoint(x: mapView.frame.width, y: 0),
@@ -150,13 +146,16 @@ extension MapView {
                 CGPoint(x: mapView.frame.width, y: mapView.frame.height),
             ]
                 .map { mapView.convert($0, toCoordinateFrom: nil) }
-            guard let minLat = coordinates.min(by: { $0.latitude < $1.latitude })?.latitude,
-                  let minLng = coordinates.min(by: { $0.longitude < $1.longitude })?.longitude,
-                  let maxLat = coordinates.max(by: { $0.latitude > $1.latitude })?.latitude,
-                  let maxLng = coordinates.max(by: { $0.longitude > $1.longitude })?.longitude else {
+            guard let maxLat = coordinates.min(by: { $0.latitude > $1.latitude })?.latitude,
+                  let maxLng = coordinates.min(by: { $0.longitude > $1.longitude })?.longitude,
+                  let minLat = coordinates.max(by: { $0.latitude > $1.latitude })?.latitude,
+                  let minLng = coordinates.max(by: { $0.longitude > $1.longitude })?.longitude else {
                 return
             }
-            control.regionDidChangePublisher.send(Region(sw: CLLocationCoordinate2D(latitude: minLat, longitude: minLng), ne: CLLocationCoordinate2D(latitude: maxLat, longitude: maxLng)))
+            let zoom = Int(mapView.zoomLevel)
+            let swTile = RegionTile(coordinate: CLLocationCoordinate2D(latitude: minLat, longitude: minLng), zoom: zoom)
+            let neTile = RegionTile(coordinate: CLLocationCoordinate2D(latitude: maxLat, longitude: maxLng), zoom: zoom)
+            control.regionDidChangePublisher.send(Region(swTile: swTile, neTile: neTile))
         }
         
         func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {

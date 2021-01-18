@@ -6,7 +6,7 @@ import Contentful
 struct BathymetryClient {
     // MARK: - property
     
-    var loadBathymetries: () -> Effect<[Bathymetry], Failure>
+    var loadBathymetries: (_ region: Region) -> Effect<[Bathymetry], Failure>
     
     // MARK: - Failure
 
@@ -18,7 +18,7 @@ extension BathymetryClient {
     // MARK: - property
 
     static let live = BathymetryClient(
-        loadBathymetries: {
+        loadBathymetries: { region in
             Future<[Bathymetry], Failure> { promise in
                 guard let path = Bundle.main.path(forResource: "Contentful-Info", ofType: "plist"),
                    let plist = NSDictionary(contentsOfFile: path),
@@ -29,11 +29,11 @@ extension BathymetryClient {
                 }
                 let client = Client(spaceId: spaceId, accessToken: accessToken, contentTypeClasses: [Bathymetry.self])
                 let query = QueryOn<Bathymetry>
-                    .where(field: .zoom, .equals("16"))
-                    .where(field: .x, .isGreaterThanOrEqualTo("57483"))
-                    .where(field: .x, .isLessThanOrEqualTo("57483"))
-                    .where(field: .y, .isGreaterThanOrEqualTo("25955"))
-                    .where(field: .y, .isLessThanOrEqualTo("25955"))
+                    .where(field: .zoom, .equals("\(region.swTile.zoom)"))
+                    .where(field: .x, .isGreaterThanOrEqualTo("\(region.swTile.x)"))
+                    .where(field: .x, .isLessThanOrEqualTo("\(region.neTile.x)"))
+                    .where(field: .y, .isGreaterThanOrEqualTo("\(region.swTile.y)"))
+                    .where(field: .y, .isLessThanOrEqualTo("\(region.neTile.y)"))
                 client.fetchArray(of: Bathymetry.self, matching: query) {
                     guard case let .success(result) = $0 else {
                         promise(.failure(Failure()))
@@ -52,7 +52,7 @@ extension BathymetryClient {
     // MARK: - property
     
     static func mock(
-        loadBathymetries: @escaping () -> Effect<[Bathymetry], Failure> = {
+        loadBathymetries: @escaping (_ region: Region) -> Effect<[Bathymetry], Failure> = { _ in 
         fatalError("Unmocked")
     }) -> Self {
         Self(loadBathymetries: loadBathymetries)

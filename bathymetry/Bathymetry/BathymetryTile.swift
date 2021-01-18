@@ -112,18 +112,31 @@ class RegionTile {
     }
 }
 
-// MARK: - Equatable
+// MARK: - RegionTile + Equatable
 extension RegionTile: Equatable {
     static func == (lhs: RegionTile, rhs: RegionTile) -> Bool {
         return lhs.x == rhs.x && lhs.y == rhs.y && lhs.zoom == rhs.zoom
     }
 }
 
-// MARK: - Comparable
+// MARK: - RegionTile + Comparable
 extension RegionTile: Comparable {
     static func <(lhs: RegionTile, rhs: RegionTile) -> Bool {
         lhs.zoom < rhs.zoom ||
         lhs.zoom == rhs.zoom && lhs.x < rhs.x ||
         lhs.zoom == rhs.zoom && lhs.x == rhs.x && lhs.y < rhs.y
+    }
+}
+
+// MARK: - Region
+struct Region {
+    var swTile: RegionTile
+    var neTile: RegionTile
+}
+
+// MARK: - Region + Equatable
+extension Region: Equatable {
+    static func == (lhs: Region, rhs: Region) -> Bool {
+        return lhs.swTile == rhs.swTile && lhs.neTile == rhs.neTile
     }
 }
