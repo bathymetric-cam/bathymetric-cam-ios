@@ -18,7 +18,7 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
                 let y = $0.y,
                 let geoJSON = $0.geoJSON,
                 case let .featureCollection(featureCollection) = geoJSON {
-                state.bathymetryTiles.append(BathymetryTile(zoom: zoom, x: x, y: y, features: featureCollection.features))
+                state.bathymetryTiles.append(BathymetryTile(x: x, y: y, zoom: zoom, features: featureCollection.features))
             }
         }
         return .none

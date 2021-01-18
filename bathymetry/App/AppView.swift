@@ -23,7 +23,7 @@ struct AppView: View {
                             send: AppAction.bathymetryTilesUpdated
                         )
                     )
-                        .regionDidChange { _ in
+                        .regionDidChange { region in
                             viewStore.send(.loadBathymetries)
                         }
                         .frame(
