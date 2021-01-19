@@ -6,7 +6,6 @@ struct AppView: View {
 
     // MARK: - property
     
-    @Environment(\.colorScheme) var colorScheme
     let store: Store<AppState, AppAction>
     
     var body: some View {
@@ -24,7 +23,7 @@ struct AppView: View {
                         )
                     )
                         .regionDidChange {
-                            viewStore.send(.loadBathymetries(region: $0))
+                            viewStore.send(.loadBathymetries($0))
                         }
                         .frame(
                             width: metrics.size.width,

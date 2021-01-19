@@ -43,6 +43,17 @@ final class Bathymetry: EntryDecodable, FieldKeysQueryable {
         y = try fields.decodeIfPresent(Int.self, forKey: .y)
         geoJSON = try fields.decodeIfPresent(GeoJSON.self, forKey: .geoJSON)
     }
+
+    init(x: Int, y: Int, zoom: Int) {
+        id = ""
+        localeCode = nil
+        updatedAt = nil
+        createdAt = nil
+        self.x = x
+        self.y = y
+        self.zoom = zoom
+        geoJSON = nil
+    }
 }
 
 // MARK: - Equatable
