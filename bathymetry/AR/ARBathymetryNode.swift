@@ -22,8 +22,44 @@ open class ARBathymetryNode: LocationNode {
         let location = CLLocation(coordinate: bathymetryTile.sw, altitude: 0)
         super.init(location: location)
         
-        // get positions of polygon's vertices
-        let positionsList = bathymetryTile
+        var positionsList: [[[Euclid.Vector]]] = createPositionsList(bathymetryTile: bathymetryTile)
+        var indicesList: [[[Int]]] = [[[]]]
+        do {
+            indicesList = try createIndicesList(positionsList: positionsList)
+        } catch {
+            positionsList = createPositionsList(bathymetryTile: bathymetryTile, reversed: true)
+            do {
+                indicesList = try createIndicesList(positionsList: positionsList)
+            } catch {
+                positionsList = [[[]]]
+            }
+        }
+        
+        let normal = Euclid.Vector(0, -1, 0)
+        for i in 0..<indicesList.count {
+            for j in 0..<indicesList[i].count {
+                for k in 0..<indicesList[i][j].count where k % 3 == 0 {
+                    if let polygon = Euclid.Polygon([
+                        Euclid.Vertex(positionsList[i][j][indicesList[i][j][k + 0]], normal),
+                        Euclid.Vertex(positionsList[i][j][indicesList[i][j][k + 1]], normal),
+                        Euclid.Vertex(positionsList[i][j][indicesList[i][j][k + 2]], normal),
+                    ]) {
+                        addChildNode(SCNNode(geometry: SCNGeometry(Mesh([polygon]).replacing(nil, with: UIColor.blue.withAlphaComponent(0.8)))))
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: - private api
+    
+    /// Creates positions of polygon's vertices
+    /// - Parameters:
+    ///   - bathymetryTile: BathymetryTile object
+    ///   - reversed: bool flag if the order is reversed
+    /// - Returns: positions of polygon's vertices
+    private func createPositionsList(bathymetryTile: BathymetryTile, reversed: Bool = false) -> [[[Euclid.Vector]]] {
+        bathymetryTile
             .getFeatures(minDepth: 0, maxDepth: 1)
             .compactMap { feature -> MultiPolygon? in
                 guard case let .multiPolygon(multiPolygon) = feature.geometry else {
@@ -40,13 +76,17 @@ open class ARBathymetryNode: LocationNode {
                         return Euclid.Vector(lngDistance, 0, -latDistance)
                     }
                     vectors.removeLast()
-                    return vectors
+                    return reversed ? vectors.reversed() : vectors
                 }
             }
-        
-        // divide plygons into triangles
+    }
+    
+    /// Divides plygons into triangles and returns the vertices index
+    /// - Parameter positionsList: positions of polygon's vertices
+    /// - Returns: trinangle indices
+    private func createIndicesList(positionsList: [[[Euclid.Vector]]]) throws -> [[[Int]]] {
         let triangulator = Triangulator()
-        let indicesList = positionsList
+        return positionsList
             .map { polygons -> [[iGeometry.Point]] in
                 polygons.map { vectors -> [iGeometry.Point] in
                     vectors.map { iGeometry.Point(x: Float($0.x), y: Float($0.z)) }
@@ -55,21 +95,6 @@ open class ARBathymetryNode: LocationNode {
             .map {
                 $0.map { triangulator.triangulateDelaunay(points: $0) }
             }
-        
-        let normal = Euclid.Vector(0, -1, 0)
-        for i in 0..<indicesList.count {
-            for j in 0..<indicesList[i].count {
-                for k in 0..<indicesList[i][j].count where k % 3 == 0 {
-                    if let polygon = Euclid.Polygon([
-                        Euclid.Vertex(positionsList[i][j][indicesList[i][j][k + 0]], normal),
-                        Euclid.Vertex(positionsList[i][j][indicesList[i][j][k + 1]], normal),
-                        Euclid.Vertex(positionsList[i][j][indicesList[i][j][k + 2]], normal),
-                    ]) {
-                        addChildNode(SCNNode(geometry: SCNGeometry(Mesh([polygon]).replacing(nil, with: UIColor.blue.withAlphaComponent(0.8)))))
-                    }
-                }
-            }
-        }
     }
     
 }

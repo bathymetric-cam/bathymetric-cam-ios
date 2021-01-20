@@ -6,7 +6,7 @@ import Contentful
 struct BathymetryClient {
     // MARK: - property
     
-    var loadBathymetries: (_ region: Region) -> Effect<[Bathymetry], Failure>
+    var loadBathymetries: (_ region: Region) -> Effect<[BathymetryTile], Failure>
     
     // MARK: - Failure
 
@@ -19,7 +19,7 @@ extension BathymetryClient {
 
     static let live = BathymetryClient(
         loadBathymetries: { region in
-            Future<[Bathymetry], Failure> { promise in
+            Future<[BathymetryTile], Failure> { promise in
                 guard let path = Bundle.main.path(forResource: "Contentful-Info", ofType: "plist"),
                    let plist = NSDictionary(contentsOfFile: path),
                    let spaceId = plist["spaceId"] as? String,
@@ -39,7 +39,18 @@ extension BathymetryClient {
                         promise(.failure(Failure()))
                         return
                     }
-                    promise(.success(result.items))
+                    var bathymetryTiles: [BathymetryTile] = []
+                    result.items.forEach {
+                        if let zoom = $0.zoom,
+                            let x = $0.x,
+                            let y = $0.y,
+                            let geoJSON = $0.geoJSON,
+                            case let .featureCollection(featureCollection) = geoJSON {
+                            bathymetryTiles.append(BathymetryTile(x: x, y: y, zoom: zoom, features: featureCollection.features))
+                        }
+                    }
+                    promise(.success(bathymetryTiles))
+                    
                 }
             }
             .eraseToEffect()
@@ -52,7 +63,7 @@ extension BathymetryClient {
     // MARK: - property
     
     static func mock(
-        loadBathymetries: @escaping (_ region: Region) -> Effect<[Bathymetry], Failure> = { _ in 
+        loadBathymetries: @escaping (_ region: Region) -> Effect<[BathymetryTile], Failure> = { _ in
         fatalError("Unmocked")
     }) -> Self {
         Self(loadBathymetries: loadBathymetries)
