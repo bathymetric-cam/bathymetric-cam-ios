@@ -22,18 +22,8 @@ open class ARBathymetryNode: LocationNode {
         let location = CLLocation(coordinate: bathymetryTile.sw, altitude: 0)
         super.init(location: location)
         
-        var positionsList: [[[Euclid.Vector]]] = createPositionsList(bathymetryTile: bathymetryTile)
-        var indicesList: [[[Int]]] = [[[]]]
-        do {
-            indicesList = try createIndicesList(positionsList: positionsList)
-        } catch {
-            positionsList = createPositionsList(bathymetryTile: bathymetryTile, reversed: true)
-            do {
-                indicesList = try createIndicesList(positionsList: positionsList)
-            } catch {
-                positionsList = [[[]]]
-            }
-        }
+        let positionsList = createPositionsList(bathymetryTile: bathymetryTile)
+        let indicesList = createIndicesList(positionsList: positionsList)
         
         let normal = Euclid.Vector(0, -1, 0)
         for i in 0..<indicesList.count {
@@ -73,7 +63,7 @@ open class ARBathymetryNode: LocationNode {
                     var vectors = polygon.exterior.points.map { point -> Euclid.Vector in
                         let lngDistance = CLLocation(coordinate: bathymetryTile.sw, altitude: 0).distance(from: CLLocation(coordinate: CLLocationCoordinate2D(latitude: bathymetryTile.sw.latitude, longitude: point.x), altitude: 0))
                         let latDistance = CLLocation(coordinate: bathymetryTile.sw, altitude: 0).distance(from: CLLocation(coordinate: CLLocationCoordinate2D(latitude: point.y, longitude: bathymetryTile.sw.longitude), altitude: 0))
-                        return Euclid.Vector(lngDistance, 0, -latDistance)
+                        return Euclid.Vector(lngDistance, 0, latDistance)
                     }
                     vectors.removeLast()
                     return reversed ? vectors.reversed() : vectors
@@ -84,7 +74,7 @@ open class ARBathymetryNode: LocationNode {
     /// Divides plygons into triangles and returns the vertices index
     /// - Parameter positionsList: positions of polygon's vertices
     /// - Returns: trinangle indices
-    private func createIndicesList(positionsList: [[[Euclid.Vector]]]) throws -> [[[Int]]] {
+    private func createIndicesList(positionsList: [[[Euclid.Vector]]]) -> [[[Int]]] {
         let triangulator = Triangulator()
         return positionsList
             .map { polygons -> [[iGeometry.Point]] in

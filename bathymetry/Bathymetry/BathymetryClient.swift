@@ -50,7 +50,6 @@ extension BathymetryClient {
                         }
                     }
                     promise(.success(bathymetryTiles))
-                    
                 }
             }
             .eraseToEffect()
