@@ -19,6 +19,33 @@
       ]
     },
     {
+      "groupName": "Contentful",
+      "managers": [
+        "swift"
+      ],
+      "packageNames": [
+        "Contentful"
+      ]
+    },
+    {
+      "groupName": "euclid",
+      "managers": [
+        "swift"
+      ],
+      "packageNames": [
+        "euclid"
+      ]
+    },
+    {
+      "groupName": "Firebase",
+      "managers": [
+        "swift"
+      ],
+      "packageNames": [
+        "Firebase"
+      ]
+    },
+    {
       "groupName": "GEOSwift",
       "managers": [
         "swift"
