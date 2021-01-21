@@ -30,7 +30,7 @@ final class Bathymetry: EntryDecodable, FieldKeysQueryable {
 
     // MARK: - initialization
     
-    public required init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let sys = try decoder.sys()
         id = sys.id
         localeCode = sys.locale
@@ -48,6 +48,6 @@ final class Bathymetry: EntryDecodable, FieldKeysQueryable {
 // MARK: - Equatable
 extension Bathymetry: Equatable {
     static func == (lhs: Bathymetry, rhs: Bathymetry) -> Bool {
-        return lhs.x == rhs.x && lhs.y == rhs.y && lhs.zoom == rhs.zoom
+        lhs.x == rhs.x && lhs.y == rhs.y && lhs.zoom == rhs.zoom
     }
 }
