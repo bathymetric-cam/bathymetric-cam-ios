@@ -67,7 +67,7 @@ struct AppView_Previews: PreviewProvider {
             reducer: appReducer,
             environment: AppEnvironment(
                 mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-                bathymetryClient: BathymetryClient.live
+                bathymetryClient: .contentful
             )
         ))
     }

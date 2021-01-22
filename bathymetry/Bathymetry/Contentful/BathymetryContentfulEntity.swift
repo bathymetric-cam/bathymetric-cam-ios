@@ -2,9 +2,9 @@ import Contentful
 import GEOSwift
 import Foundation
 
-// MARK: - Bathymetry
-final class Bathymetry: EntryDecodable, FieldKeysQueryable {
-
+// MARK: - BathymetryContentfulEntity
+final class BathymetryContentfulEntity: BathymetryEntity, EntryDecodable, FieldKeysQueryable {
+    
     // MARK: - static constant
     
     static let contentTypeId = "bathymetry"
@@ -37,7 +37,7 @@ final class Bathymetry: EntryDecodable, FieldKeysQueryable {
         updatedAt = sys.updatedAt
         createdAt = sys.createdAt
         
-        let fields = try decoder.contentfulFieldsContainer(keyedBy: Bathymetry.FieldKeys.self)
+        let fields = try decoder.contentfulFieldsContainer(keyedBy: BathymetryContentfulEntity.FieldKeys.self)
         zoom = try fields.decodeIfPresent(Int.self, forKey: .zoom)
         x = try fields.decodeIfPresent(Int.self, forKey: .x)
         y = try fields.decodeIfPresent(Int.self, forKey: .y)
@@ -46,8 +46,8 @@ final class Bathymetry: EntryDecodable, FieldKeysQueryable {
 }
 
 // MARK: - Equatable
-extension Bathymetry: Equatable {
-    static func == (lhs: Bathymetry, rhs: Bathymetry) -> Bool {
+extension BathymetryContentfulEntity: Equatable {
+    static func == (lhs: BathymetryContentfulEntity, rhs: BathymetryContentfulEntity) -> Bool {
         lhs.x == rhs.x && lhs.y == rhs.y && lhs.zoom == rhs.zoom
     }
 }

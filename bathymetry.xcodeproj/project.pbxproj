@@ -10,8 +10,10 @@
 		E60348D425AF2622004402B2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E60348D325AF2622004402B2 /* FirebaseAnalytics */; };
 		E60348D625AF2622004402B2 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = E60348D525AF2622004402B2 /* FirebaseMessaging */; };
 		E60348D825AF2622004402B2 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = E60348D725AF2622004402B2 /* FirebaseCrashlytics */; };
+		E608B63525BAEE4A0053FBBF /* BathymetryContentfulEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E608B63425BAEE4A0053FBBF /* BathymetryContentfulEntity.swift */; };
+		E616F3E325BAC9B5005A3703 /* BathymetryContentfulClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E616F3E225BAC9B5005A3703 /* BathymetryContentfulClient.swift */; };
 		E6171D5A25B0574900161E28 /* Contentful in Frameworks */ = {isa = PBXBuildFile; productRef = E6171D5925B0574900161E28 /* Contentful */; };
-		E6171D5E25B0763B00161E28 /* Bathymetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6171D5D25B0763B00161E28 /* Bathymetry.swift */; };
+		E6171D5E25B0763B00161E28 /* BathymetryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6171D5D25B0763B00161E28 /* BathymetryEntity.swift */; };
 		E6171D7625B0A5D600161E28 /* Contentful-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6171D7525B0A5D600161E28 /* Contentful-Info.plist */; };
 		E61F4B76259F5E7A00E19A44 /* geos in Frameworks */ = {isa = PBXBuildFile; productRef = E61F4B75259F5E7A00E19A44 /* geos */; };
 		E61F4B77259F5E7A00E19A44 /* geos in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E61F4B75259F5E7A00E19A44 /* geos */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -82,7 +84,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E6171D5D25B0763B00161E28 /* Bathymetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bathymetry.swift; sourceTree = "<group>"; };
+		E608B63425BAEE4A0053FBBF /* BathymetryContentfulEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryContentfulEntity.swift; sourceTree = "<group>"; };
+		E616F3E225BAC9B5005A3703 /* BathymetryContentfulClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryContentfulClient.swift; sourceTree = "<group>"; };
+		E6171D5D25B0763B00161E28 /* BathymetryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryEntity.swift; sourceTree = "<group>"; };
 		E6171D7525B0A5D600161E28 /* Contentful-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Contentful-Info.plist"; sourceTree = "<group>"; };
 		E6203F83259205FA007C8FDA /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapboxMobileEvents.framework; sourceTree = "<group>"; };
 		E6203F84259205FA007C8FDA /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
@@ -153,6 +157,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E616F3E125BAC98A005A3703 /* Contentful */ = {
+			isa = PBXGroup;
+			children = (
+				E616F3E225BAC9B5005A3703 /* BathymetryContentfulClient.swift */,
+				E608B63425BAEE4A0053FBBF /* BathymetryContentfulEntity.swift */,
+			);
+			path = Contentful;
+			sourceTree = "<group>";
+		};
 		E6171D6125B080CE00161E28 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,9 +274,10 @@
 		E6DD5BAE25A08C7200860C4B /* Bathymetry */ = {
 			isa = PBXGroup;
 			children = (
+				E616F3E125BAC98A005A3703 /* Contentful */,
 				E6BDC3BD259600BF00184925 /* BathymetryClient.swift */,
+				E6171D5D25B0763B00161E28 /* BathymetryEntity.swift */,
 				E63D2BF225A320CC00788375 /* BathymetryTile.swift */,
-				E6171D5D25B0763B00161E28 /* Bathymetry.swift */,
 			);
 			path = Bathymetry;
 			sourceTree = "<group>";
@@ -479,13 +493,15 @@
 				E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */,
 				E64FDE96257D22D200B303C6 /* CoreData.xcdatamodeld in Sources */,
 				E65CF4202590BC78008A207C /* AppReducer.swift in Sources */,
+				E616F3E325BAC9B5005A3703 /* BathymetryContentfulClient.swift in Sources */,
 				E63D2BF325A320CC00788375 /* BathymetryTile.swift in Sources */,
 				E6FE7AC025824B2700C47C2B /* MapView.swift in Sources */,
 				E65CF4122590BB57008A207C /* AppState.swift in Sources */,
-				E6171D5E25B0763B00161E28 /* Bathymetry.swift in Sources */,
+				E6171D5E25B0763B00161E28 /* BathymetryEntity.swift in Sources */,
 				E6B2866025A47B4600782955 /* ARBathymetryNode.swift in Sources */,
 				E63D2C3C25A33E7D00788375 /* MGLShapeSource+BathymetryTile.swift in Sources */,
 				E65CF41C2590BBFA008A207C /* AppEnvironment.swift in Sources */,
+				E608B63525BAEE4A0053FBBF /* BathymetryContentfulEntity.swift in Sources */,
 				E64FDE8C257D22D200B303C6 /* AppView.swift in Sources */,
 				E6CB65BC25ADC3BD00E9070A /* CoreDataManager.swift in Sources */,
 				E64FDE8A257D22D200B303C6 /* BathymetryApp.swift in Sources */,
