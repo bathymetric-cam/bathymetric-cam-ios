@@ -19,7 +19,7 @@ extension BathymetryClient {
 
     static let live = BathymetryClient { region in
         Future<[BathymetryTile], Failure> { promise in
-            guard let client = BathymetryContentfulClientFactory.create(type: .contentful) else {
+            guard let client = BathymetryContentfulClientFactory.createClient() else {
                 promise(.failure(Failure()))
                 return
             }
@@ -41,22 +41,16 @@ extension BathymetryClient {
     }
 }
 
-// MARK: - BathymetryInternalClientType
-internal enum BathymetryInternalClientType {
-    case contentful
-}
-
 // MARK: - BathymetryInternalClientFactory
 internal protocol BathymetryInternalClientFactory {
-    static func create(type: BathymetryInternalClientType) -> BathymetryContentfulClient?
+    /// Abstruct factory method
+    /// - Returns: created factory
+    static func createClient() -> BathymetryInternalClient?
 }
 
 // MARK: - BathymetryContentfulClientFactory
 internal class BathymetryContentfulClientFactory: BathymetryInternalClientFactory {
-    /// Abstruct factory method
-    /// - Parameter type: type of client defined by BathymetryInternalClientType
-    /// - Returns: created factory
-    static func create(type: BathymetryInternalClientType) -> BathymetryContentfulClient? {
+    static func createClient() -> BathymetryInternalClient? {
         guard let path = Bundle.main.path(forResource: "Contentful-Info", ofType: "plist"),
            let plist = NSDictionary(contentsOfFile: path),
            let spaceId = plist["spaceId"] as? String,
