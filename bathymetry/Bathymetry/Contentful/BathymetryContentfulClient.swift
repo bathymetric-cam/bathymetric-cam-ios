@@ -3,7 +3,7 @@ import Contentful
 import Foundation
 
 // MARK: - BathymetryContentfulClientFactory
-class BathymetryContentfulClientFactory: BathymetryInternalClientFactory {
+internal class BathymetryContentfulClientFactory: BathymetryInternalClientFactory {
     static func createClient() -> BathymetryInternalClient? {
         guard let path = Bundle.main.path(forResource: "Contentful-Info", ofType: "plist"),
            let plist = NSDictionary(contentsOfFile: path),
@@ -20,7 +20,7 @@ class BathymetryContentfulClientFactory: BathymetryInternalClientFactory {
 }
 
 // MARK: - BathymetryContentfulClient
-class BathymetryContentfulClient: Client, BathymetryInternalClient {
+internal class BathymetryContentfulClient: Client, BathymetryInternalClient {
     func loadBathymetries(region: Region, promise: @escaping (Result<[BathymetryTile], BathymetryClient.Failure>) -> Void) {
         let query = QueryOn<BathymetryContentfulEntity>
             .where(field: .zoom, .equals("\(region.swTile.zoom)"))
@@ -48,7 +48,7 @@ class BathymetryContentfulClient: Client, BathymetryInternalClient {
     }
 }
 
-// MARK: - BathymetryClient Implementation
+// MARK: - BathymetryClient+Contentful
 extension BathymetryClient {
     // MARK: - property
 

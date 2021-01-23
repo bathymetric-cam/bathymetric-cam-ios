@@ -68,3 +68,15 @@ private let mockRegion = Region(
     neTile: RegionTile(x: 57483, y: 25954, zoom: 16)
 )
 private let mockFailure = BathymetryClient.Failure()
+
+// MARK: - BathymetryClient+Mock
+extension BathymetryClient {
+    // MARK: - property
+    
+    static func mock(
+        loadBathymetries: @escaping (_ region: Region) -> Effect<[BathymetryTile], Failure> = { _ in
+        fatalError("Unmocked")
+    }) -> Self {
+        Self(loadBathymetries: loadBathymetries)
+    }
+}

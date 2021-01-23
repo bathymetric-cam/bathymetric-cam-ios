@@ -12,18 +12,6 @@ struct BathymetryClient {
     struct Failure: Error, Equatable {}
 }
 
-// MARK: - BathymetryClient Mock
-extension BathymetryClient {
-    // MARK: - property
-    
-    static func mock(
-        loadBathymetries: @escaping (_ region: Region) -> Effect<[BathymetryTile], Failure> = { _ in
-        fatalError("Unmocked")
-    }) -> Self {
-        Self(loadBathymetries: loadBathymetries)
-    }
-}
-
 // MARK: - BathymetryInternalClientFactory
 protocol BathymetryInternalClientFactory {
     /// Abstruct factory method
