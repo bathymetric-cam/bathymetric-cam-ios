@@ -51,7 +51,7 @@ Here is how to set them up.
 </plist>
 ```
 
-Those plist file go to `bathymetry/` folder.
+Those plist files go to `bathymetry/` folder.
 
 ### Contentful
 
@@ -60,4 +60,4 @@ TODO
 ### Dependency
 
 bathymetric-cam depends on [Mapbox](https://github.com/mapbox/mapbox-gl-native-ios/tree/main/platform/ios) and [Contentful](https://github.com/contentful/contentful.swift).
-If your application needs to support other map frameworks like [GoogleMaps](https://developers.google.com/maps/documentation/ios-sdk/overview) or other API clients, you can make your own implementation that conforms to BathymetryClient and MapboxView's protocol.
+If your application needs to support other map frameworks like [GoogleMaps](https://developers.google.com/maps/documentation/ios-sdk/overview) or other API clients, you can make your own implementation that conforms to MapboxView and BathymetryClient's protocol.
