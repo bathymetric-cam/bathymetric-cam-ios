@@ -3,43 +3,27 @@ import GEOSwift
 import Mapbox
 import SwiftUI
 
-// MARK: - UIMapboxMapView
-final class UIMapboxMapView: MGLMapView, UIMapView {
+// MARK: - UIMapboxMapViewFactory
+final class UIMapboxMapViewFactory: UIMapViewFactory {
     
-    // MARK: - initialization
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    override init(frame: CGRect, styleURL: URL?) {
+    static func createMapView() -> UIMapView {
         if let path = Bundle.main.path(forResource: "Mapbox-Info", ofType: "plist"),
            let plist = NSDictionary(contentsOfFile: path),
            let accessToken = plist["MGLMapboxAccessToken"] {
             MGLAccountManager.accessToken = "\(accessToken)"
         }
-        super.init(frame: frame, styleURL: styleURL)
-        self.styleURL = traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL : MGLStyle.lightStyleURL
-        showsUserLocation = true
-        zoomLevel = 16
-        isZoomEnabled = false
-        isScrollEnabled = false
-        isRotateEnabled = false
-        isPitchEnabled = false
-        compassView.isHidden = true
+        let uiMapView = MGLMapView(frame: .zero, styleURL: MGLStyle.lightStyleURL)
+        uiMapView.styleURL = uiMapView.traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL : MGLStyle.lightStyleURL
+        uiMapView.showsUserLocation = true
+        uiMapView.zoomLevel = 16
+        uiMapView.isZoomEnabled = false
+        uiMapView.isScrollEnabled = false
+        uiMapView.isRotateEnabled = false
+        uiMapView.isPitchEnabled = false
+        uiMapView.compassView.isHidden = true
+        return uiMapView
     }
     
-    // MARK: - destruction
-    
-    deinit {
-    }
-    
-    // MARK: - life cycle
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        styleURL = traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL : MGLStyle.lightStyleURL
-    }
 }
 
 // MARK: - MapboxMapView
@@ -52,13 +36,15 @@ struct MapboxMapView: MapView {
     
     // MARK: - MapView (UIViewRepresentable)
     
-    func makeUIView(context: UIViewRepresentableContext<MapboxMapView>) -> UIMapboxMapView {
-        let mapView = UIMapboxMapView(frame: .zero, styleURL: MGLStyle.streetsStyleURL)
+    func makeUIView(context: UIViewRepresentableContext<MapboxMapView>) -> MGLMapView {
+        guard let mapView = UIMapboxMapViewFactory.createMapView() as? MGLMapView else {
+            return MGLMapView(frame: .zero, styleURL: MGLStyle.lightStyleURL)
+        }
         mapView.delegate = context.coordinator
         return mapView
     }
     
-    func updateUIView(_ uiView: UIMapboxMapView, context: UIViewRepresentableContext<MapboxMapView>) {
+    func updateUIView(_ uiView: MGLMapView, context: UIViewRepresentableContext<MapboxMapView>) {
         updateBathymetryLayers(mapView: uiView)
     }
     
@@ -69,9 +55,8 @@ struct MapboxMapView: MapView {
         Coordinator(self)
     }
     
-    /// Called when map region did change
-    /// - Parameter action: action closure
-    /// - Returns: View
+    // MARK: - MapView
+    
     func regionDidChange(perform action: @escaping (_ region: Region) -> Void) -> some View {
         onReceive(regionDidChangePublisher) { action($0) }
     }
