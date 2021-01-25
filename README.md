@@ -55,7 +55,8 @@ The plist files above go to `bathymetry/` folder.
 
 ### Contentful
 
-TODO
+Depth contour data is stored on [Contentful](https://www.contentful.com/).
+How to import the data is mentioned [here](https://github.com/bathymetric-cam/bathymetric-cam-contentful).
 
 ### Dependency
 
