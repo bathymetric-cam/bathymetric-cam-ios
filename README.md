@@ -1,6 +1,6 @@
 # bathymetric-cam-ios
 
-bathymetric-cam is an iOS AR app visualizing depth contour of water.
+bathymetric-cam is an AR app visualizing depth contour of water.
 
 Depth contour represents a line connecting points of equal depth on ocean floors or lake floors.
 If the contour lines spaced narrowly between one and another, it indicates that the area has the steep transition.

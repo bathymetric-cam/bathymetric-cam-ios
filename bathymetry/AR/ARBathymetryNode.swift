@@ -47,9 +47,8 @@ open class ARBathymetryNode: LocationNode {
     /// Creates positions of polygon's vertices
     /// - Parameters:
     ///   - bathymetryTile: BathymetryTile object
-    ///   - reversed: bool flag if the order is reversed
     /// - Returns: positions of polygon's vertices
-    private func createPositionsList(bathymetryTile: BathymetryTile, reversed: Bool = false) -> [[[Euclid.Vector]]] {
+    private func createPositionsList(bathymetryTile: BathymetryTile) -> [[[Euclid.Vector]]] {
         bathymetryTile
             .getFeatures(minDepth: 0, maxDepth: 1)
             .compactMap { feature -> MultiPolygon? in
@@ -66,8 +65,12 @@ open class ARBathymetryNode: LocationNode {
                         let latDistance = CLLocation(coordinate: bathymetryTile.sw, altitude: 0).distance(from: CLLocation(coordinate: CLLocationCoordinate2D(latitude: point.y, longitude: bathymetryTile.sw.longitude), altitude: 0))
                         return Euclid.Vector(lngDistance, 0, latDistance)
                     }
+                    var clockwise = 0.0
+                    for i in 1...vectors.count - 1 {
+                        clockwise += (vectors[i].x - vectors[i - 1].x) * (vectors[i].z + vectors[i - 1].z)
+                    }
                     vectors.removeLast()
-                    return reversed ? vectors.reversed() : vectors
+                    return clockwise > 0.0 ? vectors : vectors.reversed()
                 }
             }
     }
