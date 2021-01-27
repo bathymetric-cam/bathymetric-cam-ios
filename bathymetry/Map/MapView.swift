@@ -2,19 +2,28 @@ import Combine
 import SwiftUI
 
 // MARK: - MapView
-protocol MapView: UIViewRepresentable {
+struct MapView: UIViewRepresentable {
+    
     // MARK: - property
     
-    var bathymetryTiles: [BathymetryTile] { get }
-    var regionDidChangePublisher: PassthroughSubject<Region, Never> { get }
+    let internalMapView: UIMapView
+    @Binding var bathymetryTiles: [BathymetryTile]
+    let regionDidChangePublisher = PassthroughSubject<Region, Never>()
     
-    // MARK: - MapView
+    // MARK: - UIViewRepresentable
     
-    /// Called when map region did change
-    /// - Parameter action: action closure
-    /// - Returns: View
-    associatedtype MapView
-    func regionDidChange(perform action: @escaping (_ region: Region) -> Void) -> MapView
+    static func dismantleUIView(_ uiView: MapView.UIViewType, coordinator: MapView.Coordinator) {
+    }
+    
+    func makeCoordinator() -> MapView.Coordinator {
+        Coordinator(self)
+    }
+    
+    // MARK: - public api
+    
+    func regionDidChange(perform action: @escaping (_ region: Region) -> Void) -> some View {
+        onReceive(regionDidChangePublisher) { action($0) }
+    }
 }
 
 // MARK: - UIMapViewFactory

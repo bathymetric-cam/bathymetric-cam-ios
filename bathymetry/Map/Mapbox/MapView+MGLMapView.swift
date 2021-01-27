@@ -26,39 +26,46 @@ final class UIMapboxMapViewFactory: UIMapViewFactory {
     
 }
 
-// MARK: - MapboxMapView
-struct MapboxMapView: MapView {
+// MARK: - MapView+MGLMapView
+extension MapView {
     
-    // MARK: - property
+    // MARK: - UIViewRepresentable
     
-    @Binding var bathymetryTiles: [BathymetryTile]
-    let regionDidChangePublisher = PassthroughSubject<Region, Never>()
-    
-    // MARK: - MapView (UIViewRepresentable)
-    
-    func makeUIView(context: UIViewRepresentableContext<MapboxMapView>) -> MGLMapView {
-        guard let mapView = UIMapboxMapViewFactory.createMapView() as? MGLMapView else {
-            return MGLMapView(frame: .zero, styleURL: MGLStyle.lightStyleURL)
+    func makeUIView(context: UIViewRepresentableContext<MapView>) -> UIMapView {
+        if let mapboxMapView = internalMapView as? MGLMapView {
+            mapboxMapView.delegate = context.coordinator
         }
-        mapView.delegate = context.coordinator
-        return mapView
+        return internalMapView
     }
     
-    func updateUIView(_ uiView: MGLMapView, context: UIViewRepresentableContext<MapboxMapView>) {
-        updateBathymetryLayers(mapView: uiView)
+    func updateUIView(_ uiView: UIMapView, context: UIViewRepresentableContext<MapView>) {
+        if let mapboxMapView = uiView as? MGLMapView {
+            updateBathymetryLayers(mapView: mapboxMapView)
+        }
     }
     
-    static func dismantleUIView(_ uiView: MapboxMapView.UIViewType, coordinator: MapboxMapView.Coordinator) {
-    }
+    // MARK: - Coordinator
     
-    func makeCoordinator() -> MapboxMapView.Coordinator {
-        Coordinator(self)
-    }
-    
-    // MARK: - MapView
-    
-    func regionDidChange(perform action: @escaping (_ region: Region) -> Void) -> some View {
-        onReceive(regionDidChangePublisher) { action($0) }
+    final class Coordinator: NSObject, MGLMapViewDelegate {
+        var control: MapView
+        
+        init(_ control: MapView) {
+            self.control = control
+        }
+        
+        // MARK: - MGLMapViewDelegate
+        
+        func mapView(_ mapView: MGLMapView, didUpdate userLocation: MGLUserLocation?) {
+            control.didUpdateUserLocation(mapView: mapView, userLocation: userLocation)
+        }
+        
+        func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
+            control.regionDidChangeAnimated(mapView: mapView, animated: animated)
+        }
+        
+        func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
+            control.updateBathymetryLayers(mapView: mapView)
+        }
     }
     
     // MARK: - internal api
@@ -131,36 +138,16 @@ struct MapboxMapView: MapView {
     }
 }
 
-// MARK: - MapboxMapView+Coordinator
-extension MapboxMapView {
-    
-    final class Coordinator: NSObject, MGLMapViewDelegate {
-        var control: MapboxMapView
-        
-        init(_ control: MapboxMapView) {
-            self.control = control
-        }
-        
-        // MARK: - MGLMapViewDelegate
-        
-        func mapView(_ mapView: MGLMapView, didUpdate userLocation: MGLUserLocation?) {
-            control.didUpdateUserLocation(mapView: mapView, userLocation: userLocation)
-        }
-        
-        func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
-            control.regionDidChangeAnimated(mapView: mapView, animated: animated)
-        }
-        
-        func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
-            control.updateBathymetryLayers(mapView: mapView)
-        }
-    }
+// MARK: - UIMapView+Mapbox
+extension UIMapView {
+    static let mapbox = UIMapboxMapViewFactory.createMapView()
 }
 
-// MARK: - MapboxMapView_Previews
-struct MapboxMapView_Previews: PreviewProvider {
+// MARK: - MapView_Previews
+struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapboxMapView(
+        MapView(
+            internalMapView: .mapbox,
             bathymetryTiles: Binding<[BathymetryTile]>(
                 get: { [] },
                 set: { _ in }

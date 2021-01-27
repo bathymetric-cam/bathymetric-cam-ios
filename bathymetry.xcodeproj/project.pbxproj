@@ -45,7 +45,7 @@
 		E6DED60F25A3444D0065B6D7 /* Mapbox-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6DED60E25A3444C0065B6D7 /* Mapbox-Info.plist */; };
 		E6E065252590CBB50032B6C8 /* GEOSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E6E065242590CBB50032B6C8 /* GEOSwift */; };
 		E6EF546E25BBFB90004C2478 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E6EF546D25BBFB90004C2478 /* README.md */; };
-		E6EF547325BC3534004C2478 /* MapboxMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF547225BC3534004C2478 /* MapboxMapView.swift */; };
+		E6EF547325BC3534004C2478 /* MapView+MGLMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF547225BC3534004C2478 /* MapView+MGLMapView.swift */; };
 		E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1060D258A2E05000DDD25 /* ARView.swift */; };
 		E6F10617258A3068000DDD25 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = E6F10616258A3068000DDD25 /* ARCL */; };
 		E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E6F8C1F425811ED70051E68F /* ComposableArchitecture */; };
@@ -118,7 +118,7 @@
 		E6CB65BB25ADC3BD00E9070A /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E6DED60E25A3444C0065B6D7 /* Mapbox-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mapbox-Info.plist"; sourceTree = "<group>"; };
 		E6EF546D25BBFB90004C2478 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		E6EF547225BC3534004C2478 /* MapboxMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapboxMapView.swift; sourceTree = "<group>"; };
+		E6EF547225BC3534004C2478 /* MapView+MGLMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapView+MGLMapView.swift"; sourceTree = "<group>"; };
 		E6F1060D258A2E05000DDD25 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		E6FE7ABF25824B2700C47C2B /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -290,7 +290,7 @@
 		E6EF547125BC31E8004C2478 /* Mapbox */ = {
 			isa = PBXGroup;
 			children = (
-				E6EF547225BC3534004C2478 /* MapboxMapView.swift */,
+				E6EF547225BC3534004C2478 /* MapView+MGLMapView.swift */,
 			);
 			path = Mapbox;
 			sourceTree = "<group>";
@@ -505,7 +505,7 @@
 				E698A33025976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift in Sources */,
 				E6BDC3BE259600BF00184925 /* BathymetryClient.swift in Sources */,
 				E65CF4182590BBA9008A207C /* AppAction.swift in Sources */,
-				E6EF547325BC3534004C2478 /* MapboxMapView.swift in Sources */,
+				E6EF547325BC3534004C2478 /* MapView+MGLMapView.swift in Sources */,
 				E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */,
 				E64FDE96257D22D200B303C6 /* CoreData.xcdatamodeld in Sources */,
 				E65CF4202590BC78008A207C /* AppReducer.swift in Sources */,

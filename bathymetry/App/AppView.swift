@@ -16,7 +16,8 @@ struct AppView: View {
                         get: { $0.bathymetryTiles },
                         send: AppAction.bathymetryTilesUpdated
                     ))
-                    MapboxMapView(
+                    MapView(
+                        internalMapView: .mapbox,
                         bathymetryTiles: viewStore.binding(
                             get: { $0.bathymetryTiles },
                             send: AppAction.bathymetryTilesUpdated
