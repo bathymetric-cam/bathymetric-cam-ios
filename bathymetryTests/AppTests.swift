@@ -6,11 +6,11 @@ import XCTest
 // MARK: - AppTests
 class AppTests: XCTestCase {
 
-    // MARK: - property
+    // MARK: property
     
     let scheduler = DispatchQueue.testScheduler
     
-    // MARK: - life cycle
+    // MARK: life cycle
     
     override func setUpWithError() throws {
         super.setUp()
@@ -20,7 +20,7 @@ class AppTests: XCTestCase {
         super.tearDown()
     }
     
-    // MARK: - test
+    // MARK: test
     
     func testAppStore_whenInitialState_loadBathymetriesSuccess() throws {
         let sut = TestStore(
@@ -71,7 +71,7 @@ private let mockFailure = BathymetryClient.Failure()
 
 // MARK: - BathymetryClient+Mock
 extension BathymetryClient {
-    // MARK: - property
+    // MARK: property
     
     static func mock(
         loadBathymetries: @escaping (_ region: Region) -> Effect<[BathymetryTile], Failure> = { _ in

@@ -4,7 +4,7 @@ import Mapbox
 // MARK: - MGLShapeSource+BathymetryTile
 extension MGLShapeSource {
     
-    // MARK: - initialization
+    // MARK: initialization
     
     /// Inits
     /// - Parameter feature: Feature

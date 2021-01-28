@@ -50,7 +50,7 @@ internal class BathymetryContentfulClient: Client, BathymetryInternalClient {
 
 // MARK: - BathymetryClient+Contentful
 extension BathymetryClient {
-    // MARK: - property
+    // MARK: static constant
 
     static let contentful = BathymetryClient { region in
         Future<[BathymetryTile], Failure> { promise in

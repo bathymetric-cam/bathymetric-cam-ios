@@ -9,7 +9,7 @@ import SceneKit
 // MARK: - ARBathymetryNode
 open class ARBathymetryNode: LocationNode {
 
-    // MARK: - initialization
+    // MARK: initialization
 
     @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
@@ -42,7 +42,7 @@ open class ARBathymetryNode: LocationNode {
         }
     }
     
-    // MARK: - private api
+    // MARK: private api
     
     /// Creates positions of polygon's vertices
     /// - Parameters:

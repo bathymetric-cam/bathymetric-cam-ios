@@ -5,11 +5,11 @@ import SwiftUI
 // MARK: - ARView
 struct ARView: UIViewRepresentable {
     
-    // MARK: - property
+    // MARK: property
     
     @Binding var bathymetryTiles: [BathymetryTile]
     
-    // MARK: - UIViewRepresentable
+    // MARK: UIViewRepresentable
     
     func makeUIView(context: UIViewRepresentableContext<ARView>) -> SceneLocationView {
         let sceneLocationView = SceneLocationView()
@@ -34,7 +34,7 @@ struct ARView: UIViewRepresentable {
         Coordinator()
     }
     
-    // MARK: - Coordinator
+    // MARK: Coordinator
     
     final class Coordinator {
     }

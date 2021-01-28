@@ -2,11 +2,11 @@ import CoreData
 
 // MARK: - CoreDataManager
 class CoreDataManager {
-    // MARK: - class method
+    // MARK: static constant
     
     static let sharedInstance = CoreDataManager()
 
-    // MARK: - property
+    // MARK: property
     
     var managedObjectModel: NSManagedObjectModel? {
         guard let modelURL = Bundle.main.url(forResource: "CoreData", withExtension: "momd") else {

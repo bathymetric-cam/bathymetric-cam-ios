@@ -3,7 +3,7 @@ import SwiftUI
 
 // MARK: - AppState
 struct AppState: Equatable {
-    // MARK: - property
+    // MARK: property
     
     var bathymetryTiles: [BathymetryTile] = []
 }

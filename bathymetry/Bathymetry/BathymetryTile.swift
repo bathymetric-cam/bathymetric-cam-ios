@@ -4,13 +4,13 @@ import Mapbox
 // MARK: - BathymetryTile
 final class BathymetryTile: RegionTile {
     
-    // MARK: - property
+    // MARK: property
     
     let zoomLevel: Double // The zoom parameter is an integer between 0 (zoomed out) and 18 (zoomed in). 18 is normally the maximum, but some tile servers might go beyond that.
     let features: [Feature]
     var name: String { "\(zoom)/\(x)/\(y)" }
     
-    // MARK: - initialization
+    // MARK: initialization
     
     /// Initialization
     /// - Parameters:
@@ -35,7 +35,7 @@ final class BathymetryTile: RegionTile {
         super.init(x: x, y: y, zoom: zoom)
     }
     
-    // MARK: - public api
+    // MARK: public api
     
     /// Gets features between minDepth and maxDepth
     /// - Parameters:
@@ -62,7 +62,7 @@ final class BathymetryTile: RegionTile {
 // MARK: - RegionTile
 class RegionTile {
     
-    // MARK: - property
+    // MARK: property
     
     let zoom: Int
     let x: Int // X goes from 0 (left edge is 180 °W) to 2zoom − 1 (right edge is 180 °E)
@@ -70,7 +70,7 @@ class RegionTile {
     let ne: CLLocationCoordinate2D // north and east coordinate
     let sw: CLLocationCoordinate2D // south and west coordinate
     
-    // MARK: - initialization
+    // MARK: initialization
     
     /// Initialization
     /// - Parameters:

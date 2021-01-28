@@ -4,13 +4,13 @@ import SwiftUI
 // MARK: - MapView
 struct MapView: UIViewRepresentable {
     
-    // MARK: - property
+    // MARK: property
     
     let internalMapView: UIMapView
     @Binding var bathymetryTiles: [BathymetryTile]
     let regionDidChangePublisher = PassthroughSubject<Region, Never>()
     
-    // MARK: - UIViewRepresentable
+    // MARK: UIViewRepresentable
     
     static func dismantleUIView(_ uiView: MapView.UIViewType, coordinator: MapView.Coordinator) {
     }
@@ -19,7 +19,7 @@ struct MapView: UIViewRepresentable {
         Coordinator(self)
     }
     
-    // MARK: - public api
+    // MARK: public api
     
     func regionDidChange(perform action: @escaping (_ region: Region) -> Void) -> some View {
         onReceive(regionDidChangePublisher) { action($0) }

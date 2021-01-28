@@ -26,10 +26,16 @@ final class UIMapboxMapViewFactory: UIMapViewFactory {
     
 }
 
+// MARK: - UIMapView+Mapbox
+extension UIMapView {
+    // MARK: static constant
+    static let mapbox = UIMapboxMapViewFactory.createMapView()
+}
+
 // MARK: - MapView+MGLMapView
 extension MapView {
     
-    // MARK: - UIViewRepresentable
+    // MARK: UIViewRepresentable
     
     func makeUIView(context: UIViewRepresentableContext<MapView>) -> UIMapView {
         if let mapboxMapView = internalMapView as? MGLMapView {
@@ -44,7 +50,7 @@ extension MapView {
         }
     }
     
-    // MARK: - Coordinator
+    // MARK: Coordinator
     
     final class Coordinator: NSObject, MGLMapViewDelegate {
         var control: MapView
@@ -53,7 +59,7 @@ extension MapView {
             self.control = control
         }
         
-        // MARK: - MGLMapViewDelegate
+        // MARK: MGLMapViewDelegate
         
         func mapView(_ mapView: MGLMapView, didUpdate userLocation: MGLUserLocation?) {
             control.didUpdateUserLocation(mapView: mapView, userLocation: userLocation)
@@ -68,13 +74,13 @@ extension MapView {
         }
     }
     
-    // MARK: - internal api
+    // MARK: private api
     
     /// Called when user location is updated
     /// - Parameters:
     ///   - mapView: MGLMapView
     ///   - userLocation: MGLUserLocation
-    internal func didUpdateUserLocation(mapView: MGLMapView, userLocation: MGLUserLocation?) {
+    private func didUpdateUserLocation(mapView: MGLMapView, userLocation: MGLUserLocation?) {
         if mapView.userTrackingMode == .followWithHeading {
             return
         }
@@ -91,7 +97,7 @@ extension MapView {
     /// - Parameters:
     ///   - mapView: MGLMapView
     ///   - animated: bool flag if animated when changing the region
-    internal func regionDidChangeAnimated(mapView: MGLMapView, animated: Bool) {
+    private func regionDidChangeAnimated(mapView: MGLMapView, animated: Bool) {
         if mapView.userLocation?.location == nil {
             return
         }
@@ -116,7 +122,7 @@ extension MapView {
     
     /// Updates bathymetry layers
     /// - Parameter mapView: UIKit MapView that inherits MGLMapView
-    internal func updateBathymetryLayers(mapView: MGLMapView) {
+    private func updateBathymetryLayers(mapView: MGLMapView) {
         mapView.style?.layers
             .compactMap { $0.identifier.starts(with: "\(Bundle.main.bundleIdentifier ?? "")") ? $0 : nil }
             .forEach { mapView.style?.removeLayer($0) }
@@ -136,11 +142,6 @@ extension MapView {
                 }
         }
     }
-}
-
-// MARK: - UIMapView+Mapbox
-extension UIMapView {
-    static let mapbox = UIMapboxMapViewFactory.createMapView()
 }
 
 // MARK: - MapView_Previews

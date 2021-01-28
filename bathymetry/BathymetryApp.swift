@@ -8,7 +8,7 @@ let logger = Logger(subsystem: "\(Bundle.main.bundleIdentifier ?? "").logger", c
 // MARK: - BathymetryApp
 @main
 struct BathymetryApp: App {
-    // MARK: - property
+    // MARK: property
     
     let appView = AppView(store: Store(
         initialState: AppState(),
@@ -25,7 +25,7 @@ struct BathymetryApp: App {
         }
     }
     
-    // MARK: - initialization
+    // MARK: initialization
     
     init() {
         FirebaseApp.configure()

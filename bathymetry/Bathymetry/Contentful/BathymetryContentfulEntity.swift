@@ -5,18 +5,18 @@ import Foundation
 // MARK: - BathymetryContentfulEntity
 final class BathymetryContentfulEntity: BathymetryEntity, EntryDecodable, FieldKeysQueryable {
     
-    // MARK: - static constant
+    // MARK: static constant
     
     static let contentTypeId = "bathymetry"
     
-    // MARK: - enum
+    // MARK: enum
     
     enum FieldKeys: String, CodingKey {
         case zoom, x, y
         case geoJSON
     }
 
-    // MARK: - property
+    // MARK: property
     
     let id: String
     let localeCode: String?
@@ -28,7 +28,7 @@ final class BathymetryContentfulEntity: BathymetryEntity, EntryDecodable, FieldK
     let y: Int?
     let geoJSON: GeoJSON?
 
-    // MARK: - initialization
+    // MARK: initialization
     
     required init(from decoder: Decoder) throws {
         let sys = try decoder.sys()

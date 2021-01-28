@@ -4,7 +4,7 @@ import SwiftUI
 // MARK: - AppView
 struct AppView: View {
 
-    // MARK: - property
+    // MARK: property
     
     let store: Store<AppState, AppAction>
     
@@ -33,14 +33,14 @@ struct AppView: View {
         }
     }
     
-    // MARK: - MapViewModifier
+    // MARK: MapViewModifier
     
     struct MapViewModifier: ViewModifier {
-        // MARK: - property
+        // MARK: property
         
         let metrics: GeometryProxy
         
-        // MARK: - public api
+        // MARK: public api
         
         func body(content: Content) -> some View {
             content

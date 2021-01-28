@@ -3,11 +3,11 @@ import Combine
 
 // MARK: - BathymetryClient Interface
 struct BathymetryClient {
-    // MARK: - property
+    // MARK: property
     
     var loadBathymetries: (_ region: Region) -> Effect<[BathymetryTile], Failure>
     
-    // MARK: - Failure
+    // MARK: Failure
 
     struct Failure: Error, Equatable {}
 }
