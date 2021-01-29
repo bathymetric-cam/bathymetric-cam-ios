@@ -131,10 +131,11 @@ extension MapView {
             .forEach { mapView.style?.removeSource($0) }
         bathymetryTiles.forEach { bathymetryTile in
             bathymetryTile.getFeatures(minDepth: 0, maxDepth: 1)
+                .enumerated()
                 .forEach {
-                    let source = MGLShapeSource(identifier: "\(Bundle.main.bundleIdentifier ?? "").source.\(bathymetryTile.name).\(1)", feature: $0)
+                    let source = MGLShapeSource(identifier: "\(Bundle.main.bundleIdentifier ?? "").source.\(bathymetryTile.name)/\(0)/\(1)/\($0)", feature: $1)
                     mapView.style?.addSource(source)
-                    let mapboxLayer = MGLFillStyleLayer(identifier: "\(Bundle.main.bundleIdentifier ?? "").layer.\(bathymetryTile.name).\(1)", source: source)
+                    let mapboxLayer = MGLFillStyleLayer(identifier: "\(Bundle.main.bundleIdentifier ?? "").layer.\(bathymetryTile.name)/\(0)/\(1)/\($0)", source: source)
                     mapboxLayer.fillColor = NSExpression(forConstantValue: UIColor.systemBlue.withAlphaComponent(0.3))
                     mapboxLayer.fillOutlineColor = NSExpression(forConstantValue: UIColor.systemBlue)
                     mapView.style?.addLayer(mapboxLayer)

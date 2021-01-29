@@ -47,14 +47,10 @@ final class BathymetryTile: RegionTile {
             guard let minDepthJSON = feature.properties?["minDepth"],
                   case let .number(low) = minDepthJSON,
                   let maxDepthJSON = feature.properties?["maxDepth"],
-                  case let .number(hight) = maxDepthJSON else {
+                  case let .number(high) = maxDepthJSON else {
                 return nil
             }
-            let depth = (low + hight) / 2.0
-            if depth < minDepth || depth > maxDepth {
-                return nil
-            }
-            return feature
+            return minDepth <= low && high <= maxDepth ? feature : nil
         }
     }
 }

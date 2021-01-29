@@ -1,7 +1,7 @@
 import ComposableArchitecture
 import Combine
 
-// MARK: - BathymetryClient Interface
+// MARK: - BathymetryClient
 struct BathymetryClient {
     // MARK: property
     
