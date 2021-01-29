@@ -39,10 +39,9 @@ final class BathymetryTile: RegionTile {
     
     /// Gets features between minDepth and maxDepth
     /// - Parameters:
-    ///   - minDepth: minimum depth
-    ///   - maxDepth: maximum depth
+    ///   - depth: depth range
     /// - Returns: [Feature] between the range
-    func getFeatures(minDepth: Double, maxDepth: Double) -> [Feature] {
+    func getFeatures(depth: BathymetryDepth) -> [Feature] {
         features.compactMap { feature -> Feature? in
             guard let minDepthJSON = feature.properties?["minDepth"],
                   case let .number(low) = minDepthJSON,
@@ -50,7 +49,7 @@ final class BathymetryTile: RegionTile {
                   case let .number(high) = maxDepthJSON else {
                 return nil
             }
-            return minDepth <= low && high <= maxDepth ? feature : nil
+            return low >= depth.min && high <= depth.max ? feature : nil
         }
     }
 }

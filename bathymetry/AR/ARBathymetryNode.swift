@@ -23,19 +23,21 @@ open class ARBathymetryNode: LocationNode {
         let location = CLLocation(coordinate: bathymetryTile.sw, altitude: 0)
         super.init(location: location)
         
-        let positionsList = createPositionsList(bathymetryTile: bathymetryTile)
-        let indicesList = createIndicesList(positionsList: positionsList)
-        
-        let normal = Euclid.Vector(0, -1, 0)
-        for i in 0..<indicesList.count {
-            for j in 0..<indicesList[i].count {
-                for k in 0..<indicesList[i][j].count where k % 3 == 0 {
-                    if let polygon = Euclid.Polygon([
-                        Euclid.Vertex(positionsList[i][j][indicesList[i][j][k + 0]], normal),
-                        Euclid.Vertex(positionsList[i][j][indicesList[i][j][k + 1]], normal),
-                        Euclid.Vertex(positionsList[i][j][indicesList[i][j][k + 2]], normal),
-                    ]) {
-                        addChildNode(SCNNode(geometry: SCNGeometry(Mesh([polygon]).replacing(nil, with: UIColor.blue.withAlphaComponent(0.8)))))
+        BathymetryColors.defaultColors.forEach { color in
+            let positionsList = createPositionsList(bathymetryTile: bathymetryTile, depth: color.depth)
+            let indicesList = createIndicesList(positionsList: positionsList)
+            
+            let normal = Euclid.Vector(0, -1, 0)
+            for i in 0..<indicesList.count {
+                for j in 0..<indicesList[i].count {
+                    for k in 0..<indicesList[i][j].count where k % 3 == 0 {
+                        if let polygon = Euclid.Polygon([
+                            Euclid.Vertex(positionsList[i][j][indicesList[i][j][k + 0]], normal),
+                            Euclid.Vertex(positionsList[i][j][indicesList[i][j][k + 1]], normal),
+                            Euclid.Vertex(positionsList[i][j][indicesList[i][j][k + 2]], normal),
+                        ]) {
+                            addChildNode(SCNNode(geometry: SCNGeometry(Mesh([polygon]).replacing(nil, with: color.uiColor.withAlphaComponent(0.8)))))
+                        }
                     }
                 }
             }
@@ -47,10 +49,11 @@ open class ARBathymetryNode: LocationNode {
     /// Creates positions of polygon's vertices
     /// - Parameters:
     ///   - bathymetryTile: BathymetryTile object
+    ///   - depth: depth range
     /// - Returns: positions of polygon's vertices
-    private func createPositionsList(bathymetryTile: BathymetryTile) -> [[[Euclid.Vector]]] {
+    private func createPositionsList(bathymetryTile: BathymetryTile, depth: BathymetryDepth) -> [[[Euclid.Vector]]] {
         bathymetryTile
-            .getFeatures(minDepth: 0, maxDepth: 1)
+            .getFeatures(depth: depth)
             .compactMap { feature -> MultiPolygon? in
                 guard case let .multiPolygon(multiPolygon) = feature.geometry else {
                     return nil
