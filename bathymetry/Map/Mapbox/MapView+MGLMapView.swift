@@ -98,7 +98,7 @@ extension MapView {
     ///   - mapView: MGLMapView
     ///   - animated: bool flag if animated when changing the region
     private func regionDidChangeAnimated(mapView: MGLMapView, animated: Bool) {
-        if mapView.userLocation?.location == nil {
+        if mapView.userLocation == nil {
             return
         }
         let coordinates = [

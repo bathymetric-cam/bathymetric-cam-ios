@@ -1,3 +1,4 @@
+import CoreLocation
 import GEOSwift
 import SwiftUI
 

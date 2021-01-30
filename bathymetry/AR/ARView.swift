@@ -1,15 +1,15 @@
 import ARKit_CoreLocation
+import Combine
 import CoreLocation
 import SceneKit
 import SwiftUI
 
 // MARK: - ARView
 struct ARView: UIViewRepresentable {
-    
+
     // MARK: property
     
     @Binding var bathymetryTiles: [BathymetryTile]
-    var altitude: Double = 0
     
     // MARK: UIViewRepresentable
     
@@ -21,7 +21,13 @@ struct ARView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIARView, context: UIViewRepresentableContext<ARView>) {
-        uiView.updateLocationNodes(bathymetryTiles: bathymetryTiles, altitude: altitude)
+        uiView.locationNodes.forEach {
+            uiView.removeLocationNode(locationNode: $0)
+        }
+        let altitude = uiView.sceneLocationManager.currentLocation?.altitude ?? 0
+        bathymetryTiles.forEach {
+            uiView.addLocationNodeWithConfirmedLocation(locationNode: ARBathymetryNode(bathymetryTile: $0, altitude: altitude))
+        }
     }
     
     static func dismantleUIView(_ uiView: ARView.UIViewType, coordinator: ARView.Coordinator) {
@@ -44,14 +50,10 @@ struct ARView: UIViewRepresentable {
         // MARK: SceneLocationViewEstimateDelegate
         
         func didAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
-            if abs(control.altitude - location.altitude) < 1 {
-                return
+            let altitude = sceneLocationView.sceneLocationManager.currentLocation?.altitude ?? 0
+            sceneLocationView.locationNodes.forEach {
+                $0.location = CLLocation(coordinate: $0.location.coordinate, altitude: altitude)
             }
-            control.altitude = location.altitude
-            guard let uiArView = sceneLocationView as? UIARView else {
-                return
-            }
-            uiArView.updateLocationNodes(bathymetryTiles: control.bathymetryTiles, altitude: control.altitude - 1)
         }
         
         func didRemoveSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
@@ -61,30 +63,17 @@ struct ARView: UIViewRepresentable {
 
 // MARK: - UIARView
 final class UIARView: SceneLocationView {
-
-    // MARK: public api
-    
-    /// Updates location nodes
-    /// - Parameters:
-    ///   - bathymetryTiles: Array of BathymetryTile
-    ///   - altitude: altitude of node
-    func updateLocationNodes(bathymetryTiles: [BathymetryTile], altitude: Double) {
-        locationNodes.forEach {
-            removeLocationNode(locationNode: $0)
-        }
-        bathymetryTiles.forEach {
-            addLocationNodeWithConfirmedLocation(locationNode: ARBathymetryNode(bathymetryTile: $0, altitude: altitude))
-        }
-    }
 }
 
 // MARK: - ARView_Previews
 struct ARView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ARView(bathymetryTiles: Binding<[BathymetryTile]>(
-            get: { [] },
-            set: { _ in }
-        ))
+        ARView(
+            bathymetryTiles: Binding<[BathymetryTile]>(
+                get: { [] },
+                set: { _ in }
+            )
+        )
     }
 }

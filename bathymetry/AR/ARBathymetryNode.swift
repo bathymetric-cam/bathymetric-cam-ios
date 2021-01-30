@@ -67,7 +67,7 @@ open class ARBathymetryNode: LocationNode {
                     var vectors = polygon.exterior.points.map { point -> Euclid.Vector in
                         let lngDistance = CLLocation(coordinate: bathymetryTile.sw, altitude: 0).distance(from: CLLocation(coordinate: CLLocationCoordinate2D(latitude: bathymetryTile.sw.latitude, longitude: point.x), altitude: 0))
                         let latDistance = CLLocation(coordinate: bathymetryTile.sw, altitude: 0).distance(from: CLLocation(coordinate: CLLocationCoordinate2D(latitude: point.y, longitude: bathymetryTile.sw.longitude), altitude: 0))
-                        return Euclid.Vector(lngDistance, 0, latDistance)
+                        return Euclid.Vector(lngDistance, -2, latDistance)
                     }
                     var clockwise = 0.0
                     for i in 1...vectors.count - 1 {
