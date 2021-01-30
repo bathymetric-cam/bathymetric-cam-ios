@@ -5,8 +5,13 @@ import GEOSwift
 let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
     switch action {
     case let .loadBathymetries(region):
+        if let r = state.region, r.contains(region: region) {
+            return .none
+        }
+        let doubled = region.doubled()
+        state.region = doubled
         return environment.bathymetryClient
-            .loadBathymetries(region)
+            .loadBathymetries(doubled)
             .receive(on: environment.mainQueue)
             .catchToEffect()
             .map(AppAction.bathymetriesResult)

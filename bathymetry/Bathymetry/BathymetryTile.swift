@@ -127,6 +127,37 @@ extension RegionTile: Comparable {
 struct Region {
     var swTile: RegionTile
     var neTile: RegionTile
+    
+    /// Returns if region contains another region
+    /// - Parameter region: another region
+    /// - Returns: bool value if containing or not
+    func contains(region: Region) -> Bool {
+        swTile.sw.latitude <= region.swTile.sw.latitude &&
+        swTile.sw.longitude <= region.swTile.sw.longitude &&
+        neTile.ne.latitude >= region.neTile.ne.latitude &&
+        neTile.ne.longitude >= region.neTile.ne.longitude
+    }
+    
+    /// Returns doubled region (center coordinate doesn't change)
+    /// - Returns: doubled region
+    func doubled() -> Region {
+        Region(
+            swTile: RegionTile(
+                coordinate: CLLocationCoordinate2D(
+                    latitude: swTile.sw.latitude - (neTile.ne.latitude - swTile.sw.latitude) / 2,
+                    longitude: swTile.sw.longitude - (neTile.ne.longitude - swTile.sw.longitude) / 2
+                ),
+                zoom: swTile.zoom
+            ),
+            neTile: RegionTile(
+                coordinate: CLLocationCoordinate2D(
+                    latitude: neTile.ne.latitude + (neTile.ne.latitude - swTile.sw.latitude) / 2,
+                    longitude: neTile.ne.longitude + (neTile.ne.longitude - swTile.sw.longitude) / 2
+                ),
+                zoom: swTile.zoom
+            )
+        )
+    }
 }
 
 // MARK: - Region + Equatable

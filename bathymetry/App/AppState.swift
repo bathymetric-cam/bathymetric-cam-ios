@@ -6,4 +6,5 @@ struct AppState: Equatable {
     // MARK: property
     
     var bathymetryTiles: [BathymetryTile] = []
+    var region: Region?
 }
