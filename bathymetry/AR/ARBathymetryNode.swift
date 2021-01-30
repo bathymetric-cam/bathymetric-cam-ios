@@ -19,8 +19,9 @@ open class ARBathymetryNode: LocationNode {
     /// Inits
     /// - Parameters:
     ///   - bathymetryTile: BathymetryTile
-    init(bathymetryTile: BathymetryTile) {
-        let location = CLLocation(coordinate: bathymetryTile.sw, altitude: 0)
+    ///   - altitude: altitude of node
+    init(bathymetryTile: BathymetryTile, altitude: Double) {
+        let location = CLLocation(coordinate: bathymetryTile.sw, altitude: altitude)
         super.init(location: location)
         
         BathymetryColors.defaultColors.forEach { color in
