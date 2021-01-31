@@ -6,7 +6,7 @@ import SwiftUI
 // MARK: - UIMapboxMapViewFactory
 final class UIMapboxMapViewFactory: UIMapViewFactory {
     
-    static func createMapView() -> UIMapView {
+    static func createMapView(zoomLevel: MapView.ZoomLevel) -> UIMapView {
         if let path = Bundle.main.path(forResource: "Mapbox-Info", ofType: "plist"),
            let plist = NSDictionary(contentsOfFile: path),
            let accessToken = plist["MGLMapboxAccessToken"] {
@@ -15,7 +15,7 @@ final class UIMapboxMapViewFactory: UIMapViewFactory {
         let uiMapView = MGLMapView(frame: .zero, styleURL: MGLStyle.lightStyleURL)
         uiMapView.styleURL = uiMapView.traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL : MGLStyle.lightStyleURL
         uiMapView.showsUserLocation = true
-        uiMapView.zoomLevel = 16
+        uiMapView.zoomLevel = zoomLevel.rawValue
         uiMapView.isZoomEnabled = false
         uiMapView.isScrollEnabled = false
         uiMapView.isRotateEnabled = false
@@ -29,7 +29,7 @@ final class UIMapboxMapViewFactory: UIMapViewFactory {
 // MARK: - UIMapView+Mapbox
 extension UIMapView {
     // MARK: static constant
-    static let mapbox = UIMapboxMapViewFactory.createMapView()
+    static let mapbox = UIMapboxMapViewFactory.createMapView(zoomLevel: .max)
 }
 
 // MARK: - MapView+MGLMapView
@@ -157,6 +157,10 @@ struct MapView_Previews: PreviewProvider {
             ),
             bathymetryColors: Binding<BathymetryColors>(
                 get: { .defaultColors },
+                set: { _ in }
+            ),
+            zoomLevel: Binding<MapView.ZoomLevel>(
+                get: { .max },
                 set: { _ in }
             )
         )

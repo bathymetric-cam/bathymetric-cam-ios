@@ -8,5 +8,6 @@ struct AppState: Equatable {
     
     var bathymetryTiles: [BathymetryTile] = []
     var bathymetryColors: BathymetryColors
+    var zoomLevel: MapView.ZoomLevel = .max
     var region: Region?
 }

@@ -31,6 +31,10 @@ struct AppView: View {
                         bathymetryColors: viewStore.binding(
                             get: { $0.bathymetryColors },
                             send: AppAction.bathymetryColorsUpdated
+                        ),
+                        zoomLevel: viewStore.binding(
+                            get: { $0.zoomLevel },
+                            send: AppAction.zoomLevelUpdated
                         )
                     )
                         .regionDidChange {
