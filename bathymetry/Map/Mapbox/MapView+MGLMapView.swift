@@ -130,7 +130,7 @@ extension MapView {
             .compactMap { $0.identifier.starts(with: "\(Bundle.main.bundleIdentifier ?? "")") ? $0 : nil }
             .forEach { mapView.style?.removeSource($0) }
         bathymetryTiles.forEach { bathymetryTile in
-            BathymetryColors.defaultColors.forEach { color in
+            bathymetryColors.forEach { color in
                 bathymetryTile.getFeatures(depth: color.depth)
                     .enumerated()
                     .forEach {
@@ -153,6 +153,10 @@ struct MapView_Previews: PreviewProvider {
             internalMapView: .mapbox,
             bathymetryTiles: Binding<[BathymetryTile]>(
                 get: { [] },
+                set: { _ in }
+            ),
+            bathymetryColors: Binding<BathymetryColors>(
+                get: { .defaultColors },
                 set: { _ in }
             )
         )

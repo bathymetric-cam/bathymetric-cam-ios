@@ -9,14 +9,30 @@ struct BathymetryColor {
     }
 }
 
+// MARK: - BathymetryColor + Equatable
+extension BathymetryColor: Equatable {
+    static func == (lhs: BathymetryColor, rhs: BathymetryColor) -> Bool {
+        lhs.color == rhs.color && lhs.depth == rhs.depth
+    }
+}
+
 // MARK: - BathymetryDepth
 struct BathymetryDepth {
     let min: Double
     let max: Double
 }
 
+// MARK: - BathymetryDepth + Equatable
+extension BathymetryDepth: Equatable {
+    static func == (lhs: BathymetryDepth, rhs: BathymetryDepth) -> Bool {
+        lhs.min == rhs.min && lhs.max == rhs.max
+    }
+}
+
 // MARK: - BathymetryColors
 typealias BathymetryColors = [BathymetryColor]
+
+// MARK: - BathymetryColors + static constant
 extension BathymetryColors {
     static let defaultColors = [
         BathymetryColor(color: .init(red: 0.878, green: 0.945, blue: 0.976), depth: BathymetryDepth(min: 0, max: 0.5)),

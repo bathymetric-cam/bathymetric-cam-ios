@@ -16,6 +16,10 @@ struct AppView: View {
                         bathymetryTiles: viewStore.binding(
                             get: { $0.bathymetryTiles },
                             send: AppAction.bathymetryTilesUpdated
+                        ),
+                        bathymetryColors: viewStore.binding(
+                            get: { $0.bathymetryColors },
+                            send: AppAction.bathymetryColorsUpdated
                         )
                     )
                     MapView(
@@ -23,6 +27,10 @@ struct AppView: View {
                         bathymetryTiles: viewStore.binding(
                             get: { $0.bathymetryTiles },
                             send: AppAction.bathymetryTilesUpdated
+                        ),
+                        bathymetryColors: viewStore.binding(
+                            get: { $0.bathymetryColors },
+                            send: AppAction.bathymetryColorsUpdated
                         )
                     )
                         .regionDidChange {
@@ -66,7 +74,7 @@ struct AppView: View {
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
         AppView(store: Store(
-            initialState: AppState(),
+            initialState: AppState(bathymetryColors: .defaultColors),
             reducer: appReducer,
             environment: AppEnvironment(
                 mainQueue: DispatchQueue.main.eraseToAnyScheduler(),

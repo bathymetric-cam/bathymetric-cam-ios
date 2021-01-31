@@ -5,10 +5,11 @@ import SwiftUI
 struct MapView: UIViewRepresentable {
     
     // MARK: property
-    
     let internalMapView: UIMapView
-    @Binding var bathymetryTiles: [BathymetryTile]
     let regionDidChangePublisher = PassthroughSubject<Region, Never>()
+    
+    @Binding var bathymetryTiles: [BathymetryTile]
+    @Binding var bathymetryColors: BathymetryColors
     
     // MARK: UIViewRepresentable
     

@@ -10,6 +10,7 @@ struct ARView: UIViewRepresentable {
     // MARK: property
     
     @Binding var bathymetryTiles: [BathymetryTile]
+    @Binding var bathymetryColors: BathymetryColors
     
     // MARK: UIViewRepresentable
     
@@ -26,7 +27,7 @@ struct ARView: UIViewRepresentable {
         }
         let altitude = uiView.sceneLocationManager.currentLocation?.altitude ?? 0
         bathymetryTiles.forEach {
-            uiView.addLocationNodeWithConfirmedLocation(locationNode: ARBathymetryNode(bathymetryTile: $0, altitude: altitude))
+            uiView.addLocationNodeWithConfirmedLocation(locationNode: ARBathymetryNode(bathymetryTile: $0, bathymetryColors: bathymetryColors, altitude: altitude))
         }
     }
     
@@ -72,6 +73,10 @@ struct ARView_Previews: PreviewProvider {
         ARView(
             bathymetryTiles: Binding<[BathymetryTile]>(
                 get: { [] },
+                set: { _ in }
+            ),
+            bathymetryColors: Binding<BathymetryColors>(
+                get: { .defaultColors },
                 set: { _ in }
             )
         )

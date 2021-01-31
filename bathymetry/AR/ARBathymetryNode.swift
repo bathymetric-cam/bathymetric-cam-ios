@@ -19,12 +19,13 @@ open class ARBathymetryNode: LocationNode {
     /// Inits
     /// - Parameters:
     ///   - bathymetryTile: BathymetryTile
+    ///   - bathymetryColors: BathymetryColors
     ///   - altitude: altitude of node
-    init(bathymetryTile: BathymetryTile, altitude: Double) {
+    init(bathymetryTile: BathymetryTile, bathymetryColors: BathymetryColors, altitude: Double) {
         let location = CLLocation(coordinate: bathymetryTile.sw, altitude: altitude)
         super.init(location: location)
         
-        BathymetryColors.defaultColors.forEach { color in
+        bathymetryColors.forEach { color in
             let positionsList = createPositionsList(bathymetryTile: bathymetryTile, depth: color.depth)
             let indicesList = createIndicesList(positionsList: positionsList)
             
