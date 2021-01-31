@@ -24,7 +24,7 @@ class AppTests: XCTestCase {
     
     func testAppStore_whenInitialState_loadBathymetriesSuccess() throws {
         let sut = TestStore(
-          initialState: .init(),
+        initialState: .init(bathymetryColors: .defaultColors),
           reducer: appReducer,
           environment: AppEnvironment(
             mainQueue: scheduler.eraseToAnyScheduler(),
@@ -47,7 +47,7 @@ class AppTests: XCTestCase {
     
     func testAppStore_whenInitialState_loadBathymetriesFailure() throws {
         let sut = TestStore(
-          initialState: .init(),
+        initialState: .init(bathymetryColors: .defaultColors),
           reducer: appReducer,
           environment: AppEnvironment(
             mainQueue: scheduler.eraseToAnyScheduler(),

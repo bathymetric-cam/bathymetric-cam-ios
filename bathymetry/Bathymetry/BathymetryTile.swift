@@ -125,8 +125,13 @@ extension RegionTile: Comparable {
 
 // MARK: - Region
 struct Region {
+    
+    // MARK: property
+    
     var swTile: RegionTile
     var neTile: RegionTile
+    
+    // MARK: public api
     
     /// Returns if region contains another region
     /// - Parameter region: another region

@@ -42,6 +42,7 @@
 		E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E6A63801257E4D2200751BF5 /* Alamofire */; };
 		E6B2866025A47B4600782955 /* ARBathymetryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */; };
 		E6BDC3BE259600BF00184925 /* BathymetryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BDC3BD259600BF00184925 /* BathymetryClient.swift */; };
+		E6C5DF7125C6BF5600EE6C6F /* BathymetryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C5DF7025C6BF5600EE6C6F /* BathymetryTests.swift */; };
 		E6CB65BC25ADC3BD00E9070A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CB65BB25ADC3BD00E9070A /* CoreDataManager.swift */; };
 		E6DED60F25A3444D0065B6D7 /* Mapbox-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6DED60E25A3444C0065B6D7 /* Mapbox-Info.plist */; };
 		E6E065252590CBB50032B6C8 /* GEOSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E6E065242590CBB50032B6C8 /* GEOSwift */; };
@@ -117,6 +118,7 @@
 		E69BBD11257E50170048050C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBathymetryNode.swift; sourceTree = "<group>"; };
 		E6BDC3BD259600BF00184925 /* BathymetryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryClient.swift; sourceTree = "<group>"; };
+		E6C5DF7025C6BF5600EE6C6F /* BathymetryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTests.swift; sourceTree = "<group>"; };
 		E6CB65BB25ADC3BD00E9070A /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E6DED60E25A3444C0065B6D7 /* Mapbox-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mapbox-Info.plist"; sourceTree = "<group>"; };
 		E6EF546D25BBFB90004C2478 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				E64FDEA0257D22D200B303C6 /* AppTests.swift */,
+				E6C5DF7025C6BF5600EE6C6F /* BathymetryTests.swift */,
 				E64FDEA2257D22D200B303C6 /* Info.plist */,
 			);
 			path = bathymetryTests;
@@ -532,6 +535,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6C5DF7125C6BF5600EE6C6F /* BathymetryTests.swift in Sources */,
 				E64FDEA1257D22D200B303C6 /* AppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
