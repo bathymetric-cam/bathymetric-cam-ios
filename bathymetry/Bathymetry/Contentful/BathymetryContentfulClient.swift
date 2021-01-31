@@ -21,14 +21,23 @@ internal class BathymetryContentfulClientFactory: BathymetryInternalClientFactor
 
 // MARK: - BathymetryContentfulClient
 internal class BathymetryContentfulClient: Client, BathymetryInternalClient {
+    
+    // MARK: - property
+    
+    private var previousTask: URLSessionDataTask?
+    
+    // MARK: - public api
+    
     func loadBathymetries(region: Region, promise: @escaping (Result<[BathymetryTile], BathymetryClient.Failure>) -> Void) {
+        previousTask?.cancel()
+        
         let query = QueryOn<BathymetryContentfulEntity>
             .where(field: .zoom, .equals("\(region.swTile.zoom)"))
             .where(field: .x, .isGreaterThanOrEqualTo("\(region.swTile.x)"))
             .where(field: .x, .isLessThanOrEqualTo("\(region.neTile.x)"))
             .where(field: .y, .isGreaterThanOrEqualTo("\(region.neTile.y)"))
             .where(field: .y, .isLessThanOrEqualTo("\(region.swTile.y)"))
-        fetchArray(of: BathymetryContentfulEntity.self, matching: query) {
+        previousTask = fetchArray(of: BathymetryContentfulEntity.self, matching: query) {
             guard case let .success(result) = $0 else {
                 promise(.failure(BathymetryClient.Failure()))
                 return

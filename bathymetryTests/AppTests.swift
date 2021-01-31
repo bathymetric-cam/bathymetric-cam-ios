@@ -36,7 +36,7 @@ class AppTests: XCTestCase {
                 $0.bathymetryClient.loadBathymetries = { _ in Effect(value: mockBathymetryTiles) }
             },
             .send(.loadBathymetries(mockRegion)),
-            .do { self.scheduler.advance(by: 0.3) },
+            .do { self.scheduler.advance(by: 0.1) },
             .receive(.bathymetriesResult(.success(mockBathymetryTiles)))
         )
     }
@@ -55,7 +55,7 @@ class AppTests: XCTestCase {
                 $0.bathymetryClient.loadBathymetries = { _ in Effect(error: mockFailure) }
             },
             .send(.loadBathymetries(mockRegion)),
-            .do { self.scheduler.advance(by: 0.3) },
+            .do { self.scheduler.advance(by: 0.1) },
             .receive(.bathymetriesResult(.failure(mockFailure)))
         )
     }
