@@ -10,7 +10,7 @@ struct MapView: UIViewRepresentable {
     
     @Binding var bathymetryTiles: [BathymetryTile]
     @Binding var bathymetryColors: BathymetryColors
-    @Binding var zoomLevel: ZoomLevel
+    @Binding var zoomLevel: Double
     
     // MARK: UIViewRepresentable
     
@@ -30,15 +30,14 @@ struct MapView: UIViewRepresentable {
 
 // MARK: - MapView + ZoomLevel
 extension MapView {
-    // MARK: enum
-    enum ZoomLevel: Double {
-        case min = 14.0
-        case max = 16.0
+    // MARK: static constant
+    enum ZoomLevel {
+        static let min = 14.0
+        static let max = 16.0
     }
-    
-    enum Zoom: Double {
-        case zoomIn = 0.5
-        case zoomOut = -0.5
+    enum Zoom {
+        static let zoomIn = 0.5
+        static let zoomOut = -0.5
     }
 }
 
@@ -46,7 +45,7 @@ extension MapView {
 protocol UIMapViewFactory {
     /// Abstruct factory method
     /// - Returns: created factory
-    static func createMapView(zoomLevel: MapView.ZoomLevel) -> UIMapView
+    static func createMapView(zoomLevel: Double) -> UIMapView
 }
 
 // MARK: - UIMapViewFactory

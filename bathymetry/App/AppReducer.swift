@@ -5,13 +5,12 @@ import GEOSwift
 let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
     switch action {
     case let .loadBathymetries(region):
-        if let r = state.region, r.contains(region: region) {
+        if state.region.contains(region: region) {
             return .none
         }
-        let doubled = region.doubled()
-        state.region = doubled
+        state.region = region.doubled()
         return environment.bathymetryClient
-            .loadBathymetries(doubled)
+            .loadBathymetries(state.region)
             .receive(on: environment.mainQueue)
             .catchToEffect()
             .map(AppAction.bathymetriesResult)
@@ -23,6 +22,9 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
     case let .bathymetryTilesUpdated(bathymetryTiles):
         return .none
     case let .bathymetryColorsUpdated(bathymetryColors):
+        return .none
+    case let .updateZoomLevel(value):
+        state.zoomLevel += value
         return .none
     case let .zoomLevelUpdated(zoomLevel):
         return .none

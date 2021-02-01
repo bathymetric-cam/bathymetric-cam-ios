@@ -6,7 +6,7 @@ import SwiftUI
 // MARK: - UIMapboxMapViewFactory
 final class UIMapboxMapViewFactory: UIMapViewFactory {
     
-    static func createMapView(zoomLevel: MapView.ZoomLevel) -> UIMapView {
+    static func createMapView(zoomLevel: Double) -> UIMapView {
         if let path = Bundle.main.path(forResource: "Mapbox-Info", ofType: "plist"),
            let plist = NSDictionary(contentsOfFile: path),
            let accessToken = plist["MGLMapboxAccessToken"] {
@@ -15,7 +15,7 @@ final class UIMapboxMapViewFactory: UIMapViewFactory {
         let uiMapView = MGLMapView(frame: .zero, styleURL: MGLStyle.lightStyleURL)
         uiMapView.styleURL = uiMapView.traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL : MGLStyle.lightStyleURL
         uiMapView.showsUserLocation = true
-        uiMapView.zoomLevel = zoomLevel.rawValue
+        uiMapView.zoomLevel = zoomLevel
         uiMapView.isZoomEnabled = false
         uiMapView.isScrollEnabled = false
         uiMapView.isRotateEnabled = false
@@ -29,7 +29,7 @@ final class UIMapboxMapViewFactory: UIMapViewFactory {
 // MARK: - UIMapView+Mapbox
 extension UIMapView {
     // MARK: static constant
-    static let mapbox = UIMapboxMapViewFactory.createMapView(zoomLevel: .max)
+    static let mapbox = UIMapboxMapViewFactory.createMapView(zoomLevel: MapView.ZoomLevel.max)
 }
 
 // MARK: - MapView+MGLMapView
@@ -47,6 +47,7 @@ extension MapView {
     func updateUIView(_ uiView: UIMapView, context: UIViewRepresentableContext<MapView>) {
         if let mapboxMapView = uiView as? MGLMapView {
             updateBathymetryLayers(mapView: mapboxMapView)
+            mapboxMapView.setZoomLevel(zoomLevel, animated: false)
         }
     }
     
@@ -159,8 +160,8 @@ struct MapView_Previews: PreviewProvider {
                 get: { .defaultColors },
                 set: { _ in }
             ),
-            zoomLevel: Binding<MapView.ZoomLevel>(
-                get: { .max },
+            zoomLevel: Binding<Double>(
+                get: { MapView.ZoomLevel.max },
                 set: { _ in }
             )
         )
