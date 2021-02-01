@@ -8,7 +8,7 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
         if state.region.contains(region: region) {
             return .none
         }
-        state.region = region.doubled()
+        state.region = region.largerRegion()
         return environment.bathymetryClient
             .loadBathymetries(state.region)
             .receive(on: environment.mainQueue)

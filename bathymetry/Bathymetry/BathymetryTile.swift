@@ -9,7 +9,20 @@ final class BathymetryTile: RegionTile {
     let zoom: Int
     let zoomLevel: Double // The zoom parameter is an integer between 0 (zoomed out) and 18 (zoomed in). 18 is normally the maximum, but some tile servers might go beyond that.
     let features: [Feature]
+    
     var name: String { "\(zoom)/\(x)/\(y)" }
+    var ne: CLLocationCoordinate2D { // north and east coordinate
+        CLLocationCoordinate2D(
+            latitude: atan(sinh(.pi - (Double(y) / pow(2.0, zoomLevel)) * 2.0 * .pi)) * (180.0 / .pi),
+            longitude: (Double(x + 1) / pow(2.0, zoomLevel)) * 360.0 - 180.0
+        )
+    }
+    var sw: CLLocationCoordinate2D { // south and west coordinate
+        CLLocationCoordinate2D(
+            latitude: atan(sinh(.pi - (Double(y + 1) / pow(2.0, zoomLevel)) * 2.0 * .pi)) * (180.0 / .pi),
+            longitude: (Double(x) / pow(2.0, zoomLevel)) * 360.0 - 180.0
+        )
+    }
     
     // MARK: initialization
     
@@ -35,7 +48,7 @@ final class BathymetryTile: RegionTile {
         self.features = features
         self.zoom = zoom
         zoomLevel = Double(zoom)
-        super.init(x: x, y: y, zoom: zoom)
+        super.init(x: x, y: y)
     }
     
     // MARK: public api
@@ -81,8 +94,6 @@ class RegionTile {
     // let zoom: Int
     let x: Int // X goes from 0 (left edge is 180 °W) to 2zoom − 1 (right edge is 180 °E)
     let y: Int // Y goes from 0 (top edge is 85.0511 °N) to 2zoom − 1 (bottom edge is 85.0511 °S) in a Mercator projection
-    let ne: CLLocationCoordinate2D // north and east coordinate
-    let sw: CLLocationCoordinate2D // south and west coordinate
     
     // MARK: initialization
     
@@ -93,34 +104,15 @@ class RegionTile {
     init(coordinate: CLLocationCoordinate2D, zoom: Int) {
         x = Int(floor((coordinate.longitude + 180.0) / 360.0 * pow(2.0, Double(zoom))))
         y = Int(floor((1.0 - log(tan(coordinate.latitude * .pi / 180.0) + 1.0 / cos(coordinate.latitude * .pi / 180.0)) / .pi) / 2.0 * pow(2.0, Double(zoom))))
-        let n = pow(2.0, Double(zoom))
-        ne = CLLocationCoordinate2D(
-            latitude: atan(sinh(.pi - (Double(y) / n) * 2.0 * .pi)) * (180.0 / .pi),
-            longitude: (Double(x + 1) / n) * 360.0 - 180.0
-        )
-        sw = CLLocationCoordinate2D(
-            latitude: atan(sinh(.pi - (Double(y + 1) / n) * 2.0 * .pi)) * (180.0 / .pi),
-            longitude: (Double(x) / n) * 360.0 - 180.0
-        )
     }
     
     /// Initialization
     /// - Parameters:
     ///   - x: map tile x
     ///   - y: map tile y
-    ///   - zoom: map zoomLevel
-    init(x: Int, y: Int, zoom: Int) {
+    init(x: Int, y: Int) {
         self.x = x
         self.y = y
-        let n = pow(2.0, Double(zoom))
-        ne = CLLocationCoordinate2D(
-            latitude: atan(sinh(.pi - (Double(y) / n) * 2.0 * .pi)) * (180.0 / .pi),
-            longitude: (Double(x + 1) / n) * 360.0 - 180.0
-        )
-        sw = CLLocationCoordinate2D(
-            latitude: atan(sinh(.pi - (Double(y + 1) / n) * 2.0 * .pi)) * (180.0 / .pi),
-            longitude: (Double(x) / n) * 360.0 - 180.0
-        )
     }
 }
 
@@ -146,30 +138,18 @@ struct Region {
     /// - Parameter region: another region
     /// - Returns: bool value if containing or not
     func contains(region: Region) -> Bool {
-        swTile.sw.latitude <= region.swTile.sw.latitude &&
-        swTile.sw.longitude <= region.swTile.sw.longitude &&
-        neTile.ne.latitude >= region.neTile.ne.latitude &&
-        neTile.ne.longitude >= region.neTile.ne.longitude
+        swTile.x <= region.swTile.x &&
+        swTile.y >= region.swTile.y &&
+        neTile.x >= region.neTile.x &&
+        neTile.y <= region.neTile.y
     }
     
-    /// Returns doubled region (center coordinate doesn't change)
-    /// - Returns: doubled region
-    func doubled() -> Region {
+    /// Returns larger region
+    /// - Returns: larger region
+    func largerRegion() -> Region {
         Region(
-            swTile: RegionTile(
-                coordinate: CLLocationCoordinate2D(
-                    latitude: swTile.sw.latitude - (neTile.ne.latitude - swTile.sw.latitude) / 2,
-                    longitude: swTile.sw.longitude - (neTile.ne.longitude - swTile.sw.longitude) / 2
-                ),
-                zoom: zoom
-            ),
-            neTile: RegionTile(
-                coordinate: CLLocationCoordinate2D(
-                    latitude: neTile.ne.latitude + (neTile.ne.latitude - swTile.sw.latitude) / 2,
-                    longitude: neTile.ne.longitude + (neTile.ne.longitude - swTile.sw.longitude) / 2
-                ),
-                zoom: zoom
-            ),
+            swTile: RegionTile(x: swTile.x - 1, y: swTile.y + 1),
+            neTile: RegionTile(x: neTile.x + 1, y: neTile.y - 1),
             zoom: zoom
         )
     }

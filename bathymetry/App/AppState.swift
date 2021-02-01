@@ -10,8 +10,8 @@ struct AppState: Equatable {
     var bathymetryColors: BathymetryColors
     var zoomLevel = MapView.ZoomLevel.max
     var region = Region(
-        swTile: RegionTile(x: 0, y: 0, zoom: Int(MapView.ZoomLevel.max)),
-        neTile: RegionTile(x: 0, y: 0, zoom: Int(MapView.ZoomLevel.max)),
+        swTile: RegionTile(x: 0, y: 0),
+        neTile: RegionTile(x: 0, y: 0),
         zoom: Int(MapView.ZoomLevel.max)
     )
 }

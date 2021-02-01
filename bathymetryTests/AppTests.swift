@@ -36,7 +36,7 @@ class AppTests: XCTestCase {
                 $0.bathymetryClient.loadBathymetries = { _ in Effect(value: mockBathymetryTiles) }
             },
             .send(.loadBathymetries(mockRegion)) {
-                $0.region = mockRegion.doubled()
+                $0.region = mockRegion.largerRegion()
             },
             .do { self.scheduler.advance(by: 0.1) },
             .receive(.bathymetriesResult(.success(mockBathymetryTiles))) {
@@ -59,7 +59,7 @@ class AppTests: XCTestCase {
                 $0.bathymetryClient.loadBathymetries = { _ in Effect(error: mockFailure) }
             },
             .send(.loadBathymetries(mockRegion)) {
-                $0.region = mockRegion.doubled()
+                $0.region = mockRegion.largerRegion()
             },
             .do { self.scheduler.advance(by: 0.1) },
             .receive(.bathymetriesResult(.failure(mockFailure)))
@@ -70,8 +70,9 @@ class AppTests: XCTestCase {
 // MARK: - mock
 private let mockBathymetryTiles = [BathymetryTile(x: 57483, y: 25954, zoom: 16, features: [])]
 private let mockRegion = Region(
-    swTile: RegionTile(x: 57483, y: 25954, zoom: 16),
-    neTile: RegionTile(x: 57483, y: 25954, zoom: 16)
+    swTile: RegionTile(x: 57483, y: 25954),
+    neTile: RegionTile(x: 57483, y: 25954),
+    zoom: 16
 )
 private let mockFailure = BathymetryClient.Failure()
 
