@@ -118,7 +118,7 @@ extension MapView {
         let zoom = Int(mapView.zoomLevel)
         let swTile = RegionTile(coordinate: CLLocationCoordinate2D(latitude: minLat, longitude: minLng), zoom: zoom)
         let neTile = RegionTile(coordinate: CLLocationCoordinate2D(latitude: maxLat, longitude: maxLng), zoom: zoom)
-        regionDidChangePublisher.send(Region(swTile: swTile, neTile: neTile))
+        regionDidChangePublisher.send(Region(swTile: swTile, neTile: neTile, zoom: zoom))
     }
     
     /// Updates bathymetry layers

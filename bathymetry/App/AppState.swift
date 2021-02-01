@@ -11,6 +11,7 @@ struct AppState: Equatable {
     var zoomLevel = MapView.ZoomLevel.max
     var region = Region(
         swTile: RegionTile(x: 0, y: 0, zoom: Int(MapView.ZoomLevel.max)),
-        neTile: RegionTile(x: 0, y: 0, zoom: Int(MapView.ZoomLevel.max))
+        neTile: RegionTile(x: 0, y: 0, zoom: Int(MapView.ZoomLevel.max)),
+        zoom: Int(MapView.ZoomLevel.max)
     )
 }

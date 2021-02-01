@@ -32,7 +32,7 @@ internal class BathymetryContentfulClient: Client, BathymetryInternalClient {
         previousTask?.cancel()
         
         let query = QueryOn<BathymetryContentfulEntity>
-            .where(field: .zoom, .equals("\(region.swTile.zoom)"))
+            .where(field: .zoom, .equals("\(region.zoom)"))
             .where(field: .x, .isGreaterThanOrEqualTo("\(region.swTile.x)"))
             .where(field: .x, .isLessThanOrEqualTo("\(region.neTile.x)"))
             .where(field: .y, .isGreaterThanOrEqualTo("\(region.neTile.y)"))
