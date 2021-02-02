@@ -6,10 +6,6 @@ struct BathymetryClient {
     // MARK: property
     
     var loadBathymetries: (_ region: Region) -> Effect<[BathymetryTile], Failure>
-    
-    // MARK: Failure
-
-    struct Failure: Error, Equatable {}
 }
 
 // MARK: - BathymetryInternalClientFactory
