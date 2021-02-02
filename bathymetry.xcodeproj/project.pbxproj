@@ -39,6 +39,7 @@
 		E694049025C428CF00F047EC /* BathymetryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694048F25C428CF00F047EC /* BathymetryColor.swift */; };
 		E698A33025976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A32F25976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift */; };
 		E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69BBD11257E50170048050C /* Preview Assets.xcassets */; };
+		E69D159D25C9809100AD1B0F /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69D159C25C9809100AD1B0F /* CircularButton.swift */; };
 		E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E6A63801257E4D2200751BF5 /* Alamofire */; };
 		E6B2866025A47B4600782955 /* ARBathymetryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */; };
 		E6BDC3BE259600BF00184925 /* BathymetryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BDC3BD259600BF00184925 /* BathymetryClient.swift */; };
@@ -118,6 +119,7 @@
 		E694048F25C428CF00F047EC /* BathymetryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryColor.swift; sourceTree = "<group>"; };
 		E698A32F25976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLPointAnnotation+GEOSwift.swift"; sourceTree = "<group>"; };
 		E69BBD11257E50170048050C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E69D159C25C9809100AD1B0F /* CircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
 		E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBathymetryNode.swift; sourceTree = "<group>"; };
 		E6BDC3BD259600BF00184925 /* BathymetryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryClient.swift; sourceTree = "<group>"; };
 		E6C5DF7025C6BF5600EE6C6F /* BathymetryClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryClientTests.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				E6171D7025B0857600161E28 /* Mapbox */,
+				E69D159B25C9806B00AD1B0F /* SwiftUI */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -274,6 +277,14 @@
 				E69BBD11257E50170048050C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E69D159B25C9806B00AD1B0F /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				E69D159C25C9809100AD1B0F /* CircularButton.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 		E6CB65BA25ADC35A00E9070A /* CoreData */ = {
@@ -551,6 +562,7 @@
 				E608B63525BAEE4A0053FBBF /* BathymetryContentfulEntity.swift in Sources */,
 				E64FDE8C257D22D200B303C6 /* AppView.swift in Sources */,
 				E6CB65BC25ADC3BD00E9070A /* CoreDataManager.swift in Sources */,
+				E69D159D25C9809100AD1B0F /* CircularButton.swift in Sources */,
 				E64FDE8A257D22D200B303C6 /* BathymetryApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
