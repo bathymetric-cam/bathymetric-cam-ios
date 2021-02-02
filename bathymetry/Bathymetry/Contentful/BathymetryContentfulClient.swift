@@ -28,7 +28,7 @@ internal class BathymetryContentfulClient: Client, BathymetryInternalClient {
     
     // MARK: public api
     
-    func loadBathymetries(region: Region, promise: @escaping (Result<[BathymetryTile], BathymetryClient.Failure>) -> Void) {
+    func loadBathymetries(region: BathymetryRegion, promise: @escaping (Result<[BathymetryTile], BathymetryClient.Failure>) -> Void) {
         previousTask?.cancel()
         
         let query = QueryOn<BathymetryContentfulEntity>

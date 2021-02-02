@@ -44,6 +44,7 @@
 		E6BDC3BE259600BF00184925 /* BathymetryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BDC3BD259600BF00184925 /* BathymetryClient.swift */; };
 		E6C5DF7125C6BF5600EE6C6F /* BathymetryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C5DF7025C6BF5600EE6C6F /* BathymetryTests.swift */; };
 		E6CB65BC25ADC3BD00E9070A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CB65BB25ADC3BD00E9070A /* CoreDataManager.swift */; };
+		E6DE397625C9735A00D0408A /* BathymetryRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DE397525C9735A00D0408A /* BathymetryRegion.swift */; };
 		E6DED60F25A3444D0065B6D7 /* Mapbox-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6DED60E25A3444C0065B6D7 /* Mapbox-Info.plist */; };
 		E6E065252590CBB50032B6C8 /* GEOSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E6E065242590CBB50032B6C8 /* GEOSwift */; };
 		E6EF546E25BBFB90004C2478 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E6EF546D25BBFB90004C2478 /* README.md */; };
@@ -120,6 +121,7 @@
 		E6BDC3BD259600BF00184925 /* BathymetryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryClient.swift; sourceTree = "<group>"; };
 		E6C5DF7025C6BF5600EE6C6F /* BathymetryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTests.swift; sourceTree = "<group>"; };
 		E6CB65BB25ADC3BD00E9070A /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		E6DE397525C9735A00D0408A /* BathymetryRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryRegion.swift; sourceTree = "<group>"; };
 		E6DED60E25A3444C0065B6D7 /* Mapbox-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mapbox-Info.plist"; sourceTree = "<group>"; };
 		E6EF546D25BBFB90004C2478 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		E6EF547225BC3534004C2478 /* MapView+MGLMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapView+MGLMapView.swift"; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				E6BDC3BD259600BF00184925 /* BathymetryClient.swift */,
 				E6171D5D25B0763B00161E28 /* BathymetryEntity.swift */,
 				E63D2BF225A320CC00788375 /* BathymetryTile.swift */,
+				E6DE397525C9735A00D0408A /* BathymetryRegion.swift */,
 				E694048F25C428CF00F047EC /* BathymetryColor.swift */,
 			);
 			path = Bathymetry;
@@ -510,6 +513,7 @@
 			files = (
 				E698A33025976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift in Sources */,
 				E6BDC3BE259600BF00184925 /* BathymetryClient.swift in Sources */,
+				E6DE397625C9735A00D0408A /* BathymetryRegion.swift in Sources */,
 				E65CF4182590BBA9008A207C /* AppAction.swift in Sources */,
 				E6EF547325BC3534004C2478 /* MapView+MGLMapView.swift in Sources */,
 				E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */,

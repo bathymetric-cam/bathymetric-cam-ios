@@ -5,7 +5,7 @@ import Combine
 struct BathymetryClient {
     // MARK: property
     
-    var loadBathymetries: (_ region: Region) -> Effect<[BathymetryTile], Failure>
+    var loadBathymetries: (_ region: BathymetryRegion) -> Effect<[BathymetryTile], Failure>
 }
 
 // MARK: - BathymetryInternalClientFactory
@@ -21,5 +21,5 @@ protocol BathymetryInternalClient {
     /// - Parameters:
     ///   - region: Region
     ///   - promise: Result of the load
-    func loadBathymetries(region: Region, promise: @escaping (Result<[BathymetryTile], BathymetryClient.Failure>) -> Void)
+    func loadBathymetries(region: BathymetryRegion, promise: @escaping (Result<[BathymetryTile], BathymetryClient.Failure>) -> Void)
 }
