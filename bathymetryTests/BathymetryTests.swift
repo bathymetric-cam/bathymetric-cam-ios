@@ -57,7 +57,7 @@ class BathymetryTests: XCTestCase {
 
 // MARK: - mock
 private let mockBathymetryTiles = [BathymetryTile(x: 57483, y: 25954, zoom: 16, features: [])]
-private let mockRegion = Region(
+private let mockRegion = BathymetryRegion(
     swTile: RegionTile(x: 57483, y: 25954),
     neTile: RegionTile(x: 57483, y: 25954),
     zoom: 16    

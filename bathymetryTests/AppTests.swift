@@ -66,7 +66,7 @@ class AppTests: XCTestCase {
         )
     }
     
-    func testAppStore_whenInitialState_updateZoomLevel() throws {
+    func testAppStore_whenInitialState_zoomIn() throws {
         let sut = TestStore(
         initialState: .init(bathymetryColors: .defaultColors),
           reducer: appReducer,
@@ -76,12 +76,24 @@ class AppTests: XCTestCase {
           )
         )
         sut.assert(
-            .send(.updateZoomLevel(value: MapView.Zoom.zoomOut)) {
-                $0.zoomLevel += MapView.Zoom.zoomOut
-            },
-            .do { self.scheduler.advance(by: 0.1) },
-            .send(.updateZoomLevel(value: MapView.Zoom.zoomIn)) {
-                $0.zoomLevel += MapView.Zoom.zoomIn
+            .send(.zoomIn) {
+                $0.zoomLevel.zoomIn()
+            }
+        )
+    }
+    
+    func testAppStore_whenInitialState_zoomOut() throws {
+        let sut = TestStore(
+        initialState: .init(bathymetryColors: .defaultColors),
+          reducer: appReducer,
+          environment: AppEnvironment(
+            mainQueue: scheduler.eraseToAnyScheduler(),
+            bathymetryClient: .mock()
+          )
+        )
+        sut.assert(
+            .send(.zoomOut) {
+                $0.zoomLevel.zoomOut()
             }
         )
     }
@@ -89,7 +101,7 @@ class AppTests: XCTestCase {
 
 // MARK: - mock
 private let mockBathymetryTiles = [BathymetryTile(x: 57483, y: 25954, zoom: 16, features: [])]
-private let mockRegion = Region(
+private let mockRegion = BathymetryRegion(
     swTile: RegionTile(x: 57483, y: 25954),
     neTile: RegionTile(x: 57483, y: 25954),
     zoom: 16
@@ -104,7 +116,7 @@ extension BathymetryClient {
     // MARK: property
     
     static func mock(
-        loadBathymetries: @escaping (_ region: Region) -> Effect<[BathymetryTile], Failure> = { _ in
+        loadBathymetries: @escaping (_ region: BathymetryRegion) -> Effect<[BathymetryTile], Failure> = { _ in
         fatalError("Unmocked")
     }) -> Self {
         Self(loadBathymetries: loadBathymetries)

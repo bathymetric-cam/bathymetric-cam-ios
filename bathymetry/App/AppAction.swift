@@ -8,6 +8,7 @@ enum AppAction: Equatable {
     case bathymetriesResult(Result<[BathymetryTile], BathymetryClient.Failure>)
     case bathymetryTilesUpdated(bathymetryTiles: [BathymetryTile])
     case bathymetryColorsUpdated(bathymetryTiles: BathymetryColors)
-    case updateZoomLevel(value: Double)
-    case zoomLevelUpdated(zoomLevel: Double)
+    case zoomIn
+    case zoomOut
+    case zoomLevelUpdated(zoomLevel: BathymetryZoomLevel)
 }

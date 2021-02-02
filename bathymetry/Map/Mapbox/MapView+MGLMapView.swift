@@ -6,7 +6,7 @@ import SwiftUI
 // MARK: - UIMapboxMapViewFactory
 final class UIMapboxMapViewFactory: UIMapViewFactory {
     
-    static func createMapView(zoomLevel: Double) -> UIMapView {
+    static func createMapView(zoomLevel: BathymetryZoomLevel) -> UIMapView {
         if let path = Bundle.main.path(forResource: "Mapbox-Info", ofType: "plist"),
            let plist = NSDictionary(contentsOfFile: path),
            let accessToken = plist["MGLMapboxAccessToken"] {
@@ -29,7 +29,7 @@ final class UIMapboxMapViewFactory: UIMapViewFactory {
 // MARK: - UIMapView+Mapbox
 extension UIMapView {
     // MARK: static constant
-    static let mapbox = UIMapboxMapViewFactory.createMapView(zoomLevel: MapView.ZoomLevel.max)
+    static let mapbox = UIMapboxMapViewFactory.createMapView(zoomLevel: BathymetryZoomLevel.max)
 }
 
 // MARK: - MapView+MGLMapView
@@ -160,8 +160,8 @@ struct MapView_Previews: PreviewProvider {
                 get: { .defaultColors },
                 set: { _ in }
             ),
-            zoomLevel: Binding<Double>(
-                get: { MapView.ZoomLevel.max },
+            zoomLevel: Binding<BathymetryZoomLevel>(
+                get: { BathymetryZoomLevel.max },
                 set: { _ in }
             )
         )

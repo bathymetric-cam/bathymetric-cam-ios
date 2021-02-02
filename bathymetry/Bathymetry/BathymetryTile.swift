@@ -1,5 +1,5 @@
 import GEOSwift
-import Mapbox
+import CoreLocation
 
 // MARK: - BathymetryTile
 final class BathymetryTile: RegionTile {
@@ -7,7 +7,7 @@ final class BathymetryTile: RegionTile {
     // MARK: property
     
     let zoom: Int
-    let zoomLevel: Double // The zoom parameter is an integer between 0 (zoomed out) and 18 (zoomed in). 18 is normally the maximum, but some tile servers might go beyond that.
+    let zoomLevel: BathymetryZoomLevel // The zoom parameter is an integer between 0 (zoomed out) and 18 (zoomed in). 18 is normally the maximum, but some tile servers might go beyond that.
     let features: [Feature]
     
     var name: String { "\(zoom)/\(x)/\(y)" }
@@ -34,7 +34,7 @@ final class BathymetryTile: RegionTile {
     init(coordinate: CLLocationCoordinate2D, zoom: Int, features: [Feature]) {
         self.features = features
         self.zoom = zoom
-        zoomLevel = Double(zoom)
+        zoomLevel = BathymetryZoomLevel(zoom)
         super.init(coordinate: coordinate, zoom: zoom)
     }
     
@@ -47,7 +47,7 @@ final class BathymetryTile: RegionTile {
     init(x: Int, y: Int, zoom: Int, features: [Feature]) {
         self.features = features
         self.zoom = zoom
-        zoomLevel = Double(zoom)
+        zoomLevel = BathymetryZoomLevel(zoom)
         super.init(x: x, y: y)
     }
     
@@ -102,8 +102,8 @@ class RegionTile {
     ///   - coordinate: lat, lng coordinate
     ///   - zoom: map zoomLevel
     init(coordinate: CLLocationCoordinate2D, zoom: Int) {
-        x = Int(floor((coordinate.longitude + 180.0) / 360.0 * pow(2.0, Double(zoom))))
-        y = Int(floor((1.0 - log(tan(coordinate.latitude * .pi / 180.0) + 1.0 / cos(coordinate.latitude * .pi / 180.0)) / .pi) / 2.0 * pow(2.0, Double(zoom))))
+        x = Int(floor((coordinate.longitude + 180.0) / 360.0 * pow(2.0, BathymetryZoomLevel(zoom))))
+        y = Int(floor((1.0 - log(tan(coordinate.latitude * .pi / 180.0) + 1.0 / cos(coordinate.latitude * .pi / 180.0)) / .pi) / 2.0 * pow(2.0, BathymetryZoomLevel(zoom))))
     }
     
     /// Initialization
