@@ -65,6 +65,26 @@ class AppTests: XCTestCase {
             .receive(.bathymetriesResult(.failure(mockFailure)))
         )
     }
+    
+    func testAppStore_whenInitialState_updateZoomLevel() throws {
+        let sut = TestStore(
+        initialState: .init(bathymetryColors: .defaultColors),
+          reducer: appReducer,
+          environment: AppEnvironment(
+            mainQueue: scheduler.eraseToAnyScheduler(),
+            bathymetryClient: .mock()
+          )
+        )
+        sut.assert(
+            .send(.updateZoomLevel(value: MapView.Zoom.zoomOut)) {
+                $0.zoomLevel += MapView.Zoom.zoomOut
+            },
+            .do { self.scheduler.advance(by: 0.1) },
+            .send(.updateZoomLevel(value: MapView.Zoom.zoomIn)) {
+                $0.zoomLevel += MapView.Zoom.zoomIn
+            }
+        )
+    }
 }
 
 // MARK: - mock
@@ -74,7 +94,10 @@ private let mockRegion = Region(
     neTile: RegionTile(x: 57483, y: 25954),
     zoom: 16
 )
-private let mockFailure = BathymetryClient.Failure()
+private enum MockError: Error {
+    case mock
+}
+private let mockFailure: BathymetryClient.Failure = .otherFailure(MockError.mock)
 
 // MARK: - BathymetryClient+Mock
 extension BathymetryClient {

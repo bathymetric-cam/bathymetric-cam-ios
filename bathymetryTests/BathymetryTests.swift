@@ -22,7 +22,7 @@ class BathymetryTests: XCTestCase {
     func testBathymetryClient_whenInitialState_loadBathymetriesSuccess() throws {
         var result: [BathymetryTile]? = nil
         let exp = expectation(description: #function)
-        let sut = BathymetryClient.fakeSuccess
+        let sut = BathymetryClient.fakeSuccessClient
         
         _ = sut.loadBathymetries(mockRegion)
             .sink(
@@ -37,7 +37,7 @@ class BathymetryTests: XCTestCase {
     func testBathymetryClient_whenInitialState_loadBathymetriesFailure() throws {
         var result: BathymetryClient.Failure? = nil
         let exp = expectation(description: #function)
-        let sut = BathymetryClient.fakeFailure
+        let sut = BathymetryClient.fakeFailureClient
         
         _ = sut.loadBathymetries(mockRegion)
             .sink(
@@ -62,20 +62,23 @@ private let mockRegion = Region(
     neTile: RegionTile(x: 57483, y: 25954),
     zoom: 16    
 )
-private let mockFailure = BathymetryClient.Failure()
+private enum MockError: Error {
+    case mock
+}
+private let mockFailure: BathymetryClient.Failure = .otherFailure(MockError.mock)
 
 // MARK: - BathymetryClient+Fake
 extension BathymetryClient {
     // MARK: property
     
-    static let fakeSuccess = BathymetryClient { region in
+    static let fakeSuccessClient = BathymetryClient { region in
         Future<[BathymetryTile], Failure> { promise in
             promise(.success(mockBathymetryTiles))
         }
         .eraseToEffect()
     }
     
-    static let fakeFailure = BathymetryClient { region in
+    static let fakeFailureClient = BathymetryClient { region in
         Future<[BathymetryTile], Failure> { promise in
             promise(.failure(mockFailure))
         }
