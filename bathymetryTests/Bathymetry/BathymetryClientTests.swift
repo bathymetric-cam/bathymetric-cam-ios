@@ -4,8 +4,8 @@ import GEOSwift
 import XCTest
 @testable import Bathymetry
 
-// MARK: - BathymetryTests
-class BathymetryTests: XCTestCase {
+// MARK: - BathymetryClientTests
+class BathymetryClientTests: XCTestCase {
     
     // MARK: life cycle
     

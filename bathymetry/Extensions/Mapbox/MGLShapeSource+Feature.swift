@@ -1,7 +1,7 @@
 import GEOSwift
 import Mapbox
 
-// MARK: - MGLShapeSource+BathymetryTile
+// MARK: - MGLShapeSource+Feature
 extension MGLShapeSource {
     
     // MARK: initialization
