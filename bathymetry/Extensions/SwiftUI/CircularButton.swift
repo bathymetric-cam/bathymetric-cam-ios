@@ -17,10 +17,10 @@ struct CircularButton<Content: View>: View {
             HStack {
                 content()
             }
-            .padding(20)
+            .padding(16)
             .foregroundColor(foreground)
             .background(background)
-            .cornerRadius(40)
+            .cornerRadius(48)
             .shadow(radius: 2.0)
         }
     }
@@ -36,7 +36,9 @@ struct CircularButtonZoomIn_Previews: PreviewProvider {
             content: {
                 Image(systemName: "plus")
                     .font(.title)
-                    .padding(.top, 2)
+                    .padding(.horizontal, 1)
+                    .padding(.top, 3)
+                    .padding(.bottom, 2)
             }
         )
     }

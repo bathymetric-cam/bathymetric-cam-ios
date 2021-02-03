@@ -9,9 +9,9 @@ struct AppView: View {
     let store: Store<AppState, AppAction>
     
     var body: some View {
-        ZStack {
-            GeometryReader { metrics in
-                WithViewStore(store) { viewStore in
+        WithViewStore(store) { viewStore in
+            ZStack {
+                GeometryReader { metrics in
                     ARView(
                         bathymetryTiles: viewStore.binding(
                             get: { $0.bathymetryTiles },
@@ -42,8 +42,20 @@ struct AppView: View {
                         }
                         .modifier(MapViewModifier(metrics: metrics))
                 }
+                .edgesIgnoringSafeArea(.all)
+                
+                GeometryReader { metrics in
+                    VStack {
+                        ZoomButton(type: .zoomIn) {
+                            viewStore.send(.zoomIn)
+                        }
+                        ZoomButton(type: .zoomOut) {
+                            viewStore.send(.zoomOut)
+                        }
+                    }
+                    .offset(x: 8, y: metrics.size.height - metrics.size.width / 2.0)
+                }
             }
-            .edgesIgnoringSafeArea(.all)
         }
     }
     

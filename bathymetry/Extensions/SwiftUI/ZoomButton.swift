@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - ZoomButton
 struct ZoomButton: View {
-
+    
     // MARK: enum
     
     enum ZoomType {
@@ -21,14 +21,36 @@ struct ZoomButton: View {
             foreground: Color(.label),
             action: { },
             content: {
-                Image(systemName: type == .zoomIn ? "plus" : "minus")
-                    .font(.title)
-                    .padding(
-                        type == .zoomIn ? .top : .vertical,
-                        type == .zoomIn ? 2 : 12
-                    )
+                Group {
+                    if type == .zoomIn {
+                        zoomIn
+                    } else {
+                        zoomOut
+                    }
+                }
             }
         )
+            .frame(width: 64, height: 64)
+    }
+    
+    var zoomIn: some View {
+        Image(
+            systemName: "plus"
+        )
+            .font(.title)
+            .padding(.horizontal, 1)
+            .padding(.top, 3)
+            .padding(.bottom, 2)
+    }
+    
+    var zoomOut: some View {
+        Image(
+            systemName: "minus"
+        )
+            .font(.title)
+            .padding(.vertical, 12)
+            .padding(.horizontal, 1)
+            .padding(.top, 1)
     }
 }
 
