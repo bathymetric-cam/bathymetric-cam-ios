@@ -26,8 +26,8 @@ struct CircularButton<Content: View>: View {
     }
 }
 
-// MARK: - CircularButton_Previews
-struct CircularButton_Previews: PreviewProvider {
+// MARK: - CircularButtonZoomIn_Previews
+struct CircularButtonZoomIn_Previews: PreviewProvider {
     static var previews: some View {
         CircularButton(
             background: Color(.systemBackground),
@@ -36,6 +36,7 @@ struct CircularButton_Previews: PreviewProvider {
             content: {
                 Image(systemName: "plus")
                     .font(.title)
+                    .padding(.top, 2)
             }
         )
     }
