@@ -19,17 +19,16 @@ struct ZoomButton: View {
         CircularButton(
             background: Color(.systemBackground),
             foreground: Color(.label),
-            action: { },
-            content: {
-                Group {
-                    if type == .zoomIn {
-                        zoomIn
-                    } else {
-                        zoomOut
-                    }
+            action: action
+        ) {
+            Group {
+                if type == .zoomIn {
+                    zoomIn
+                } else {
+                    zoomOut
                 }
             }
-        )
+        }
             .frame(width: 64, height: 64)
     }
     
