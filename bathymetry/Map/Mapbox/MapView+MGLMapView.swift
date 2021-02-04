@@ -29,7 +29,7 @@ final class UIMapboxMapViewFactory: UIMapViewFactory {
 // MARK: - UIMapView+Mapbox
 extension UIMapView {
     // MARK: static constant
-    static let mapbox = UIMapboxMapViewFactory.createMapView(zoomLevel: BathymetryZoomLevel.max)
+    static let mapbox = UIMapboxMapViewFactory.createMapView(zoomLevel: .max)
 }
 
 // MARK: - MapView+MGLMapView
@@ -99,7 +99,7 @@ extension MapView {
     ///   - mapView: MGLMapView
     ///   - animated: bool flag if animated when changing the region
     private func regionDidChangeAnimated(mapView: MGLMapView, animated: Bool) {
-        if mapView.userLocation == nil {
+        if mapView.userLocation?.location == nil {
             return
         }
         let coordinates = [

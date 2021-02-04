@@ -23,8 +23,8 @@ struct BathymetryRegion {
     /// - Returns: larger region
     func largerRegion() -> BathymetryRegion {
         BathymetryRegion(
-            swTile: RegionTile(x: swTile.x - 1, y: swTile.y + 1),
-            neTile: RegionTile(x: neTile.x + 1, y: neTile.y - 1),
+            swTile: RegionTile(x: swTile.x - 4, y: swTile.y + 4),
+            neTile: RegionTile(x: neTile.x + 4, y: neTile.y - 4),
             zoom: zoom
         )
     }
