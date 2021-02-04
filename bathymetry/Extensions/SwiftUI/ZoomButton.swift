@@ -13,6 +13,7 @@ struct ZoomButton: View {
     // MARK: property
     
     let type: ZoomType
+    @Binding var zoomLevel: BathymetryZoomLevel
     let action: () -> Void
     
     var body: some View {
@@ -30,6 +31,7 @@ struct ZoomButton: View {
             }
         }
             .frame(width: 64, height: 64)
+            .opacity(opacity)
     }
     
     var zoomIn: some View {
@@ -51,18 +53,34 @@ struct ZoomButton: View {
             .padding(.horizontal, 1)
             .padding(.top, 1)
     }
+    
+    var opacity: Double {
+        (type == .zoomIn && zoomLevel < .max) || (type == .zoomOut && zoomLevel > .min) ? 1.0 : 0.5
+    }
 }
 
 // MARK: - ZoomButtonZoomIn_Previews
 struct ZoomButtonZoomIn_Previews: PreviewProvider {
     static var previews: some View {
-        ZoomButton(type: .zoomIn) { }
+        ZoomButton(
+            type: .zoomIn,
+            zoomLevel: Binding<BathymetryZoomLevel>(
+                get: { .max },
+                set: { _ in }
+            )
+        ) { }
     }
 }
 
 // MARK: - ZoomButtonZoomOut_Previews
 struct ZoomButtonZoomOut_Previews: PreviewProvider {
     static var previews: some View {
-        ZoomButton(type: .zoomOut) { }
+        ZoomButton(
+            type: .zoomOut,
+            zoomLevel: Binding<BathymetryZoomLevel>(
+                get: { .max },
+                set: { _ in }
+            )
+        ) { }
     }
 }

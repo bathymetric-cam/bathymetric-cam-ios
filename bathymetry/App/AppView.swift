@@ -48,10 +48,22 @@ struct AppView: View {
             GeometryReader { metrics in
                 VStack {
                     WithViewStore(store) { viewStore in
-                        ZoomButton(type: .zoomIn) {
+                        ZoomButton(
+                            type: .zoomIn,
+                            zoomLevel: viewStore.binding(
+                                get: { $0.zoomLevel },
+                                send: AppAction.zoomLevelUpdated
+                            )
+                        ) {
                             viewStore.send(.zoomIn)
                         }
-                        ZoomButton(type: .zoomOut) {
+                        ZoomButton(
+                            type: .zoomOut,
+                            zoomLevel: viewStore.binding(
+                                get: { $0.zoomLevel },
+                                send: AppAction.zoomLevelUpdated
+                            )
+                        ) {
                             viewStore.send(.zoomOut)
                         }
                     }
