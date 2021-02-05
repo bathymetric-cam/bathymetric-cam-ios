@@ -57,10 +57,14 @@ open class ARBathymetryNode: LocationNode {
         bathymetryTile
             .getFeatures(depth: depth)
             .compactMap { feature -> MultiPolygon? in
-                guard case let .multiPolygon(multiPolygon) = feature.geometry else {
+                switch feature.geometry {
+                case let .polygon(polygon):
+                    return MultiPolygon(polygons: [polygon])
+                case let .multiPolygon(multiPolygon):
+                    return multiPolygon
+                default:
                     return nil
                 }
-                return multiPolygon
             }
             .map { $0.polygons }
             .map { polygons -> [[Euclid.Vector]] in
