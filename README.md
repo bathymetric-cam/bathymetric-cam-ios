@@ -22,12 +22,10 @@ Then drag the frameworks into `Frameworks/` folder.
 
 ### Plist Settings
 
-bathymetric-cam uses [Mapbox](https://github.com/mapbox/mapbox-gl-native-ios/tree/main/platform/ios), [Contentful](https://github.com/contentful/contentful.swift), and [Firebase](https://github.com/firebase/firebase-ios-sdk) SDKs.
+bathymetric-cam uses [Mapbox](https://github.com/mapbox/mapbox-gl-native-ios/tree/main/platform/ios) and [Contentful](https://github.com/contentful/contentful.swift).
 Each service has the configuration.
 
 Here is how to set them up.
-
-`GoogleService-Info.plist` is a Firebase configuration file for iOS apps. You can download from the Firebase online dashboard.
 
 `Mapbox-Info.plist`
 ```xml

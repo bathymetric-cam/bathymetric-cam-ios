@@ -37,15 +37,6 @@
       ]
     },
     {
-      "groupName": "Firebase",
-      "managers": [
-        "swift"
-      ],
-      "packageNames": [
-        "Firebase"
-      ]
-    },
-    {
       "groupName": "GEOSwift",
       "managers": [
         "swift"

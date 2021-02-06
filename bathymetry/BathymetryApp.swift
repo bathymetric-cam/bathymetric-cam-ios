@@ -1,5 +1,4 @@
 import ComposableArchitecture
-import Firebase
 import os
 import SwiftUI
 
@@ -28,6 +27,5 @@ struct BathymetryApp: App {
     // MARK: initialization
     
     init() {
-        FirebaseApp.configure()
     }
 }
