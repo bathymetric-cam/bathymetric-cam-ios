@@ -15,7 +15,7 @@ struct ARView: UIViewRepresentable {
     // MARK: UIViewRepresentable
     
     func makeUIView(context: UIViewRepresentableContext<ARView>) -> UIARView {
-        let sceneLocationView = UIARView()
+        let sceneLocationView = UIARView(trackingType: .orientationTracking)
         sceneLocationView.locationEstimateDelegate = context.coordinator
         sceneLocationView.run()
         return sceneLocationView
@@ -27,7 +27,13 @@ struct ARView: UIViewRepresentable {
         }
         let altitude = uiView.sceneLocationManager.currentLocation?.altitude ?? 0
         bathymetryTiles.forEach {
-            uiView.addLocationNodeWithConfirmedLocation(locationNode: ARBathymetryNode(bathymetryTile: $0, bathymetryColors: bathymetryColors, altitude: altitude))
+            uiView.addLocationNodeWithConfirmedLocation(
+                locationNode: ARBathymetryNode(
+                    bathymetryTile: $0,
+                    bathymetryColors: bathymetryColors,
+                    altitude: altitude
+                )
+            )
         }
     }
     
@@ -69,7 +75,6 @@ final class UIARView: SceneLocationView {
     
     // swiftlint:disable discouraged_optional_collection
     override private init(frame: CGRect, options: [String: Any]? = nil) {
-        // swiftlint:enable discouraged_optional_collection
         super.init(frame: frame, options: options)
         
         NotificationCenter.default.addObserver(
@@ -85,6 +90,7 @@ final class UIARView: SceneLocationView {
             object: nil
         )
     }
+    // swiftlint:enable discouraged_optional_collection
     
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
@@ -103,9 +109,13 @@ final class UIARView: SceneLocationView {
     private func didReceiveNotification(notification: Notification) {
         switch notification.name {
         case UIApplication.didBecomeActiveNotification:
-            self.run()
+            DispatchQueue.main.async { [weak self] in
+                self?.run()
+            }
         case UIApplication.willResignActiveNotification:
-            self.pause()
+            DispatchQueue.main.async { [weak self] in
+                self?.pause()
+            }
         default:
             break
         }
