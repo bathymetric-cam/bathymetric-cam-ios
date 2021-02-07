@@ -2,6 +2,7 @@ import ComposableArchitecture
 import GEOSwift
 
 // MARK: - AppReducer
+// swiftlint:disable closure_body_length
 let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
     switch action {
     case let .loadBathymetries(region):
@@ -33,3 +34,4 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
         return .none
     }
 }
+// swiftlint:enable closure_body_length

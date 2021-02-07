@@ -8,6 +8,7 @@ struct AppView: View {
     
     let store: Store<AppState, AppAction>
     
+    // swiftlint:disable closure_body_length
     var body: some View {
         ZStack {
             GeometryReader { metrics in
@@ -72,7 +73,8 @@ struct AppView: View {
             }
         }
     }
-    
+    // swiftlint:enable closure_body_length
+
     // MARK: MapViewModifier
     
     struct MapViewModifier: ViewModifier {
