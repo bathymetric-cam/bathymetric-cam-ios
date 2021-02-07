@@ -13,6 +13,7 @@ struct BathymetryRegion {
     /// - Parameter region: another region
     /// - Returns: bool value if containing or not
     func contains(region: BathymetryRegion) -> Bool {
+        zoom == region.zoom &&
         swTile.x <= region.swTile.x &&
         swTile.y >= region.swTile.y &&
         neTile.x >= region.neTile.x &&
@@ -22,9 +23,11 @@ struct BathymetryRegion {
     /// Returns larger region
     /// - Returns: larger region
     func largerRegion() -> BathymetryRegion {
-        BathymetryRegion(
-            swTile: RegionTile(x: swTile.x - 4, y: swTile.y + 4),
-            neTile: RegionTile(x: neTile.x + 4, y: neTile.y - 4),
+        let x = neTile.x - swTile.x <= 0 ? 1 : neTile.x - swTile.x
+        let y = swTile.y - neTile.y <= 0 ? 1 : swTile.y - neTile.y
+        return BathymetryRegion(
+            swTile: RegionTile(x: swTile.x - x, y: swTile.y + y),
+            neTile: RegionTile(x: neTile.x + x, y: neTile.y - y),
             zoom: zoom
         )
     }
@@ -33,6 +36,6 @@ struct BathymetryRegion {
 // MARK: - BathymetryRegion + Equatable
 extension BathymetryRegion: Equatable {
     static func == (lhs: BathymetryRegion, rhs: BathymetryRegion) -> Bool {
-        lhs.swTile == rhs.swTile && lhs.neTile == rhs.neTile
+        lhs.zoom == rhs.zoom && lhs.swTile == rhs.swTile && lhs.neTile == rhs.neTile
     }
 }
