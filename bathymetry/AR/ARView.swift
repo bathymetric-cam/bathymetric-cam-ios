@@ -64,6 +64,52 @@ struct ARView: UIViewRepresentable {
 
 // MARK: - UIARView
 final class UIARView: SceneLocationView {
+    
+    // MARK: initialization
+    
+    // swiftlint:disable discouraged_optional_collection
+    override private init(frame: CGRect, options: [String: Any]? = nil) {
+        // swiftlint:enable discouraged_optional_collection
+        super.init(frame: frame, options: options)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didReceiveNotification(notification:)),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didReceiveNotification(notification:)),
+            name: UIApplication.willResignActiveNotification,
+            object: nil
+        )
+    }
+    
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: destruction
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: notification
+    
+    @objc
+    private func didReceiveNotification(notification: Notification) {
+        switch notification.name {
+        case UIApplication.didBecomeActiveNotification:
+            self.run()
+        case UIApplication.willResignActiveNotification:
+            self.pause()
+        default:
+            break
+        }
+    }
 }
 
 // MARK: - ARView_Previews

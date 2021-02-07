@@ -25,11 +25,11 @@ open class ARBathymetryNode: LocationNode {
         let location = CLLocation(coordinate: bathymetryTile.sw, altitude: altitude)
         super.init(location: location)
         
+        let normal = Euclid.Vector(0, -1, 0)
         bathymetryColors.forEach { color in
             let positionsList = createPositionsList(bathymetryTile: bathymetryTile, depth: color.depth)
             let indicesList = createIndicesList(positionsList: positionsList)
             
-            let normal = Euclid.Vector(0, -1, 0)
             for i in 0..<indicesList.count {
                 for j in 0..<indicesList[i].count {
                     for k in 0..<indicesList[i][j].count where k % 3 == 0 {
@@ -72,7 +72,7 @@ open class ARBathymetryNode: LocationNode {
                     var vectors = polygon.exterior.points.map { point -> Euclid.Vector in
                         let lngDistance = CLLocation(coordinate: bathymetryTile.sw, altitude: 0).distance(from: CLLocation(coordinate: CLLocationCoordinate2D(latitude: bathymetryTile.sw.latitude, longitude: point.x), altitude: 0))
                         let latDistance = CLLocation(coordinate: bathymetryTile.sw, altitude: 0).distance(from: CLLocation(coordinate: CLLocationCoordinate2D(latitude: point.y, longitude: bathymetryTile.sw.longitude), altitude: 0))
-                        return Euclid.Vector(lngDistance, -2, latDistance)
+                        return Euclid.Vector(lngDistance, -1, latDistance)
                     }
                     var clockwise = 0.0
                     for i in 1...vectors.count - 1 {
