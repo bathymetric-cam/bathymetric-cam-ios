@@ -70,6 +70,13 @@ final class BathymetryTile: RegionTile {
     }
 }
 
+// MARK: - BathymetryTile + Equatable
+extension BathymetryTile {
+    static func == (lhs: BathymetryTile, rhs: BathymetryTile) -> Bool {
+        lhs.zoom == rhs.zoom && lhs.x == rhs.x && lhs.y == rhs.y
+    }
+}
+
 // MARK: - BathymetryTile + Comparable
 extension BathymetryTile: Comparable {
     static func < (lhs: BathymetryTile, rhs: BathymetryTile) -> Bool {

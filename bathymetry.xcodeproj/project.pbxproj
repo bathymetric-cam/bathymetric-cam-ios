@@ -41,6 +41,7 @@
 		E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E6A63801257E4D2200751BF5 /* Alamofire */; };
 		E6B2866025A47B4600782955 /* ARBathymetryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */; };
 		E6BDC3BE259600BF00184925 /* BathymetryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BDC3BD259600BF00184925 /* BathymetryClient.swift */; };
+		E6BFC11E25D1479000295FB2 /* BathymetryTileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BFC11D25D1479000295FB2 /* BathymetryTileTests.swift */; };
 		E6C5DF7125C6BF5600EE6C6F /* BathymetryClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C5DF7025C6BF5600EE6C6F /* BathymetryClientTests.swift */; };
 		E6CB65BC25ADC3BD00E9070A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CB65BB25ADC3BD00E9070A /* CoreDataManager.swift */; };
 		E6DE397625C9735A00D0408A /* BathymetryRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DE397525C9735A00D0408A /* BathymetryRegion.swift */; };
@@ -121,6 +122,7 @@
 		E69D159C25C9809100AD1B0F /* CircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
 		E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBathymetryNode.swift; sourceTree = "<group>"; };
 		E6BDC3BD259600BF00184925 /* BathymetryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryClient.swift; sourceTree = "<group>"; };
+		E6BFC11D25D1479000295FB2 /* BathymetryTileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTileTests.swift; sourceTree = "<group>"; };
 		E6C5DF7025C6BF5600EE6C6F /* BathymetryClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryClientTests.swift; sourceTree = "<group>"; };
 		E6CB65BB25ADC3BD00E9070A /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E6DE397525C9735A00D0408A /* BathymetryRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryRegion.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 			children = (
 				E6C5DF7025C6BF5600EE6C6F /* BathymetryClientTests.swift */,
 				E633CD0925D01A4B00FDB3BA /* BathymetryRegionTests.swift */,
+				E6BFC11D25D1479000295FB2 /* BathymetryTileTests.swift */,
 			);
 			path = Bathymetry;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 			files = (
 				E6C5DF7125C6BF5600EE6C6F /* BathymetryClientTests.swift in Sources */,
 				E64FDEA1257D22D200B303C6 /* AppTests.swift in Sources */,
+				E6BFC11E25D1479000295FB2 /* BathymetryTileTests.swift in Sources */,
 				E633CD0A25D01A4B00FDB3BA /* BathymetryRegionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

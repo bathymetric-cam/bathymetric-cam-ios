@@ -23,7 +23,7 @@ class BathymetryRegionTests: XCTestCase {
         XCTAssertEqual(lhs, rhs)
     }
     
-    func testBathymetryRegion_whenRegionTileIsDifferent_lhsNotEqualsToRhs() throws {
+    func testBathymetryRegion_whenCoordinateIsDifferent_lhsNotEqualsToRhs() throws {
         let lhs = BathymetryRegion(swTile: RegionTile(x: 57482, y: 25954), neTile: RegionTile(x: 57483, y: 25953), zoom: 16)
         let rhs = BathymetryRegion(swTile: RegionTile(x: 57483, y: 25954), neTile: RegionTile(x: 57483, y: 25954), zoom: 16)
         
