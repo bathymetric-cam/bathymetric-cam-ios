@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E608B63525BAEE4A0053FBBF /* BathymetryContentfulEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E608B63425BAEE4A0053FBBF /* BathymetryContentfulEntity.swift */; };
-		E6169D3A25CAB00200AE1F06 /* ZoomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6169D3925CAB00200AE1F06 /* ZoomButton.swift */; };
+		E6169D3A25CAB00200AE1F06 /* MapZoomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6169D3925CAB00200AE1F06 /* MapZoomButton.swift */; };
 		E616F3E325BAC9B5005A3703 /* BathymetryContentfulClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E616F3E225BAC9B5005A3703 /* BathymetryContentfulClient.swift */; };
 		E6171D5A25B0574900161E28 /* Contentful in Frameworks */ = {isa = PBXBuildFile; productRef = E6171D5925B0574900161E28 /* Contentful */; };
 		E6171D5E25B0763B00161E28 /* BathymetryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6171D5D25B0763B00161E28 /* BathymetryEntity.swift */; };
@@ -91,7 +91,7 @@
 
 /* Begin PBXFileReference section */
 		E608B63425BAEE4A0053FBBF /* BathymetryContentfulEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryContentfulEntity.swift; sourceTree = "<group>"; };
-		E6169D3925CAB00200AE1F06 /* ZoomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomButton.swift; sourceTree = "<group>"; };
+		E6169D3925CAB00200AE1F06 /* MapZoomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomButton.swift; sourceTree = "<group>"; };
 		E616F3E225BAC9B5005A3703 /* BathymetryContentfulClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryContentfulClient.swift; sourceTree = "<group>"; };
 		E6171D5D25B0763B00161E28 /* BathymetryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryEntity.swift; sourceTree = "<group>"; };
 		E6171D7525B0A5D600161E28 /* Contentful-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Contentful-Info.plist"; sourceTree = "<group>"; };
@@ -280,7 +280,6 @@
 			isa = PBXGroup;
 			children = (
 				E69D159C25C9809100AD1B0F /* CircularButton.swift */,
-				E6169D3925CAB00200AE1F06 /* ZoomButton.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -357,6 +356,7 @@
 			children = (
 				E6EF547125BC31E8004C2478 /* Mapbox */,
 				E6FE7ABF25824B2700C47C2B /* MapView.swift */,
+				E6169D3925CAB00200AE1F06 /* MapZoomButton.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -540,7 +540,7 @@
 				E6BDC3BE259600BF00184925 /* BathymetryClient.swift in Sources */,
 				E6DE397625C9735A00D0408A /* BathymetryRegion.swift in Sources */,
 				E65CF4182590BBA9008A207C /* AppAction.swift in Sources */,
-				E6169D3A25CAB00200AE1F06 /* ZoomButton.swift in Sources */,
+				E6169D3A25CAB00200AE1F06 /* MapZoomButton.swift in Sources */,
 				E6EF547325BC3534004C2478 /* MapView+MGLMapView.swift in Sources */,
 				E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */,
 				E64FDE96257D22D200B303C6 /* CoreData.xcdatamodeld in Sources */,

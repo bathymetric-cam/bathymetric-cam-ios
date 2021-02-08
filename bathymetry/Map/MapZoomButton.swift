@@ -1,7 +1,7 @@
 import SwiftUI
 
-// MARK: - ZoomButton
-struct ZoomButton: View {
+// MARK: - MapZoomButton
+struct MapZoomButton: View {
     
     // MARK: enum
     
@@ -59,10 +59,10 @@ struct ZoomButton: View {
     }
 }
 
-// MARK: - ZoomButtonZoomIn_Previews
-struct ZoomButtonZoomIn_Previews: PreviewProvider {
+// MARK: - MapZoomButtonZoomIn_Previews
+struct MapZoomButtonZoomIn_Previews: PreviewProvider {
     static var previews: some View {
-        ZoomButton(
+        MapZoomButton(
             type: .zoomIn,
             zoomLevel: Binding<BathymetryZoomLevel>(
                 get: { .max },
@@ -72,10 +72,10 @@ struct ZoomButtonZoomIn_Previews: PreviewProvider {
     }
 }
 
-// MARK: - ZoomButtonZoomOut_Previews
-struct ZoomButtonZoomOut_Previews: PreviewProvider {
+// MARK: - MapZoomButtonZoomOut_Previews
+struct MapZoomButtonZoomOut_Previews: PreviewProvider {
     static var previews: some View {
-        ZoomButton(
+        MapZoomButton(
             type: .zoomOut,
             zoomLevel: Binding<BathymetryZoomLevel>(
                 get: { .max },
