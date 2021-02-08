@@ -6,7 +6,7 @@ import SwiftUI
 struct AppState: Equatable {
     // MARK: property
     
-    var bathymetryTiles: [BathymetryTile] = []
+    var bathymetryTiles = [BathymetryTile]()
     var bathymetryColors: BathymetryColors
     var zoomLevel = BathymetryZoomLevel.max
     var region = BathymetryRegion(
