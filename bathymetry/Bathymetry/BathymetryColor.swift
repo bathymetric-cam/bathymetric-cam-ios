@@ -49,6 +49,6 @@ extension BathymetryColors {
         BathymetryColor(color: .init(red: 0.435, green: 0.670, blue: 0.772), depth: BathymetryDepth(min: 1.0, max: 1.5)),
         BathymetryColor(color: .init(red: 0.149, green: 0.494, blue: 0.612), depth: BathymetryDepth(min: 1.5, max: 2.0)),
         BathymetryColor(color: .init(red: 0.0, green: 0.275, blue: 0.384), depth: BathymetryDepth(min: 2.0, max: 2.5)),
-        BathymetryColor(color: .init(red: 0.012, green: 0.50, blue: 0.298), depth: BathymetryDepth(min: 2.5, max: 100000.0)),
+        BathymetryColor(color: .init(red: 0.012, green: 0.50, blue: 0.298), depth: BathymetryDepth(min: 2.5, max: 10.0)),
     ]
 }

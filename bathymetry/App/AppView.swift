@@ -69,8 +69,21 @@ struct AppView: View {
                         }
                     }
                 }
-                .offset(x: 8, y: metrics.size.height - metrics.size.width / 2.0)
+                .offset(x: 16, y: metrics.size.height - metrics.size.width / 2.0)
+                
+                WithViewStore(store) { viewStore in
+                    BathymetryColorsView(
+                        bathymetryColors: viewStore.binding(
+                            get: { $0.bathymetryColors },
+                            send: AppAction.bathymetryColorsUpdated
+                        )
+                    )
+                    .offset(x: 16)
+                    
+                }
             }
+                
+
         }
     }
     // swiftlint:enable closure_body_length

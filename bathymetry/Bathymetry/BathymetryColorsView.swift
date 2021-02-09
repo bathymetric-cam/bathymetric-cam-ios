@@ -25,22 +25,25 @@ struct BathymetryColorView: View {
         HStack(alignment: .bottom) {
             Rectangle()
                 .fill(bathymetryColor.color)
-                .frame(width: 40, height: 40)
+                .frame(width: 32, height: 32)
             Text(String(format: "%.1f", bathymetryColor.depth.max))
-                .frame(width: 40)
+                .frame(width: 32, alignment: .trailing)
+                .font(.caption)
         }
-        .frame(width: 80)
+        .frame(width: 64)
     }
 }
 
 // MARK: - BathymetryColorsView_Previews
 struct BathymetryColorsView_Previews: PreviewProvider {
     static var previews: some View {
-        BathymetryColorsView(
-            bathymetryColors: Binding<BathymetryColors>(
-                get: { .defaultColors },
-                set: { _ in }
+        Group {
+            BathymetryColorsView(
+                bathymetryColors: Binding<BathymetryColors>(
+                    get: { .defaultColors },
+                    set: { _ in }
+                )
             )
-        )
+        }
     }
 }
