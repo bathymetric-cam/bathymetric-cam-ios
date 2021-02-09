@@ -16,6 +16,15 @@ extension BathymetryColor: Equatable {
     }
 }
 
+// MARK: - BathymetryColor + Hashable
+extension BathymetryColor: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(color)
+        hasher.combine(depth.min)
+        hasher.combine(depth.max)
+    }
+}
+
 // MARK: - BathymetryDepth
 struct BathymetryDepth {
     let min: Double
