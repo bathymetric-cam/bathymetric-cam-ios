@@ -14,6 +14,10 @@ struct AppView: View {
             GeometryReader { metrics in
                 WithViewStore(store) { viewStore in
                     ARView(
+                        isOn: viewStore.binding(
+                            get: { $0.arIsOn },
+                            send: AppAction.arIsOnChanged
+                        ),
                         bathymetryTiles: viewStore.binding(
                             get: { $0.bathymetryTiles },
                             send: AppAction.bathymetryTilesUpdated
@@ -47,6 +51,24 @@ struct AppView: View {
             .edgesIgnoringSafeArea(.all)
             
             GeometryReader { metrics in
+                WithViewStore(store) { viewStore in
+                    BathymetryColorsView(
+                        bathymetryColors: viewStore.binding(
+                            get: { $0.bathymetryColors },
+                            send: AppAction.bathymetryColorsUpdated
+                        )
+                    )
+                    .offset(x: 16)
+                    
+                    ARToggle(
+                        isOn: viewStore.binding(
+                            get: { $0.arIsOn },
+                            send: AppAction.arIsOnChanged
+                        )
+                    )
+                    .offset(x: metrics.size.width - ARToggle.width - 16)
+                }
+                
                 VStack {
                     WithViewStore(store) { viewStore in
                         MapZoomButton(
@@ -70,24 +92,6 @@ struct AppView: View {
                     }
                 }
                 .offset(x: 16, y: metrics.size.height - metrics.size.width / 2.0)
-                
-                WithViewStore(store) { viewStore in
-                    BathymetryColorsView(
-                        bathymetryColors: viewStore.binding(
-                            get: { $0.bathymetryColors },
-                            send: AppAction.bathymetryColorsUpdated
-                        )
-                    )
-                    .offset(x: 16)
-                    
-                    ARToggle(
-                        isOn: viewStore.binding(
-                            get: { $0.arIsOn },
-                            send: AppAction.arIsOnChanged
-                        )
-                    )
-                    .offset(x: metrics.size.width - ARToggle.width - 16)
-                }
             }
         }
     }

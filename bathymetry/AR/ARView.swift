@@ -9,21 +9,25 @@ struct ARView: UIViewRepresentable {
 
     // MARK: property
     
+    @Binding var isOn: Bool
     @Binding var bathymetryTiles: [BathymetryTile]
     @Binding var bathymetryColors: BathymetryColors
-    
+
     // MARK: UIViewRepresentable
     
     func makeUIView(context: UIViewRepresentableContext<ARView>) -> UIARView {
-        let sceneLocationView = UIARView(trackingType: .orientationTracking)
-        sceneLocationView.locationEstimateDelegate = context.coordinator
-        sceneLocationView.run()
-        return sceneLocationView
+        let uiArView = UIARView(trackingType: .orientationTracking)
+        uiArView.locationEstimateDelegate = context.coordinator
+        uiArView.run()
+        return uiArView
     }
     
     func updateUIView(_ uiView: UIARView, context: UIViewRepresentableContext<ARView>) {
         uiView.locationNodes.forEach {
             uiView.removeLocationNode(locationNode: $0)
+        }
+        if !isOn {
+            return
         }
         let altitude = uiView.sceneLocationManager.currentLocation?.altitude ?? 0
         bathymetryTiles.forEach {
@@ -120,6 +124,7 @@ final class UIARView: SceneLocationView {
             break
         }
     }
+
 }
 
 // MARK: - ARView_Previews
@@ -127,6 +132,10 @@ struct ARView_Previews: PreviewProvider {
     
     static var previews: some View {
         ARView(
+            isOn: Binding<Bool>(
+                get: { true },
+                set: { _ in }
+            ),
             bathymetryTiles: Binding<[BathymetryTile]>(
                 get: { [] },
                 set: { _ in }
