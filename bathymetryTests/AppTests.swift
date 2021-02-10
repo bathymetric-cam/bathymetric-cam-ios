@@ -97,6 +97,26 @@ class AppTests: XCTestCase {
             }
         )
     }
+    
+    func testAppStore_whenInitialState_arIsOnChanged() throws {
+        let sut = TestStore(
+        initialState: .init(bathymetryColors: .defaultColors),
+          reducer: appReducer,
+          environment: AppEnvironment(
+            mainQueue: scheduler.eraseToAnyScheduler(),
+            bathymetryClient: .mock()
+          )
+        )
+        sut.assert(
+            .send(.arIsOnChanged(false)) {
+                $0.arIsOn = false
+            },
+            .do { self.scheduler.advance(by: 0.1) },
+            .send(.arIsOnChanged(true)) {
+                $0.arIsOn = true
+            }
+        )
+    }
 }
 
 // MARK: - mock
