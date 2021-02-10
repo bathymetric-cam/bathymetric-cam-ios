@@ -79,6 +79,14 @@ struct AppView: View {
                         )
                     )
                     .offset(x: 16)
+                    
+                    ARToggle(
+                        isOn: viewStore.binding(
+                            get: { $0.arIsOn },
+                            send: AppAction.arIsOnChanged
+                        )
+                    )
+                    .offset(x: metrics.size.width - ARToggle.width - 16)
                 }
             }
         }
