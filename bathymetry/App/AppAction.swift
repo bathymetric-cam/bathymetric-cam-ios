@@ -11,4 +11,5 @@ enum AppAction: Equatable {
     case zoomIn
     case zoomOut
     case zoomLevelUpdated(zoomLevel: BathymetryZoomLevel)
+    case arIsOnChanged(Bool)
 }

@@ -14,4 +14,5 @@ struct AppState: Equatable {
         neTile: RegionTile(x: 0, y: 0),
         zoom: Int(BathymetryZoomLevel.max)
     )
+    var arIsOn = true
 }

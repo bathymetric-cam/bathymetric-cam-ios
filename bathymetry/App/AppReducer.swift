@@ -32,6 +32,9 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
         return .none
     case let .zoomLevelUpdated(zoomLevel):
         return .none
+    case let .arIsOnChanged(arIsOn):
+        state.arIsOn = arIsOn
+        return .none
     }
 }
 // swiftlint:enable closure_body_length

@@ -79,11 +79,8 @@ struct AppView: View {
                         )
                     )
                     .offset(x: 16)
-                    
                 }
             }
-                
-
         }
     }
     // swiftlint:enable closure_body_length
