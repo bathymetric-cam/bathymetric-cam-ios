@@ -2,8 +2,8 @@ import ComposableArchitecture
 
 // MARK: - AppEnvironment
 struct AppEnvironment {
-    // MARK: property
-    
-    var mainQueue: AnySchedulerOf<DispatchQueue>
-    var bathymetryClient: BathymetryClient
+  // MARK: property
+  
+  var mainQueue: AnySchedulerOf<DispatchQueue>
+  var bathymetryClient: BathymetryClient
 }
