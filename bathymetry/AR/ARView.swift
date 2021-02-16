@@ -74,6 +74,9 @@ struct ARView: UIViewRepresentable {
 
 // MARK: - UIARView
 final class UIARView: SceneLocationView {
+  // MARK: property
+  
+  var cancellables = Set<AnyCancellable>()
   
   // MARK: initialization
   
@@ -81,18 +84,24 @@ final class UIARView: SceneLocationView {
   override private init(frame: CGRect, options: [String: Any]? = nil) {
     super.init(frame: frame, options: options)
   
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(didReceiveNotification(notification:)),
-      name: UIApplication.didBecomeActiveNotification,
-      object: nil
-    )
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(didReceiveNotification(notification:)),
-      name: UIApplication.willResignActiveNotification,
-      object: nil
-    )
+    NotificationCenter
+      .default
+      .publisher(for: UIApplication.didBecomeActiveNotification)
+      .sink { [weak self] _ in
+        DispatchQueue.main.async { [weak self] in
+          self?.run()
+        }
+      }
+      .store(in: &cancellables)
+    NotificationCenter
+      .default
+      .publisher(for: UIApplication.willResignActiveNotification)
+      .sink { [weak self] _ in
+        DispatchQueue.main.async { [weak self] in
+          self?.pause()
+        }
+      }
+      .store(in: &cancellables)
   }
   // swiftlint:enable discouraged_optional_collection
   
@@ -104,27 +113,8 @@ final class UIARView: SceneLocationView {
   // MARK: destruction
   
   deinit {
-    NotificationCenter.default.removeObserver(self)
+    cancellables.forEach { $0.cancel() }
   }
-  
-  // MARK: notification
-  
-  @objc
-  private func didReceiveNotification(notification: Notification) {
-    switch notification.name {
-    case UIApplication.didBecomeActiveNotification:
-      DispatchQueue.main.async { [weak self] in
-        self?.run()
-      }
-    case UIApplication.willResignActiveNotification:
-      DispatchQueue.main.async { [weak self] in
-        self?.pause()
-      }
-    default:
-      break
-    }
-  }
-
 }
 
 // MARK: - ARView_Previews
