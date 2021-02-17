@@ -44,11 +44,12 @@ typealias BathymetryColors = [BathymetryColor]
 // MARK: - BathymetryColors + static constant
 extension BathymetryColors {
   static let defaultColors = [
-    BathymetryColor(color: .init(red: 0.878, green: 0.945, blue: 0.976), depth: BathymetryDepth(min: 0, max: 0.5)),
-    BathymetryColor(color: .init(red: 0.718, green: 0.827, blue: 0.898), depth: BathymetryDepth(min: 0.5, max: 1.0)),
-    BathymetryColor(color: .init(red: 0.435, green: 0.670, blue: 0.772), depth: BathymetryDepth(min: 1.0, max: 1.5)),
-    BathymetryColor(color: .init(red: 0.149, green: 0.494, blue: 0.612), depth: BathymetryDepth(min: 1.5, max: 2.0)),
-    BathymetryColor(color: .init(red: 0.0, green: 0.275, blue: 0.384), depth: BathymetryDepth(min: 2.0, max: 2.5)),
-    BathymetryColor(color: .init(red: 0.012, green: 0.50, blue: 0.298), depth: BathymetryDepth(min: 2.5, max: 10.0)),
+    BathymetryColor(color: .init(red: 241.0 / 255, green: 250.0 / 255, blue: 253.0 / 255), depth: BathymetryDepth(min: 0.0, max: 1.0)),
+    BathymetryColor(color: .init(red: 224.0 / 255, green: 241.0 / 255, blue: 249.0 / 255), depth: BathymetryDepth(min: 1.0, max: 2.0)),
+    BathymetryColor(color: .init(red: 183.0 / 255, green: 211.0 / 255, blue: 229.0 / 255), depth: BathymetryDepth(min: 2.0, max: 3.0)),
+    BathymetryColor(color: .init(red: 111.0 / 255, green: 171.0 / 255, blue: 197.0 / 255), depth: BathymetryDepth(min: 3.0, max: 5.0)),
+    BathymetryColor(color: .init(red: 38.0 / 255, green: 126.0 / 255, blue: 156.0 / 255), depth: BathymetryDepth(min: 5.0, max: 10.0)),
+    BathymetryColor(color: .init(red: 0.0 / 255, green: 70.0 / 255, blue: 98.0 / 255), depth: BathymetryDepth(min: 10.0, max: 20.0)),
+    BathymetryColor(color: .init(red: 3.0 / 255, green: 51.0 / 255, blue: 76.0 / 255), depth: BathymetryDepth(min: 20.0, max: 50.0)),
   ]
 }

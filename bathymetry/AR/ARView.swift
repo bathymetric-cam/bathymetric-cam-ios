@@ -87,19 +87,17 @@ final class UIARView: SceneLocationView {
     NotificationCenter
       .default
       .publisher(for: UIApplication.didBecomeActiveNotification)
+      .receive(on: DispatchQueue.main)
       .sink { [weak self] _ in
-        DispatchQueue.main.async { [weak self] in
-          self?.run()
-        }
+        self?.run()
       }
       .store(in: &cancellables)
     NotificationCenter
       .default
       .publisher(for: UIApplication.willResignActiveNotification)
+      .receive(on: DispatchQueue.main)
       .sink { [weak self] _ in
-        DispatchQueue.main.async { [weak self] in
-          self?.pause()
-        }
+        self?.pause()
       }
       .store(in: &cancellables)
   }
