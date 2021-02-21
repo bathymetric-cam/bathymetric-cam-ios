@@ -13,109 +13,109 @@ class AppTests: XCTestCase {
   // MARK: life cycle
   
   override func setUpWithError() throws {
-      super.setUp()
+    super.setUp()
   }
 
   override func tearDownWithError() throws {
-      super.tearDown()
+    super.tearDown()
   }
   
   // MARK: test
   
   func testAppStore_whenInitialState_loadBathymetriesSuccess() throws {
-      let sut = TestStore(
-      initialState: .init(bathymetryColors: .defaultColors),
-        reducer: appReducer,
-        environment: AppEnvironment(
-        mainQueue: scheduler.eraseToAnyScheduler(),
-        bathymetryClient: .mock()
-        )
+    let sut = TestStore(
+    initialState: .init(bathymetryColors: .defaultColors),
+      reducer: appReducer,
+      environment: AppEnvironment(
+      mainQueue: scheduler.eraseToAnyScheduler(),
+      bathymetryClient: .mock()
       )
-      sut.assert(
-        .environment {
-            $0.bathymetryClient.loadBathymetries = { _ in Effect(value: mockBathymetryTiles) }
-        },
-        .send(.loadBathymetries(mockRegion)) {
-            $0.region = mockRegion.largerRegion()
-        },
-        .do { self.scheduler.advance(by: 0.1) },
-        .receive(.bathymetriesResult(.success(mockBathymetryTiles))) {
-            $0.bathymetryTiles = mockBathymetryTiles
-        }
-      )
+    )
+    sut.assert(
+      .environment {
+        $0.bathymetryClient.loadBathymetries = { _ in Effect(value: mockBathymetryTiles) }
+      },
+      .send(.loadBathymetries(mockRegion)) {
+        $0.region = mockRegion.largerRegion()
+      },
+      .do { self.scheduler.advance(by: 0.1) },
+      .receive(.bathymetriesResult(.success(mockBathymetryTiles))) {
+        $0.bathymetryTiles = mockBathymetryTiles
+      }
+    )
   }
   
   func testAppStore_whenInitialState_loadBathymetriesFailure() throws {
-      let sut = TestStore(
-      initialState: .init(bathymetryColors: .defaultColors),
-        reducer: appReducer,
-        environment: AppEnvironment(
-        mainQueue: scheduler.eraseToAnyScheduler(),
-        bathymetryClient: .mock()
-        )
+    let sut = TestStore(
+    initialState: .init(bathymetryColors: .defaultColors),
+      reducer: appReducer,
+      environment: AppEnvironment(
+      mainQueue: scheduler.eraseToAnyScheduler(),
+      bathymetryClient: .mock()
       )
-      sut.assert(
-        .environment {
-            $0.bathymetryClient.loadBathymetries = { _ in Effect(error: mockFailure) }
-        },
-        .send(.loadBathymetries(mockRegion)) {
-            $0.region = mockRegion.largerRegion()
-        },
-        .do { self.scheduler.advance(by: 0.1) },
-        .receive(.bathymetriesResult(.failure(mockFailure)))
-      )
+    )
+    sut.assert(
+      .environment {
+        $0.bathymetryClient.loadBathymetries = { _ in Effect(error: mockFailure) }
+      },
+      .send(.loadBathymetries(mockRegion)) {
+        $0.region = mockRegion.largerRegion()
+      },
+      .do { self.scheduler.advance(by: 0.1) },
+      .receive(.bathymetriesResult(.failure(mockFailure)))
+    )
   }
   
   func testAppStore_whenInitialState_zoomIn() throws {
-      let sut = TestStore(
-      initialState: .init(bathymetryColors: .defaultColors),
-        reducer: appReducer,
-        environment: AppEnvironment(
-        mainQueue: scheduler.eraseToAnyScheduler(),
-        bathymetryClient: .mock()
-        )
+    let sut = TestStore(
+    initialState: .init(bathymetryColors: .defaultColors),
+      reducer: appReducer,
+      environment: AppEnvironment(
+      mainQueue: scheduler.eraseToAnyScheduler(),
+      bathymetryClient: .mock()
       )
-      sut.assert(
-        .send(.zoomIn) {
-            $0.zoomLevel.zoomIn()
-        }
-      )
+    )
+    sut.assert(
+      .send(.zoomIn) {
+        $0.zoomLevel.zoomIn()
+      }
+    )
   }
   
   func testAppStore_whenInitialState_zoomOut() throws {
-      let sut = TestStore(
-      initialState: .init(bathymetryColors: .defaultColors),
-        reducer: appReducer,
-        environment: AppEnvironment(
-        mainQueue: scheduler.eraseToAnyScheduler(),
-        bathymetryClient: .mock()
-        )
+    let sut = TestStore(
+    initialState: .init(bathymetryColors: .defaultColors),
+      reducer: appReducer,
+      environment: AppEnvironment(
+      mainQueue: scheduler.eraseToAnyScheduler(),
+      bathymetryClient: .mock()
       )
-      sut.assert(
-        .send(.zoomOut) {
-            $0.zoomLevel.zoomOut()
-        }
-      )
+    )
+    sut.assert(
+      .send(.zoomOut) {
+        $0.zoomLevel.zoomOut()
+      }
+    )
   }
   
   func testAppStore_whenInitialState_arIsOnChanged() throws {
-      let sut = TestStore(
+    let sut = TestStore(
       initialState: .init(bathymetryColors: .defaultColors),
         reducer: appReducer,
         environment: AppEnvironment(
         mainQueue: scheduler.eraseToAnyScheduler(),
         bathymetryClient: .mock()
-        )
       )
-      sut.assert(
-        .send(.arIsOnChanged(false)) {
-            $0.arIsOn = false
-        },
-        .do { self.scheduler.advance(by: 0.1) },
-        .send(.arIsOnChanged(true)) {
-            $0.arIsOn = true
-        }
-      )
+    )
+    sut.assert(
+      .send(.arIsOnChanged(false)) {
+        $0.arIsOn = false
+      },
+      .do { self.scheduler.advance(by: 0.1) },
+      .send(.arIsOnChanged(true)) {
+        $0.arIsOn = true
+      }
+    )
   }
 }
 
@@ -136,9 +136,9 @@ extension BathymetryClient {
   // MARK: property
   
   static func mock(
-      loadBathymetries: @escaping (_ region: BathymetryRegion) -> Effect<[BathymetryTile], Failure> = { _ in
-      fatalError("Unmocked")
+    loadBathymetries: @escaping (_ region: BathymetryRegion) -> Effect<[BathymetryTile], Failure> = { _ in
+    fatalError("Unmocked")
   }) -> Self {
-      Self(loadBathymetries: loadBathymetries)
+    Self(loadBathymetries: loadBathymetries)
   }
 }

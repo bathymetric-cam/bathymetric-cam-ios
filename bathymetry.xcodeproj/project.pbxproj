@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E608B63525BAEE4A0053FBBF /* BathymetryContentfulEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E608B63425BAEE4A0053FBBF /* BathymetryContentfulEntity.swift */; };
-		E61649CF25E2AF4A00D5809E /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = E61649CE25E2AF4A00D5809E /* SnapshotTesting */; };
 		E6169D3A25CAB00200AE1F06 /* MapZoomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6169D3925CAB00200AE1F06 /* MapZoomButton.swift */; };
 		E616F3E325BAC9B5005A3703 /* BathymetryContentfulClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E616F3E225BAC9B5005A3703 /* BathymetryContentfulClient.swift */; };
 		E6171D5A25B0574900161E28 /* Contentful in Frameworks */ = {isa = PBXBuildFile; productRef = E6171D5925B0574900161E28 /* Contentful */; };
@@ -37,6 +36,7 @@
 		E6711BC225D40364007A4A89 /* ARToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6711BC125D40364007A4A89 /* ARToggle.swift */; };
 		E684122525A9D70400186A13 /* Euclid in Frameworks */ = {isa = PBXBuildFile; productRef = E684122425A9D70400186A13 /* Euclid */; };
 		E684122A25A9E9A700186A13 /* iShapeTriangulation in Frameworks */ = {isa = PBXBuildFile; productRef = E684122925A9E9A700186A13 /* iShapeTriangulation */; };
+		E68EDB4A25E2B96900D45A3A /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = E68EDB4925E2B96900D45A3A /* SnapshotTesting */; };
 		E694049025C428CF00F047EC /* BathymetryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694048F25C428CF00F047EC /* BathymetryColor.swift */; };
 		E698A33025976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A32F25976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift */; };
 		E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69BBD11257E50170048050C /* Preview Assets.xcassets */; };
@@ -144,7 +144,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E61649CF25E2AF4A00D5809E /* SnapshotTesting in Frameworks */,
 				E6203F87259205FE007C8FDA /* Mapbox.framework in Frameworks */,
 				E6E065252590CBB50032B6C8 /* GEOSwift in Frameworks */,
 				E6171D5A25B0574900161E28 /* Contentful in Frameworks */,
@@ -162,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E68EDB4A25E2B96900D45A3A /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,7 +396,6 @@
 				E684122425A9D70400186A13 /* Euclid */,
 				E684122925A9E9A700186A13 /* iShapeTriangulation */,
 				E6171D5925B0574900161E28 /* Contentful */,
-				E61649CE25E2AF4A00D5809E /* SnapshotTesting */,
 			);
 			productName = bathymetry;
 			productReference = E64FDE86257D22D200B303C6 /* Bathymetry.app */;
@@ -416,6 +415,9 @@
 				E64FDE9E257D22D200B303C6 /* PBXTargetDependency */,
 			);
 			name = bathymetryTests;
+			packageProductDependencies = (
+				E68EDB4925E2B96900D45A3A /* SnapshotTesting */,
+			);
 			productName = bathymetryTests;
 			productReference = E64FDE9C257D22D200B303C6 /* bathymetryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -478,7 +480,7 @@
 				E684122325A9D70400186A13 /* XCRemoteSwiftPackageReference "Euclid" */,
 				E684122825A9E9A700186A13 /* XCRemoteSwiftPackageReference "iShapeTriangulation" */,
 				E6171D5825B0574900161E28 /* XCRemoteSwiftPackageReference "contentful" */,
-				E61649CD25E2AF4A00D5809E /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				E68EDB4825E2B96900D45A3A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = E64FDE87257D22D200B303C6 /* Products */;
 			projectDirPath = "";
@@ -916,14 +918,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E61649CD25E2AF4A00D5809E /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.8.2;
-			};
-		};
 		E6171D5825B0574900161E28 /* XCRemoteSwiftPackageReference "contentful" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/contentful/contentful.swift";
@@ -946,6 +940,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.13.0;
+			};
+		};
+		E68EDB4825E2B96900D45A3A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.2;
 			};
 		};
 		E6A63800257E4D2200751BF5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
@@ -991,11 +993,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E61649CE25E2AF4A00D5809E /* SnapshotTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E61649CD25E2AF4A00D5809E /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
-			productName = SnapshotTesting;
-		};
 		E6171D5925B0574900161E28 /* Contentful */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E6171D5825B0574900161E28 /* XCRemoteSwiftPackageReference "contentful" */;
@@ -1015,6 +1012,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E684122825A9E9A700186A13 /* XCRemoteSwiftPackageReference "iShapeTriangulation" */;
 			productName = iShapeTriangulation;
+		};
+		E68EDB4925E2B96900D45A3A /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E68EDB4825E2B96900D45A3A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
 		};
 		E6A63801257E4D2200751BF5 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
