@@ -140,8 +140,7 @@ extension MapView {
             let mapboxLayer = MGLFillStyleLayer(identifier: "\(Bundle.main.bundleIdentifier ?? "").layer.\(bathymetryTile.name)/\(color.depth.min)/\(color.depth.max)/\($0)", source: source)
             mapboxLayer.fillColor = NSExpression(forConstantValue: color.uiColor.withAlphaComponent(0.8))
             mapView.style?.addLayer(mapboxLayer)
-
-        }
+          }
       }
     }
   }

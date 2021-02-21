@@ -85,12 +85,14 @@ extension BathymetryClient {
   // MARK: static constant
 
   static let contentful = BathymetryClient { region in
-    Future<[BathymetryTile], Failure> { promise in
-      guard let client = BathymetryContentfulClientFactory.createClient() else {
-        promise(.failure(.clientCreationFailure))
-        return
+    Deferred {
+      Future<[BathymetryTile], Failure> { promise in
+        guard let client = BathymetryContentfulClientFactory.createClient() else {
+          promise(.failure(.clientCreationFailure))
+          return
+        }
+        client.loadBathymetries(region: region, promise: promise)
       }
-      client.loadBathymetries(region: region, promise: promise)
     }
     .eraseToEffect()
   }

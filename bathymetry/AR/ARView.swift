@@ -107,12 +107,6 @@ final class UIARView: SceneLocationView {
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
-  // MARK: destruction
-  
-  deinit {
-    cancellables.forEach { $0.cancel() }
-  }
 }
 
 // MARK: - ARView_Previews

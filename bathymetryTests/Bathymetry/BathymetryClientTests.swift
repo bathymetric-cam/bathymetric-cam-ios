@@ -72,16 +72,20 @@ extension BathymetryClient {
   // MARK: property
   
   static let fakeSuccessClient = BathymetryClient { region in
+    Deferred {
       Future<[BathymetryTile], Failure> { promise in
         promise(.success(mockBathymetryTiles))
       }
-      .eraseToEffect()
+    }
+    .eraseToEffect()
   }
   
   static let fakeFailureClient = BathymetryClient { region in
+    Deferred {
       Future<[BathymetryTile], Failure> { promise in
         promise(.failure(mockFailure))
       }
-      .eraseToEffect()
+    }
+    .eraseToEffect()
   }
 }
