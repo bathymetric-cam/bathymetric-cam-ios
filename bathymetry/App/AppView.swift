@@ -77,7 +77,8 @@ struct AppView: View {
                 get: { $0.zoomLevel },
                 send: AppAction.zoomLevelUpdated
               )
-            ) {
+            )
+            .onTap {
               viewStore.send(.zoomIn)
             }
             MapZoomButton(
@@ -86,7 +87,8 @@ struct AppView: View {
                 get: { $0.zoomLevel },
                 send: AppAction.zoomLevelUpdated
               )
-            ) {
+            )
+            .onTap {
               viewStore.send(.zoomOut)
             }
           }

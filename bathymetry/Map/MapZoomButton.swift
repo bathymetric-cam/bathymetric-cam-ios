@@ -1,3 +1,4 @@
+import Combine
 import SwiftUI
 
 // MARK: - MapZoomButton
@@ -14,22 +15,23 @@ struct MapZoomButton: View {
   
   let type: ZoomType
   @Binding var zoomLevel: BathymetryZoomLevel
-  let action: () -> Void
-  
+  let tapPublisher = PassthroughSubject<Void, Never>()
+
   var body: some View {
     CircularButton(
       background: Color(.systemBackground),
       foreground: Color(.label),
-      action: action
-    ) {
-      Group {
-        if type == .zoomIn {
-          zoomIn
-        } else {
-          zoomOut
+      action: { tapPublisher.send() },
+      content: {
+        Group {
+          if type == .zoomIn {
+            zoomIn
+          } else {
+            zoomOut
+          }
         }
       }
-    }
+    )
       .frame(width: 64, height: 64)
       .opacity(opacity)
   }
@@ -57,6 +59,12 @@ struct MapZoomButton: View {
   var opacity: Double {
     (type == .zoomIn && zoomLevel < .max) || (type == .zoomOut && zoomLevel > .min) ? 1.0 : 0.5
   }
+  
+  // MARK: public api
+  
+  func onTap(perform action: @escaping () -> Void) -> some View {
+    onReceive(tapPublisher) { action() }
+  }
 }
 
 // MARK: - MapZoomButtonZoomIn_Previews
@@ -68,7 +76,7 @@ struct MapZoomButtonZoomIn_Previews: PreviewProvider {
         get: { .max },
         set: { _ in }
       )
-    ) { }
+    )
   }
 }
 
@@ -81,6 +89,6 @@ struct MapZoomButtonZoomOut_Previews: PreviewProvider {
         get: { .max },
         set: { _ in }
       )
-    ) { }
+    )
   }
 }
