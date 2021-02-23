@@ -1,5 +1,5 @@
-import SwiftUI
 import SnapshotTesting
+import SwiftUI
 import XCTest
 @testable import Bathymetry
 
@@ -16,17 +16,100 @@ class MapZoomButtonTests: XCTestCase {
   }
   
   // MARK: test
-  func testMapZoomButton_whenTypeIsZoomIn_snapshotTesting() throws {
-    assertSnapshot(
-      matching: MapZoomButton(
+  
+  func testMapZoomButton_whenTypeIsZoomInAndZoomLevelIsMax_snapshotTesting() throws {
+    let sut = UIHostingController(
+      rootView: MapZoomButton(
         type: .zoomIn,
         zoomLevel: Binding<BathymetryZoomLevel>(
           get: { .max },
           set: { _ in }
         )
-      ) { },
-      as: .image(on: .iPhoneX)
+      )
+    )
+    sut.overrideUserInterfaceStyle = .dark
+    assertSnapshot(
+      matching: sut,
+      as: .image,
+      named: "dark"
+    )
+    sut.overrideUserInterfaceStyle = .light
+    assertSnapshot(
+      matching: sut,
+      as: .image,
+      named: "light"
     )
   }
- 
+  
+  func testMapZoomButton_whenTypeIsZoomInAndZoomLevelIsMin_snapshotTesting() throws {
+    let sut = UIHostingController(
+      rootView: MapZoomButton(
+        type: .zoomIn,
+        zoomLevel: Binding<BathymetryZoomLevel>(
+          get: { .min },
+          set: { _ in }
+        )
+      )
+    )
+    sut.overrideUserInterfaceStyle = .dark
+    assertSnapshot(
+      matching: sut,
+      as: .image,
+      named: "dark"
+    )
+    sut.overrideUserInterfaceStyle = .light
+    assertSnapshot(
+      matching: sut,
+      as: .image,
+      named: "light"
+    )
+  }
+  
+  func testMapZoomButton_whenTypeIsZoomOutAndZoomLevelIsMax_snapshotTesting() throws {
+    let sut = UIHostingController(
+      rootView: MapZoomButton(
+        type: .zoomOut,
+        zoomLevel: Binding<BathymetryZoomLevel>(
+          get: { .max },
+          set: { _ in }
+        )
+      )
+    )
+    sut.overrideUserInterfaceStyle = .dark
+    assertSnapshot(
+      matching: sut,
+      as: .image,
+      named: "dark"
+    )
+    sut.overrideUserInterfaceStyle = .light
+    assertSnapshot(
+      matching: sut,
+      as: .image,
+      named: "light"
+    )
+  }
+  
+  func testMapZoomButton_whenTypeIsZoomOutAndZoomLevelIsMin_snapshotTesting() throws {
+    let sut = UIHostingController(
+      rootView: MapZoomButton(
+        type: .zoomOut,
+        zoomLevel: Binding<BathymetryZoomLevel>(
+          get: { .min },
+          set: { _ in }
+        )
+      )
+    )
+    sut.overrideUserInterfaceStyle = .dark
+    assertSnapshot(
+      matching: sut,
+      as: .image,
+      named: "dark"
+    )
+    sut.overrideUserInterfaceStyle = .light
+    assertSnapshot(
+      matching: sut,
+      as: .image,
+      named: "light"
+    )
+  }
 }
