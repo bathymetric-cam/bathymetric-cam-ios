@@ -1,15 +1,6 @@
 {
   "packageRules": [
     {
-      "groupName": "Alamofire",
-      "managers": [
-        "swift"
-      ],
-      "packageNames": [
-        "Alamofire"
-      ]
-    },
-    {
       "groupName": "ARCL",
       "managers": [
         "swift"

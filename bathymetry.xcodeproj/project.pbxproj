@@ -41,7 +41,6 @@
 		E698A33025976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A32F25976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift */; };
 		E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69BBD11257E50170048050C /* Preview Assets.xcassets */; };
 		E69D159D25C9809100AD1B0F /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69D159C25C9809100AD1B0F /* CircularButton.swift */; };
-		E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E6A63801257E4D2200751BF5 /* Alamofire */; };
 		E6B2866025A47B4600782955 /* ARBathymetryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */; };
 		E6BDC3BE259600BF00184925 /* BathymetryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BDC3BD259600BF00184925 /* BathymetryClient.swift */; };
 		E6BFC11E25D1479000295FB2 /* BathymetryTileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BFC11D25D1479000295FB2 /* BathymetryTileTests.swift */; };
@@ -157,7 +156,6 @@
 				E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */,
 				E6203F8925920600007C8FDA /* MapboxMobileEvents.framework in Frameworks */,
 				E61F4B76259F5E7A00E19A44 /* geos in Frameworks */,
-				E6A63802257E4D2200751BF5 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,7 +400,6 @@
 			);
 			name = bathymetry;
 			packageProductDependencies = (
-				E6A63801257E4D2200751BF5 /* Alamofire */,
 				E6F8C1F425811ED70051E68F /* ComposableArchitecture */,
 				E6F10616258A3068000DDD25 /* ARCL */,
 				E6E065242590CBB50032B6C8 /* GEOSwift */,
@@ -486,7 +483,6 @@
 			);
 			mainGroup = E64FDE7D257D22D200B303C6;
 			packageReferences = (
-				E6A63800257E4D2200751BF5 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				E6F8C1F325811ED70051E68F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
 				E6E065232590CBB50032B6C8 /* XCRemoteSwiftPackageReference "GEOSwift" */,
@@ -966,14 +962,6 @@
 				minimumVersion = 1.8.2;
 			};
 		};
-		E6A63800257E4D2200751BF5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.0;
-			};
-		};
 		E6E065232590CBB50032B6C8 /* XCRemoteSwiftPackageReference "GEOSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/GEOSwift/GEOSwift.git";
@@ -1033,11 +1021,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E68EDB4825E2B96900D45A3A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
-		};
-		E6A63801257E4D2200751BF5 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E6A63800257E4D2200751BF5 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
 		};
 		E6E065242590CBB50032B6C8 /* GEOSwift */ = {
 			isa = XCSwiftPackageProductDependency;
