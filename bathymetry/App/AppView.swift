@@ -42,10 +42,10 @@ struct AppView: View {
               send: AppAction.zoomLevelUpdated
             )
           )
-            .regionDidChange {
-              viewStore.send(.loadBathymetries($0))
-            }
-            .modifier(MapViewModifier(metrics: metrics))
+          .regionDidChange {
+            viewStore.send(.loadBathymetries($0))
+          }
+          .modifier(MapViewModifier(metrics: metrics))
         }
       }
       .edgesIgnoringSafeArea(.all)
@@ -93,7 +93,7 @@ struct AppView: View {
             }
           }
         }
-          .offset(x: 16, y: metrics.size.height - metrics.size.width / 2.0)
+        .offset(x: 16, y: metrics.size.height - metrics.size.width / 2.0)
       }
     }
   }

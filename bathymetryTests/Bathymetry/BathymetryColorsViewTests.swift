@@ -26,17 +26,13 @@ class BathymetryColorsViewTests: XCTestCase {
         )
       )
     )
-    sut.overrideUserInterfaceStyle = .dark
-    assertSnapshot(
-      matching: sut,
-      as: .image,
-      named: "dark"
-    )
-    sut.overrideUserInterfaceStyle = .light
-    assertSnapshot(
-      matching: sut,
-      as: .image,
-      named: "light"
-    )
+    [(UIUserInterfaceStyle.dark, "dark"), (UIUserInterfaceStyle.light, "light")].forEach { style, named in
+      sut.overrideUserInterfaceStyle = style
+      assertSnapshot(
+        matching: sut,
+        as: .image,
+        named: named
+      )
+    }
   }
 }

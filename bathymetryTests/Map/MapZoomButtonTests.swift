@@ -27,18 +27,15 @@ class MapZoomButtonTests: XCTestCase {
         )
       )
     )
-    sut.overrideUserInterfaceStyle = .dark
-    assertSnapshot(
-      matching: sut,
-      as: .image,
-      named: "dark"
-    )
-    sut.overrideUserInterfaceStyle = .light
-    assertSnapshot(
-      matching: sut,
-      as: .image,
-      named: "light"
-    )
+    
+    [(UIUserInterfaceStyle.dark, "dark"), (UIUserInterfaceStyle.light, "light")].forEach { style, named in
+      sut.overrideUserInterfaceStyle = style
+      assertSnapshot(
+        matching: sut,
+        as: .image,
+        named: named
+      )
+    }
   }
   
   func testMapZoomButton_whenTypeIsZoomInAndZoomLevelIsMin_snapshotTesting() throws {
@@ -51,18 +48,14 @@ class MapZoomButtonTests: XCTestCase {
         )
       )
     )
-    sut.overrideUserInterfaceStyle = .dark
-    assertSnapshot(
-      matching: sut,
-      as: .image,
-      named: "dark"
-    )
-    sut.overrideUserInterfaceStyle = .light
-    assertSnapshot(
-      matching: sut,
-      as: .image,
-      named: "light"
-    )
+    [(UIUserInterfaceStyle.dark, "dark"), (UIUserInterfaceStyle.light, "light")].forEach { style, named in
+      sut.overrideUserInterfaceStyle = style
+      assertSnapshot(
+        matching: sut,
+        as: .image,
+        named: named
+      )
+    }
   }
   
   func testMapZoomButton_whenTypeIsZoomOutAndZoomLevelIsMax_snapshotTesting() throws {
@@ -75,18 +68,14 @@ class MapZoomButtonTests: XCTestCase {
         )
       )
     )
-    sut.overrideUserInterfaceStyle = .dark
-    assertSnapshot(
-      matching: sut,
-      as: .image,
-      named: "dark"
-    )
-    sut.overrideUserInterfaceStyle = .light
-    assertSnapshot(
-      matching: sut,
-      as: .image,
-      named: "light"
-    )
+    [(UIUserInterfaceStyle.dark, "dark"), (UIUserInterfaceStyle.light, "light")].forEach { style, named in
+      sut.overrideUserInterfaceStyle = style
+      assertSnapshot(
+        matching: sut,
+        as: .image,
+        named: named
+      )
+    }
   }
   
   func testMapZoomButton_whenTypeIsZoomOutAndZoomLevelIsMin_snapshotTesting() throws {
@@ -99,17 +88,13 @@ class MapZoomButtonTests: XCTestCase {
         )
       )
     )
-    sut.overrideUserInterfaceStyle = .dark
-    assertSnapshot(
-      matching: sut,
-      as: .image,
-      named: "dark"
-    )
-    sut.overrideUserInterfaceStyle = .light
-    assertSnapshot(
-      matching: sut,
-      as: .image,
-      named: "light"
-    )
+    [(UIUserInterfaceStyle.dark, "dark"), (UIUserInterfaceStyle.light, "light")].forEach { style, named in
+      sut.overrideUserInterfaceStyle = style
+      assertSnapshot(
+        matching: sut,
+        as: .image,
+        named: named
+      )
+    }
   }
 }
