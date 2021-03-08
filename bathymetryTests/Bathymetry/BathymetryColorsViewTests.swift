@@ -30,7 +30,7 @@ class BathymetryColorsViewTests: XCTestCase {
       sut.overrideUserInterfaceStyle = style
       assertSnapshot(
         matching: sut,
-        as: .image,
+        as: .image(on: .iPhoneX, precision: 0.9),
         named: named
       )
     }
