@@ -37,13 +37,16 @@ struct BathymetryColorView: View {
 // MARK: - BathymetryColorsView_Previews
 struct BathymetryColorsView_Previews: PreviewProvider {
   static var previews: some View {
-    Group {
-      BathymetryColorsView(
-        bathymetryColors: Binding<BathymetryColors>(
-          get: { .defaultColors },
-          set: { _ in }
+    ForEach([ColorScheme.dark, ColorScheme.light], id: \.self) {
+      Group {
+        BathymetryColorsView(
+          bathymetryColors: Binding<BathymetryColors>(
+            get: { .defaultColors },
+            set: { _ in }
+          )
         )
-      )
+      }
+      .colorScheme($0)
     }
   }
 }

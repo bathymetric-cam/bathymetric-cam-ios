@@ -28,11 +28,14 @@ struct ARToggle: View {
 struct ARToggle_Previews: PreviewProvider {
   
   static var previews: some View {
-    ARToggle(
-      isOn: Binding<Bool>(
-        get: { true },
-        set: { _ in }
+    ForEach([ColorScheme.dark, ColorScheme.light], id: \.self) {
+      ARToggle(
+        isOn: Binding<Bool>(
+          get: { true },
+          set: { _ in }
+        )
       )
-    )
+      .colorScheme($0)
+    }
   }
 }

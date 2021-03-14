@@ -6,7 +6,7 @@ struct MapZoomButton: View {
   
   // MARK: enum
   
-  enum ZoomType {
+  enum ZoomType: Hashable {
     case zoomIn
     case zoomOut
   }
@@ -68,27 +68,19 @@ struct MapZoomButton: View {
 }
 
 // MARK: - MapZoomButtonZoomIn_Previews
-struct MapZoomButtonZoomIn_Previews: PreviewProvider {
+struct MapZoomButton_Previews: PreviewProvider {
   static var previews: some View {
-    MapZoomButton(
-      type: .zoomIn,
-      zoomLevel: Binding<BathymetryZoomLevel>(
-        get: { .max },
-        set: { _ in }
-      )
-    )
-  }
-}
-
-// MARK: - MapZoomButtonZoomOut_Previews
-struct MapZoomButtonZoomOut_Previews: PreviewProvider {
-  static var previews: some View {
-    MapZoomButton(
-      type: .zoomOut,
-      zoomLevel: Binding<BathymetryZoomLevel>(
-        get: { .max },
-        set: { _ in }
-      )
-    )
+    ForEach([ColorScheme.dark, ColorScheme.light], id: \.self) { colorScheme in
+      ForEach([MapZoomButton.ZoomType.zoomIn, MapZoomButton.ZoomType.zoomOut], id: \.self) { zoomType in
+        MapZoomButton(
+          type: zoomType,
+          zoomLevel: Binding<BathymetryZoomLevel>(
+            get: { .max },
+            set: { _ in }
+          )
+        )
+        .colorScheme(colorScheme)
+      }
+    }
   }
 }

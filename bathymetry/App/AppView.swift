@@ -129,13 +129,16 @@ struct AppView: View {
 // MARK: - AppView_Previews
 struct AppView_Previews: PreviewProvider {
   static var previews: some View {
-    AppView(store: Store(
-      initialState: AppState(bathymetryColors: .defaultColors),
-      reducer: appReducer,
-      environment: AppEnvironment(
-        mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-        bathymetryClient: .contentful
-      )
-    ))
+    ForEach([ColorScheme.dark, ColorScheme.light], id: \.self) {
+      AppView(store: Store(
+        initialState: AppState(bathymetryColors: .defaultColors),
+        reducer: appReducer,
+        environment: AppEnvironment(
+          mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
+          bathymetryClient: .contentful
+        )
+      ))
+      .colorScheme($0)
+    }
   }
 }

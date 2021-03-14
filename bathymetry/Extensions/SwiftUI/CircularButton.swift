@@ -29,17 +29,20 @@ struct CircularButton<Content: View>: View {
 // MARK: - CircularButtonZoomIn_Previews
 struct CircularButtonZoomIn_Previews: PreviewProvider {
   static var previews: some View {
-    CircularButton(
-      background: Color(.systemBackground),
-      foreground: Color(.label),
-      action: { },
-      content: {
-        Image(systemName: "plus")
-          .font(.title)
-          .padding(.horizontal, 1)
-          .padding(.top, 3)
-          .padding(.bottom, 2)
-      }
-    )
+    ForEach([ColorScheme.dark, ColorScheme.light], id: \.self) {
+      CircularButton(
+        background: Color(.systemBackground),
+        foreground: Color(.label),
+        action: { },
+        content: {
+          Image(systemName: "plus")
+            .font(.title)
+            .padding(.horizontal, 1)
+            .padding(.top, 3)
+            .padding(.bottom, 2)
+        }
+      )
+      .colorScheme($0)
+    }
   }
 }
