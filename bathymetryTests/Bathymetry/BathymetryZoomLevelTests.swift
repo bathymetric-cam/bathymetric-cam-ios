@@ -24,6 +24,8 @@ class BathymetryZoomLevelTests: XCTestCase {
       sut.zoomOut()
     }
     XCTAssertEqual(sut, .min, accuracy: 0.0001)
+    sut.zoomOut()
+    XCTAssertEqual(sut, .min, accuracy: 0.0001)
   }
   
   func testBathymetryZoomLevel_whenMin_zoomIn() throws {
@@ -33,6 +35,8 @@ class BathymetryZoomLevelTests: XCTestCase {
       XCTAssertNotEqual(sut, .max, accuracy: 0.0001)
       sut.zoomIn()
     }
+    XCTAssertEqual(sut, .max, accuracy: 0.0001)
+    sut.zoomIn()
     XCTAssertEqual(sut, .max, accuracy: 0.0001)
   }
 }
