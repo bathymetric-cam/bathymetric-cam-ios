@@ -5,12 +5,13 @@ extension BathymetryZoomLevel {
   
   static let min: BathymetryZoomLevel = 14.0
   static let max: BathymetryZoomLevel = 16.0
+  static let unit: BathymetryZoomLevel = 0.5
   
   // MARK: public api
   
   /// Zoom in
   mutating func zoomIn() {
-    self += 0.5
+    self += .unit
     if self > .max {
       self = .max
     }
@@ -18,7 +19,7 @@ extension BathymetryZoomLevel {
   
   /// Zoom out
   mutating func zoomOut() {
-    self -= 0.5
+    self -= .unit
     if self < .min {
       self = .min
     }

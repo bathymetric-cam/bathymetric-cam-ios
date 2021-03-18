@@ -18,19 +18,21 @@ class BathymetryZoomLevelTests: XCTestCase {
   
   func testBathymetryZoomLevel_whenMax_zoomOut() throws {
     var sut = BathymetryZoomLevel(.max)
-    let expectations = [true, true, true, true, false]
-    expectations.forEach {
-      XCTAssertEqual(sut > .min, $0)
+    let times = Int(round((BathymetryZoomLevel(.max) - BathymetryZoomLevel(.min)) / BathymetryZoomLevel(.unit)))
+    for _ in (0...(times - 1)) {
+      XCTAssertNotEqual(sut, .min, accuracy: 0.0001)
       sut.zoomOut()
     }
+    XCTAssertEqual(sut, .min, accuracy: 0.0001)
   }
   
   func testBathymetryZoomLevel_whenMin_zoomIn() throws {
     var sut = BathymetryZoomLevel(.min)
-    let expectations = [true, true, true, true, false]
-    expectations.forEach {
-      XCTAssertEqual(sut < .max, $0)
+    let times = Int(round((BathymetryZoomLevel(.max) - BathymetryZoomLevel(.min)) / BathymetryZoomLevel(.unit)))
+    for _ in (0...(times - 1)) {
+      XCTAssertNotEqual(sut, .max, accuracy: 0.0001)
       sut.zoomIn()
     }
+    XCTAssertEqual(sut, .max, accuracy: 0.0001)
   }
 }
