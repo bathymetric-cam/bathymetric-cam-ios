@@ -16,28 +16,28 @@ class BathymetryRegionTests: XCTestCase {
   
   // MARK: test
   
-  func testBathymetryRegion_whenLhsEqualsToRhs_lhsEqualsToRhs() throws {
+  func testBathymetryRegion_whenLhsEqualsToRhs_lhsShouldEqualToRhs() throws {
     let lhs = BathymetryRegion(swTile: RegionTile(x: 57482, y: 25954), neTile: RegionTile(x: 57483, y: 25953), zoom: 16)
     let rhs = BathymetryRegion(swTile: RegionTile(x: 57482, y: 25954), neTile: RegionTile(x: 57483, y: 25953), zoom: 16)
   
     XCTAssertEqual(lhs, rhs)
   }
   
-  func testBathymetryRegion_whenCoordinateIsDifferent_lhsNotEqualsToRhs() throws {
+  func testBathymetryRegion_whenCoordinateIsDifferent_lhsShouldNotEqualToRhs() throws {
     let lhs = BathymetryRegion(swTile: RegionTile(x: 57482, y: 25954), neTile: RegionTile(x: 57483, y: 25953), zoom: 16)
     let rhs = BathymetryRegion(swTile: RegionTile(x: 57483, y: 25954), neTile: RegionTile(x: 57483, y: 25954), zoom: 16)
       
     XCTAssertNotEqual(lhs, rhs)
   }
   
-  func testBathymetryRegion_whenZoomIsDifferent_lhsNotEqualsToRhs() throws {
+  func testBathymetryRegion_whenZoomIsDifferent_lhsShouldNotEqualToRhs() throws {
     let lhs = BathymetryRegion(swTile: RegionTile(x: 28742, y: 12977), neTile: RegionTile(x: 28742, y: 12977), zoom: 15)
     let rhs = BathymetryRegion(swTile: RegionTile(x: 28742, y: 12977), neTile: RegionTile(x: 28742, y: 12977), zoom: 16)
       
     XCTAssertNotEqual(lhs, rhs)
   }
   
-  func testBathymetryRegion_whenLhsEqualsToRhs_lhsContainsRhs() throws {
+  func testBathymetryRegion_whenLhsEqualsToRhs_lhsShouldContainRhs() throws {
     let lhs = BathymetryRegion(swTile: RegionTile(x: 57482, y: 25954), neTile: RegionTile(x: 57483, y: 25953), zoom: 16)
     let rhs = BathymetryRegion(swTile: RegionTile(x: 57482, y: 25954), neTile: RegionTile(x: 57483, y: 25953), zoom: 16)
       
@@ -46,7 +46,7 @@ class BathymetryRegionTests: XCTestCase {
     XCTAssertTrue(result)
   }
   
-  func testBathymetryRegion_whenLhsIsLargerThanRhs_lhsContainsRhs() throws {
+  func testBathymetryRegion_whenLhsIsLargerThanRhs_lhsShouldContainRhs() throws {
     let lhs = BathymetryRegion(swTile: RegionTile(x: 57482, y: 25954), neTile: RegionTile(x: 57483, y: 25953), zoom: 16)
     let rhs = BathymetryRegion(swTile: RegionTile(x: 57483, y: 25954), neTile: RegionTile(x: 57483, y: 25954), zoom: 16)
       
@@ -55,7 +55,7 @@ class BathymetryRegionTests: XCTestCase {
     XCTAssertTrue(result)
   }
   
-  func testBathymetryRegion_whenLhsIsSmallerThanLargerLhs_largerLhsContainsLhs() throws {
+  func testBathymetryRegion_whenLhsIsSmallerThanLargerLhs_largerLhsShouldContainLhs() throws {
     let lhs = BathymetryRegion(swTile: RegionTile(x: 57482, y: 25954), neTile: RegionTile(x: 57483, y: 25953), zoom: 16)
       
     let result = lhs.largerRegion().contains(region: lhs)
@@ -65,7 +65,7 @@ class BathymetryRegionTests: XCTestCase {
     XCTAssertFalse(result2)
   }
   
-  func testBathymetryRegion_whenLhsIsSmallerThanRhs_lhsNotContainsRhs() throws {
+  func testBathymetryRegion_whenLhsIsSmallerThanRhs_lhsShouldNotContainRhs() throws {
     let lhs = BathymetryRegion(swTile: RegionTile(x: 57483, y: 25954), neTile: RegionTile(x: 57483, y: 25954), zoom: 16)
     let rhs = BathymetryRegion(swTile: RegionTile(x: 57482, y: 25954), neTile: RegionTile(x: 57483, y: 25953), zoom: 16)
       
@@ -74,7 +74,7 @@ class BathymetryRegionTests: XCTestCase {
     XCTAssertFalse(result)
   }
   
-  func testBathymetryRegion_whenZoomIsDifferent_lhsNotContainsRhs() throws {
+  func testBathymetryRegion_whenZoomIsDifferent_lhsShouldNotContainRhs() throws {
     let lhs = BathymetryRegion(swTile: RegionTile(x: 28742, y: 12977), neTile: RegionTile(x: 28742, y: 12977), zoom: 15)
     let rhs = BathymetryRegion(swTile: RegionTile(x: 28742, y: 12977), neTile: RegionTile(x: 28742, y: 12977), zoom: 16)
       

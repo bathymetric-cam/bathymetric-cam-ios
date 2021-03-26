@@ -18,7 +18,7 @@ class BathymetryClientTests: XCTestCase {
   
   // MARK: test
   
-  func testBathymetryClient_whenInitialState_loadBathymetriesSuccess() throws {
+  func testBathymetryClient_whenInitialState_loadBathymetriesShouldSucceed() throws {
     var result: [BathymetryTile]? = nil
     let exp = expectation(description: #function)
     let sut = BathymetryClient.fakeSuccessClient
@@ -33,7 +33,7 @@ class BathymetryClientTests: XCTestCase {
     XCTAssertTrue(result == mockBathymetryTiles)
   }
   
-  func testBathymetryClient_whenInitialState_loadBathymetriesFailure() throws {
+  func testBathymetryClient_whenInitialState_loadBathymetriesShouldFail() throws {
     var result: BathymetryClient.Failure? = nil
     let exp = expectation(description: #function)
     let sut = BathymetryClient.fakeFailureClient

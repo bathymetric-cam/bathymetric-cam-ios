@@ -16,7 +16,7 @@ struct AppView: View {
           ARView(
             isOn: viewStore.binding(
               get: { $0.arIsOn },
-              send: AppAction.arIsOnChanged
+              send: AppAction.arIsOnToggled
             ),
             bathymetryTiles: viewStore.binding(
               get: { $0.bathymetryTiles },
@@ -63,7 +63,7 @@ struct AppView: View {
           ARToggle(
             isOn: viewStore.binding(
               get: { $0.arIsOn },
-              send: AppAction.arIsOnChanged
+              send: AppAction.arIsOnToggled
             )
           )
           .offset(x: metrics.size.width - ARToggle.width - 16)

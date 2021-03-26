@@ -22,7 +22,7 @@ class AppTests: XCTestCase {
   
   // MARK: test
   
-  func testAppStore_whenInitialState_loadBathymetriesSuccess() throws {
+  func testAppStore_whenInitialState_loadBathymetriesShouldSucceed() throws {
     let sut = TestStore(
     initialState: .init(bathymetryColors: .defaultColors),
       reducer: appReducer,
@@ -45,7 +45,7 @@ class AppTests: XCTestCase {
     )
   }
   
-  func testAppStore_whenInitialState_loadBathymetriesFailure() throws {
+  func testAppStore_whenInitialState_loadBathymetriesShouldFail() throws {
     let sut = TestStore(
     initialState: .init(bathymetryColors: .defaultColors),
       reducer: appReducer,
@@ -66,7 +66,7 @@ class AppTests: XCTestCase {
     )
   }
   
-  func testAppStore_whenInitialState_zoomIn() throws {
+  func testAppStore_whenInitialState_shouldBeAbleToZoomIn() throws {
     let sut = TestStore(
     initialState: .init(bathymetryColors: .defaultColors),
       reducer: appReducer,
@@ -82,7 +82,7 @@ class AppTests: XCTestCase {
     )
   }
   
-  func testAppStore_whenInitialState_zoomOut() throws {
+  func testAppStore_whenInitialState_shouldBeAbleToZoomOut() throws {
     let sut = TestStore(
     initialState: .init(bathymetryColors: .defaultColors),
       reducer: appReducer,
@@ -98,7 +98,7 @@ class AppTests: XCTestCase {
     )
   }
   
-  func testAppStore_whenInitialState_arIsOnChanged() throws {
+  func testAppStore_whenInitialState_arIsOnToggledShouldWork() throws {
     let sut = TestStore(
       initialState: .init(bathymetryColors: .defaultColors),
         reducer: appReducer,
@@ -108,11 +108,11 @@ class AppTests: XCTestCase {
       )
     )
     sut.assert(
-      .send(.arIsOnChanged(false)) {
+      .send(.arIsOnToggled(false)) {
         $0.arIsOn = false
       },
       .do { self.scheduler.advance(by: 0.1) },
-      .send(.arIsOnChanged(true)) {
+      .send(.arIsOnToggled(true)) {
         $0.arIsOn = true
       }
     )

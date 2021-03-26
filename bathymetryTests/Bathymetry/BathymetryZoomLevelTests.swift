@@ -16,7 +16,7 @@ class BathymetryZoomLevelTests: XCTestCase {
   
   // MARK: test
   
-  func testBathymetryZoomLevel_whenMax_zoomOut() throws {
+  func testBathymetryZoomLevel_whenMax_shouldBeAbleToZoomOut() throws {
     var sut = BathymetryZoomLevel(.max)
     let times = Int(round((BathymetryZoomLevel(.max) - BathymetryZoomLevel(.min)) / BathymetryZoomLevel(.unit)))
     for _ in (0...(times - 1)) {
@@ -28,7 +28,7 @@ class BathymetryZoomLevelTests: XCTestCase {
     XCTAssertEqual(sut, .min, accuracy: 0.0001)
   }
   
-  func testBathymetryZoomLevel_whenMin_zoomIn() throws {
+  func testBathymetryZoomLevel_whenMin_shouldBeAbleToZoomIn() throws {
     var sut = BathymetryZoomLevel(.min)
     let times = Int(round((BathymetryZoomLevel(.max) - BathymetryZoomLevel(.min)) / BathymetryZoomLevel(.unit)))
     for _ in (0...(times - 1)) {
