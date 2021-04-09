@@ -24,3 +24,6 @@ Frameworks/*
 bathymetry/GoogleService-Info.plist
 bathymetry/Mapbox-Info.plist
 bathymetry/Contentful-Info.plist
+*.xcuserstate
+bathymetry.xcodeproj/xcuserdata
+bathymetry.xcodeproj/project.xcworkspace
