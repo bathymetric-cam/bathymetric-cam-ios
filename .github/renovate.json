@@ -38,6 +38,16 @@
       ]
     },
     {
+      "groupName": "iShape-Swift",
+      "managers": [
+        "swift"
+      ],
+      "packageNames": [
+        "iShapeTriangulation",
+        "iGeometry"
+      ]
+    },
+    {
       "groupName": "swift-composable-architecture",
       "managers": [
         "swift"
