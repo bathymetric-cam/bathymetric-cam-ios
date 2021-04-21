@@ -32,7 +32,7 @@ class MapZoomButtonTests: XCTestCase {
       sut.overrideUserInterfaceStyle = style
       assertSnapshot(
         matching: sut,
-        as: .image(on: .iPhoneX, precision: 0.9),
+        as: .image(on: .iPhone8, precision: 0.98, traits: .iPhone8(.portrait)),
         named: named
       )
     }
@@ -52,7 +52,7 @@ class MapZoomButtonTests: XCTestCase {
       sut.overrideUserInterfaceStyle = style
       assertSnapshot(
         matching: sut,
-        as: .image(on: .iPhoneX, precision: 0.9),
+        as: .image(on: .iPhone8, precision: 0.98, traits: .iPhone8(.portrait)),
         named: named
       )
     }
@@ -72,7 +72,7 @@ class MapZoomButtonTests: XCTestCase {
       sut.overrideUserInterfaceStyle = style
       assertSnapshot(
         matching: sut,
-        as: .image(on: .iPhoneX, precision: 0.9),
+        as: .image(on: .iPhone8, precision: 0.98, traits: .iPhone8(.portrait)),
         named: named
       )
     }
@@ -92,7 +92,7 @@ class MapZoomButtonTests: XCTestCase {
       sut.overrideUserInterfaceStyle = style
       assertSnapshot(
         matching: sut,
-        as: .image(on: .iPhoneX, precision: 0.9),
+        as: .image(on: .iPhone8, precision: 0.98, traits: .iPhone8(.portrait)),
         named: named
       )
     }

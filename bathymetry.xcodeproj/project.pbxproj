@@ -19,6 +19,9 @@
 		E6203F88259205FE007C8FDA /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F84259205FA007C8FDA /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6203F8925920600007C8FDA /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F83259205FA007C8FDA /* MapboxMobileEvents.framework */; };
 		E6203F8A25920600007C8FDA /* MapboxMobileEvents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F83259205FA007C8FDA /* MapboxMobileEvents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E62B06E1263051A40089C785 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = E62B06E0263051A40089C785 /* SnapshotTesting */; };
+		E62B06EB263052080089C785 /* MapZoomButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F2243625E51F34000C5465 /* MapZoomButtonTests.swift */; };
+		E62B06F82630531D0089C785 /* BathymetryColorsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F2243E25E52FE2000C5465 /* BathymetryColorsViewTests.swift */; };
 		E633CD0A25D01A4B00FDB3BA /* BathymetryRegionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633CD0925D01A4B00FDB3BA /* BathymetryRegionTests.swift */; };
 		E63D2BF325A320CC00788375 /* BathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2BF225A320CC00788375 /* BathymetryTile.swift */; };
 		E63D2C3C25A33E7D00788375 /* MGLShapeSource+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2C3B25A33E7D00788375 /* MGLShapeSource+Feature.swift */; };
@@ -37,7 +40,6 @@
 		E6711BC225D40364007A4A89 /* ARToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6711BC125D40364007A4A89 /* ARToggle.swift */; };
 		E684122525A9D70400186A13 /* Euclid in Frameworks */ = {isa = PBXBuildFile; productRef = E684122425A9D70400186A13 /* Euclid */; };
 		E684122A25A9E9A700186A13 /* iShapeTriangulation in Frameworks */ = {isa = PBXBuildFile; productRef = E684122925A9E9A700186A13 /* iShapeTriangulation */; };
-		E68EDB4A25E2B96900D45A3A /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = E68EDB4925E2B96900D45A3A /* SnapshotTesting */; };
 		E694049025C428CF00F047EC /* BathymetryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694048F25C428CF00F047EC /* BathymetryColor.swift */; };
 		E698A33025976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A32F25976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift */; };
 		E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69BBD11257E50170048050C /* Preview Assets.xcassets */; };
@@ -55,13 +57,18 @@
 		E6EF547325BC3534004C2478 /* MapView+MGLMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF547225BC3534004C2478 /* MapView+MGLMapView.swift */; };
 		E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1060D258A2E05000DDD25 /* ARView.swift */; };
 		E6F10617258A3068000DDD25 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = E6F10616258A3068000DDD25 /* ARCL */; };
-		E6F2243725E51F34000C5465 /* MapZoomButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F2243625E51F34000C5465 /* MapZoomButtonTests.swift */; };
-		E6F2243F25E52FE2000C5465 /* BathymetryColorsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F2243E25E52FE2000C5465 /* BathymetryColorsViewTests.swift */; };
 		E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E6F8C1F425811ED70051E68F /* ComposableArchitecture */; };
 		E6FE7AC025824B2700C47C2B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FE7ABF25824B2700C47C2B /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E62B06CE2630516E0089C785 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E64FDE7E257D22D200B303C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E64FDE85257D22D200B303C6;
+			remoteInfo = bathymetry;
+		};
 		E64FDE9D257D22D200B303C6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E64FDE7E257D22D200B303C6 /* Project object */;
@@ -102,6 +109,8 @@
 		E6171D7525B0A5D600161E28 /* Contentful-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Contentful-Info.plist"; sourceTree = "<group>"; };
 		E6203F83259205FA007C8FDA /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapboxMobileEvents.framework; sourceTree = "<group>"; };
 		E6203F84259205FA007C8FDA /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
+		E62B06C92630516E0089C785 /* bathymetrySnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bathymetrySnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E62B06CD2630516E0089C785 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E633CD0925D01A4B00FDB3BA /* BathymetryRegionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryRegionTests.swift; sourceTree = "<group>"; };
 		E63D2BF225A320CC00788375 /* BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTile.swift; sourceTree = "<group>"; };
 		E63D2C3B25A33E7D00788375 /* MGLShapeSource+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLShapeSource+Feature.swift"; sourceTree = "<group>"; };
@@ -145,6 +154,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E62B06C62630516E0089C785 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E62B06E1263051A40089C785 /* SnapshotTesting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E64FDE83257D22D200B303C6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -165,7 +182,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E68EDB4A25E2B96900D45A3A /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,12 +222,31 @@
 			path = Mapbox;
 			sourceTree = "<group>";
 		};
+		E62B06CA2630516E0089C785 /* bathymetrySnapshotTests */ = {
+			isa = PBXGroup;
+			children = (
+				E62B06F1263052FC0089C785 /* Bathymetry */,
+				E6F2243525E51F1B000C5465 /* Map */,
+				E62B06CD2630516E0089C785 /* Info.plist */,
+			);
+			path = bathymetrySnapshotTests;
+			sourceTree = "<group>";
+		};
+		E62B06F1263052FC0089C785 /* Bathymetry */ = {
+			isa = PBXGroup;
+			children = (
+				E6F2243E25E52FE2000C5465 /* BathymetryColorsViewTests.swift */,
+			);
+			path = Bathymetry;
+			sourceTree = "<group>";
+		};
 		E64FDE7D257D22D200B303C6 = {
 			isa = PBXGroup;
 			children = (
 				E64FDE88257D22D200B303C6 /* bathymetry */,
 				E6FE7AB125823FBA00C47C2B /* Frameworks */,
 				E64FDE9F257D22D200B303C6 /* bathymetryTests */,
+				E62B06CA2630516E0089C785 /* bathymetrySnapshotTests */,
 				E64FDEAA257D22D200B303C6 /* bathymetryUITests */,
 				E64FDE87257D22D200B303C6 /* Products */,
 			);
@@ -223,6 +258,7 @@
 				E64FDE86257D22D200B303C6 /* Bathymetry.app */,
 				E64FDE9C257D22D200B303C6 /* bathymetryTests.xctest */,
 				E64FDEA7257D22D200B303C6 /* bathymetryUITests.xctest */,
+				E62B06C92630516E0089C785 /* bathymetrySnapshotTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -251,7 +287,6 @@
 			isa = PBXGroup;
 			children = (
 				E6DF6DFB25C97E1500D6572D /* App */,
-				E6F2243525E51F1B000C5465 /* Map */,
 				E6DF6DFE25C97E2500D6572D /* Bathymetry */,
 				E64FDEA2257D22D200B303C6 /* Info.plist */,
 			);
@@ -331,7 +366,6 @@
 			isa = PBXGroup;
 			children = (
 				E6C5DF7025C6BF5600EE6C6F /* BathymetryClientTests.swift */,
-				E6F2243E25E52FE2000C5465 /* BathymetryColorsViewTests.swift */,
 				E633CD0925D01A4B00FDB3BA /* BathymetryRegionTests.swift */,
 				E6BFC11D25D1479000295FB2 /* BathymetryTileTests.swift */,
 				E659F6BC25E6851100058394 /* BathymetryZoomLevelTests.swift */,
@@ -387,6 +421,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E62B06C82630516E0089C785 /* bathymetrySnapshotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E62B06D02630516E0089C785 /* Build configuration list for PBXNativeTarget "bathymetrySnapshotTests" */;
+			buildPhases = (
+				E62B06C52630516E0089C785 /* Sources */,
+				E62B06C62630516E0089C785 /* Frameworks */,
+				E62B06C72630516E0089C785 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E62B06CF2630516E0089C785 /* PBXTargetDependency */,
+			);
+			name = bathymetrySnapshotTests;
+			packageProductDependencies = (
+				E62B06E0263051A40089C785 /* SnapshotTesting */,
+			);
+			productName = bathymetrySnapshotTests;
+			productReference = E62B06C92630516E0089C785 /* bathymetrySnapshotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E64FDE85257D22D200B303C6 /* bathymetry */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E64FDEB0257D22D200B303C6 /* Build configuration list for PBXNativeTarget "bathymetry" */;
@@ -431,7 +486,6 @@
 			);
 			name = bathymetryTests;
 			packageProductDependencies = (
-				E68EDB4925E2B96900D45A3A /* SnapshotTesting */,
 			);
 			productName = bathymetryTests;
 			productReference = E64FDE9C257D22D200B303C6 /* bathymetryTests.xctest */;
@@ -461,9 +515,13 @@
 		E64FDE7E257D22D200B303C6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					E62B06C82630516E0089C785 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = E64FDE85257D22D200B303C6;
+					};
 					E64FDE85257D22D200B303C6 = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -494,7 +552,7 @@
 				E684122325A9D70400186A13 /* XCRemoteSwiftPackageReference "Euclid" */,
 				E684122825A9E9A700186A13 /* XCRemoteSwiftPackageReference "iShapeTriangulation" */,
 				E6171D5825B0574900161E28 /* XCRemoteSwiftPackageReference "contentful" */,
-				E68EDB4825E2B96900D45A3A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				E62B06DF263051A40089C785 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = E64FDE87257D22D200B303C6 /* Products */;
 			projectDirPath = "";
@@ -503,11 +561,19 @@
 				E64FDE85257D22D200B303C6 /* bathymetry */,
 				E64FDE9B257D22D200B303C6 /* bathymetryTests */,
 				E64FDEA6257D22D200B303C6 /* bathymetryUITests */,
+				E62B06C82630516E0089C785 /* bathymetrySnapshotTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E62B06C72630516E0089C785 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E64FDE84257D22D200B303C6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -575,6 +641,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E62B06C52630516E0089C785 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E62B06EB263052080089C785 /* MapZoomButtonTests.swift in Sources */,
+				E62B06F82630531D0089C785 /* BathymetryColorsViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E64FDE82257D22D200B303C6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -616,8 +691,6 @@
 				E64FDEA1257D22D200B303C6 /* AppTests.swift in Sources */,
 				E659F6BD25E6851100058394 /* BathymetryZoomLevelTests.swift in Sources */,
 				E6BFC11E25D1479000295FB2 /* BathymetryTileTests.swift in Sources */,
-				E6F2243F25E52FE2000C5465 /* BathymetryColorsViewTests.swift in Sources */,
-				E6F2243725E51F34000C5465 /* MapZoomButtonTests.swift in Sources */,
 				E633CD0A25D01A4B00FDB3BA /* BathymetryRegionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -633,6 +706,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E62B06CF2630516E0089C785 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E64FDE85257D22D200B303C6 /* bathymetry */;
+			targetProxy = E62B06CE2630516E0089C785 /* PBXContainerItemProxy */;
+		};
 		E64FDE9E257D22D200B303C6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E64FDE85257D22D200B303C6 /* bathymetry */;
@@ -646,6 +724,48 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		E62B06D12630516E0089C785 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6RYZ4RB738;
+				INFOPLIST_FILE = bathymetrySnapshotTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.kenzan8000.bathymetrySnapshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bathymetry.app/Bathymetry";
+			};
+			name = Debug;
+		};
+		E62B06D22630516E0089C785 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6RYZ4RB738;
+				INFOPLIST_FILE = bathymetrySnapshotTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.kenzan8000.bathymetrySnapshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bathymetry.app/Bathymetry";
+			};
+			name = Release;
+		};
 		E64FDEAE257D22D200B303C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -915,6 +1035,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E62B06D02630516E0089C785 /* Build configuration list for PBXNativeTarget "bathymetrySnapshotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E62B06D12630516E0089C785 /* Debug */,
+				E62B06D22630516E0089C785 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E64FDE81257D22D200B303C6 /* Build configuration list for PBXProject "bathymetry" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -962,6 +1091,14 @@
 				minimumVersion = 5.4.1;
 			};
 		};
+		E62B06DF263051A40089C785 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.2;
+			};
+		};
 		E684122325A9D70400186A13 /* XCRemoteSwiftPackageReference "Euclid" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nicklockwood/Euclid.git";
@@ -976,14 +1113,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.13.0;
-			};
-		};
-		E68EDB4825E2B96900D45A3A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.8.2;
 			};
 		};
 		E6E065232590CBB50032B6C8 /* XCRemoteSwiftPackageReference "GEOSwift" */ = {
@@ -1031,6 +1160,11 @@
 			package = E6E065282590CCAC0032B6C8 /* XCRemoteSwiftPackageReference "geos" */;
 			productName = geos;
 		};
+		E62B06E0263051A40089C785 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E62B06DF263051A40089C785 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
 		E684122425A9D70400186A13 /* Euclid */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E684122325A9D70400186A13 /* XCRemoteSwiftPackageReference "Euclid" */;
@@ -1040,11 +1174,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E684122825A9E9A700186A13 /* XCRemoteSwiftPackageReference "iShapeTriangulation" */;
 			productName = iShapeTriangulation;
-		};
-		E68EDB4925E2B96900D45A3A /* SnapshotTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E68EDB4825E2B96900D45A3A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
-			productName = SnapshotTesting;
 		};
 		E6E065242590CBB50032B6C8 /* GEOSwift */ = {
 			isa = XCSwiftPackageProductDependency;
