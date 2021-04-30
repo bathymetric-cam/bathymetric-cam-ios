@@ -135,7 +135,7 @@ struct AppView_Previews: PreviewProvider {
         reducer: appReducer,
         environment: AppEnvironment(
           mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-          bathymetryClient: BathymetryContentfulClient()
+          bathymetryClient: BathymetryContentfulClient.standard
         )
       ))
       .colorScheme($0)
