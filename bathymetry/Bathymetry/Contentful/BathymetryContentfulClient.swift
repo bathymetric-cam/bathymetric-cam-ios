@@ -57,21 +57,19 @@ class BathymetryContentfulClient: Client, BathymetryClient {
         promise(.failure(.otherFailure(error)))
         return
       }
-      var bathymetryTiles: [BathymetryTile] = []
       guard case let .success(result) = $0 else {
-        promise(.success(bathymetryTiles))
+        promise(.success([]))
         return
       }
-      result.items.forEach {
-        if let zoom = $0.zoom,
-          let x = $0.x,
-          let y = $0.y,
-          let geoJSON = $0.geoJSON,
-          case let .featureCollection(featureCollection) = geoJSON {
-          bathymetryTiles.append(BathymetryTile(x: x, y: y, zoom: zoom, features: featureCollection.features))
+      promise(.success(
+        result.items.compactMap {
+          guard let zoom = $0.zoom, let x = $0.x, let y = $0.y, let geoJSON = $0.geoJSON,
+                case let .featureCollection(featureCollection) = geoJSON else {
+            return nil
+          }
+          return BathymetryTile(x: x, y: y, zoom: zoom, features: featureCollection.features)
         }
-      }
-      promise(.success(bathymetryTiles))
+      ))
     }
   }
 }
