@@ -28,7 +28,7 @@ final class BathymetryContentfulEntity: BathymetryEntity, EntryDecodable, FieldK
   let y: Int?
   let geoJSON: GeoJSON?
 
-  // MARK: initialization
+  // MARK: initializer
   
   required init(from decoder: Decoder) throws {
     let sys = try decoder.sys()

@@ -1,5 +1,3 @@
-import Combine
-import GEOSwift
 import XCTest
 @testable import Bathymetry
 
@@ -21,7 +19,7 @@ class BathymetryClientTests: XCTestCase {
   func testBathymetryClient_whenInitialState_loadBathymetriesShouldSucceed() throws {
     var result: [BathymetryTile]? = nil
     let exp = expectation(description: #function)
-    let sut = BathymetryClient.fakeSuccessClient
+    let sut = BathymetryClientSuccessMock()
   
     _ = sut.loadBathymetries(mockRegion)
       .sink(
@@ -34,9 +32,9 @@ class BathymetryClientTests: XCTestCase {
   }
   
   func testBathymetryClient_whenInitialState_loadBathymetriesShouldFail() throws {
-    var result: BathymetryClient.Failure? = nil
+    var result: BathymetryClientFailure? = nil
     let exp = expectation(description: #function)
-    let sut = BathymetryClient.fakeFailureClient
+    let sut = BathymetryClientFailureMock()
       
     _ = sut.loadBathymetries(mockRegion)
       .sink(
@@ -51,40 +49,5 @@ class BathymetryClientTests: XCTestCase {
       
     wait(for: [exp], timeout: 0.1)
     XCTAssertTrue(result == mockFailure)
-  }
-}
-
-// MARK: - mock
-private let mockBathymetryTiles = [BathymetryTile(x: 57483, y: 25954, zoom: 16, features: [])]
-private let mockRegion = BathymetryRegion(
-  swTile: RegionTile(x: 57483, y: 25954),
-  neTile: RegionTile(x: 57483, y: 25954),
-  zoom: 16  
-)
-private enum MockError: Error {
-  case mock
-}
-private let mockFailure: BathymetryClient.Failure = .otherFailure(MockError.mock)
-
-// MARK: - BathymetryClient+Fake
-extension BathymetryClient {
-  // MARK: property
-  
-  static let fakeSuccessClient = BathymetryClient { region in
-    Deferred {
-      Future<[BathymetryTile], Failure> { promise in
-        promise(.success(mockBathymetryTiles))
-      }
-    }
-    .eraseToEffect()
-  }
-  
-  static let fakeFailureClient = BathymetryClient { region in
-    Deferred {
-      Future<[BathymetryTile], Failure> { promise in
-        promise(.failure(mockFailure))
-      }
-    }
-    .eraseToEffect()
   }
 }

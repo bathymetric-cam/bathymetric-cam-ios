@@ -1,7 +1,7 @@
 import CoreData
 
-// MARK: - LDRStorageProvider
-final class LDRStorageProvider {
+// MARK: - StorageProvider
+final class StorageProvider {
   
   // MARK: - enum
   enum StoreType {
@@ -15,7 +15,7 @@ final class LDRStorageProvider {
     persistentContainer.viewContext
   }
   
-  // MARK: initialization
+  // MARK: initializer
   
   /// Inits
   /// - Parameters:

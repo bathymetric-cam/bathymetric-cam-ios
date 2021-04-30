@@ -5,7 +5,7 @@ import SwiftUI
 // MARK: - AppAction
 enum AppAction: Equatable {
   case loadBathymetries(BathymetryRegion)
-  case bathymetriesResult(Result<[BathymetryTile], BathymetryClient.Failure>)
+  case bathymetriesResult(Result<[BathymetryTile], BathymetryClientFailure>)
   case bathymetryTilesUpdated(bathymetryTiles: [BathymetryTile])
   case bathymetryColorsUpdated(bathymetryTiles: BathymetryColors)
   case zoomIn

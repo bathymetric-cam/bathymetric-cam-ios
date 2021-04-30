@@ -1,3 +1,4 @@
+import Combine
 import ComposableArchitecture
 import GEOSwift
 import XCTest
@@ -27,14 +28,11 @@ class AppTests: XCTestCase {
     initialState: .init(bathymetryColors: .defaultColors),
       reducer: appReducer,
       environment: AppEnvironment(
-      mainQueue: scheduler.eraseToAnyScheduler(),
-      bathymetryClient: .mock()
+        mainQueue: scheduler.eraseToAnyScheduler(),
+        bathymetryClient: BathymetryClientSuccessMock()
       )
     )
     sut.assert(
-      .environment {
-        $0.bathymetryClient.loadBathymetries = { _ in Effect(value: mockBathymetryTiles) }
-      },
       .send(.loadBathymetries(mockRegion)) {
         $0.region = mockRegion.largerRegion()
       },
@@ -50,14 +48,11 @@ class AppTests: XCTestCase {
     initialState: .init(bathymetryColors: .defaultColors),
       reducer: appReducer,
       environment: AppEnvironment(
-      mainQueue: scheduler.eraseToAnyScheduler(),
-      bathymetryClient: .mock()
+        mainQueue: scheduler.eraseToAnyScheduler(),
+        bathymetryClient: BathymetryClientFailureMock()
       )
     )
     sut.assert(
-      .environment {
-        $0.bathymetryClient.loadBathymetries = { _ in Effect(error: mockFailure) }
-      },
       .send(.loadBathymetries(mockRegion)) {
         $0.region = mockRegion.largerRegion()
       },
@@ -72,7 +67,7 @@ class AppTests: XCTestCase {
       reducer: appReducer,
       environment: AppEnvironment(
       mainQueue: scheduler.eraseToAnyScheduler(),
-      bathymetryClient: .mock()
+      bathymetryClient: BathymetryClientSuccessMock()
       )
     )
     sut.assert(
@@ -88,7 +83,7 @@ class AppTests: XCTestCase {
       reducer: appReducer,
       environment: AppEnvironment(
       mainQueue: scheduler.eraseToAnyScheduler(),
-      bathymetryClient: .mock()
+      bathymetryClient: BathymetryClientSuccessMock()
       )
     )
     sut.assert(
@@ -104,7 +99,7 @@ class AppTests: XCTestCase {
         reducer: appReducer,
         environment: AppEnvironment(
         mainQueue: scheduler.eraseToAnyScheduler(),
-        bathymetryClient: .mock()
+        bathymetryClient: BathymetryClientSuccessMock()
       )
     )
     sut.assert(
@@ -116,29 +111,5 @@ class AppTests: XCTestCase {
         $0.arIsOn = true
       }
     )
-  }
-}
-
-// MARK: - mock
-private let mockBathymetryTiles = [BathymetryTile(x: 57483, y: 25954, zoom: 16, features: [])]
-private let mockRegion = BathymetryRegion(
-  swTile: RegionTile(x: 57483, y: 25954),
-  neTile: RegionTile(x: 57483, y: 25954),
-  zoom: 16
-)
-private enum MockError: Error {
-  case mock
-}
-private let mockFailure: BathymetryClient.Failure = .otherFailure(MockError.mock)
-
-// MARK: - BathymetryClient+Mock
-extension BathymetryClient {
-  // MARK: property
-  
-  static func mock(
-    loadBathymetries: @escaping (_ region: BathymetryRegion) -> Effect<[BathymetryTile], Failure> = { _ in
-    fatalError("Unmocked")
-  }) -> Self {
-    Self(loadBathymetries: loadBathymetries)
   }
 }

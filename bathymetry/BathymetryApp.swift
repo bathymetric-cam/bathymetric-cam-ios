@@ -14,7 +14,7 @@ struct BathymetryApp: App {
     reducer: appReducer,
     environment: AppEnvironment(
       mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-      bathymetryClient: .contentful
+      bathymetryClient: BathymetryContentfulClient()
     )
   ))
   
@@ -24,7 +24,7 @@ struct BathymetryApp: App {
     }
   }
   
-  // MARK: initialization
+  // MARK: initializer
   
   init() {
   }

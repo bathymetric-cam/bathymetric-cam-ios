@@ -24,9 +24,9 @@ final class BathymetryTile: RegionTile {
     )
   }
   
-  // MARK: initialization
+  // MARK: initializer
   
-  /// Initialization
+  /// initializer
   /// - Parameters:
   ///   - coordinate: lat, lng coordinate
   ///   - zoom: map zoomLevel   
@@ -38,7 +38,7 @@ final class BathymetryTile: RegionTile {
     super.init(coordinate: coordinate, zoom: zoom)
   }
   
-  /// Initialization
+  /// initializer
   /// - Parameters:
   ///   - x: map tile x
   ///   - y: map tile y
@@ -95,9 +95,9 @@ class RegionTile {
   let x: Int // X goes from 0 (left edge is 180 °W) to 2zoom − 1 (right edge is 180 °E)
   let y: Int // Y goes from 0 (top edge is 85.0511 °N) to 2zoom − 1 (bottom edge is 85.0511 °S) in a Mercator projection
   
-  // MARK: initialization
+  // MARK: initializer
   
-  /// Initialization
+  /// initializer
   /// - Parameters:
   ///   - coordinate: lat, lng coordinate
   ///   - zoom: map zoomLevel
@@ -106,7 +106,7 @@ class RegionTile {
     y = Int(floor((1.0 - log(tan(coordinate.latitude * .pi / 180.0) + 1.0 / cos(coordinate.latitude * .pi / 180.0)) / .pi) / 2.0 * pow(2.0, BathymetryZoomLevel(zoom))))
   }
   
-  /// Initialization
+  /// initializer
   /// - Parameters:
   ///   - x: map tile x
   ///   - y: map tile y

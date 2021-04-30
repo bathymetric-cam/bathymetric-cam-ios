@@ -4,7 +4,7 @@ import Mapbox
 // MARK: - MGLShapeSource+Feature
 extension MGLShapeSource {
   
-  // MARK: initialization
+  // MARK: initializer
   
   /// Inits
   /// - Parameter feature: Feature

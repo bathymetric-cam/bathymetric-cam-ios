@@ -1,42 +1,57 @@
 import Combine
+import ComposableArchitecture
 import Contentful
 import Foundation
 
-// MARK: - BathymetryContentfulClientFactory
-internal class BathymetryContentfulClientFactory: BathymetryInternalClientFactory {
-  static func createClient() -> BathymetryInternalClient? {
-    guard let path = Bundle.main.path(forResource: "Contentful-Info", ofType: "plist"),
-       let plist = NSDictionary(contentsOfFile: path),
-       let spaceId = plist["spaceId"] as? String,
-       let accessToken = plist["accessToken"] as? String else {
-      return nil
-    }
-    return BathymetryContentfulClient(
-      spaceId: spaceId,
-      accessToken: accessToken,
-      contentTypeClasses: [BathymetryContentfulEntity.self]
-    )
-  }
-}
-
 // MARK: - BathymetryContentfulClient
-internal class BathymetryContentfulClient: Client, BathymetryInternalClient {
-  
+class BathymetryContentfulClient: Client, BathymetryClient {
   // MARK: property
   
   private var previousTask: URLSessionDataTask?
   
+  // MARK: initializer
+  
+  init() {
+    guard let path = Bundle.main.path(forResource: "Contentful-Info", ofType: "plist"),
+       let plist = NSDictionary(contentsOfFile: path),
+       let spaceId = plist["spaceId"] as? String,
+       let accessToken = plist["accessToken"] as? String else {
+      fatalError("Invalid Contentful-Info.plist")
+    }
+    super.init(spaceId: spaceId, accessToken: accessToken)
+  }
+  
   // MARK: public api
   
-  func loadBathymetries(region: BathymetryRegion, promise: @escaping (Result<[BathymetryTile], BathymetryClient.Failure>) -> Void) {
+  /// load bathymetry data from contentful
+  /// - Parameter region: BathymetryRegion
+  /// - Returns:
+  func loadBathymetries(_ region: BathymetryRegion) -> Effect<[BathymetryTile], BathymetryClientFailure> {
     previousTask?.cancel()
-    
-    let query = QueryOn<BathymetryContentfulEntity>
-      .where(field: .zoom, .equals("\(region.zoom)"))
-      .where(field: .x, .isGreaterThanOrEqualTo("\(region.swTile.x)"))
-      .where(field: .x, .isLessThanOrEqualTo("\(region.neTile.x)"))
-      .where(field: .y, .isGreaterThanOrEqualTo("\(region.neTile.y)"))
-      .where(field: .y, .isLessThanOrEqualTo("\(region.swTile.y)"))
+    return Deferred { [weak self] in
+      Future<[BathymetryTile], BathymetryClientFailure> { [weak self] promise in
+        let query = QueryOn<BathymetryContentfulEntity>
+          .where(field: .zoom, .equals("\(region.zoom)"))
+          .where(field: .x, .isGreaterThanOrEqualTo("\(region.swTile.x)"))
+          .where(field: .x, .isLessThanOrEqualTo("\(region.neTile.x)"))
+          .where(field: .y, .isGreaterThanOrEqualTo("\(region.neTile.y)"))
+          .where(field: .y, .isLessThanOrEqualTo("\(region.swTile.y)"))
+        self?.fetchBathymetryContentfulEntity(matching: query, promise: promise)
+      }
+    }
+    .eraseToEffect()
+  }
+  
+  // MARK: private api
+  
+  /// load bathymetry data from contentful
+  /// - Parameters:
+  ///   - query: fetching query
+  ///   - promise: promise used in loadBathymetries method
+  private func fetchBathymetryContentfulEntity(
+    matching query: QueryOn<BathymetryContentfulEntity>,
+    promise: @escaping (Result<[BathymetryTile], BathymetryClientFailure>) -> Void
+  ) {
     previousTask = fetchArray(of: BathymetryContentfulEntity.self, matching: query) {
       if case let .failure(error) = $0 {
         promise(.failure(.otherFailure(error)))
@@ -58,42 +73,5 @@ internal class BathymetryContentfulClient: Client, BathymetryInternalClient {
       }
       promise(.success(bathymetryTiles))
     }
-  }
-}
-
-// MARK: - BathymetryClient+Contentful
-extension BathymetryClient {
-  
-  // MARK: enum
-  
-  enum Failure: Error, Equatable {
-    static func == (lhs: Failure, rhs: Failure) -> Bool {
-      switch (lhs, rhs) {
-      case (.clientCreationFailure, clientCreationFailure):
-        return true
-      case let (.otherFailure(lhsError), .otherFailure(rhsError)):
-        return lhsError.localizedDescription == rhsError.localizedDescription
-      default:
-        return false
-      }
-    }
-    
-    case clientCreationFailure
-    case otherFailure(Error)
-  }
-  
-  // MARK: static constant
-
-  static let contentful = BathymetryClient { region in
-    Deferred {
-      Future<[BathymetryTile], Failure> { promise in
-        guard let client = BathymetryContentfulClientFactory.createClient() else {
-          promise(.failure(.clientCreationFailure))
-          return
-        }
-        client.loadBathymetries(region: region, promise: promise)
-      }
-    }
-    .eraseToEffect()
   }
 }

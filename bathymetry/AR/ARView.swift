@@ -78,7 +78,7 @@ final class UIARView: SceneLocationView {
   
   var cancellables = Set<AnyCancellable>()
   
-  // MARK: initialization
+  // MARK: initializer
   
   // swiftlint:disable discouraged_optional_collection
   override private init(frame: CGRect, options: [String: Any]? = nil) {

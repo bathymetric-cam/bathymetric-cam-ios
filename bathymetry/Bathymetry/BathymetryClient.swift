@@ -2,12 +2,31 @@ import ComposableArchitecture
 import Combine
 
 // MARK: - BathymetryClient
-struct BathymetryClient {
+protocol BathymetryClient {
   // MARK: property
   
-  var loadBathymetries: (_ region: BathymetryRegion) -> Effect<[BathymetryTile], Failure>
+  func loadBathymetries(_ region: BathymetryRegion) -> Effect<[BathymetryTile], BathymetryClientFailure>
 }
 
+// MARK: BathymetryClient
+
+enum BathymetryClientFailure: Error, Equatable {
+  
+  static func == (lhs: BathymetryClientFailure, rhs: BathymetryClientFailure) -> Bool {
+    switch (lhs, rhs) {
+    case (.clientCreationFailure, clientCreationFailure):
+      return true
+    case let (.otherFailure(lhsError), .otherFailure(rhsError)):
+      return lhsError.localizedDescription == rhsError.localizedDescription
+    default:
+      return false
+    }
+  }
+  
+  case clientCreationFailure
+  case otherFailure(Error)
+}
+/*
 // MARK: - BathymetryInternalClientFactory
 protocol BathymetryInternalClientFactory {
   /// Abstruct factory method
@@ -23,3 +42,4 @@ protocol BathymetryInternalClient {
   ///   - promise: Result of the load
   func loadBathymetries(region: BathymetryRegion, promise: @escaping (Result<[BathymetryTile], BathymetryClient.Failure>) -> Void)
 }
+*/

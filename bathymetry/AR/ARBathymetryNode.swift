@@ -9,7 +9,7 @@ import SceneKit
 // MARK: - ARBathymetryNode
 open class ARBathymetryNode: LocationNode {
 
-  // MARK: initialization
+  // MARK: initializer
 
   @available(*, unavailable)
   public required init?(coder aDecoder: NSCoder) {
