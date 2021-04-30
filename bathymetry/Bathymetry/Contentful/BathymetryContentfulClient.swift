@@ -4,31 +4,21 @@ import Contentful
 import Foundation
 
 // MARK: - BathymetryContentfulClient
-struct BathymetryContentfulClient: BathymetryClient {
+class BathymetryContentfulClient: BathymetryClient {
+  
+  // MARK: property
+  
+  private let client = BathymetryContentfulInternalClient()
   
   // MARK: public api
   
   /// load bathymetry data from contentful
   /// - Parameter region: BathymetryRegion
-  /// - Returns:
-  var loadBathymetries: (_ region: BathymetryRegion) -> Effect<[BathymetryTile], BathymetryClientFailure>
-  /*
-    { region in
-      Deferred { [weak self] in
-        Future<[BathymetryTile], BathymetryClientFailure> { [weak self] promise in
-          self?.client.loadBathymetries(region: region, promise: promise)
-        }
-      }
-      .eraseToEffect()
-    }
-  }*/
-
-  // MARK: static constant
-  static let standard = BathymetryContentfulClient { region in
-    Deferred {
-      Future<[BathymetryTile], BathymetryClientFailure> { promise in
-        let client = BathymetryContentfulInternalClient()
-        client.loadBathymetries(region: region, promise: promise)
+  /// - Returns: Effect<[BathymetryTile], BathymetryClientFailure>
+  func loadBathymetries(_ region: BathymetryRegion) -> Effect<[BathymetryTile], BathymetryClientFailure> {
+    Deferred { [weak self] in
+      Future<[BathymetryTile], BathymetryClientFailure> { [weak self] promise in
+        self?.client.loadBathymetries(region: region, promise: promise)
       }
     }
     .eraseToEffect()
@@ -50,7 +40,7 @@ class BathymetryContentfulInternalClient: Client {
        let accessToken = plist["accessToken"] as? String else {
       fatalError("Invalid Contentful-Info.plist")
     }
-    super.init(spaceId: spaceId, accessToken: accessToken)
+    super.init(spaceId: spaceId, accessToken: accessToken, contentTypeClasses: [BathymetryContentfulEntity.self])
   }
   
   deinit {
