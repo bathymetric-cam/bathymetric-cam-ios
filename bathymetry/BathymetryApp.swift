@@ -1,8 +1,5 @@
 import ComposableArchitecture
-import os
 import SwiftUI
-
-let logger = Logger(subsystem: "\(Bundle.main.bundleIdentifier ?? "").logger", category: "main")
 
 // MARK: - BathymetryApp
 @main

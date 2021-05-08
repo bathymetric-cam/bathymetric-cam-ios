@@ -32,3 +32,13 @@ extension BathymetryClientFailure: LocalizedError {
       }
     }
 }
+
+// MARK: - BathymetryClientFailure + CustomStringConvertible
+extension BathymetryClientFailure: CustomStringConvertible {
+  var description: String {
+    switch self {
+    case let .otherFailure(error):
+      return error.localizedDescription
+    }
+  }
+}

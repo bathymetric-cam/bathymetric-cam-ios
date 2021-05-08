@@ -60,10 +60,12 @@ class BathymetryContentfulInternalClient: Client {
     previousTask = fetchArray(of: BathymetryContentfulEntity.self, matching: query) {
       if case let .failure(error) = $0 {
         promise(.failure(.otherFailure(error)))
+        logger.error("\(logger.prefix(), privacy: .private)\(BathymetryClientFailure.otherFailure(error), privacy: .private)")
         return
       }
       guard case let .success(result) = $0 else {
         promise(.success([]))
+        logger.debug("\(logger.prefix(), privacy: .private)\("Empty result", privacy: .private)")
         return
       }
       promise(.success(
