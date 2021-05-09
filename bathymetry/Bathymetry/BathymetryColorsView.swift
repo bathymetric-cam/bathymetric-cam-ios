@@ -23,6 +23,11 @@ struct BathymetryColorsView: View {
 // MARK: - BathymetryColorView
 struct BathymetryColorView: View {
   
+  // MARK: static constant
+  
+  static let width = CGFloat(32)
+  static let height = CGFloat(32)
+  
   // MARK: property
   
   let bathymetryColor: BathymetryColor
@@ -31,12 +36,12 @@ struct BathymetryColorView: View {
     HStack(alignment: .bottom) {
       Rectangle()
         .fill(bathymetryColor.color)
-        .frame(width: 32, height: 32)
+        .frame(width: BathymetryColorView.width, height: BathymetryColorView.height)
       Text(String(format: "%.1f", bathymetryColor.depth.max))
-        .frame(width: 32, alignment: .trailing)
+        .frame(width: BathymetryColorView.width, alignment: .trailing)
         .font(.caption)
     }
-    .frame(width: 64)
+    .frame(width: BathymetryColorsView.width)
   }
 }
 

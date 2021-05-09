@@ -98,6 +98,18 @@ struct AppView: View {
           }
         }
         .offset(x: 16, y: metrics.size.height - metrics.size.width / 2.0)
+
+        VStack {
+          WithViewStore(store) { viewStore in
+            BathymetryWaterSurfaceSlider(
+              waterSurface: viewStore.binding(
+                get: { $0.waterSurface },
+                send: AppAction.waterSurfaceUpdated
+              )
+            )
+          }
+        }
+        .offset(x: metrics.size.width - BathymetryWaterSurfaceSlider.width - 16, y: metrics.size.height - BathymetryWaterSurfaceSlider.height - 48)
       }
     }
   }
