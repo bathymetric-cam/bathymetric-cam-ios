@@ -2,6 +2,11 @@ import SwiftUI
 
 // MARK: - BathymetryColorsView
 struct BathymetryColorsView: View {
+  
+  // MARK: static constant
+  
+  static let width = CGFloat(64)
+  
   // MARK: property
   
   @Binding var bathymetryColors: BathymetryColors
@@ -17,6 +22,7 @@ struct BathymetryColorsView: View {
 
 // MARK: - BathymetryColorView
 struct BathymetryColorView: View {
+  
   // MARK: property
   
   let bathymetryColor: BathymetryColor

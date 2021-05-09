@@ -13,12 +13,12 @@ struct ARToggle: View {
 
   var body: some View {
     HStack {
-      Text("AR")
       Toggle(isOn: $isOn) {
         Text("AR")
       }
       .labelsHidden()
       .toggleStyle(SwitchToggleStyle(tint: .blue))
+      Text("AR")
     }
     .frame(width: ARToggle.width)
   }

@@ -62,7 +62,7 @@ struct AppView: View {
               send: AppAction.bathymetryColorsUpdated
             )
           )
-          .offset(x: 16)
+          .offset(x: metrics.size.width - BathymetryColorsView.width - 16)
   
           ARToggle(
             isOn: viewStore.binding(
@@ -70,7 +70,7 @@ struct AppView: View {
               send: AppAction.arIsOnToggled
             )
           )
-          .offset(x: metrics.size.width - ARToggle.width - 16)
+          .offset(x: 16)
         }
   
         VStack {
