@@ -25,6 +25,10 @@ struct AppView: View {
             bathymetryColors: viewStore.binding(
               get: { $0.bathymetryColors },
               send: AppAction.bathymetryColorsUpdated
+            ),
+            waterSurface: viewStore.binding(
+              get: { $0.waterSurface },
+              send: AppAction.waterSurfaceUpdated
             )
           )
           MapView(

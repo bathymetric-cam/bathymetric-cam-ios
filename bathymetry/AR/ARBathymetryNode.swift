@@ -21,13 +21,19 @@ open class ARBathymetryNode: LocationNode {
   ///   - bathymetryTile: BathymetryTile
   ///   - bathymetryColors: BathymetryColors
   ///   - altitude: altitude of node
-  init(bathymetryTile: BathymetryTile, bathymetryColors: BathymetryColors, altitude: Double) {
+  ///   - waterSurface: offset altitude of water surface
+  init(
+    bathymetryTile: BathymetryTile,
+    bathymetryColors: BathymetryColors,
+    altitude: Double,
+    waterSurface: Double
+  ) {
     let location = CLLocation(coordinate: bathymetryTile.sw, altitude: altitude)
     super.init(location: location)
   
     let normal = Euclid.Vector(0, -1, 0)
     bathymetryColors.forEach { color in
-      let positionsList = createPositionsList(bathymetryTile: bathymetryTile, depth: color.depth)
+      let positionsList = createPositionsList(bathymetryTile: bathymetryTile, depth: color.depth, waterSurface: waterSurface)
       let indicesList = createIndicesList(positionsList: positionsList)
   
       for i in 0..<indicesList.count {
@@ -52,8 +58,13 @@ open class ARBathymetryNode: LocationNode {
   /// - Parameters:
   ///   - bathymetryTile: BathymetryTile object
   ///   - depth: depth range
+  ///   - offsetOfwaterSurfaceAltitude: offset altitude of water surface
   /// - Returns: positions of polygon's vertices
-  private func createPositionsList(bathymetryTile: BathymetryTile, depth: BathymetryDepth) -> [[[Euclid.Vector]]] {
+  private func createPositionsList(
+    bathymetryTile: BathymetryTile,
+    depth: BathymetryDepth,
+    waterSurface: Double
+  ) -> [[[Euclid.Vector]]] {
     bathymetryTile
       .getFeatures(depth: depth)
       .compactMap { feature -> MultiPolygon? in
@@ -72,7 +83,7 @@ open class ARBathymetryNode: LocationNode {
           var vectors = polygon.exterior.points.map { point -> Euclid.Vector in
             let lngDistance = CLLocation(coordinate: bathymetryTile.sw, altitude: 0).distance(from: CLLocation(coordinate: CLLocationCoordinate2D(latitude: bathymetryTile.sw.latitude, longitude: point.x), altitude: 0))
             let latDistance = CLLocation(coordinate: bathymetryTile.sw, altitude: 0).distance(from: CLLocation(coordinate: CLLocationCoordinate2D(latitude: point.y, longitude: bathymetryTile.sw.longitude), altitude: 0))
-            return Euclid.Vector(lngDistance, -2, latDistance)
+            return Euclid.Vector(lngDistance, waterSurface, latDistance)
           }
           var clockwise = 0.0
           for i in 1...vectors.count - 1 {

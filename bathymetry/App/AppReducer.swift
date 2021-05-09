@@ -35,6 +35,9 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
   case let .arIsOnToggled(arIsOn):
     state.arIsOn = arIsOn
     return .none
+  case let .waterSurfaceUpdated(waterSurface):
+    state.waterSurface = waterSurface
+    return .none
   }
 }
 // swiftlint:enable closure_body_length

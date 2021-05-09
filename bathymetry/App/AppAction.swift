@@ -12,4 +12,5 @@ enum AppAction: Equatable {
   case zoomOut
   case zoomLevelUpdated(zoomLevel: BathymetryZoomLevel)
   case arIsOnToggled(Bool)
+  case waterSurfaceUpdated(Double)
 }

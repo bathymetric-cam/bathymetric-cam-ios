@@ -12,6 +12,7 @@ struct ARView: UIViewRepresentable {
   @Binding var isOn: Bool
   @Binding var bathymetryTiles: [BathymetryTile]
   @Binding var bathymetryColors: BathymetryColors
+  @Binding var waterSurface: Double
 
   // MARK: UIViewRepresentable
   
@@ -35,7 +36,8 @@ struct ARView: UIViewRepresentable {
         locationNode: ARBathymetryNode(
           bathymetryTile: $0,
           bathymetryColors: bathymetryColors,
-          altitude: altitude
+          altitude: altitude,
+          waterSurface: waterSurface
         )
       )
     }
@@ -124,6 +126,10 @@ struct ARView_Previews: PreviewProvider {
       ),
       bathymetryColors: Binding<BathymetryColors>(
         get: { .defaultColors },
+        set: { _ in }
+      ),
+      waterSurface: Binding<Double>(
+        get: { -1.0 },
         set: { _ in }
       )
     )

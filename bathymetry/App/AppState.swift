@@ -15,4 +15,5 @@ struct AppState: Equatable {
     zoom: Int(BathymetryZoomLevel.max)
   )
   var arIsOn = true
+  var waterSurface = -1.0
 }
