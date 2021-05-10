@@ -6,7 +6,7 @@ struct BathymetryWaterSurfaceSlider: View {
   // MARK: static constant
   
   static let width = CGFloat(64)
-  static let height = CGFloat(160)
+  static let height = CGFloat(128)
   
   // MARK: property
   
@@ -14,9 +14,14 @@ struct BathymetryWaterSurfaceSlider: View {
   
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
+      Text(String(format: "%.1f", waterSurface))
+        .frame(
+          maxWidth: BathymetryWaterSurfaceSlider.width,
+          alignment: .center
+        )
       Slider(
         value: $waterSurface,
-        in: (-10.5)...(-0.5)
+        in: (-10.0)...(-0.5)
       )
       .frame(width: BathymetryWaterSurfaceSlider.height, height: BathymetryWaterSurfaceSlider.width)
       .rotationEffect(.degrees(270), anchor: .topLeading)

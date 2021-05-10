@@ -11,6 +11,11 @@ struct MapZoomButton: View {
     case zoomOut
   }
   
+  // MARK: static constant
+  
+  static let width = CGFloat(64)
+  static let height = CGFloat(64)
+  
   // MARK: property
   
   let type: ZoomType
@@ -32,7 +37,7 @@ struct MapZoomButton: View {
         }
       }
     )
-      .frame(width: 64, height: 64)
+      .frame(width: MapZoomButton.width, height: MapZoomButton.height)
       .opacity(opacity)
   }
   

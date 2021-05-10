@@ -109,7 +109,7 @@ struct AppView: View {
             )
           }
         }
-        .offset(x: metrics.size.width - BathymetryWaterSurfaceSlider.width - 16, y: metrics.size.height - BathymetryWaterSurfaceSlider.height - 48)
+        .offset(x: metrics.size.width - BathymetryWaterSurfaceSlider.width - 16, y: metrics.size.height - metrics.size.width / 2.0)
       }
     }
   }
