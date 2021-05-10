@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E608B63525BAEE4A0053FBBF /* BathymetryContentfulEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E608B63425BAEE4A0053FBBF /* BathymetryContentfulEntity.swift */; };
+		E60C3D3726499213003E0355 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60C3D3626499213003E0355 /* CustomSlider.swift */; };
 		E6169D3A25CAB00200AE1F06 /* MapZoomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6169D3925CAB00200AE1F06 /* MapZoomButton.swift */; };
 		E616F3E325BAC9B5005A3703 /* BathymetryContentfulClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E616F3E225BAC9B5005A3703 /* BathymetryContentfulClient.swift */; };
 		E6171D5A25B0574900161E28 /* Contentful in Frameworks */ = {isa = PBXBuildFile; productRef = E6171D5925B0574900161E28 /* Contentful */; };
@@ -107,6 +108,7 @@
 
 /* Begin PBXFileReference section */
 		E608B63425BAEE4A0053FBBF /* BathymetryContentfulEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryContentfulEntity.swift; sourceTree = "<group>"; };
+		E60C3D3626499213003E0355 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		E6169D3925CAB00200AE1F06 /* MapZoomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomButton.swift; sourceTree = "<group>"; };
 		E616F3E225BAC9B5005A3703 /* BathymetryContentfulClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryContentfulClient.swift; sourceTree = "<group>"; };
 		E6171D5D25B0763B00161E28 /* BathymetryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryEntity.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				E69D159C25C9809100AD1B0F /* CircularButton.swift */,
+				E60C3D3626499213003E0355 /* CustomSlider.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				E6171D5E25B0763B00161E28 /* BathymetryEntity.swift in Sources */,
 				E6B2866025A47B4600782955 /* ARBathymetryNode.swift in Sources */,
 				E63D2C3C25A33E7D00788375 /* MGLShapeSource+Feature.swift in Sources */,
+				E60C3D3726499213003E0355 /* CustomSlider.swift in Sources */,
 				E65CF41C2590BBFA008A207C /* AppEnvironment.swift in Sources */,
 				E631E59826482BE1007B1BDC /* BathymetryWaterSurfaceSlider.swift in Sources */,
 				E694049025C428CF00F047EC /* BathymetryColor.swift in Sources */,

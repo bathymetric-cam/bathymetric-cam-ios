@@ -19,9 +19,11 @@ struct BathymetryWaterSurfaceSlider: View {
           maxWidth: BathymetryWaterSurfaceSlider.width,
           alignment: .center
         )
-      Slider(
+      CustomSlider(
         value: $waterSurface,
-        in: (-10.0)...(-0.5)
+        in: (-10.0)...(-0.5),
+        tintColor: .init(red: 0.0 / 255, green: 70.0 / 255, blue: 98.0 / 255),
+        thumbImage: UIImage(named: "bathymetry_slider-thumb")
       )
       .frame(width: BathymetryWaterSurfaceSlider.height, height: BathymetryWaterSurfaceSlider.width)
       .rotationEffect(.degrees(270), anchor: .topLeading)
