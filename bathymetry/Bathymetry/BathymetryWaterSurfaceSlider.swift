@@ -21,9 +21,11 @@ struct BathymetryWaterSurfaceSlider: View {
         )
       CustomSlider(
         value: $waterSurface,
-        in: (-10.0)...(-0.5),
+        in: (-15.0)...(-0.5),
         tintColor: .init(red: 0.0 / 255, green: 70.0 / 255, blue: 98.0 / 255),
-        thumbImage: UIImage(named: "bathymetry_slider-thumb")
+        thumbImage: UIImage(named: "bathymetry_slider-thumb"),
+        thresholdValue: 0.25,
+        thresholdSecond: 0.25
       )
       .frame(width: BathymetryWaterSurfaceSlider.height, height: BathymetryWaterSurfaceSlider.width)
       .rotationEffect(.degrees(270), anchor: .topLeading)
@@ -40,7 +42,7 @@ struct BathymetryWaterSurfaceSlider_Previews: PreviewProvider {
     ForEach([ColorScheme.dark, ColorScheme.light], id: \.self) {
       BathymetryWaterSurfaceSlider(
         waterSurface: Binding<Double>(
-          get: { 0 },
+          get: { -1.5 },
           set: { _ in }
         )
       )

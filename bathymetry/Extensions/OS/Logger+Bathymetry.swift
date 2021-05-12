@@ -5,10 +5,28 @@ let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "org.kenzan8000.b
 
 // MARK: - Logger + Bathymetry
 extension Logger {
-  func prefix(_ instance: String = #file, _ function: String = #function) -> String {
+  
+  // MARK: property
+  
+  var suffix: String {
     """
     
-    [file] \(String(describing: type(of: instance)))
+    --------------------------------------------------
+
+    """
+  }
+  
+  // MARK: public api
+  
+  /// Returns default prefix String
+  /// - Parameters:
+  ///   - file: file name
+  ///   - function: function name
+  /// - Returns: default prefix String
+  func prefix(_ file: String = #fileID, _ function: String = #function) -> String {
+    """
+    
+    [file] \(file)
     [func] \(function)
     --------------------------------------------------
     

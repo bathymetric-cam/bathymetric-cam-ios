@@ -1,3 +1,4 @@
+import ARKit
 import ARKit_CoreLocation
 import Combine
 import CoreLocation
@@ -19,28 +20,32 @@ struct ARView: UIViewRepresentable {
   func makeUIView(context: UIViewRepresentableContext<ARView>) -> UIARView {
     let uiArView = UIARView(trackingType: .orientationTracking)
     uiArView.locationEstimateDelegate = context.coordinator
+    uiArView.arViewDelegate = context.coordinator
     uiArView.run()
     return uiArView
   }
   
   func updateUIView(_ uiView: UIARView, context: UIViewRepresentableContext<ARView>) {
+    uiView.pause()
+    
     uiView.locationNodes.forEach {
       uiView.removeLocationNode(locationNode: $0)
     }
-    if !isOn {
-      return
-    }
-    let altitude = uiView.sceneLocationManager.currentLocation?.altitude ?? 0
-    bathymetryTiles.forEach {
-      uiView.addLocationNodeWithConfirmedLocation(
-        locationNode: ARBathymetryNode(
-          bathymetryTile: $0,
-          bathymetryColors: bathymetryColors,
-          altitude: altitude,
-          waterSurface: waterSurface
+    if isOn {
+      let altitude = uiView.sceneLocationManager.currentLocation?.altitude ?? 0
+      bathymetryTiles.forEach {
+        uiView.addLocationNodeWithConfirmedLocation(
+          locationNode: ARBathymetryNode(
+            bathymetryTile: $0,
+            bathymetryColors: bathymetryColors,
+            altitude: altitude,
+            waterSurface: waterSurface
+          )
         )
-      )
+      }
     }
+    
+    uiView.run()
   }
   
   static func dismantleUIView(_ uiView: ARView.UIViewType, coordinator: ARView.Coordinator) {
@@ -53,7 +58,7 @@ struct ARView: UIViewRepresentable {
   
   // MARK: Coordinator
   
-  final class Coordinator: NSObject, SceneLocationViewEstimateDelegate {
+  final class Coordinator: NSObject, SceneLocationViewEstimateDelegate, ARSCNViewDelegate, ARSessionDelegate {
     var control: ARView
 
     init(_ control: ARView) {
@@ -70,6 +75,20 @@ struct ARView: UIViewRepresentable {
     }
 
     func didRemoveSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
+    }
+    
+    // MARK: ARSCNViewDelegate
+    
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+      // logger.debug("\(logger.prefix(), privacy: .private)\(Thread.current.name ?? "", privacy: .private)\(logger.suffix, privacy: .private)")
+    }
+
+    func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
+      // logger.debug("\(logger.prefix(), privacy: .private)\(Thread.current.name ?? "", privacy: .private)\(logger.suffix, privacy: .private)")
+    }
+
+    func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
+      // logger.debug("\(logger.prefix(), privacy: .private)\(Thread.current.name ?? "", privacy: .private)\(logger.suffix, privacy: .private)")
     }
   }
 }
@@ -109,6 +128,7 @@ final class UIARView: SceneLocationView {
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+
 }
 
 // MARK: - ARView_Previews

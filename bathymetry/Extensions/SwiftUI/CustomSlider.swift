@@ -13,6 +13,8 @@ struct CustomSlider: UIViewRepresentable {
   var highlightedThumbImage: UIImage?
   var minimumTrackTintColor: Color?
   var maximumTrackTintColor: Color?
+  var thresholdValue: Double?
+  var thresholdSecond: TimeInterval?
 
   // MARK: UIViewRepresentable
   
@@ -41,30 +43,39 @@ struct CustomSlider: UIViewRepresentable {
       action: #selector(Coordinator.valueChanged(_:)),
       for: .valueChanged
     )
-
     return slider
   }
   
   func updateUIView(_ uiView: UISlider, context: Context) {
-    uiView.value = Float(self.value)
+    uiView.value = Float(value)
   }
 
   func makeCoordinator() -> CustomSlider.Coordinator {
-    Coordinator(value: $value)
+    Coordinator(value: $value, thresholdValue: thresholdValue ?? 0.0, thresholdSecond: thresholdSecond ?? 0.0)
   }
 
   // MARK: Coordinator
   
   final class Coordinator: NSObject {
     var value: Binding<Double>
+    var second: TimeInterval
+    var thresholdValue: Double
+    var thresholdSecond: TimeInterval
     
-    init(value: Binding<Double>) {
+    init(value: Binding<Double>, second: TimeInterval = Date().timeIntervalSince1970, thresholdValue: Double = 0.0, thresholdSecond: TimeInterval = 0.0) {
       self.value = value
+      self.second = second
+      self.thresholdValue = thresholdValue
+      self.thresholdSecond = thresholdSecond
     }
     
     @objc
     func valueChanged(_ sender: UISlider) {
-      value.wrappedValue = Double(sender.value)
+      let now = Date()
+      if abs(value.wrappedValue - Double(sender.value)) > thresholdValue && abs(now.timeIntervalSince1970 - second) > thresholdSecond {
+        value.wrappedValue = Double(sender.value)
+        second = now.timeIntervalSince1970
+      }
     }
   }
 }
