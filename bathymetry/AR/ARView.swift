@@ -14,6 +14,8 @@ struct ARView: UIViewRepresentable {
   @Binding var bathymetryTiles: [BathymetryTile]
   @Binding var bathymetryColors: BathymetryColors
   @Binding var waterSurface: Double
+  
+  let dispatchGroup = DispatchGroup()
 
   // MARK: UIViewRepresentable
   
@@ -26,12 +28,13 @@ struct ARView: UIViewRepresentable {
   }
   
   func updateUIView(_ uiView: UIARView, context: UIViewRepresentableContext<ARView>) {
-    uiView.pause()
-    
-    uiView.locationNodes.forEach {
-      uiView.removeLocationNode(locationNode: $0)
-    }
-    if isOn {
+    dispatchGroup.notify(queue: .main) {
+      uiView.locationNodes.forEach {
+        uiView.removeLocationNode(locationNode: $0)
+      }
+      if !isOn {
+        return
+      }
       let altitude = uiView.sceneLocationManager.currentLocation?.altitude ?? 0
       bathymetryTiles.forEach {
         uiView.addLocationNodeWithConfirmedLocation(
@@ -44,8 +47,6 @@ struct ARView: UIViewRepresentable {
         )
       }
     }
-    
-    uiView.run()
   }
   
   static func dismantleUIView(_ uiView: ARView.UIViewType, coordinator: ARView.Coordinator) {
@@ -80,15 +81,11 @@ struct ARView: UIViewRepresentable {
     // MARK: ARSCNViewDelegate
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-      // logger.debug("\(logger.prefix(), privacy: .private)\(Thread.current.name ?? "", privacy: .private)\(logger.suffix, privacy: .private)")
-    }
-
-    func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
-      // logger.debug("\(logger.prefix(), privacy: .private)\(Thread.current.name ?? "", privacy: .private)\(logger.suffix, privacy: .private)")
+      control.dispatchGroup.enter()
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
-      // logger.debug("\(logger.prefix(), privacy: .private)\(Thread.current.name ?? "", privacy: .private)\(logger.suffix, privacy: .private)")
+      control.dispatchGroup.leave()
     }
   }
 }
