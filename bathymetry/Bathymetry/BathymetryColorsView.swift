@@ -3,18 +3,16 @@ import SwiftUI
 // MARK: - BathymetryColorsView
 struct BathymetryColorsView: View {
   
-  // MARK: static constant
-  
-  static let width = CGFloat(64)
-  
   // MARK: property
   
   @Binding var bathymetryColors: BathymetryColors
+  @Binding var width: CGFloat
+  @Binding var height: CGFloat
   
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
       ForEach(bathymetryColors, id: \.self) {
-        BathymetryColorView(bathymetryColor: $0)
+        BathymetryColorView(bathymetryColor: $0, width: width, height: height / CGFloat(bathymetryColors.count))
       }
     }
   }
@@ -23,41 +21,37 @@ struct BathymetryColorsView: View {
 // MARK: - BathymetryColorView
 struct BathymetryColorView: View {
   
-  // MARK: static constant
-  
-  static let width = CGFloat(32)
-  static let height = CGFloat(32)
-  
   // MARK: property
   
   let bathymetryColor: BathymetryColor
+  let width: CGFloat
+  let height: CGFloat
   
   var body: some View {
     HStack(alignment: .bottom) {
       Rectangle()
         .fill(bathymetryColor.color)
-        .frame(width: BathymetryColorView.width, height: BathymetryColorView.height)
-      Text(String(format: "%.1f", bathymetryColor.depth.max))
-        .frame(width: BathymetryColorView.width, alignment: .trailing)
-        .font(.caption)
+        .frame(width: width, height: height)
     }
-    .frame(width: BathymetryColorsView.width)
   }
 }
 
 // MARK: - BathymetryColorsView_Previews
 struct BathymetryColorsView_Previews: PreviewProvider {
   static var previews: some View {
-    ForEach([ColorScheme.dark, ColorScheme.light], id: \.self) {
-      Group {
-        BathymetryColorsView(
-          bathymetryColors: Binding<BathymetryColors>(
-            get: { .defaultColors },
-            set: { _ in }
-          )
-        )
-      }
-      .colorScheme($0)
-    }
+    BathymetryColorsView(
+      bathymetryColors: Binding<BathymetryColors>(
+        get: { .defaultColors },
+        set: { _ in }
+      ),
+      width: Binding<CGFloat>(
+        get: { 16 },
+        set: { _ in }
+      ),
+      height: Binding<CGFloat>(
+        get: { 128 },
+        set: { _ in }
+      )
+    )
   }
 }

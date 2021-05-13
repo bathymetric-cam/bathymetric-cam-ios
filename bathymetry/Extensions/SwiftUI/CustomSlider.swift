@@ -7,12 +7,12 @@ struct CustomSlider: UIViewRepresentable {
 
   @Binding var value: Double
   var `in` = 0.0...1.0
-  var tintColor: Color?
+  var minimumTrackTintColor: Color?
+  var maximumTrackTintColor: Color?
+  var backgroundColor: Color?
   var thumbTintColor: Color?
   var thumbImage: UIImage?
   var highlightedThumbImage: UIImage?
-  var minimumTrackTintColor: Color?
-  var maximumTrackTintColor: Color?
   var thresholdValue: Double?
   var thresholdSecond: TimeInterval?
 
@@ -23,8 +23,11 @@ struct CustomSlider: UIViewRepresentable {
     if let thumbTintColor = thumbTintColor {
       slider.thumbTintColor = UIColor(thumbTintColor)
     }
-    if let tintColor = tintColor {
-      slider.tintColor = UIColor(tintColor)
+    if let minimumTrackTintColor = minimumTrackTintColor {
+      slider.minimumTrackTintColor = UIColor(minimumTrackTintColor)
+    }
+    if let maximumTrackTintColor = maximumTrackTintColor {
+      slider.maximumTrackTintColor = UIColor(maximumTrackTintColor)
     }
     if let minimumTrackTintColor = minimumTrackTintColor {
       slider.minimumTrackTintColor = UIColor(minimumTrackTintColor)

@@ -13,25 +13,36 @@ struct BathymetryWaterSurfaceSlider: View {
   @Binding var waterSurface: Double
   
   var body: some View {
-    VStack(alignment: .leading, spacing: 0) {
-      Text(String(format: "%.1f", waterSurface))
-        .frame(
-          maxWidth: BathymetryWaterSurfaceSlider.width,
-          alignment: .center
+    ZStack {
+      GeometryReader { metrics in
+        BathymetryColorsView(
+          bathymetryColors: Binding<BathymetryColors>(
+            get: { .defaultColors },
+            set: { _ in }
+          ),
+          width: Binding<CGFloat>(
+            get: { 8 },
+            set: { _ in }
+          ),
+          height: Binding<CGFloat>(
+            get: { CGFloat(128.0 - 128.0 * (-0.5 - waterSurface) / (-0.5 + 15.0)) },
+            set: { _ in }
+          )
         )
-      CustomSlider(
-        value: $waterSurface,
-        in: (-15.0)...(-0.5),
-        tintColor: .init(red: 0.0 / 255, green: 70.0 / 255, blue: 98.0 / 255),
-        thumbImage: UIImage(named: "bathymetry_slider-thumb")
-        // thresholdValue: 0.25,
-        // thresholdSecond: 0.25
-      )
-      .frame(width: BathymetryWaterSurfaceSlider.height, height: BathymetryWaterSurfaceSlider.width)
-      .rotationEffect(.degrees(270), anchor: .topLeading)
-      .offset(x: 0, y: BathymetryWaterSurfaceSlider.height)
+        .offset(x: BathymetryWaterSurfaceSlider.width / 2.0 - 8 / 2.0, y: CGFloat(128.0 * (-0.5 - waterSurface) / (-0.5 + 15.0)))
+        
+        CustomSlider(
+          value: $waterSurface,
+          in: (-15.0)...(-0.5),
+          minimumTrackTintColor: .clear,
+          maximumTrackTintColor: .clear,
+          thumbImage: UIImage(named: "bathymetry_slider-thumb")
+        )
+        .frame(width: BathymetryWaterSurfaceSlider.height, height: BathymetryWaterSurfaceSlider.width)
+        .rotationEffect(.degrees(270), anchor: .topLeading)
+        .offset(x: 0, y: BathymetryWaterSurfaceSlider.height)
+      }
     }
-    .frame(width: BathymetryWaterSurfaceSlider.height, height: BathymetryWaterSurfaceSlider.width)
   }
 }
 

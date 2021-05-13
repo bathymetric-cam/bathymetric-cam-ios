@@ -53,26 +53,8 @@ struct AppView: View {
         }
       }
       .edgesIgnoringSafeArea(.all)
-  
+      
       GeometryReader { metrics in
-        WithViewStore(store) { viewStore in
-          BathymetryColorsView(
-            bathymetryColors: viewStore.binding(
-              get: { $0.bathymetryColors },
-              send: AppAction.bathymetryColorsUpdated
-            )
-          )
-          .offset(x: metrics.size.width - BathymetryColorsView.width - 16)
-  
-          ARToggle(
-            isOn: viewStore.binding(
-              get: { $0.arIsOn },
-              send: AppAction.arIsOnToggled
-            )
-          )
-          .offset(x: 16)
-        }
-  
         VStack {
           WithViewStore(store) { viewStore in
             MapZoomButton(
