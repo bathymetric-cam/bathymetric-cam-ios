@@ -6,7 +6,8 @@ struct BathymetryWaterSurfaceSlider: View {
   // MARK: static constant
   
   static let width = CGFloat(64)
-  static let height = CGFloat(128)
+  static let height = CGFloat(256)
+  static let sliderHeight = CGFloat(128)
   
   // MARK: property
   
@@ -21,26 +22,32 @@ struct BathymetryWaterSurfaceSlider: View {
             set: { _ in }
           ),
           width: Binding<CGFloat>(
-            get: { 8 },
+            get: { 4 },
             set: { _ in }
           ),
           height: Binding<CGFloat>(
-            get: { CGFloat(128.0 - 128.0 * (-0.5 - waterSurface) / (-0.5 + 15.0)) },
+            get: { BathymetryWaterSurfaceSlider.height - BathymetryWaterSurfaceSlider.sliderHeight * CGFloat((-0.5 - waterSurface) / (-0.5 + 15.0)) },
             set: { _ in }
           )
         )
-        .offset(x: BathymetryWaterSurfaceSlider.width / 2.0 - 8 / 2.0, y: CGFloat(128.0 * (-0.5 - waterSurface) / (-0.5 + 15.0)))
+        .offset(x: BathymetryWaterSurfaceSlider.width / 2.0 - 4 / 2.0, y: BathymetryWaterSurfaceSlider.sliderHeight * CGFloat((-0.5 - waterSurface) / (-0.5 + 15.0)))
+        
+        Text(String(format: "%.1f", waterSurface))
+          .frame(
+            maxWidth: BathymetryWaterSurfaceSlider.width,
+            alignment: .center
+          )
+          .offset(x: 0, y: -24.0)
         
         CustomSlider(
           value: $waterSurface,
           in: (-15.0)...(-0.5),
           minimumTrackTintColor: .clear,
-          maximumTrackTintColor: .clear,
           thumbImage: UIImage(named: "bathymetry_slider-thumb")
         )
-        .frame(width: BathymetryWaterSurfaceSlider.height, height: BathymetryWaterSurfaceSlider.width)
+        .frame(width: BathymetryWaterSurfaceSlider.sliderHeight, height: BathymetryWaterSurfaceSlider.width)
         .rotationEffect(.degrees(270), anchor: .topLeading)
-        .offset(x: 0, y: BathymetryWaterSurfaceSlider.height)
+        .offset(x: 0, y: BathymetryWaterSurfaceSlider.sliderHeight)
       }
     }
   }

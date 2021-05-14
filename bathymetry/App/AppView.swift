@@ -79,7 +79,7 @@ struct AppView: View {
             }
           }
         }
-        .offset(x: 16, y: metrics.size.height - metrics.size.width / 2.0)
+        .offset(x: 16, y: metrics.size.height - MapZoomButton.height * 2)
 
         VStack {
           WithViewStore(store) { viewStore in
@@ -91,7 +91,7 @@ struct AppView: View {
             )
           }
         }
-        .offset(x: metrics.size.width - BathymetryWaterSurfaceSlider.width - 16, y: metrics.size.height - metrics.size.width / 2.0)
+        .offset(x: metrics.size.width - BathymetryWaterSurfaceSlider.width - 16, y: metrics.size.height - BathymetryWaterSurfaceSlider.height)
       }
     }
   }
