@@ -32,6 +32,9 @@ struct BathymetryColorView: View {
       Rectangle()
         .fill(bathymetryColor.color)
         .frame(width: width, height: height)
+      Text(String(format: "%.1f", bathymetryColor.depth.max))
+        .frame(alignment: .trailing)
+        .font(.system(size: 8))
     }
   }
 }
