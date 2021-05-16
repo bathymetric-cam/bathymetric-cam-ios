@@ -23,6 +23,14 @@ class BathymetryColorsViewTests: XCTestCase {
         bathymetryColors: Binding<BathymetryColors>(
           get: { .defaultColors },
           set: { _ in }
+        ),
+        width: Binding<CGFloat>(
+          get: { 4 },
+          set: { _ in }
+        ),
+        height: Binding<CGFloat>(
+          get: { BathymetryWaterSurfaceSlider.colorsViewPlusSliderHeight },
+          set: { _ in }
         )
       )
     )
