@@ -3,122 +3,126 @@ import SwiftUI
 
 // MARK: - AppView
 struct AppView: View {
+  
+  // MARK: static constant
+  
+  static let padding = CGFloat(16)
 
   // MARK: property
   
   let store: Store<AppState, AppAction>
   
-  // swiftlint:disable closure_body_length
   var body: some View {
     ZStack {
-      GeometryReader { metrics in
-        WithViewStore(store) { viewStore in
-          ARView(
-            isOn: viewStore.binding(
-              get: { $0.arIsOn },
-              send: AppAction.arIsOnToggled
-            ),
-            bathymetryTiles: viewStore.binding(
-              get: { $0.bathymetryTiles },
-              send: AppAction.bathymetryTilesUpdated
-            ),
-            bathymetryColors: viewStore.binding(
-              get: { $0.bathymetryColors },
-              send: AppAction.bathymetryColorsUpdated
-            ),
-            waterSurface: viewStore.binding(
-              get: { $0.waterSurface },
-              send: AppAction.waterSurfaceUpdated
-            )
+      ZStack {
+        arView
+        mapView
+      }
+      .edgesIgnoringSafeArea(.all)
+      
+      mapZoomButtons
+      waterSurfaceSlider
+    }
+  }
+  
+  var arView: some View {
+    WithViewStore(store) { viewStore in
+      ARView(
+        isOn: viewStore.binding(
+          get: { $0.arIsOn },
+          send: AppAction.arIsOnToggled
+        ),
+        bathymetryTiles: viewStore.binding(
+          get: { $0.bathymetryTiles },
+          send: AppAction.bathymetryTilesUpdated
+        ),
+        bathymetryColors: viewStore.binding(
+          get: { $0.bathymetryColors },
+          send: AppAction.bathymetryColorsUpdated
+        ),
+        waterSurface: viewStore.binding(
+          get: { $0.waterSurface },
+          send: AppAction.waterSurfaceUpdated
+        )
+      )
+    }
+  }
+  
+  var mapView: some View {
+    GeometryReader { metrics in
+      WithViewStore(store) { viewStore in
+        MapView(
+          internalMapView: .mapbox,
+          bathymetryTiles: viewStore.binding(
+            get: { $0.bathymetryTiles },
+            send: AppAction.bathymetryTilesUpdated
+          ),
+          bathymetryColors: viewStore.binding(
+            get: { $0.bathymetryColors },
+            send: AppAction.bathymetryColorsUpdated
+          ),
+          zoomLevel: viewStore.binding(
+            get: { $0.zoomLevel },
+            send: AppAction.zoomLevelUpdated
           )
-          MapView(
-            internalMapView: .mapbox,
-            bathymetryTiles: viewStore.binding(
-              get: { $0.bathymetryTiles },
-              send: AppAction.bathymetryTilesUpdated
-            ),
-            bathymetryColors: viewStore.binding(
-              get: { $0.bathymetryColors },
-              send: AppAction.bathymetryColorsUpdated
-            ),
+        )
+        .regionDidChange {
+          viewStore.send(.loadBathymetries($0))
+        }
+        .modifier(MapViewModifier(metrics: metrics))
+      }
+    }
+  }
+  
+  var mapZoomButtons: some View {
+    GeometryReader { metrics in
+      VStack {
+        WithViewStore(store) { viewStore in
+          MapZoomButton(
+            type: .zoomIn,
             zoomLevel: viewStore.binding(
               get: { $0.zoomLevel },
               send: AppAction.zoomLevelUpdated
             )
           )
-          .regionDidChange {
-            viewStore.send(.loadBathymetries($0))
+          .onTap {
+            viewStore.send(.zoomIn)
           }
-          .modifier(MapViewModifier(metrics: metrics))
+          MapZoomButton(
+            type: .zoomOut,
+            zoomLevel: viewStore.binding(
+              get: { $0.zoomLevel },
+              send: AppAction.zoomLevelUpdated
+            )
+          )
+          .onTap {
+            viewStore.send(.zoomOut)
+          }
         }
       }
-      .edgesIgnoringSafeArea(.all)
-      
-      GeometryReader { metrics in
-        VStack {
-          WithViewStore(store) { viewStore in
-            MapZoomButton(
-              type: .zoomIn,
-              zoomLevel: viewStore.binding(
-                get: { $0.zoomLevel },
-                send: AppAction.zoomLevelUpdated
-              )
-            )
-            .onTap {
-              viewStore.send(.zoomIn)
-            }
-            MapZoomButton(
-              type: .zoomOut,
-              zoomLevel: viewStore.binding(
-                get: { $0.zoomLevel },
-                send: AppAction.zoomLevelUpdated
-              )
-            )
-            .onTap {
-              viewStore.send(.zoomOut)
-            }
-          }
-        }
-        .offset(x: metrics.size.width - MapZoomButton.width - 16, y: metrics.size.height - MapZoomButton.height * 2)
-
-        VStack {
-          WithViewStore(store) { viewStore in
-            BathymetryWaterSurfaceSlider(
-              waterSurface: viewStore.binding(
-                get: { $0.waterSurface },
-                send: AppAction.waterSurfaceUpdated
-              )
-            )
-          }
-        }
-        .offset(x: metrics.size.width - BathymetryWaterSurfaceSlider.width - 16, y: metrics.size.height - MapZoomButton.height * 2 - BathymetryWaterSurfaceSlider.height)
-      }
+      .offset(
+        x: metrics.size.width - MapZoomButton.width - AppView.padding,
+        y: metrics.size.height - MapZoomButton.height * 2
+      )
     }
   }
-  // swiftlint:enable closure_body_length
-
-  // MARK: MapViewModifier
   
-  struct MapViewModifier: ViewModifier {
-    // MARK: property
-  
-    let metrics: GeometryProxy
-  
-    // MARK: public api
-  
-    func body(content: Content) -> some View {
-      content
-        .frame(
-          width: metrics.size.width,
-          height: metrics.size.width
-        )
-        .cornerRadius(metrics.size.width / 2.0)
-        .offset(y: metrics.size.height - metrics.size.width / 2.0)
-        .overlay(
-          RoundedRectangle(cornerRadius: metrics.size.width / 2.0)
-            .stroke(Color.gray, lineWidth: 4)
-            .offset(y: metrics.size.height - metrics.size.width / 2.0)
-        )
+  var waterSurfaceSlider: some View {
+    GeometryReader { metrics in
+      VStack {
+        WithViewStore(store) { viewStore in
+          BathymetryWaterSurfaceSlider(
+            waterSurface: viewStore.binding(
+              get: { $0.waterSurface },
+              send: AppAction.waterSurfaceUpdated
+            )
+          )
+        }
+      }
+      .offset(
+        x: metrics.size.width - BathymetryWaterSurfaceSlider.width - AppView.padding,
+        y: metrics.size.height - MapZoomButton.height * 2 - BathymetryWaterSurfaceSlider.height
+      )
     }
   }
   
