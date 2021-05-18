@@ -12,10 +12,10 @@ final class UIMapboxMapViewFactory: UIMapViewFactory {
     }
     guard let plist = NSDictionary(contentsOfFile: path),
           let accessToken = plist["MGLMapboxAccessToken"] else {
-      fatalError("Cannot open Mapbox-Info.plist")
+      fatalError("Invalid Mapbox-Info.plist")
     }
     MGLAccountManager.accessToken = "\(accessToken)"
-    let uiMapView = MGLMapView(frame: .zero, styleURL: MGLStyle.lightStyleURL)
+    let uiMapView = UIMapboxMapView(frame: .zero, styleURL: MGLStyle.lightStyleURL)
     uiMapView.styleURL = uiMapView.traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL : MGLStyle.lightStyleURL
     uiMapView.showsUserLocation = true
     uiMapView.zoomLevel = zoomLevel
@@ -27,6 +27,16 @@ final class UIMapboxMapViewFactory: UIMapViewFactory {
     return uiMapView
   }
   
+}
+
+// MARK: - UIMapboxMapView
+final class UIMapboxMapView: MGLMapView {
+  // MARK: life cycle
+  
+  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    super.traitCollectionDidChange(previousTraitCollection)
+    styleURL = traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL(withVersion: 9) : MGLStyle.lightStyleURL(withVersion: 9)
+  }
 }
 
 // MARK: - UIMapView+Mapbox
