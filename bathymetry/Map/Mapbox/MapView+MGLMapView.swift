@@ -7,11 +7,14 @@ import SwiftUI
 final class UIMapboxMapViewFactory: UIMapViewFactory {
   
   static func createMapView(zoomLevel: BathymetryZoomLevel) -> UIMapView {
-    if let path = Bundle.main.path(forResource: "Mapbox-Info", ofType: "plist"),
-       let plist = NSDictionary(contentsOfFile: path),
-       let accessToken = plist["MGLMapboxAccessToken"] {
-      MGLAccountManager.accessToken = "\(accessToken)"
+    guard let path = Bundle.main.path(forResource: "Mapbox-Info", ofType: "plist") else {
+      fatalError("Cannot open Mapbox-Info.plist")
     }
+    guard let plist = NSDictionary(contentsOfFile: path),
+          let accessToken = plist["MGLMapboxAccessToken"] else {
+      fatalError("Cannot open Mapbox-Info.plist")
+    }
+    MGLAccountManager.accessToken = "\(accessToken)"
     let uiMapView = MGLMapView(frame: .zero, styleURL: MGLStyle.lightStyleURL)
     uiMapView.styleURL = uiMapView.traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL : MGLStyle.lightStyleURL
     uiMapView.showsUserLocation = true

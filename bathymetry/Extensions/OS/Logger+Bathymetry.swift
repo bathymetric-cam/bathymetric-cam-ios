@@ -26,8 +26,7 @@ extension Logger {
   func prefix(_ file: String = #fileID, _ function: String = #function) -> String {
     """
     
-    [file] \(file)
-    [func] \(function)
+    [\(file)] \(function)
     --------------------------------------------------
     
     """

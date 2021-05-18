@@ -34,10 +34,12 @@ class BathymetryContentfulInternalClient: Client {
   // MARK: initializer
   
   init() {
-    guard let path = Bundle.main.path(forResource: "Contentful-Info", ofType: "plist"),
-       let plist = NSDictionary(contentsOfFile: path),
-       let spaceId = plist["spaceId"] as? String,
-       let accessToken = plist["accessToken"] as? String else {
+    guard let path = Bundle.main.path(forResource: "Contentful-Info", ofType: "plist") else {
+      fatalError("Cannot open Contentful-Info.plist")
+    }
+    guard let plist = NSDictionary(contentsOfFile: path),
+          let spaceId = plist["spaceId"] as? String,
+          let accessToken = plist["accessToken"] as? String else {
       fatalError("Invalid Contentful-Info.plist")
     }
     super.init(spaceId: spaceId, accessToken: accessToken, contentTypeClasses: [BathymetryContentfulEntity.self])
@@ -49,6 +51,10 @@ class BathymetryContentfulInternalClient: Client {
   
   // MARK: public api
   
+  /// Loads bathymetry data from contentful API
+  /// - Parameters:
+  ///   - region: BathymetryRegion
+  ///   - promise: closure called when succeeding or failing
   func loadBathymetries(region: BathymetryRegion, promise: @escaping (Result<[BathymetryTile], BathymetryClientFailure>) -> Void) {
     previousTask?.cancel()
     let query = QueryOn<BathymetryContentfulEntity>
