@@ -22,7 +22,7 @@ struct BathymetryWaterSurfaceSlider: View {
     ZStack {
       GeometryReader { _ in
         backgroundView
-        bathymetryColorsView
+        bathymetryDepthsView
         slider
         labels
       }
@@ -36,8 +36,8 @@ struct BathymetryWaterSurfaceSlider: View {
       .offset(y: -40)
   }
   
-  var bathymetryColorsView: some View {
-    BathymetryColorsView(
+  var bathymetryDepthsView: some View {
+    BathymetryDepthsView(
       bathymetries: Binding<[Bathymetry]>(
         get: { .default },
         set: { _ in }

@@ -3,8 +3,8 @@ import SwiftUI
 import XCTest
 @testable import Bathymetry
 
-// MARK: - BathymetryColorsViewTests
-class BathymetryColorsViewTests: XCTestCase {
+// MARK: - BathymetryDepthsViewTests
+class BathymetryDepthsViewTests: XCTestCase {
   // MARK: life cycle
   
   override func setUpWithError() throws {
@@ -17,9 +17,9 @@ class BathymetryColorsViewTests: XCTestCase {
   
   // MARK: test
   
-  func testBathymetryColorsView_whenInitialState_snapshotTesting() throws {
+  func testBathymetryDepthsView_whenInitialState_snapshotTesting() throws {
     let sut = UIHostingController(
-      rootView: BathymetryColorsView(
+      rootView: BathymetryDepthsView(
         bathymetries: Binding<[Bathymetry]>(
           get: { .default },
           set: { _ in }

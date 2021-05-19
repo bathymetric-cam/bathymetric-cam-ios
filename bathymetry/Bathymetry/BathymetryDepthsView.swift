@@ -1,7 +1,7 @@
 import SwiftUI
 
-// MARK: - BathymetryColorsView
-struct BathymetryColorsView: View {
+// MARK: - BathymetryDepthsView
+struct BathymetryDepthsView: View {
   
   // MARK: property
   
@@ -12,14 +12,14 @@ struct BathymetryColorsView: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
       ForEach(bathymetries, id: \.self) {
-        BathymetryColorView(bathymetry: $0, width: width, height: height / CGFloat(bathymetries.count))
+        BathymetryDepthView(bathymetry: $0, width: width, height: height / CGFloat(bathymetries.count))
       }
     }
   }
 }
 
-// MARK: - BathymetryColorView
-struct BathymetryColorView: View {
+// MARK: - BathymetryDepthView
+struct BathymetryDepthView: View {
   
   // MARK: property
   
@@ -39,10 +39,10 @@ struct BathymetryColorView: View {
   }
 }
 
-// MARK: - BathymetryColorsView_Previews
-struct BathymetryColorsView_Previews: PreviewProvider {
+// MARK: - BathymetryDepthsView_Previews
+struct BathymetryDepthsView_Previews: PreviewProvider {
   static var previews: some View {
-    BathymetryColorsView(
+    BathymetryDepthsView(
       bathymetries: Binding<[Bathymetry]>(
         get: { .default },
         set: { _ in }
