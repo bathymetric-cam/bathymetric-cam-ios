@@ -144,14 +144,14 @@ extension MapView {
       .compactMap { $0.identifier.starts(with: "\(Bundle.main.bundleIdentifier ?? "")") ? $0 : nil }
       .forEach { mapView.style?.removeSource($0) }
     bathymetryTiles.forEach { bathymetryTile in
-      bathymetryColors.forEach { color in
-        bathymetryTile.getFeatures(depth: color.depth)
+      bathymetries.forEach { bathymetry in
+        bathymetryTile.getFeatures(depth: bathymetry.depth)
           .enumerated()
           .forEach {
-            let source = MGLShapeSource(identifier: "\(Bundle.main.bundleIdentifier ?? "").source.\(bathymetryTile.name)/\(color.depth.min)/\(color.depth.max)/\($0)", feature: $1)
+            let source = MGLShapeSource(identifier: "\(Bundle.main.bundleIdentifier ?? "").source.\(bathymetryTile.name)/\(bathymetry.depth.min)/\(bathymetry.depth.max)/\($0)", feature: $1)
             mapView.style?.addSource(source)
-            let mapboxLayer = MGLFillStyleLayer(identifier: "\(Bundle.main.bundleIdentifier ?? "").layer.\(bathymetryTile.name)/\(color.depth.min)/\(color.depth.max)/\($0)", source: source)
-            mapboxLayer.fillColor = NSExpression(forConstantValue: color.uiColor.withAlphaComponent(0.8))
+            let mapboxLayer = MGLFillStyleLayer(identifier: "\(Bundle.main.bundleIdentifier ?? "").layer.\(bathymetryTile.name)/\(bathymetry.depth.min)/\(bathymetry.depth.max)/\($0)", source: source)
+            mapboxLayer.fillColor = NSExpression(forConstantValue: UIColor(bathymetry.color).withAlphaComponent(0.8))
             mapView.style?.addLayer(mapboxLayer)
           }
       }
@@ -168,8 +168,8 @@ struct MapView_Previews: PreviewProvider {
         get: { [] },
         set: { _ in }
       ),
-      bathymetryColors: Binding<BathymetryColors>(
-        get: { .defaultColors },
+      bathymetries: Binding<[Bathymetry]>(
+        get: { .default },
         set: { _ in }
       ),
       zoomLevel: Binding<BathymetryZoomLevel>(

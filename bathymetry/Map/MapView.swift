@@ -9,7 +9,7 @@ struct MapView: UIViewRepresentable {
   let regionDidChangePublisher = PassthroughSubject<BathymetryRegion, Never>()
   
   @Binding var bathymetryTiles: [BathymetryTile]
-  @Binding var bathymetryColors: BathymetryColors
+  @Binding var bathymetries: [Bathymetry]
   @Binding var zoomLevel: BathymetryZoomLevel
   
   // MARK: UIViewRepresentable

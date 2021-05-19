@@ -36,9 +36,9 @@ struct AppView: View {
           get: { $0.bathymetryTiles },
           send: AppAction.bathymetryTilesUpdated
         ),
-        bathymetryColors: viewStore.binding(
-          get: { $0.bathymetryColors },
-          send: AppAction.bathymetryColorsUpdated
+        bathymetries: viewStore.binding(
+          get: { $0.bathymetries },
+          send: AppAction.bathymetriesUpdated
         ),
         waterSurface: viewStore.binding(
           get: { $0.waterSurface },
@@ -57,9 +57,9 @@ struct AppView: View {
             get: { $0.bathymetryTiles },
             send: AppAction.bathymetryTilesUpdated
           ),
-          bathymetryColors: viewStore.binding(
-            get: { $0.bathymetryColors },
-            send: AppAction.bathymetryColorsUpdated
+          bathymetries: viewStore.binding(
+            get: { $0.bathymetries },
+            send: AppAction.bathymetriesUpdated
           ),
           zoomLevel: viewStore.binding(
             get: { $0.zoomLevel },
@@ -133,7 +133,7 @@ struct AppView_Previews: PreviewProvider {
   static var previews: some View {
     ForEach([ColorScheme.dark, ColorScheme.light], id: \.self) {
       AppView(store: Store(
-        initialState: AppState(bathymetryColors: .defaultColors),
+        initialState: AppState(bathymetries: .default),
         reducer: appReducer,
         environment: AppEnvironment(
           mainQueue: DispatchQueue.main.eraseToAnyScheduler(),

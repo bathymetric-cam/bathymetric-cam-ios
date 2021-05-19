@@ -12,7 +12,7 @@ struct ARView: UIViewRepresentable {
   
   @Binding var isOn: Bool
   @Binding var bathymetryTiles: [BathymetryTile]
-  @Binding var bathymetryColors: BathymetryColors
+  @Binding var bathymetries: [Bathymetry]
   @Binding var waterSurface: Double
   
   let dispatchGroup = DispatchGroup()
@@ -40,7 +40,7 @@ struct ARView: UIViewRepresentable {
         uiView.addLocationNodeWithConfirmedLocation(
           locationNode: ARBathymetryNode(
             bathymetryTile: $0,
-            bathymetryColors: bathymetryColors,
+            bathymetries: bathymetries,
             altitude: altitude,
             waterSurface: waterSurface
           )
@@ -141,8 +141,8 @@ struct ARView_Previews: PreviewProvider {
         get: { [] },
         set: { _ in }
       ),
-      bathymetryColors: Binding<BathymetryColors>(
-        get: { .defaultColors },
+      bathymetries: Binding<[Bathymetry]>(
+        get: { .default },
         set: { _ in }
       ),
       waterSurface: Binding<Double>(

@@ -7,7 +7,7 @@ struct AppState: Equatable {
   // MARK: property
   
   var bathymetryTiles = [BathymetryTile]()
-  var bathymetryColors: BathymetryColors
+  var bathymetries: [Bathymetry]
   var zoomLevel = BathymetryZoomLevel.max
   var region = BathymetryRegion(
     swTile: RegionTile(x: 0, y: 0),

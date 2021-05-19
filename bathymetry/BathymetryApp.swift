@@ -7,7 +7,7 @@ struct BathymetryApp: App {
   // MARK: property
   
   let appView = AppView(store: Store(
-    initialState: AppState(bathymetryColors: .defaultColors),
+    initialState: AppState(bathymetries: .default),
     reducer: appReducer,
     environment: AppEnvironment(
       mainQueue: DispatchQueue.main.eraseToAnyScheduler(),

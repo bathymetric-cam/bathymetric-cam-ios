@@ -5,14 +5,14 @@ struct BathymetryColorsView: View {
   
   // MARK: property
   
-  @Binding var bathymetryColors: BathymetryColors
+  @Binding var bathymetries: [Bathymetry]
   @Binding var width: CGFloat
   @Binding var height: CGFloat
   
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
-      ForEach(bathymetryColors, id: \.self) {
-        BathymetryColorView(bathymetryColor: $0, width: width, height: height / CGFloat(bathymetryColors.count))
+      ForEach(bathymetries, id: \.self) {
+        BathymetryColorView(bathymetry: $0, width: width, height: height / CGFloat(bathymetries.count))
       }
     }
   }
@@ -23,16 +23,16 @@ struct BathymetryColorView: View {
   
   // MARK: property
   
-  let bathymetryColor: BathymetryColor
+  let bathymetry: Bathymetry
   let width: CGFloat
   let height: CGFloat
   
   var body: some View {
     HStack(alignment: .bottom) {
       Rectangle()
-        .fill(bathymetryColor.color)
+        .fill(bathymetry.color)
         .frame(width: width, height: height)
-      Text(String(format: "%.1f", bathymetryColor.depth.max))
+      Text(String(format: "%.1f", bathymetry.depth.max))
         .frame(alignment: .trailing)
         .font(.system(size: 8))
     }
@@ -43,8 +43,8 @@ struct BathymetryColorView: View {
 struct BathymetryColorsView_Previews: PreviewProvider {
   static var previews: some View {
     BathymetryColorsView(
-      bathymetryColors: Binding<BathymetryColors>(
-        get: { .defaultColors },
+      bathymetries: Binding<[Bathymetry]>(
+        get: { .default },
         set: { _ in }
       ),
       width: Binding<CGFloat>(

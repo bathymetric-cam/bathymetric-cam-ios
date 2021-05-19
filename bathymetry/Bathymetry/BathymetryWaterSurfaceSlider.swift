@@ -38,8 +38,8 @@ struct BathymetryWaterSurfaceSlider: View {
   
   var bathymetryColorsView: some View {
     BathymetryColorsView(
-      bathymetryColors: Binding<BathymetryColors>(
-        get: { .defaultColors },
+      bathymetries: Binding<[Bathymetry]>(
+        get: { .default },
         set: { _ in }
       ),
       width: Binding<CGFloat>(

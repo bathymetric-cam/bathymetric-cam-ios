@@ -25,7 +25,7 @@ class AppTests: XCTestCase {
   
   func testAppStore_whenInitialState_loadBathymetriesShouldSucceed() throws {
     let sut = TestStore(
-    initialState: .init(bathymetryColors: .defaultColors),
+    initialState: .init(bathymetries: .default),
       reducer: appReducer,
       environment: AppEnvironment(
         mainQueue: scheduler.eraseToAnyScheduler(),
@@ -45,7 +45,7 @@ class AppTests: XCTestCase {
   
   func testAppStore_whenInitialState_loadBathymetriesShouldFail() throws {
     let sut = TestStore(
-    initialState: .init(bathymetryColors: .defaultColors),
+    initialState: .init(bathymetries: .default),
       reducer: appReducer,
       environment: AppEnvironment(
         mainQueue: scheduler.eraseToAnyScheduler(),
@@ -63,7 +63,7 @@ class AppTests: XCTestCase {
   
   func testAppStore_whenInitialState_shouldBeAbleToZoomIn() throws {
     let sut = TestStore(
-    initialState: .init(bathymetryColors: .defaultColors),
+    initialState: .init(bathymetries: .default),
       reducer: appReducer,
       environment: AppEnvironment(
       mainQueue: scheduler.eraseToAnyScheduler(),
@@ -79,7 +79,7 @@ class AppTests: XCTestCase {
   
   func testAppStore_whenInitialState_shouldBeAbleToZoomOut() throws {
     let sut = TestStore(
-    initialState: .init(bathymetryColors: .defaultColors),
+    initialState: .init(bathymetries: .default),
       reducer: appReducer,
       environment: AppEnvironment(
       mainQueue: scheduler.eraseToAnyScheduler(),
@@ -95,7 +95,7 @@ class AppTests: XCTestCase {
   
   func testAppStore_whenInitialState_arIsOnToggledShouldWork() throws {
     let sut = TestStore(
-      initialState: .init(bathymetryColors: .defaultColors),
+      initialState: .init(bathymetries: .default),
         reducer: appReducer,
         environment: AppEnvironment(
         mainQueue: scheduler.eraseToAnyScheduler(),

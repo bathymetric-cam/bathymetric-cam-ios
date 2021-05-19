@@ -20,8 +20,8 @@ class BathymetryColorsViewTests: XCTestCase {
   func testBathymetryColorsView_whenInitialState_snapshotTesting() throws {
     let sut = UIHostingController(
       rootView: BathymetryColorsView(
-        bathymetryColors: Binding<BathymetryColors>(
-          get: { .defaultColors },
+        bathymetries: Binding<[Bathymetry]>(
+          get: { .default },
           set: { _ in }
         ),
         width: Binding<CGFloat>(

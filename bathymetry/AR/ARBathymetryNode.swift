@@ -19,12 +19,12 @@ open class ARBathymetryNode: LocationNode {
   /// Inits
   /// - Parameters:
   ///   - bathymetryTile: BathymetryTile
-  ///   - bathymetryColors: BathymetryColors
+  ///   - bathymetries: Bathymetries
   ///   - altitude: altitude of node
   ///   - waterSurface: offset altitude of water surface
   init(
     bathymetryTile: BathymetryTile,
-    bathymetryColors: BathymetryColors,
+    bathymetries: Bathymetries,
     altitude: Double,
     waterSurface: Double
   ) {
@@ -32,8 +32,8 @@ open class ARBathymetryNode: LocationNode {
     super.init(location: location)
   
     let normal = Euclid.Vector(0, -1, 0)
-    bathymetryColors.forEach { color in
-      let positionsList = createPositionsList(bathymetryTile: bathymetryTile, depth: color.depth, waterSurface: waterSurface)
+    bathymetries.forEach { bathymetry in
+      let positionsList = createPositionsList(bathymetryTile: bathymetryTile, depth: bathymetry.depth, waterSurface: waterSurface)
       let indicesList = createIndicesList(positionsList: positionsList)
   
       for i in 0..<indicesList.count {
@@ -44,7 +44,7 @@ open class ARBathymetryNode: LocationNode {
               Euclid.Vertex(positionsList[i][j][indicesList[i][j][k + 1]], normal),
               Euclid.Vertex(positionsList[i][j][indicesList[i][j][k + 2]], normal),
             ]) {
-              addChildNode(SCNNode(geometry: SCNGeometry(Mesh([polygon]).replacing(nil, with: color.uiColor.withAlphaComponent(0.8)))))
+              addChildNode(SCNNode(geometry: SCNGeometry(Mesh([polygon]).replacing(nil, with: UIColor(bathymetry.color).withAlphaComponent(0.8)))))
             }
           }
         }

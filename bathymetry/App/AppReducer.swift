@@ -22,7 +22,7 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
     return .none
   case let .bathymetryTilesUpdated(bathymetryTiles):
     return .none
-  case let .bathymetryColorsUpdated(bathymetryColors):
+  case let .bathymetriesUpdated(bathymetries):
     return .none
   case .zoomIn:
     state.zoomLevel.zoomIn()
