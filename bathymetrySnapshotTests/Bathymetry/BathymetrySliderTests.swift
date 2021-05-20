@@ -3,8 +3,8 @@ import SwiftUI
 import XCTest
 @testable import Bathymetry
 
-// MARK: - BathymetryWaterSurfaceSliderTests
-class BathymetryWaterSurfaceSliderTests: XCTestCase {
+// MARK: - BathymetrySliderTests
+class BathymetrySliderTests: XCTestCase {
   // MARK: life cycle
   
   override func setUpWithError() throws {
@@ -17,9 +17,9 @@ class BathymetryWaterSurfaceSliderTests: XCTestCase {
   
   // MARK: test
   
-  func testBathymetryWaterSurfaceSlider_whenWaterSurfaceEqualsToMinusZeroPointFive_snapshotTesting() throws {
+  func testBathymetrySlider_whenWaterSurfaceEqualsToMinusZeroPointFive_snapshotTesting() throws {
     let sut = UIHostingController(
-      rootView: BathymetryWaterSurfaceSlider(
+      rootView: BathymetrySlider(
         waterSurface: Binding<Double>(
           get: { -0.5 },
           set: { _ in }
@@ -36,9 +36,9 @@ class BathymetryWaterSurfaceSliderTests: XCTestCase {
     }
   }
   
-  func testBathymetryWaterSurfaceSlider_whenWaterSurfaceEqualsToMinusFifteen_snapshotTesting() throws {
+  func testBathymetrySlider_whenWaterSurfaceEqualsToMinusFifteen_snapshotTesting() throws {
     let sut = UIHostingController(
-      rootView: BathymetryWaterSurfaceSlider(
+      rootView: BathymetrySlider(
         waterSurface: Binding<Double>(
           get: { -15 },
           set: { _ in }
@@ -55,9 +55,9 @@ class BathymetryWaterSurfaceSliderTests: XCTestCase {
     }
   }
   
-  func testBathymetryWaterSurfaceSlider_whenWaterSurfaceEqualsToMinusSevenPointFive_snapshotTesting() throws {
+  func testBathymetrySlider_whenWaterSurfaceEqualsToMinusSevenPointFive_snapshotTesting() throws {
     let sut = UIHostingController(
-      rootView: BathymetryWaterSurfaceSlider(
+      rootView: BathymetrySlider(
         waterSurface: Binding<Double>(
           get: { -7.5 },
           set: { _ in }

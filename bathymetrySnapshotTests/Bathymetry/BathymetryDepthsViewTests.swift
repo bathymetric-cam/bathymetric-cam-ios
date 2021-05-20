@@ -29,7 +29,7 @@ class BathymetryDepthsViewTests: XCTestCase {
           set: { _ in }
         ),
         height: Binding<CGFloat>(
-          get: { BathymetryWaterSurfaceSlider.colorsViewPlusSliderHeight },
+          get: { BathymetrySlider.colorsViewPlusSliderHeight },
           set: { _ in }
         )
       )

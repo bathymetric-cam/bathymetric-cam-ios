@@ -111,7 +111,7 @@ struct AppView: View {
     GeometryReader { metrics in
       VStack {
         WithViewStore(store) { viewStore in
-          BathymetryWaterSurfaceSlider(
+          BathymetrySlider(
             waterSurface: viewStore.binding(
               get: { $0.waterSurface },
               send: AppAction.waterSurfaceUpdated
@@ -120,8 +120,8 @@ struct AppView: View {
         }
       }
       .offset(
-        x: metrics.size.width - BathymetryWaterSurfaceSlider.width - AppView.padding,
-        y: metrics.size.height - MapZoomButton.height * 2 - BathymetryWaterSurfaceSlider.height
+        x: metrics.size.width - BathymetrySlider.width - AppView.padding,
+        y: metrics.size.height - MapZoomButton.height * 2 - BathymetrySlider.height
       )
     }
   }

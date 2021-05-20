@@ -1,7 +1,7 @@
 import SwiftUI
 
-// MARK: - BathymetryWaterSurfaceSlider
-struct BathymetryWaterSurfaceSlider: View {
+// MARK: - BathymetrySlider
+struct BathymetrySlider: View {
   
   // MARK: static constant
   
@@ -31,7 +31,7 @@ struct BathymetryWaterSurfaceSlider: View {
   
   var backgroundView: some View {
     RoundedRectangle(cornerRadius: 8)
-      .frame(width: BathymetryWaterSurfaceSlider.width, height: BathymetryWaterSurfaceSlider.height)
+      .frame(width: BathymetrySlider.width, height: BathymetrySlider.height)
       .foregroundColor(colorScheme == .dark ? .black.opacity(0.5) : .white.opacity(0.5))
       .offset(y: -40)
   }
@@ -47,58 +47,58 @@ struct BathymetryWaterSurfaceSlider: View {
         set: { _ in }
       ),
       height: Binding<CGFloat>(
-        get: { BathymetryWaterSurfaceSlider.colorsViewPlusSliderHeight - BathymetryWaterSurfaceSlider.sliderHeight * CGFloat((BathymetryWaterSurfaceSlider.maxSurface - waterSurface) / (BathymetryWaterSurfaceSlider.maxSurface - BathymetryWaterSurfaceSlider.minSurface)) },
+        get: { BathymetrySlider.colorsViewPlusSliderHeight - BathymetrySlider.sliderHeight * CGFloat((BathymetrySlider.maxSurface - waterSurface) / (BathymetrySlider.maxSurface - BathymetrySlider.minSurface)) },
         set: { _ in }
       )
     )
-    .offset(x: BathymetryWaterSurfaceSlider.width / 2.0 - 4 / 2.0, y: BathymetryWaterSurfaceSlider.sliderHeight * CGFloat((BathymetryWaterSurfaceSlider.maxSurface - waterSurface) / (BathymetryWaterSurfaceSlider.maxSurface - BathymetryWaterSurfaceSlider.minSurface)))
+    .offset(x: BathymetrySlider.width / 2.0 - 4 / 2.0, y: BathymetrySlider.sliderHeight * CGFloat((BathymetrySlider.maxSurface - waterSurface) / (BathymetrySlider.maxSurface - BathymetrySlider.minSurface)))
   }
   
   var slider: some View {
     CustomSlider(
       value: $waterSurface,
-      in: BathymetryWaterSurfaceSlider.minSurface...BathymetryWaterSurfaceSlider.maxSurface,
+      in: BathymetrySlider.minSurface...BathymetrySlider.maxSurface,
       minimumTrackTintColor: .clear,
       thumbImage: UIImage(named: "bathymetry_slider-thumb")
     )
-    .frame(width: BathymetryWaterSurfaceSlider.sliderHeight, height: BathymetryWaterSurfaceSlider.width)
+    .frame(width: BathymetrySlider.sliderHeight, height: BathymetrySlider.width)
     .rotationEffect(.degrees(270), anchor: .topLeading)
-    .offset(x: 0, y: BathymetryWaterSurfaceSlider.sliderHeight)
+    .offset(x: 0, y: BathymetrySlider.sliderHeight)
   }
   
   var labels: some View {
     ZStack {
       Text("Water Surface")
         .frame(
-          maxWidth: BathymetryWaterSurfaceSlider.width,
+          maxWidth: BathymetrySlider.width,
           alignment: .center
         )
         .font(.system(size: 8))
         .offset(x: 0, y: -32)
       Text(String(format: "%.1fm", waterSurface))
         .frame(
-          maxWidth: BathymetryWaterSurfaceSlider.width,
+          maxWidth: BathymetrySlider.width,
           alignment: .center
         )
         .font(.system(size: 16))
         .offset(x: 0, y: -20)
       Text("Under Water")
         .frame(
-          maxWidth: BathymetryWaterSurfaceSlider.width,
+          maxWidth: BathymetrySlider.width,
           alignment: .center
         )
         .font(.system(size: 8))
-        .offset(x: 0, y: BathymetryWaterSurfaceSlider.colorsViewPlusSliderHeight + 6)
+        .offset(x: 0, y: BathymetrySlider.colorsViewPlusSliderHeight + 6)
     }
   }
 }
 
-// MARK: - BathymetryWaterSurfaceSlider_Previews
-struct BathymetryWaterSurfaceSlider_Previews: PreviewProvider {
+// MARK: - BathymetrySlider_Previews
+struct BathymetrySlider_Previews: PreviewProvider {
   
   static var previews: some View {
     ForEach([ColorScheme.dark, ColorScheme.light], id: \.self) {
-      BathymetryWaterSurfaceSlider(
+      BathymetrySlider(
         waterSurface: Binding<Double>(
           get: { -1.5 },
           set: { _ in }
