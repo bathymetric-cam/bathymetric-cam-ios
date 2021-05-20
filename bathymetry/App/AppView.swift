@@ -3,14 +3,13 @@ import SwiftUI
 
 // MARK: - AppView
 struct AppView: View {
-  
-  // MARK: static constant
-  
-  static let padding = CGFloat(16)
 
   // MARK: property
   
   let store: Store<AppState, AppAction>
+  
+  let padding = CGFloat(16)
+  let space = CGFloat(16)
   
   var body: some View {
     ZStack {
@@ -101,8 +100,8 @@ struct AppView: View {
         }
       }
       .offset(
-        x: metrics.size.width - MapZoomButton.width - AppView.padding,
-        y: metrics.size.height - MapZoomButton.height * 2
+        x: metrics.size.width - MapZoomButton.width - padding,
+        y: metrics.size.height - MapZoomButton.height * 2 - space
       )
     }
   }
@@ -120,8 +119,8 @@ struct AppView: View {
         }
       }
       .offset(
-        x: metrics.size.width - BathymetrySlider.width - AppView.padding,
-        y: metrics.size.height - MapZoomButton.height * 2 - BathymetrySlider.height
+        x: metrics.size.width - BathymetrySlider.width - padding,
+        y: metrics.size.height - MapZoomButton.height * 2 - BathymetrySlider.height - space * 2
       )
     }
   }

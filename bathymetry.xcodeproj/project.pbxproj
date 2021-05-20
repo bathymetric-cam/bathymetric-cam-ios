@@ -25,7 +25,7 @@
 		E62B06E1263051A40089C785 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = E62B06E0263051A40089C785 /* SnapshotTesting */; };
 		E62B06EB263052080089C785 /* MapZoomButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F2243625E51F34000C5465 /* MapZoomButtonTests.swift */; };
 		E62B06F82630531D0089C785 /* BathymetryDepthsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F2243E25E52FE2000C5465 /* BathymetryDepthsViewTests.swift */; };
-		E631E59826482BE1007B1BDC /* BathymetryWaterSurfaceSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E631E59726482BE1007B1BDC /* BathymetryWaterSurfaceSlider.swift */; };
+		E631E59826482BE1007B1BDC /* BathymetrySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E631E59726482BE1007B1BDC /* BathymetrySlider.swift */; };
 		E633CD0A25D01A4B00FDB3BA /* BathymetryRegionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633CD0925D01A4B00FDB3BA /* BathymetryRegionTests.swift */; };
 		E63D2BF325A320CC00788375 /* BathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2BF225A320CC00788375 /* BathymetryTile.swift */; };
 		E63D2C3C25A33E7D00788375 /* MGLShapeSource+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2C3B25A33E7D00788375 /* MGLShapeSource+Feature.swift */; };
@@ -120,7 +120,7 @@
 		E624EF4F2630545100F10967 /* ARToggleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARToggleTests.swift; sourceTree = "<group>"; };
 		E62B06C92630516E0089C785 /* bathymetrySnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bathymetrySnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E62B06CD2630516E0089C785 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E631E59726482BE1007B1BDC /* BathymetryWaterSurfaceSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryWaterSurfaceSlider.swift; sourceTree = "<group>"; };
+		E631E59726482BE1007B1BDC /* BathymetrySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetrySlider.swift; sourceTree = "<group>"; };
 		E633CD0925D01A4B00FDB3BA /* BathymetryRegionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryRegionTests.swift; sourceTree = "<group>"; };
 		E63D2BF225A320CC00788375 /* BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTile.swift; sourceTree = "<group>"; };
 		E63D2C3B25A33E7D00788375 /* MGLShapeSource+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLShapeSource+Feature.swift"; sourceTree = "<group>"; };
@@ -381,7 +381,7 @@
 				E6171D5D25B0763B00161E28 /* BathymetryEntity.swift */,
 				E6DE397525C9735A00D0408A /* BathymetryRegion.swift */,
 				E63D2BF225A320CC00788375 /* BathymetryTile.swift */,
-				E631E59726482BE1007B1BDC /* BathymetryWaterSurfaceSlider.swift */,
+				E631E59726482BE1007B1BDC /* BathymetrySlider.swift */,
 				E6DE397B25C9756400D0408A /* BathymetryZoomLevel.swift */,
 			);
 			path = Bathymetry;
@@ -712,7 +712,7 @@
 				E63D2C3C25A33E7D00788375 /* MGLShapeSource+Feature.swift in Sources */,
 				E60C3D3726499213003E0355 /* CustomSlider.swift in Sources */,
 				E65CF41C2590BBFA008A207C /* AppEnvironment.swift in Sources */,
-				E631E59826482BE1007B1BDC /* BathymetryWaterSurfaceSlider.swift in Sources */,
+				E631E59826482BE1007B1BDC /* BathymetrySlider.swift in Sources */,
 				E694049025C428CF00F047EC /* Bathymetry.swift in Sources */,
 				E608B63525BAEE4A0053FBBF /* BathymetryContentfulEntity.swift in Sources */,
 				E64FDE8C257D22D200B303C6 /* AppView.swift in Sources */,
