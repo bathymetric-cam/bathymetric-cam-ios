@@ -49,6 +49,7 @@
 		E698A33025976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A32F25976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift */; };
 		E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69BBD11257E50170048050C /* Preview Assets.xcassets */; };
 		E69D159D25C9809100AD1B0F /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69D159C25C9809100AD1B0F /* CircularButton.swift */; };
+		E6A64B28265E94C00070E5CA /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A64B27265E94C00070E5CA /* SideMenu.swift */; };
 		E6B2866025A47B4600782955 /* ARBathymetryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */; };
 		E6BDC3BE259600BF00184925 /* BathymetryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BDC3BD259600BF00184925 /* BathymetryClient.swift */; };
 		E6BFC11E25D1479000295FB2 /* BathymetryTileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BFC11D25D1479000295FB2 /* BathymetryTileTests.swift */; };
@@ -148,6 +149,7 @@
 		E698A32F25976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLPointAnnotation+GEOSwift.swift"; sourceTree = "<group>"; };
 		E69BBD11257E50170048050C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E69D159C25C9809100AD1B0F /* CircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
+		E6A64B27265E94C00070E5CA /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBathymetryNode.swift; sourceTree = "<group>"; };
 		E6BDC3BD259600BF00184925 /* BathymetryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryClient.swift; sourceTree = "<group>"; };
 		E6BFC11D25D1479000295FB2 /* BathymetryTileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTileTests.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 		E69D159B25C9806B00AD1B0F /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				E6A64B27265E94C00070E5CA /* SideMenu.swift */,
 				E69D159C25C9809100AD1B0F /* CircularButton.swift */,
 				E60C3D3626499213003E0355 /* CustomSlider.swift */,
 			);
@@ -717,6 +720,7 @@
 				E608B63525BAEE4A0053FBBF /* BathymetryContentfulEntity.swift in Sources */,
 				E64FDE8C257D22D200B303C6 /* AppView.swift in Sources */,
 				E6CB65BC25ADC3BD00E9070A /* StorageProvider.swift in Sources */,
+				E6A64B28265E94C00070E5CA /* SideMenu.swift in Sources */,
 				E69D159D25C9809100AD1B0F /* CircularButton.swift in Sources */,
 				E64FDE8A257D22D200B303C6 /* BathymetryApp.swift in Sources */,
 			);

@@ -8,6 +8,7 @@ struct AppView: View {
   
   let store: Store<AppState, AppAction>
   
+  @State private var showSideMenu = false
   let padding = CGFloat(16)
   let space = CGFloat(16)
   
@@ -21,6 +22,9 @@ struct AppView: View {
       
       mapZoomButtons
       waterSurfaceSlider
+    }
+    .sideMenu(isShowing: $showSideMenu) {
+      
     }
   }
   
