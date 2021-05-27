@@ -8,7 +8,6 @@ struct AppView: View {
   
   let store: Store<AppState, AppAction>
   
-  @Environment(\.colorScheme) var colorScheme
   @State private var sideMenuIsOpen = false
   let padding = CGFloat(16)
   let space = CGFloat(16)
@@ -21,7 +20,9 @@ struct AppView: View {
       }
       .edgesIgnoringSafeArea(.all)
       
-      sideMenuButton
+      SideMenuButton {
+        sideMenuIsOpen.toggle()
+      }
       mapZoomButtons
       waterSurfaceSlider
     }
@@ -128,20 +129,6 @@ struct AppView: View {
         x: metrics.size.width - BathymetrySlider.width - padding,
         y: metrics.size.height - MapZoomButton.height * 2 - BathymetrySlider.height - space * 2
       )
-    }
-  }
-  
-  var sideMenuButton: some View {
-    GeometryReader { _ in
-      Button(
-        action: { sideMenuIsOpen.toggle() },
-        label: {
-          Image(systemName: "line.horizontal.3.circle.fill")
-            .font(.largeTitle)
-            .foregroundColor(colorScheme == .dark ? .black : .white)
-        }
-      )
-      .padding()
     }
   }
   

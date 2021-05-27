@@ -38,7 +38,7 @@ struct SideMenu<MenuContent: View>: ViewModifier {
       }
       .gesture(
         DragGesture().onEnded { event in
-          if abs(event.translation.height) < 50 && abs(event.translation.width) > 50 {
+          if abs(event.translation.height) < 80 && abs(event.translation.width) > 80 {
             if isOpen || (!isOpen && event.startLocation.x < 200) {
               withAnimation { isOpen = event.translation.width > 0 }
             }
