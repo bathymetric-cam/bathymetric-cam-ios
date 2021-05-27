@@ -101,7 +101,7 @@ final class UIARView: SceneLocationView {
   // swiftlint:disable discouraged_optional_collection
   override private init(frame: CGRect, options: [String: Any]? = nil) {
     super.init(frame: frame, options: options)
-  
+    allowsCameraControl = false
     NotificationCenter
       .default
       .publisher(for: UIApplication.didBecomeActiveNotification)

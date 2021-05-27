@@ -1,6 +1,5 @@
 import SwiftUI
 
-// MARK: - SideMenu
 struct SideMenu<MenuContent: View>: ViewModifier {
   
   // MARK: property
@@ -28,7 +27,7 @@ struct SideMenu<MenuContent: View>: ViewModifier {
     GeometryReader { geometry in
       ZStack(alignment: .leading) {
         content
-          .disabled(isShowing)
+          // .disabled(isShowing)
           .frame(width: geometry.size.width, height: geometry.size.height)
           .offset(x: isShowing ? geometry.size.width / 2 : 0)
         
@@ -39,12 +38,8 @@ struct SideMenu<MenuContent: View>: ViewModifier {
       }
       .gesture(
         DragGesture().onEnded { event in
-          logger.debug("""
-            \(event.startLocation.x), \(event.startLocation.y)
-            \(event.predictedEndLocation.x), \(event.predictedEndLocation.y)
-          """)
           if abs(event.translation.height) < 50 && abs(event.translation.width) > 50 {
-            if isShowing || (!isShowing && event.startLocation.x < 120) {
+            if isShowing || (!isShowing && event.startLocation.x < 200) {
               withAnimation { isShowing = event.translation.width > 0 }
             }
           }
