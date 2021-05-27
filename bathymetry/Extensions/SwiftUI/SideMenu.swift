@@ -4,20 +4,20 @@ struct SideMenu<MenuContent: View>: ViewModifier {
   
   // MARK: property
   
-  @Binding var isShowing: Bool
+  @Binding var isOpen: Bool
   private let menuContent: () -> MenuContent
   
   // MARK: initializer
   
   /// Inits
   /// - Parameters:
-  ///   - isShowing: Bool if showing the sidemenu
+  ///   - isOpen: Bool if showing the sidemenu
   ///   - menuContent: View displayed in menu
   init(
-     isShowing: Binding<Bool>,
-     @ViewBuilder menuContent: @escaping () -> MenuContent
+    isOpen: Binding<Bool>,
+    @ViewBuilder menuContent: @escaping () -> MenuContent
    ) {
-    _isShowing = isShowing
+    _isOpen = isOpen
     self.menuContent = menuContent
   }
   
@@ -29,18 +29,18 @@ struct SideMenu<MenuContent: View>: ViewModifier {
         content
           // .disabled(isShowing)
           .frame(width: geometry.size.width, height: geometry.size.height)
-          .offset(x: isShowing ? geometry.size.width / 2 : 0)
+          .offset(x: isOpen ? geometry.size.width / 2 : 0)
         
         menuContent()
           .frame(width: geometry.size.width / 2)
           .transition(.move(edge: .leading))
-          .offset(x: isShowing ? 0 : -geometry.size.width / 2)
+          .offset(x: isOpen ? 0 : -geometry.size.width / 2)
       }
       .gesture(
         DragGesture().onEnded { event in
           if abs(event.translation.height) < 50 && abs(event.translation.width) > 50 {
-            if isShowing || (!isShowing && event.startLocation.x < 200) {
-              withAnimation { isShowing = event.translation.width > 0 }
+            if isOpen || (!isOpen && event.startLocation.x < 200) {
+              withAnimation { isOpen = event.translation.width > 0 }
             }
           }
         }
@@ -54,13 +54,45 @@ extension View {
   
   /// Adds sidemenu to the view
   /// - Parameters:
-  ///   - isShowing: Bool if showing the sidemenu
+  ///   - isOpen: Bool if showing the sidemenu
   ///   - menuContent: View displayed in menu
   /// - Returns: View
   func sideMenu<MenuContent: View>(
-    isShowing: Binding<Bool>,
+    isOpen: Binding<Bool>,
     @ViewBuilder menuContent: @escaping () -> MenuContent
   ) -> some View {
-    self.modifier(SideMenu(isShowing: isShowing, menuContent: menuContent))
+    self.modifier(SideMenu(isOpen: isOpen, menuContent: menuContent))
+  }
+}
+
+// MARK: - SideMenu_Previews
+struct SideMenu_Previews: PreviewProvider {
+  static var previews: some View {
+    ForEach([ColorScheme.dark, ColorScheme.light], id: \.self) {
+      Rectangle()
+        .sideMenu(
+          isOpen: Binding<Bool>(
+            get: { true },
+            set: { _ in }
+          )
+        ) {
+          GeometryReader { metrics in
+            VStack {
+              Text("1")
+              Text("2")
+              Text("3")
+              Text("4")
+              Text("5")
+            }
+            .frame(
+              width: metrics.size.width,
+              height: metrics.size.height,
+              alignment: .topLeading
+            )
+            .padding()
+          }
+        }
+        .colorScheme($0)
+    }
   }
 }

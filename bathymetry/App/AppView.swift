@@ -7,8 +7,8 @@ struct AppView: View {
   // MARK: property
   
   let store: Store<AppState, AppAction>
-  
-  @State private var showSideMenu = false
+
+  @State private var sideMenuIsOpen = false
   let padding = CGFloat(16)
   let space = CGFloat(16)
   
@@ -23,8 +23,8 @@ struct AppView: View {
       mapZoomButtons
       waterSurfaceSlider
     }
-    .sideMenu(isShowing: $showSideMenu) {
-      
+    .sideMenu(isOpen: $sideMenuIsOpen) {
+      sideMenuContent
     }
   }
   
@@ -126,6 +126,27 @@ struct AppView: View {
         x: metrics.size.width - BathymetrySlider.width - padding,
         y: metrics.size.height - MapZoomButton.height * 2 - BathymetrySlider.height - space * 2
       )
+    }
+  }
+  
+  var sideMenuContent: some View {
+    GeometryReader { metrics in
+      VStack {
+        WithViewStore(store) { viewStore in
+          ARToggle(
+            isOn: viewStore.binding(
+              get: { $0.arIsOn },
+              send: AppAction.arIsOnToggled
+            )
+          )
+        }
+      }
+      .frame(
+        width: metrics.size.width,
+        height: metrics.size.height,
+        alignment: .topLeading
+      )
+      .padding()
     }
   }
   
