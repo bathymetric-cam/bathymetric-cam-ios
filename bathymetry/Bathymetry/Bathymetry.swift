@@ -28,6 +28,29 @@ struct BathymetryDepth {
   let max: Double
 }
 
+// MARK: - BathymetryDepthUnit
+enum BathymetryDepthUnit {
+  case meter
+  case feet
+  
+  // MARK: property
+  
+  var unit: String {
+    switch self {
+    case .meter:
+      return "m"
+    case .feet:
+      return "ft"
+    }
+  }
+}
+
+// MARK: - Double + Depth Unit
+extension Double {
+  var meter: Double { self }
+  var feet: Double { self * 3.28084 }
+}
+
 // MARK: - BathymetryDepth + Equatable
 extension BathymetryDepth: Equatable {
   static func == (lhs: BathymetryDepth, rhs: BathymetryDepth) -> Bool {
