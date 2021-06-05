@@ -13,6 +13,7 @@ struct BathymetrySlider: View {
   
   @Environment(\.colorScheme) var colorScheme
   @Binding var waterSurface: Double
+  @Binding var depthUnit: BathymetryDepthUnit
   
   let minSurface = -15.0
   let maxSurface = -0.5
@@ -64,6 +65,7 @@ struct BathymetrySlider: View {
         get: { .default },
         set: { _ in }
       ),
+      depthUnit: $depthUnit,
       width: Binding<CGFloat>(
         get: { 4 },
         set: { _ in }
@@ -99,7 +101,12 @@ struct BathymetrySlider: View {
   }
   
   var depthText: some View {
-    Text(String(format: "%.1fm", waterSurface))
+    Text(
+      String(
+        format: "%.1f\(depthUnit.abbr)",
+        depthUnit == .meter ? waterSurface.meter : waterSurface.feet
+      )
+    )
       .frame(
         maxWidth: BathymetrySlider.width,
         alignment: .center
@@ -127,6 +134,10 @@ struct BathymetrySlider_Previews: PreviewProvider {
       BathymetrySlider(
         waterSurface: Binding<Double>(
           get: { -1.5 },
+          set: { _ in }
+        ),
+        depthUnit: Binding<BathymetryDepthUnit>(
+          get: { .meter },
           set: { _ in }
         )
       )

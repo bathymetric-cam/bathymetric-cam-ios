@@ -43,6 +43,15 @@ enum BathymetryDepthUnit {
       return "Feet"
     }
   }
+  
+  var abbr: String {
+    switch self {
+    case .meter:
+      return "m"
+    case .feet:
+      return "ft"
+    }
+  }
 }
 
 // MARK: - Double + Depth Unit

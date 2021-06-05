@@ -121,6 +121,10 @@ struct AppView: View {
             waterSurface: viewStore.binding(
               get: { $0.waterSurface },
               send: AppAction.waterSurfaceUpdated
+            ),
+            depthUnit: viewStore.binding(
+              get: { $0.depthUnit },
+              send: AppAction.depthUnitUpdated
             )
           )
         }
