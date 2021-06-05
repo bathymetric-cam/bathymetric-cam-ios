@@ -38,9 +38,9 @@ enum BathymetryDepthUnit {
   var unit: String {
     switch self {
     case .meter:
-      return "m"
+      return "Meter"
     case .feet:
-      return "ft"
+      return "Feet"
     }
   }
 }
