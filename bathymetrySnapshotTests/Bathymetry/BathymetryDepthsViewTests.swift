@@ -24,6 +24,10 @@ class BathymetryDepthsViewTests: XCTestCase {
           get: { .default },
           set: { _ in }
         ),
+        depthUnit: Binding<BathymetryDepthUnit>(
+          get: { .meter },
+          set: { _ in }
+        ),
         width: Binding<CGFloat>(
           get: { 4 },
           set: { _ in }

@@ -23,6 +23,10 @@ class BathymetrySliderTests: XCTestCase {
         waterSurface: Binding<Double>(
           get: { -0.5 },
           set: { _ in }
+        ),
+        depthUnit: Binding<BathymetryDepthUnit>(
+          get: { .meter },
+          set: { _ in }
         )
       )
     )
@@ -42,6 +46,10 @@ class BathymetrySliderTests: XCTestCase {
         waterSurface: Binding<Double>(
           get: { -15 },
           set: { _ in }
+        ),
+        depthUnit: Binding<BathymetryDepthUnit>(
+          get: { .meter },
+          set: { _ in }
         )
       )
     )
@@ -60,6 +68,10 @@ class BathymetrySliderTests: XCTestCase {
       rootView: BathymetrySlider(
         waterSurface: Binding<Double>(
           get: { -7.5 },
+          set: { _ in }
+        ),
+        depthUnit: Binding<BathymetryDepthUnit>(
+          get: { .meter },
           set: { _ in }
         )
       )
