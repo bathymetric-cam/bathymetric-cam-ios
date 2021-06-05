@@ -5,8 +5,6 @@ struct ARToggle: View {
   
   // MARK: static constant
   
-  static let width = CGFloat(120)
-  
   // MARK: property
   
   @Binding var isOn: Bool
@@ -14,13 +12,14 @@ struct ARToggle: View {
   var body: some View {
     HStack {
       Text("Use AR")
+        .font(.system(size: 13))
       Toggle(isOn: $isOn) {
         Text("Use AR")
       }
       .labelsHidden()
       .toggleStyle(SwitchToggleStyle(tint: .blue))
     }
-    .frame(width: ARToggle.width)
+    .padding()
   }
 }
 

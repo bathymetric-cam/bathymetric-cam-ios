@@ -77,7 +77,7 @@ struct SideMenu_Previews: PreviewProvider {
           )
         ) {
           GeometryReader { metrics in
-            VStack {
+            VStack(alignment: .center) {
               Text("1")
               Text("2")
               Text("3")

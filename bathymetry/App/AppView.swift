@@ -142,6 +142,12 @@ struct AppView: View {
               send: AppAction.arIsOnToggled
             )
           )
+          BathymetryDepthUnitView(
+            depthUnit: viewStore.binding(
+              get: { $0.depthUnit },
+              send: AppAction.depthUnitUpdated
+            )
+          )
         }
       }
       .frame(
@@ -149,7 +155,6 @@ struct AppView: View {
         height: metrics.size.height,
         alignment: .topLeading
       )
-      .padding()
     }
   }
   

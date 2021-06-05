@@ -11,16 +11,18 @@ struct BathymetryDepthUnitView: View {
   var body: some View {
     HStack {
       Text("Depth Unit: ")
-      
+        .font(.system(size: 13))
       Button(
         action: {
           actionSheet.toggle()
         },
         label: {
           Text(depthUnit.unit)
+            .font(.system(size: 13))
         }
       )
     }
+    .padding()
     .actionSheet(
       isPresented: $actionSheet
     ) {
@@ -29,13 +31,11 @@ struct BathymetryDepthUnitView: View {
         buttons: [
           .default(Text(BathymetryDepthUnit.meter.unit)) {
             depthUnit = .meter
-            actionSheet.toggle()
           },
           .default(Text(BathymetryDepthUnit.feet.unit)) {
             depthUnit = .feet
-            actionSheet.toggle()
           },
-          .cancel { actionSheet.toggle() }
+          .cancel { }
         ]
       )
     }

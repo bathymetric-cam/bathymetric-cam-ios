@@ -38,6 +38,9 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
   case let .waterSurfaceUpdated(waterSurface):
     state.waterSurface = waterSurface
     return .none
+  case let .depthUnitUpdated(depthUnit):
+    state.depthUnit = depthUnit
+    return .none
   }
 }
 // swiftlint:enable closure_body_length
