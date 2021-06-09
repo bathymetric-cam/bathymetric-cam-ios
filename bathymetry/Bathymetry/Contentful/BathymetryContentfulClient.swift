@@ -29,7 +29,7 @@ class BathymetryContentfulClient: BathymetryClient {
 class BathymetryContentfulInternalClient: Client {
   // MARK: property
   
-  private var previousTask: URLSessionDataTask?
+  private var urlSessionTasks = [URLSessionDataTask]()
   
   // MARK: initializer
   
@@ -46,7 +46,7 @@ class BathymetryContentfulInternalClient: Client {
   }
   
   deinit {
-    previousTask?.cancel()
+    cancelUrlSessionTasks()
   }
   
   // MARK: public api
@@ -56,14 +56,14 @@ class BathymetryContentfulInternalClient: Client {
   ///   - region: BathymetryRegion
   ///   - promise: closure called when succeeding or failing
   func loadBathymetries(region: BathymetryRegion, promise: @escaping (Result<[BathymetryTile], BathymetryClientFailure>) -> Void) {
-    previousTask?.cancel()
+    cancelUrlSessionTasks()
     let query = QueryOn<BathymetryContentfulEntity>
       .where(field: .zoom, .equals("\(region.zoom)"))
       .where(field: .x, .isGreaterThanOrEqualTo("\(region.swTile.x)"))
       .where(field: .x, .isLessThanOrEqualTo("\(region.neTile.x)"))
       .where(field: .y, .isGreaterThanOrEqualTo("\(region.neTile.y)"))
       .where(field: .y, .isLessThanOrEqualTo("\(region.swTile.y)"))
-    previousTask = fetchArray(of: BathymetryContentfulEntity.self, matching: query) {
+    let urlSessionTask = fetchArray(of: BathymetryContentfulEntity.self, matching: query) {
       if case let .failure(error) = $0 {
         promise(.failure(.otherFailure(error)))
         logger.error("\(logger.prefix(), privacy: .private)\(BathymetryClientFailure.otherFailure(error), privacy: .private)\(logger.suffix, privacy: .private)")
@@ -83,6 +83,24 @@ class BathymetryContentfulInternalClient: Client {
           return BathymetryTile(x: x, y: y, zoom: zoom, features: featureCollection.features)
         }
       ))
+    }
+    urlSessionTasks.append(urlSessionTask)
+  }
+  
+  // MARK: private api
+  
+  /// Cancel url session tasks
+  private func cancelUrlSessionTasks() {
+    urlSessionTasks = urlSessionTasks.compactMap {
+      switch $0.state {
+      case .running, .suspended:
+        $0.cancel()
+        return $0
+      case .canceling:
+        return $0
+      default:
+        return nil
+      }
     }
   }
 }
