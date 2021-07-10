@@ -42,6 +42,7 @@
 		E65CF4182590BBA9008A207C /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF4172590BBA9008A207C /* AppAction.swift */; };
 		E65CF41C2590BBFA008A207C /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF41B2590BBFA008A207C /* AppEnvironment.swift */; };
 		E65CF4202590BC78008A207C /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF41F2590BC78008A207C /* AppReducer.swift */; };
+		E65ED9902699F94100127725 /* Snapshotting+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65ED98F2699F94100127725 /* Snapshotting+Model.swift */; };
 		E666463C25D29CBA00DC4F17 /* BathymetryDepthsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666463B25D29CBA00DC4F17 /* BathymetryDepthsView.swift */; };
 		E6711BC225D40364007A4A89 /* ARToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6711BC125D40364007A4A89 /* ARToggle.swift */; };
 		E6712C8F2646B5E40078C3A8 /* Logger+Bathymetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6712C8E2646B5E40078C3A8 /* Logger+Bathymetry.swift */; };
@@ -148,6 +149,7 @@
 		E65CF4172590BBA9008A207C /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		E65CF41B2590BBFA008A207C /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		E65CF41F2590BC78008A207C /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		E65ED98F2699F94100127725 /* Snapshotting+Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Snapshotting+Model.swift"; sourceTree = "<group>"; };
 		E666463B25D29CBA00DC4F17 /* BathymetryDepthsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryDepthsView.swift; sourceTree = "<group>"; };
 		E6711BC125D40364007A4A89 /* ARToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARToggle.swift; sourceTree = "<group>"; };
 		E6712C8E2646B5E40078C3A8 /* Logger+Bathymetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Bathymetry.swift"; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 		E62B06CA2630516E0089C785 /* bathymetrySnapshotTests */ = {
 			isa = PBXGroup;
 			children = (
+				E65ED98F2699F94100127725 /* Snapshotting+Model.swift */,
 				E624EF4E2630544500F10967 /* AR */,
 				E62B06F1263052FC0089C785 /* Bathymetry */,
 				E6F2243525E51F1B000C5465 /* Map */,
@@ -715,6 +718,7 @@
 				E64BDF18265FE69600069F04 /* SideMenuButtonTests.swift in Sources */,
 				E62B06EB263052080089C785 /* MapZoomButtonTests.swift in Sources */,
 				E62B06F82630531D0089C785 /* BathymetryDepthsViewTests.swift in Sources */,
+				E65ED9902699F94100127725 /* Snapshotting+Model.swift in Sources */,
 				E6FCE900266BC0E60000F940 /* BathymetryDepthUnitViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
