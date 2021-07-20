@@ -1,8 +1,21 @@
 import ComposableArchitecture
 import SwiftUI
 
-// MARK: - BathymetryApp
+// MARK: - BathymetryAppLoader
+// swiftlint:disable convenience_type
 @main
+struct BathymetryAppLoader {
+  static func main() throws {
+    if NSClassFromString("XCTestCase") == nil {
+      BathymetryApp.main()
+    } else {
+      BathymetryTestApp.main()
+    }
+  }
+}
+// swiftlint:enable convenience_type
+
+// MARK: - BathymetryApp
 struct BathymetryApp: App {
   // MARK: property
   
@@ -24,5 +37,12 @@ struct BathymetryApp: App {
   // MARK: initializer
   
   init() {
+  }
+}
+
+// MARK: - BathymetryTestApp
+struct BathymetryTestApp: App {
+  var body: some Scene {
+    WindowGroup { Text("Running Tests") }
   }
 }
