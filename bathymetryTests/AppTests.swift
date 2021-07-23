@@ -29,16 +29,16 @@ class AppTests: XCTestCase {
       reducer: appReducer,
       environment: AppEnvironment(
         mainQueue: scheduler.eraseToAnyScheduler(),
-        bathymetryClient: BathymetryClientSuccessMock()
+        bathymetryClient: BathymetryClientSuccessFake()
       )
     )
     sut.assert(
-      .send(.loadBathymetries(mockRegion)) {
-        $0.region = mockRegion.largerRegion()
+      .send(.loadBathymetries(testRegion)) {
+        $0.region = testRegion.largerRegion()
       },
       .do { self.scheduler.advance(by: 0.1) },
-      .receive(.bathymetriesResult(.success(mockBathymetryTiles))) {
-        $0.bathymetryTiles = mockBathymetryTiles
+      .receive(.bathymetriesResult(.success(testBathymetryTiles))) {
+        $0.bathymetryTiles = testBathymetryTiles
       }
     )
   }
@@ -49,15 +49,15 @@ class AppTests: XCTestCase {
       reducer: appReducer,
       environment: AppEnvironment(
         mainQueue: scheduler.eraseToAnyScheduler(),
-        bathymetryClient: BathymetryClientFailureMock()
+        bathymetryClient: BathymetryClientFailureFake()
       )
     )
     sut.assert(
-      .send(.loadBathymetries(mockRegion)) {
-        $0.region = mockRegion.largerRegion()
+      .send(.loadBathymetries(testRegion)) {
+        $0.region = testRegion.largerRegion()
       },
       .do { self.scheduler.advance(by: 0.1) },
-      .receive(.bathymetriesResult(.failure(mockFailure)))
+      .receive(.bathymetriesResult(.failure(testFailure)))
     )
   }
   
@@ -67,7 +67,7 @@ class AppTests: XCTestCase {
       reducer: appReducer,
       environment: AppEnvironment(
       mainQueue: scheduler.eraseToAnyScheduler(),
-      bathymetryClient: BathymetryClientSuccessMock()
+      bathymetryClient: BathymetryClientSuccessFake()
       )
     )
     sut.assert(
@@ -83,7 +83,7 @@ class AppTests: XCTestCase {
       reducer: appReducer,
       environment: AppEnvironment(
       mainQueue: scheduler.eraseToAnyScheduler(),
-      bathymetryClient: BathymetryClientSuccessMock()
+      bathymetryClient: BathymetryClientSuccessFake()
       )
     )
     sut.assert(
@@ -99,7 +99,7 @@ class AppTests: XCTestCase {
         reducer: appReducer,
         environment: AppEnvironment(
         mainQueue: scheduler.eraseToAnyScheduler(),
-        bathymetryClient: BathymetryClientSuccessMock()
+        bathymetryClient: BathymetryClientSuccessFake()
       )
     )
     sut.assert(

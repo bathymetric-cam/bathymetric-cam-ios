@@ -44,6 +44,7 @@
 		E65CF4202590BC78008A207C /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF41F2590BC78008A207C /* AppReducer.swift */; };
 		E65ED9902699F94100127725 /* Snapshotting+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65ED98F2699F94100127725 /* Snapshotting+Model.swift */; };
 		E666463C25D29CBA00DC4F17 /* BathymetryDepthsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666463B25D29CBA00DC4F17 /* BathymetryDepthsView.swift */; };
+		E66B893326AAF88A008DCE2C /* BathymetryClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61EE89D263C3FA800942842 /* BathymetryClientMock.swift */; };
 		E6711BC225D40364007A4A89 /* ARToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6711BC125D40364007A4A89 /* ARToggle.swift */; };
 		E6712C8F2646B5E40078C3A8 /* Logger+Bathymetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6712C8E2646B5E40078C3A8 /* Logger+Bathymetry.swift */; };
 		E684122525A9D70400186A13 /* Euclid in Frameworks */ = {isa = PBXBuildFile; productRef = E684122425A9D70400186A13 /* Euclid */; };
@@ -299,6 +300,7 @@
 			children = (
 				E64FDE88257D22D200B303C6 /* bathymetry */,
 				E6FE7AB125823FBA00C47C2B /* Frameworks */,
+				E66B893126AAF85A008DCE2C /* Tests */,
 				E64FDE9F257D22D200B303C6 /* bathymetryTests */,
 				E62B06CA2630516E0089C785 /* bathymetrySnapshotTests */,
 				E64FDEAA257D22D200B303C6 /* bathymetryUITests */,
@@ -369,6 +371,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		E66B893126AAF85A008DCE2C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E61EE89D263C3FA800942842 /* BathymetryClientMock.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		E6712C8D2646B5B00078C3A8 /* OS */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,7 +443,6 @@
 			isa = PBXGroup;
 			children = (
 				E6C5DF7025C6BF5600EE6C6F /* BathymetryClientTests.swift */,
-				E61EE89D263C3FA800942842 /* BathymetryClientMock.swift */,
 				E633CD0925D01A4B00FDB3BA /* BathymetryRegionTests.swift */,
 				E6BFC11D25D1479000295FB2 /* BathymetryTileTests.swift */,
 				E659F6BC25E6851100058394 /* BathymetryZoomLevelTests.swift */,
@@ -720,6 +729,7 @@
 				E62B06F82630531D0089C785 /* BathymetryDepthsViewTests.swift in Sources */,
 				E65ED9902699F94100127725 /* Snapshotting+Model.swift in Sources */,
 				E6FCE900266BC0E60000F940 /* BathymetryDepthUnitViewTests.swift in Sources */,
+				E66B893326AAF88A008DCE2C /* BathymetryClientMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

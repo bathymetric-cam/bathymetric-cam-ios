@@ -19,24 +19,24 @@ class BathymetryClientTests: XCTestCase {
   func testBathymetryClient_whenInitialState_loadBathymetriesShouldSucceed() throws {
     var result: [BathymetryTile]? = nil
     let exp = expectation(description: #function)
-    let sut = BathymetryClientSuccessMock()
+    let sut = BathymetryClientSuccessFake()
   
-    _ = sut.loadBathymetries(mockRegion)
+    _ = sut.loadBathymetries(testRegion)
       .sink(
         receiveCompletion: { _ in exp.fulfill() },
         receiveValue: { result = $0 }
       )
   
     wait(for: [exp], timeout: 0.1)
-    XCTAssertTrue(result == mockBathymetryTiles)
+    XCTAssertTrue(result == testBathymetryTiles)
   }
   
   func testBathymetryClient_whenInitialState_loadBathymetriesShouldFail() throws {
     var result: BathymetryClientFailure? = nil
     let exp = expectation(description: #function)
-    let sut = BathymetryClientFailureMock()
+    let sut = BathymetryClientFailureFake()
       
-    _ = sut.loadBathymetries(mockRegion)
+    _ = sut.loadBathymetries(testRegion)
       .sink(
         receiveCompletion: {
           if case let .failure(failure) = $0 {
@@ -48,6 +48,6 @@ class BathymetryClientTests: XCTestCase {
       )
       
     wait(for: [exp], timeout: 0.1)
-    XCTAssertTrue(result == mockFailure)
+    XCTAssertTrue(result == testFailure)
   }
 }
