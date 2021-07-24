@@ -20,6 +20,17 @@ commands:
           paths:
             - vendor/bundle
       - run: for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts
+  setup_mapbox:
+    steps:
+      - run:
+          command: |
+            [ ! -d "Frameworks" ] && mkdir Frameworks
+            [ ! -f "mapbox.zip" ] && curl -o mapbox.zip $IOS_MAPBOX_DOWNLOAD_URL
+            [ ! -d "mapbox" ] && unzip mapbox.zip -d mapbox
+            [ ! -d "Frameworks/Mapbox.framework" ] && cp -r mapbox/dynamic/Mapbox.framework Frameworks/Mapbox.framework
+            [ ! -d "Frameworks/MapboxMobileEvents.framework" ] && cp -r mapbox/dynamic/MapboxMobileEvents.framework Frameworks/MapboxMobileEvents.framework
+            [ ! -f "bathymetry/Mapbox-Info.plist" ] && plutil -replace MGLMapboxAccessToken -string $IOS_MAPBOX_ACCESS_TOKEN bathymetry/Mapbox-Example-Info.plist
+            [ ! -f "bathymetry/Mapbox-Info.plist" ] && cp bathymetry/Mapbox-Example-Info.plist bathymetry/Mapbox-Info.plist
   slack_notify_fail:
     steps:
       - slack/notify:
@@ -37,6 +48,7 @@ jobs:
       name: macos-executor
     steps:
       - setup
+      - setup_mapbox
       - run: bundle exec fastlane unit_tests
       - store_test_results:
           path: unit_test_output
@@ -49,6 +61,7 @@ jobs:
       name: macos-executor
     steps:
       - setup
+      - setup_mapbox
       - run: bundle exec fastlane snapshot_tests_on_iphone12promax
       - store_test_results:
           path: snapshot_test_output
@@ -61,6 +74,7 @@ jobs:
       name: macos-executor
     steps:
       - setup
+      - setup_mapbox
       - run: bundle exec fastlane snapshot_tests_on_ipodtouch7thgeneration
       - store_test_results:
           path: snapshot_test_output
