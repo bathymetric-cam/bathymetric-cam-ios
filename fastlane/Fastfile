@@ -1,0 +1,44 @@
+default_platform :ios
+
+platform :ios do
+  before_all do
+    setup_circle_ci
+  end
+
+  desc "Unit testing"
+  lane :unit_tests do
+    scan(
+      include_simulator_logs: false,
+      code_coverage: true,
+      clean: true,
+      scheme: "bathymetry",
+      device: "iPhone 8",
+      only_testing: "bathymetryTests"
+    )
+  end
+
+  desc "Snapshot testing on iPhone 12 Pro Max"
+  lane :snapshot_tests_on_iphone12promax do
+    scan(
+      include_simulator_logs: false,
+      code_coverage: true,
+      clean: true,
+      scheme: "bathymetry",
+      device: "iPhone 12 Pro Max",
+      only_testing: "bathymetrySnapshotTests"
+    )
+  end
+
+  desc "Snapshot testing on iPod touch 7th generation"
+  lane :snapshot_tests_on_ipodtouch7thgeneration do
+    scan(
+      include_simulator_logs: false,
+      code_coverage: true,
+      clean: true,
+      scheme: "bathymetry",
+      device: "iPod touch (7th generation)",
+      only_testing: "bathymetrySnapshotTests"
+    )
+  end
+end
+
