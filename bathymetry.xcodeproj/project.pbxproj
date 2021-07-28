@@ -15,8 +15,6 @@
 		E6171D5E25B0763B00161E28 /* BathymetryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6171D5D25B0763B00161E28 /* BathymetryEntity.swift */; };
 		E6171D7625B0A5D600161E28 /* Contentful-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6171D7525B0A5D600161E28 /* Contentful-Info.plist */; };
 		E61EE8A1263C400E00942842 /* BathymetryClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61EE89D263C3FA800942842 /* BathymetryClientMock.swift */; };
-		E61F4B76259F5E7A00E19A44 /* geos in Frameworks */ = {isa = PBXBuildFile; productRef = E61F4B75259F5E7A00E19A44 /* geos */; };
-		E61F4B77259F5E7A00E19A44 /* geos in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E61F4B75259F5E7A00E19A44 /* geos */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E6203F87259205FE007C8FDA /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F84259205FA007C8FDA /* Mapbox.framework */; };
 		E6203F88259205FE007C8FDA /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F84259205FA007C8FDA /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6203F8925920600007C8FDA /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F83259205FA007C8FDA /* MapboxMobileEvents.framework */; };
@@ -60,10 +58,12 @@
 		E6C5DF7125C6BF5600EE6C6F /* BathymetryClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C5DF7025C6BF5600EE6C6F /* BathymetryClientTests.swift */; };
 		E6CB65BC25ADC3BD00E9070A /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CB65BB25ADC3BD00E9070A /* StorageProvider.swift */; };
 		E6D49D092651352500509DBE /* BathymetrySliderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D49D082651352500509DBE /* BathymetrySliderTests.swift */; };
+		E6D85BBD26B0338700620C3F /* geos in Frameworks */ = {isa = PBXBuildFile; productRef = E6D85BBC26B0338700620C3F /* geos */; };
+		E6D85BC126B0339A00620C3F /* GEOSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E6D85BC026B0339A00620C3F /* GEOSwift */; };
+		E6D85BC226B0347800620C3F /* geos in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E6D85BBC26B0338700620C3F /* geos */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E6DE397625C9735A00D0408A /* BathymetryRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DE397525C9735A00D0408A /* BathymetryRegion.swift */; };
 		E6DE397C25C9756400D0408A /* BathymetryZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DE397B25C9756400D0408A /* BathymetryZoomLevel.swift */; };
 		E6DED60F25A3444D0065B6D7 /* Mapbox-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6DED60E25A3444C0065B6D7 /* Mapbox-Info.plist */; };
-		E6E065252590CBB50032B6C8 /* GEOSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E6E065242590CBB50032B6C8 /* GEOSwift */; };
 		E6EF546E25BBFB90004C2478 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E6EF546D25BBFB90004C2478 /* README.md */; };
 		E6EF547325BC3534004C2478 /* MapView+MGLMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF547225BC3534004C2478 /* MapView+MGLMapView.swift */; };
 		E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1060D258A2E05000DDD25 /* ARView.swift */; };
@@ -106,7 +106,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				E6203F8A25920600007C8FDA /* MapboxMobileEvents.framework in Embed Frameworks */,
-				E61F4B77259F5E7A00E19A44 /* geos in Embed Frameworks */,
+				E6D85BC226B0347800620C3F /* geos in Embed Frameworks */,
 				E6203F88259205FE007C8FDA /* Mapbox.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -192,14 +192,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6203F87259205FE007C8FDA /* Mapbox.framework in Frameworks */,
-				E6E065252590CBB50032B6C8 /* GEOSwift in Frameworks */,
 				E6171D5A25B0574900161E28 /* Contentful in Frameworks */,
+				E6D85BC126B0339A00620C3F /* GEOSwift in Frameworks */,
+				E6D85BBD26B0338700620C3F /* geos in Frameworks */,
 				E684122525A9D70400186A13 /* Euclid in Frameworks */,
 				E6F10617258A3068000DDD25 /* ARCL in Frameworks */,
 				E684122A25A9E9A700186A13 /* iShapeTriangulation in Frameworks */,
 				E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */,
 				E6203F8925920600007C8FDA /* MapboxMobileEvents.framework in Frameworks */,
-				E61F4B76259F5E7A00E19A44 /* geos in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,11 +538,11 @@
 			packageProductDependencies = (
 				E6F8C1F425811ED70051E68F /* ComposableArchitecture */,
 				E6F10616258A3068000DDD25 /* ARCL */,
-				E6E065242590CBB50032B6C8 /* GEOSwift */,
-				E61F4B75259F5E7A00E19A44 /* geos */,
 				E684122425A9D70400186A13 /* Euclid */,
 				E684122925A9E9A700186A13 /* iShapeTriangulation */,
 				E6171D5925B0574900161E28 /* Contentful */,
+				E6D85BBC26B0338700620C3F /* geos */,
+				E6D85BC026B0339A00620C3F /* GEOSwift */,
 			);
 			productName = bathymetry;
 			productReference = E64FDE86257D22D200B303C6 /* Bathymetry.app */;
@@ -624,12 +624,12 @@
 			packageReferences = (
 				E6F8C1F325811ED70051E68F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
-				E6E065232590CBB50032B6C8 /* XCRemoteSwiftPackageReference "GEOSwift" */,
-				E6E065282590CCAC0032B6C8 /* XCRemoteSwiftPackageReference "geos" */,
 				E684122325A9D70400186A13 /* XCRemoteSwiftPackageReference "Euclid" */,
 				E684122825A9E9A700186A13 /* XCRemoteSwiftPackageReference "iShapeTriangulation" */,
 				E6171D5825B0574900161E28 /* XCRemoteSwiftPackageReference "contentful" */,
 				E62B06DF263051A40089C785 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				E6D85BBB26B0338700620C3F /* XCRemoteSwiftPackageReference "geos" */,
+				E6D85BBF26B0339A00620C3F /* XCRemoteSwiftPackageReference "GEOSwift" */,
 			);
 			productRefGroup = E64FDE87257D22D200B303C6 /* Products */;
 			projectDirPath = "";
@@ -818,6 +818,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6RYZ4RB738;
 				INFOPLIST_FILE = bathymetrySnapshotTests/Info.plist;
@@ -827,6 +828,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.kenzan8000.bathymetrySnapshotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -839,6 +841,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6RYZ4RB738;
 				INFOPLIST_FILE = bathymetrySnapshotTests/Info.plist;
@@ -848,6 +851,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.kenzan8000.bathymetrySnapshotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -865,6 +869,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -913,6 +918,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -927,6 +933,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -967,6 +974,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -980,6 +988,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_ASSET_PATHS = "\"bathymetry/Preview Content\"";
@@ -991,6 +1000,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				INFOPLIST_FILE = bathymetry/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -998,6 +1008,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.kenzan8000.bathymetry;
 				PRODUCT_NAME = Bathymetry;
 				SWIFT_VERSION = 5.0;
@@ -1011,6 +1022,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_ASSET_PATHS = "\"bathymetry/Preview Content\"";
@@ -1021,6 +1033,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				INFOPLIST_FILE = bathymetry/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1028,6 +1041,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.kenzan8000.bathymetry;
 				PRODUCT_NAME = Bathymetry;
 				SWIFT_VERSION = 5.0;
@@ -1041,6 +1055,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6RYZ4RB738;
 				INFOPLIST_FILE = bathymetryTests/Info.plist;
@@ -1050,6 +1065,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.kenzan8000.bathymetryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1063,6 +1079,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6RYZ4RB738;
 				INFOPLIST_FILE = bathymetryTests/Info.plist;
@@ -1072,6 +1089,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.kenzan8000.bathymetryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1084,6 +1102,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6RYZ4RB738;
 				INFOPLIST_FILE = bathymetryUITests/Info.plist;
@@ -1092,6 +1111,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.kenzan8000.bathymetryUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1105,6 +1125,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6RYZ4RB738;
 				INFOPLIST_FILE = bathymetryUITests/Info.plist;
@@ -1113,6 +1134,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.kenzan8000.bathymetryUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1205,20 +1227,20 @@
 				minimumVersion = 0.13.0;
 			};
 		};
-		E6E065232590CBB50032B6C8 /* XCRemoteSwiftPackageReference "GEOSwift" */ = {
+		E6D85BBB26B0338700620C3F /* XCRemoteSwiftPackageReference "geos" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/GEOSwift/GEOSwift.git";
+			repositoryURL = "https://github.com/GEOSwift/geos";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.2.0;
+				minimumVersion = 6.0.2;
 			};
 		};
-		E6E065282590CCAC0032B6C8 /* XCRemoteSwiftPackageReference "geos" */ = {
+		E6D85BBF26B0339A00620C3F /* XCRemoteSwiftPackageReference "GEOSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/GEOSwift/geos.git";
+			repositoryURL = "https://github.com/GEOSwift/GEOSwift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.0;
+				minimumVersion = 8.1.0;
 			};
 		};
 		E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */ = {
@@ -1245,11 +1267,6 @@
 			package = E6171D5825B0574900161E28 /* XCRemoteSwiftPackageReference "contentful" */;
 			productName = Contentful;
 		};
-		E61F4B75259F5E7A00E19A44 /* geos */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E6E065282590CCAC0032B6C8 /* XCRemoteSwiftPackageReference "geos" */;
-			productName = geos;
-		};
 		E62B06E0263051A40089C785 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E62B06DF263051A40089C785 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
@@ -1265,9 +1282,14 @@
 			package = E684122825A9E9A700186A13 /* XCRemoteSwiftPackageReference "iShapeTriangulation" */;
 			productName = iShapeTriangulation;
 		};
-		E6E065242590CBB50032B6C8 /* GEOSwift */ = {
+		E6D85BBC26B0338700620C3F /* geos */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E6E065232590CBB50032B6C8 /* XCRemoteSwiftPackageReference "GEOSwift" */;
+			package = E6D85BBB26B0338700620C3F /* XCRemoteSwiftPackageReference "geos" */;
+			productName = geos;
+		};
+		E6D85BC026B0339A00620C3F /* GEOSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E6D85BBF26B0339A00620C3F /* XCRemoteSwiftPackageReference "GEOSwift" */;
 			productName = GEOSwift;
 		};
 		E6F10616258A3068000DDD25 /* ARCL */ = {

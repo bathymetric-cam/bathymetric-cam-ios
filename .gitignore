@@ -87,6 +87,7 @@ Dependencies/
 # https://docs.fastlane.tools/best-practices/source-control/#source-control
 
 fastlane/Deliverfile
+fastlane/README.md
 fastlane/metadata
 fastlane/report.xml
 fastlane/Preview.html

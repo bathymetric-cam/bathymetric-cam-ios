@@ -13,7 +13,8 @@ platform :ios do
       clean: true,
       scheme: "bathymetry",
       device: "iPhone 8",
-      only_testing: "bathymetryTests"
+      only_testing: "bathymetryTests",
+      code_coverage: false
     )
   end
 
@@ -25,7 +26,8 @@ platform :ios do
       clean: true,
       scheme: "bathymetry",
       device: "iPhone 12 Pro Max",
-      only_testing: "bathymetrySnapshotTests"
+      only_testing: "bathymetrySnapshotTests",
+      code_coverage: false
     )
   end
 
@@ -37,7 +39,8 @@ platform :ios do
       clean: true,
       scheme: "bathymetry",
       device: "iPod touch (7th generation)",
-      only_testing: "bathymetrySnapshotTests"
+      only_testing: "bathymetrySnapshotTests",
+      code_coverage: false
     )
   end
 end
