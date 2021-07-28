@@ -88,17 +88,17 @@ workflows:
   test-and-upload:
     jobs:
       - unit-tests:
-          context: bathymetry
+          context: bathymetric-cam-ios
           filters:
             branches:
               only: main
       - snapshot-tests-on-iphone12promax:
-          context: bathymetry
+          context: bathymetric-cam-ios
           filters:
             branches:
               only: main
       - snapshot-tests-on-ipodtouch7thgeneration:
-          context: bathymetry
+          context: bathymetric-cam-ios
           filters:
             branches:
               only: main
