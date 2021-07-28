@@ -4,6 +4,8 @@
 
 # bathymetric-cam-ios
 
+[![CircleCI](https://circleci.com/gh/bathymetric-cam/bathymetric-cam-ios/tree/main.svg?style=svg)](https://circleci.com/gh/bathymetric-cam/bathymetric-cam-ios/tree/main)
+
 bathymetric-cam is an AR app visualizing depth contour of water for anglers.
 
 Depth contour represents a line connecting points of equal depth on ocean floors or lake floors.
