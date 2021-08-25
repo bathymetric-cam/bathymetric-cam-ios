@@ -24,7 +24,7 @@ Then drag the frameworks into `Frameworks/` folder.
 
 ### Plist Settings
 
-bathymetric-cam uses [Mapbox](https://github.com/mapbox/mapbox-gl-native-ios/tree/main/platform/ios) and [Contentful](https://github.com/contentful/contentful.swift).
+bathymetric-cam uses [Mapbox](https://github.com/mapbox/mapbox-gl-native-ios/tree/main/platform/ios).
 Each service has the configuration.
 
 Here is how to set them up.
@@ -41,28 +41,9 @@ Here is how to set them up.
 </plist>
 ```
 
-`Contentful-Info.plist`
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>spaceId</key>
-    <string>YOUR_SPACE_ID</string>
-    <key>accessToken</key>
-    <string>YOUR_ACCESS_TOKEN</string>
-</dict>
-</plist>
-```
-
 The plist files above go to `bathymetry/` folder.
-
-### Contentful
-
-Depth contour data is stored on [Contentful](https://www.contentful.com/).
-How to import the data is mentioned [here](https://github.com/bathymetric-cam/bathymetric-cam-contentful).
 
 ### Dependency
 
-bathymetric-cam depends on [Mapbox](https://github.com/mapbox/mapbox-gl-native-ios/tree/main/platform/ios) and [Contentful](https://github.com/contentful/contentful.swift).
-If your application needs to support other map frameworks like [GoogleMaps](https://developers.google.com/maps/documentation/ios-sdk/overview) or other API clients, you can make your own implementation that conforms to MapView and BathymetryClient's protocol.
+bathymetric-cam depends on [Mapbox](https://github.com/mapbox/mapbox-gl-native-ios/tree/main/platform/ios).
+If your application needs to support other map frameworks like [GoogleMaps](https://developers.google.com/maps/documentation/ios-sdk/overview), you can make your own implementation that conforms to MapView's protocol.

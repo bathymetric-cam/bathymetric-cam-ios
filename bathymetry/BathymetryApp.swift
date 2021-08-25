@@ -23,8 +23,7 @@ struct BathymetryApp: App {
     initialState: AppState(bathymetries: .default),
     reducer: appReducer,
     environment: AppEnvironment(
-      mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-      bathymetryClient: BathymetryContentfulClient()
+      mainQueue: DispatchQueue.main.eraseToAnyScheduler()
     )
   ))
   

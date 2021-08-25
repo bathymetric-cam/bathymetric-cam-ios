@@ -137,6 +137,7 @@ extension MapView {
   /// Updates bathymetry layers
   /// - Parameter mapView: UIKit MapView that inherits MGLMapView
   private func updateBathymetryLayers(mapView: MGLMapView) {
+    /*
     mapView.style?.layers
       .compactMap { $0.identifier.starts(with: "\(Bundle.main.bundleIdentifier ?? "")") ? $0 : nil }
       .forEach { mapView.style?.removeLayer($0) }
@@ -156,6 +157,7 @@ extension MapView {
           }
       }
     }
+    */
   }
 }
 

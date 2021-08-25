@@ -72,9 +72,11 @@ struct AppView: View {
             send: AppAction.zoomLevelUpdated
           )
         )
+        /*
         .regionDidChange {
           viewStore.send(.loadBathymetries($0))
         }
+        */
         .modifier(MapViewModifier(metrics: metrics))
       }
     }
@@ -172,8 +174,7 @@ struct AppView_Previews: PreviewProvider {
         initialState: AppState(bathymetries: .default),
         reducer: appReducer,
         environment: AppEnvironment(
-          mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-          bathymetryClient: BathymetryContentfulClient()
+          mainQueue: DispatchQueue.main.eraseToAnyScheduler()
         )
       ))
       .colorScheme($0)

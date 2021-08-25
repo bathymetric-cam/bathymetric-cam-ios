@@ -30,7 +30,7 @@ open class ARBathymetryNode: LocationNode {
   ) {
     let location = CLLocation(coordinate: bathymetryTile.sw, altitude: altitude)
     super.init(location: location)
-  
+    /*
     let normal = Euclid.Vector(0, -1, 0)
     bathymetries.forEach { bathymetry in
       let positionsList = createPositionsList(bathymetryTile: bathymetryTile, depth: bathymetry.depth, waterSurface: waterSurface)
@@ -50,10 +50,11 @@ open class ARBathymetryNode: LocationNode {
         }
       }
     }
+    */
   }
   
   // MARK: private api
-  
+  /*
   /// Creates positions of polygon's vertices
   /// - Parameters:
   ///   - bathymetryTile: BathymetryTile object
@@ -110,5 +111,5 @@ open class ARBathymetryNode: LocationNode {
         $0.map { triangulator.triangulateDelaunay(points: $0) }
       }
   }
-  
+  */
 }

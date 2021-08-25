@@ -32,8 +32,8 @@ class BathymetryTileTests: XCTestCase {
   }
   
   func testBathymetryTile_whenLhsEqualsToRhs_lhsShouldEqualToRhs() throws {
-    let lhs = BathymetryTile(x: 57482, y: 25954, zoom: 16, features: [])
-    let rhs = BathymetryTile(x: 57482, y: 25954, zoom: 16, features: [])
+    let lhs = BathymetryTile(x: 57482, y: 25954, zoom: 16)
+    let rhs = BathymetryTile(x: 57482, y: 25954, zoom: 16)
       
     let result = lhs == rhs
       
@@ -41,8 +41,8 @@ class BathymetryTileTests: XCTestCase {
   }
   
   func testBathymetryTile_whenCoordinateIsDifferent_lhsShouldNotEqualToRhs() throws {
-    let lhs = BathymetryTile(x: 57482, y: 25954, zoom: 16, features: [])
-    let rhs = BathymetryTile(x: 57483, y: 25954, zoom: 16, features: [])
+    let lhs = BathymetryTile(x: 57482, y: 25954, zoom: 16)
+    let rhs = BathymetryTile(x: 57483, y: 25954, zoom: 16)
       
     let result = lhs == rhs
       
@@ -50,8 +50,8 @@ class BathymetryTileTests: XCTestCase {
   }
   
   func testBathymetryTile_whenZoomIsDifferent_lhsShouldNotEqualToRhs() throws {
-    let lhs = BathymetryTile(x: 57482, y: 25954, zoom: 16, features: [])
-    let rhs = BathymetryTile(x: 57482, y: 25954, zoom: 15, features: [])
+    let lhs = BathymetryTile(x: 57482, y: 25954, zoom: 16)
+    let rhs = BathymetryTile(x: 57482, y: 25954, zoom: 15)
       
     let result = lhs == rhs
       
@@ -59,14 +59,13 @@ class BathymetryTileTests: XCTestCase {
   }
   
   func testBathymetryTile_whenRhsIsGeneratedFromLhsLocation_lhsShouldEqualToRhs() throws {
-    let lhs = BathymetryTile(x: 57482, y: 25954, zoom: 16, features: [])
+    let lhs = BathymetryTile(x: 57482, y: 25954, zoom: 16)
     let rhs = BathymetryTile(
       coordinate: CLLocationCoordinate2D(
         latitude: (lhs.ne.latitude + lhs.sw.latitude) / 2.0,
         longitude: (lhs.ne.longitude + lhs.sw.longitude) / 2.0
       ),
-      zoom: lhs.zoom,
-      features: []
+      zoom: lhs.zoom
     )
       
     XCTAssertEqual(lhs, rhs)

@@ -73,12 +73,22 @@ typealias Bathymetries = [Bathymetry]
 // MARK: - Bathymetries + static constant
 extension Bathymetries {
   static let `default` = [
-    Bathymetry(color: .init(red: 241.0 / 255, green: 250.0 / 255, blue: 253.0 / 255), depth: BathymetryDepth(min: 0.0, max: 1.0)),
-    Bathymetry(color: .init(red: 224.0 / 255, green: 241.0 / 255, blue: 249.0 / 255), depth: BathymetryDepth(min: 1.0, max: 2.0)),
-    Bathymetry(color: .init(red: 183.0 / 255, green: 211.0 / 255, blue: 229.0 / 255), depth: BathymetryDepth(min: 2.0, max: 3.0)),
-    Bathymetry(color: .init(red: 111.0 / 255, green: 171.0 / 255, blue: 197.0 / 255), depth: BathymetryDepth(min: 3.0, max: 5.0)),
-    Bathymetry(color: .init(red: 38.0 / 255, green: 126.0 / 255, blue: 156.0 / 255), depth: BathymetryDepth(min: 5.0, max: 10.0)),
-    Bathymetry(color: .init(red: 0.0 / 255, green: 70.0 / 255, blue: 98.0 / 255), depth: BathymetryDepth(min: 10.0, max: 20.0)),
-    Bathymetry(color: .init(red: 3.0 / 255, green: 51.0 / 255, blue: 76.0 / 255), depth: BathymetryDepth(min: 20.0, max: 50.0)),
+    Bathymetry(color: .init(red: 240.0 / 255, green: 250.0 / 255, blue: 255.0 / 255), depth: .init(min: 0.0, max: 0.5)),
+    Bathymetry(color: .init(red: 210.0 / 255, green: 225.0 / 255, blue: 240.0 / 255), depth: .init(min: 0.5, max: 1.0)),
+    Bathymetry(color: .init(red: 180.0 / 255, green: 200.0 / 255, blue: 225.0 / 255), depth: .init(min: 1.0, max: 1.5)),
+    Bathymetry(color: .init(red: 150.0 / 255, green: 175.0 / 255, blue: 210.0 / 255), depth: .init(min: 1.5, max: 2.0)),
+    Bathymetry(color: .init(red: 120.0 / 255, green: 150.0 / 255, blue: 195.0 / 255), depth: .init(min: 2.0, max: 2.5)),
+    Bathymetry(color: .init(red: 90.0 / 255, green: 125.0 / 255, blue: 180.0 / 255), depth: .init(min: 2.5, max: 3.0)),
+    Bathymetry(color: .init(red: 60.0 / 255, green: 100.0 / 255, blue: 165.0 / 255), depth: .init(min: 3.0, max: 3.5)),
+    Bathymetry(color: .init(red: 30.0 / 255, green: 75.0 / 255, blue: 150.0 / 255), depth: .init(min: 3.5, max: 4.0)),
+    Bathymetry(color: .init(red: 0.0 / 255, green: 50.0 / 255, blue: 135.0 / 255), depth: .init(min: 4.0, max: 4.5)),
+    Bathymetry(color: .init(red: 0.0 / 255, green: 25.0 / 255, blue: 120.0 / 255), depth: .init(min: 4.5, max: 5.0)),
+    Bathymetry(color: .init(red: 0.0 / 255, green: 0.0 / 255, blue: 105.0 / 255), depth: .init(min: 5.0, max: 5.5)),
+    Bathymetry(color: .init(red: 0.0 / 255, green: 0.0 / 255, blue: 90.0 / 255), depth: .init(min: 5.5, max: 6.0)),
+    Bathymetry(color: .init(red: 0.0 / 255, green: 0.0 / 255, blue: 75.0 / 255), depth: .init(min: 6.0, max: 6.5)),
+    Bathymetry(color: .init(red: 0.0 / 255, green: 0.0 / 255, blue: 60.0 / 255), depth: .init(min: 6.5, max: 7.0)),
+    Bathymetry(color: .init(red: 0.0 / 255, green: 0.0 / 255, blue: 45.0 / 255), depth: .init(min: 7.0, max: 7.5)),
+    Bathymetry(color: .init(red: 0.0 / 255, green: 0.0 / 255, blue: 30.0 / 255), depth: .init(min: 7.5, max: 8.0)),
+    Bathymetry(color: .init(red: 0.0 / 255, green: 0.0 / 255, blue: 15.0 / 255), depth: .init(min: 8.0, max: 8.5)),
   ]
 }

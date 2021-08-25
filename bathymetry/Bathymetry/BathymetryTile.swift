@@ -1,4 +1,4 @@
-import GEOSwift
+// import GEOSwift
 import CoreLocation
 
 // MARK: - BathymetryTile
@@ -8,7 +8,6 @@ final class BathymetryTile: RegionTile {
   
   let zoom: Int
   let zoomLevel: BathymetryZoomLevel // The zoom parameter is an integer between 0 (zoomed out) and 18 (zoomed in). 18 is normally the maximum, but some tile servers might go beyond that.
-  let features: [Feature]
   
   var name: String { "\(zoom)/\(x)/\(y)" }
   var ne: CLLocationCoordinate2D { // north and east coordinate
@@ -29,10 +28,8 @@ final class BathymetryTile: RegionTile {
   /// initializer
   /// - Parameters:
   ///   - coordinate: lat, lng coordinate
-  ///   - zoom: map zoomLevel   
-  ///   - features: bathymetric features
-  init(coordinate: CLLocationCoordinate2D, zoom: Int, features: [Feature]) {
-    self.features = features
+  ///   - zoom: map zoomLevel
+  override init(coordinate: CLLocationCoordinate2D, zoom: Int) {
     self.zoom = zoom
     zoomLevel = BathymetryZoomLevel(zoom)
     super.init(coordinate: coordinate, zoom: zoom)
@@ -43,30 +40,10 @@ final class BathymetryTile: RegionTile {
   ///   - x: map tile x
   ///   - y: map tile y
   ///   - zoom: map zoomLevel
-  ///   - features: bathymetric features
-  init(x: Int, y: Int, zoom: Int, features: [Feature]) {
-    self.features = features
+  init(x: Int, y: Int, zoom: Int) {
     self.zoom = zoom
     zoomLevel = BathymetryZoomLevel(zoom)
     super.init(x: x, y: y)
-  }
-  
-  // MARK: public api
-  
-  /// Gets features between minDepth and maxDepth
-  /// - Parameters:
-  ///   - depth: depth range
-  /// - Returns: [Feature] between the range
-  func getFeatures(depth: BathymetryDepth) -> [Feature] {
-    features.compactMap { feature -> Feature? in
-      guard let minDepthJSON = feature.properties?["minDepth"],
-        case let .number(low) = minDepthJSON,
-        let maxDepthJSON = feature.properties?["maxDepth"],
-        case let .number(high) = maxDepthJSON else {
-        return nil
-      }
-      return low >= depth.min && high <= depth.max ? feature : nil
-    }
   }
 }
 
