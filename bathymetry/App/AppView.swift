@@ -21,13 +21,9 @@ struct AppView: View {
       .edgesIgnoringSafeArea(.all)
       
       SettingsButton {
-        sideMenuIsOpen.toggle()
       }
       mapZoomButtons
       waterSurfaceSlider
-    }
-    .sideMenu(isOpen: $sideMenuIsOpen) {
-      sideMenuContent
     }
   }
   
@@ -134,32 +130,6 @@ struct AppView: View {
       .offset(
         x: metrics.size.width - BathymetrySlider.width - padding,
         y: metrics.size.height - MapZoomButton.height * 2 - BathymetrySlider.height - space * 2
-      )
-    }
-  }
-  
-  var sideMenuContent: some View {
-    GeometryReader { metrics in
-      VStack {
-        WithViewStore(store) { viewStore in
-          ARToggle(
-            isOn: viewStore.binding(
-              get: { $0.arIsOn },
-              send: AppAction.arIsOnToggled
-            )
-          )
-          BathymetryDepthUnitView(
-            depthUnit: viewStore.binding(
-              get: { $0.depthUnit },
-              send: AppAction.depthUnitUpdated
-            )
-          )
-        }
-      }
-      .frame(
-        width: metrics.size.width,
-        height: metrics.size.height,
-        alignment: .topLeading
       )
     }
   }
