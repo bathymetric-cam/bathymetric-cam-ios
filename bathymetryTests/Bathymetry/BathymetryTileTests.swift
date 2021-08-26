@@ -17,20 +17,6 @@ class BathymetryTileTests: XCTestCase {
   
   // MARK: test
   
-  func testRegionTile_whenLhsEqualsToRhs_lhsShouldEqualToRhs() throws {
-    let lhs = RegionTile(x: 57482, y: 25954)
-    let rhs = RegionTile(x: 57482, y: 25954)
-      
-    XCTAssertEqual(lhs, rhs)
-  }
-  
-  func testRegionTile_whenCoordinateIsDifferent_lhsShouldNotEqualToRhs() throws {
-    let lhs = RegionTile(x: 57482, y: 25954)
-    let rhs = RegionTile(x: 57483, y: 25954)
-      
-    XCTAssertNotEqual(lhs, rhs)
-  }
-  
   func testBathymetryTile_whenLhsEqualsToRhs_lhsShouldEqualToRhs() throws {
     let lhs = BathymetryTile(x: 57482, y: 25954, zoom: 16)
     let rhs = BathymetryTile(x: 57482, y: 25954, zoom: 16)

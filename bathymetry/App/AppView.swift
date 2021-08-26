@@ -8,7 +8,6 @@ struct AppView: View {
   
   let store: Store<AppState, AppAction>
   
-  @State private var sideMenuIsOpen = false
   let padding = CGFloat(16)
   let space = CGFloat(16)
   

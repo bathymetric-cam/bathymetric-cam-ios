@@ -1,11 +1,35 @@
 // MARK: - BathymetryRegion
 struct BathymetryRegion {
   
+  // MARK: enum
+  
+  enum Error: Swift.Error {
+    case invalidZoomLevel
+    case invalidXCoordinate
+    case invalidYCoordinate
+  }
+  
   // MARK: property
   
-  var swTile: RegionTile
-  var neTile: RegionTile
-  var zoom: Int
+  var swTile: BathymetryTile
+  var neTile: BathymetryTile
+  var zoom: Int {
+    swTile.zoom
+  }
+  
+  // MARK: initializer
+  
+  init(swTile: BathymetryTile, neTile: BathymetryTile) throws {
+    if swTile.zoom != neTile.zoom {
+      throw Error.invalidZoomLevel
+    } else if neTile.y > swTile.y {
+      throw Error.invalidYCoordinate
+    } else if swTile.x > neTile.x {
+      throw Error.invalidXCoordinate
+    }
+    self.swTile = swTile
+    self.neTile = neTile
+  }
   
   // MARK: public api
   
@@ -22,13 +46,12 @@ struct BathymetryRegion {
   
   /// Returns larger region
   /// - Returns: larger region
-  func largerRegion() -> BathymetryRegion {
+  func largerRegion() throws -> BathymetryRegion {
     let x = neTile.x - swTile.x <= 0 ? 1 : neTile.x - swTile.x
     let y = swTile.y - neTile.y <= 0 ? 1 : swTile.y - neTile.y
-    return BathymetryRegion(
-      swTile: RegionTile(x: swTile.x - x, y: swTile.y + y),
-      neTile: RegionTile(x: neTile.x + x, y: neTile.y - y),
-      zoom: zoom
+    return try BathymetryRegion(
+      swTile: BathymetryTile(x: swTile.x - x, y: swTile.y + y, zoom: zoom),
+      neTile: BathymetryTile(x: neTile.x + x, y: neTile.y - y, zoom: zoom)
     )
   }
 }
