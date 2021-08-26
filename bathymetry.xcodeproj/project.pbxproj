@@ -22,8 +22,8 @@
 		E633CD0A25D01A4B00FDB3BA /* BathymetryRegionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633CD0925D01A4B00FDB3BA /* BathymetryRegionTests.swift */; };
 		E63D2BF325A320CC00788375 /* BathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2BF225A320CC00788375 /* BathymetryTile.swift */; };
 		E63D2C3C25A33E7D00788375 /* MGLShapeSource+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2C3B25A33E7D00788375 /* MGLShapeSource+Feature.swift */; };
-		E64BDF15265FE48D00069F04 /* SideMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64BDF14265FE48D00069F04 /* SideMenuButton.swift */; };
-		E64BDF18265FE69600069F04 /* SideMenuButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64BDF17265FE69600069F04 /* SideMenuButtonTests.swift */; };
+		E64BDF15265FE48D00069F04 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64BDF14265FE48D00069F04 /* SettingsButton.swift */; };
+		E64BDF18265FE69600069F04 /* SettingsButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64BDF17265FE69600069F04 /* SettingsButtonTests.swift */; };
 		E64FDE8A257D22D200B303C6 /* BathymetryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE89257D22D200B303C6 /* BathymetryApp.swift */; };
 		E64FDE8C257D22D200B303C6 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE8B257D22D200B303C6 /* AppView.swift */; };
 		E64FDE8E257D22D200B303C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E64FDE8D257D22D200B303C6 /* Assets.xcassets */; };
@@ -118,8 +118,8 @@
 		E633CD0925D01A4B00FDB3BA /* BathymetryRegionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryRegionTests.swift; sourceTree = "<group>"; };
 		E63D2BF225A320CC00788375 /* BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTile.swift; sourceTree = "<group>"; };
 		E63D2C3B25A33E7D00788375 /* MGLShapeSource+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLShapeSource+Feature.swift"; sourceTree = "<group>"; };
-		E64BDF14265FE48D00069F04 /* SideMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuButton.swift; sourceTree = "<group>"; };
-		E64BDF17265FE69600069F04 /* SideMenuButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuButtonTests.swift; sourceTree = "<group>"; };
+		E64BDF14265FE48D00069F04 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
+		E64BDF17265FE69600069F04 /* SettingsButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButtonTests.swift; sourceTree = "<group>"; };
 		E64FDE86257D22D200B303C6 /* Bathymetry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bathymetry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64FDE89257D22D200B303C6 /* BathymetryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryApp.swift; sourceTree = "<group>"; };
 		E64FDE8B257D22D200B303C6 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 				E624EF4E2630544500F10967 /* AR */,
 				E62B06F1263052FC0089C785 /* Bathymetry */,
 				E6F2243525E51F1B000C5465 /* Map */,
-				E64BDF16265FE67E00069F04 /* SideMenu */,
+				E64BDF16265FE67E00069F04 /* Settings */,
 				E62B06CD2630516E0089C785 /* Info.plist */,
 			);
 			path = bathymetrySnapshotTests;
@@ -255,20 +255,20 @@
 			path = Bathymetry;
 			sourceTree = "<group>";
 		};
-		E64BDF13265FE47100069F04 /* SideMenu */ = {
+		E64BDF13265FE47100069F04 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E64BDF14265FE48D00069F04 /* SideMenuButton.swift */,
+				E64BDF14265FE48D00069F04 /* SettingsButton.swift */,
 			);
-			path = SideMenu;
+			path = Settings;
 			sourceTree = "<group>";
 		};
-		E64BDF16265FE67E00069F04 /* SideMenu */ = {
+		E64BDF16265FE67E00069F04 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E64BDF17265FE69600069F04 /* SideMenuButtonTests.swift */,
+				E64BDF17265FE69600069F04 /* SettingsButtonTests.swift */,
 			);
-			path = SideMenu;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		E64FDE7D257D22D200B303C6 = {
@@ -307,7 +307,7 @@
 				E6FE7ABE25824AF000C47C2B /* Map */,
 				E6F1060C258A2DDB000DDD25 /* AR */,
 				E6DD5BAE25A08C7200860C4B /* Bathymetry */,
-				E64BDF13265FE47100069F04 /* SideMenu */,
+				E64BDF13265FE47100069F04 /* Settings */,
 				E6CB65BA25ADC35A00E9070A /* CoreData */,
 				E6171D6125B080CE00161E28 /* Extensions */,
 				E69BBD10257E50170048050C /* Preview Content */,
@@ -693,7 +693,7 @@
 			files = (
 				E624EF502630545100F10967 /* ARToggleTests.swift in Sources */,
 				E6D49D092651352500509DBE /* BathymetrySliderTests.swift in Sources */,
-				E64BDF18265FE69600069F04 /* SideMenuButtonTests.swift in Sources */,
+				E64BDF18265FE69600069F04 /* SettingsButtonTests.swift in Sources */,
 				E62B06EB263052080089C785 /* MapZoomButtonTests.swift in Sources */,
 				E62B06F82630531D0089C785 /* BathymetryDepthsViewTests.swift in Sources */,
 				E65ED9902699F94100127725 /* Snapshotting+Model.swift in Sources */,
@@ -708,7 +708,7 @@
 				E6711BC225D40364007A4A89 /* ARToggle.swift in Sources */,
 				E698A33025976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift in Sources */,
 				E6DE397625C9735A00D0408A /* BathymetryRegion.swift in Sources */,
-				E64BDF15265FE48D00069F04 /* SideMenuButton.swift in Sources */,
+				E64BDF15265FE48D00069F04 /* SettingsButton.swift in Sources */,
 				E65CF4182590BBA9008A207C /* AppAction.swift in Sources */,
 				E6169D3A25CAB00200AE1F06 /* MapZoomButton.swift in Sources */,
 				E6712C8F2646B5E40078C3A8 /* Logger+Bathymetry.swift in Sources */,

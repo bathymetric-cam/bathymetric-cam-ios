@@ -20,7 +20,7 @@ struct AppView: View {
       }
       .edgesIgnoringSafeArea(.all)
       
-      SideMenuButton {
+      SettingsButton {
         sideMenuIsOpen.toggle()
       }
       mapZoomButtons

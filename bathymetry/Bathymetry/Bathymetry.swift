@@ -83,6 +83,7 @@ extension Bathymetries {
     Bathymetry(color: .init(red: 30.0 / 255, green: 75.0 / 255, blue: 150.0 / 255), depth: .init(min: 3.5, max: 4.0)),
     Bathymetry(color: .init(red: 0.0 / 255, green: 50.0 / 255, blue: 135.0 / 255), depth: .init(min: 4.0, max: 4.5)),
     Bathymetry(color: .init(red: 0.0 / 255, green: 25.0 / 255, blue: 120.0 / 255), depth: .init(min: 4.5, max: 5.0)),
+    /*
     Bathymetry(color: .init(red: 0.0 / 255, green: 0.0 / 255, blue: 105.0 / 255), depth: .init(min: 5.0, max: 5.5)),
     Bathymetry(color: .init(red: 0.0 / 255, green: 0.0 / 255, blue: 90.0 / 255), depth: .init(min: 5.5, max: 6.0)),
     Bathymetry(color: .init(red: 0.0 / 255, green: 0.0 / 255, blue: 75.0 / 255), depth: .init(min: 6.0, max: 6.5)),
@@ -90,5 +91,6 @@ extension Bathymetries {
     Bathymetry(color: .init(red: 0.0 / 255, green: 0.0 / 255, blue: 45.0 / 255), depth: .init(min: 7.0, max: 7.5)),
     Bathymetry(color: .init(red: 0.0 / 255, green: 0.0 / 255, blue: 30.0 / 255), depth: .init(min: 7.5, max: 8.0)),
     Bathymetry(color: .init(red: 0.0 / 255, green: 0.0 / 255, blue: 15.0 / 255), depth: .init(min: 8.0, max: 8.5)),
+    */
   ]
 }

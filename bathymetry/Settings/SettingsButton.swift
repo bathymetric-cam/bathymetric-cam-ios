@@ -1,7 +1,7 @@
 import SwiftUI
 
-// MARK: - SideMenuButton
-struct SideMenuButton: View {
+// MARK: - SettingsButton
+struct SettingsButton: View {
   
   // MARK: static constant
   
@@ -16,11 +16,12 @@ struct SideMenuButton: View {
     GeometryReader { _ in
       Image(systemName: "circle.fill")
         .font(.system(size: fontSize))
-        .foregroundColor(colorScheme == .dark ? .white : .black)
+        .foregroundColor(colorScheme == .dark ? .black : .white)
       Button(action: action) {
-        Image(systemName: "line.horizontal.3.circle.fill")
-          .font(.system(size: fontSize))
-          .foregroundColor(colorScheme == .dark ? .black : .white)
+        Image(systemName: "gearshape.fill")
+          .font(.system(size: fontSize / 2))
+          .foregroundColor(colorScheme == .dark ? .white : .black)
+          .offset(x: 11, y: 11)
       }
     }
     .padding()
@@ -28,12 +29,12 @@ struct SideMenuButton: View {
   }
 }
 
-// MARK: - SideMenuButton_Previews
-struct SideMenuButton_Previews: PreviewProvider {
+// MARK: - SettingsButton_Previews
+struct SettingsButton_Previews: PreviewProvider {
   
   static var previews: some View {
     ForEach([ColorScheme.dark, ColorScheme.light], id: \.self) {
-      SideMenuButton { }
+      SettingsButton { }
         .colorScheme($0)
     }
   }

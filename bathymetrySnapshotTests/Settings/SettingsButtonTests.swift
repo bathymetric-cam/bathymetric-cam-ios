@@ -3,8 +3,8 @@ import SwiftUI
 import XCTest
 @testable import Bathymetry
 
-// MARK: - SideMenuButtonTests
-class SideMenuButtonTests: XCTestCase {
+// MARK: - SettingsButtonTests
+class SettingsButtonTests: XCTestCase {
   // MARK: life cycle
   
   override func setUpWithError() throws {
@@ -17,8 +17,8 @@ class SideMenuButtonTests: XCTestCase {
   
   // MARK: test
   
-  func testSideMenuButton_whenInitialState_snapshotTesting() throws {
-    let sut = UIHostingController(rootView: SideMenuButton {})
+  func testSettingsButton_whenInitialState_snapshotTesting() throws {
+    let sut = UIHostingController(rootView: SettingsButton {})
     [(UIUserInterfaceStyle.dark, "dark"), (UIUserInterfaceStyle.light, "light")].forEach { style, named in
       sut.overrideUserInterfaceStyle = style
       assertSnapshot(
