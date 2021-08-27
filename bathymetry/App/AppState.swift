@@ -1,5 +1,4 @@
 import CoreLocation
-import GEOSwift
 import SwiftUI
 
 // MARK: - AppState

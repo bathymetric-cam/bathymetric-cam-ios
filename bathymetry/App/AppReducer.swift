@@ -1,5 +1,4 @@
 import ComposableArchitecture
-import GEOSwift
 
 // MARK: - AppReducer
 // swiftlint:disable closure_body_length

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		E60C3D3726499213003E0355 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60C3D3626499213003E0355 /* CustomSlider.swift */; };
 		E6169D3A25CAB00200AE1F06 /* MapZoomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6169D3925CAB00200AE1F06 /* MapZoomButton.swift */; };
-		E6171D5A25B0574900161E28 /* Contentful in Frameworks */ = {isa = PBXBuildFile; productRef = E6171D5925B0574900161E28 /* Contentful */; };
 		E6203F87259205FE007C8FDA /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F84259205FA007C8FDA /* Mapbox.framework */; };
 		E6203F88259205FE007C8FDA /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F84259205FA007C8FDA /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6203F8925920600007C8FDA /* MapboxMobileEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6203F83259205FA007C8FDA /* MapboxMobileEvents.framework */; };
@@ -21,7 +20,6 @@
 		E631E59826482BE1007B1BDC /* BathymetrySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E631E59726482BE1007B1BDC /* BathymetrySlider.swift */; };
 		E633CD0A25D01A4B00FDB3BA /* BathymetryRegionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633CD0925D01A4B00FDB3BA /* BathymetryRegionTests.swift */; };
 		E63D2BF325A320CC00788375 /* BathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2BF225A320CC00788375 /* BathymetryTile.swift */; };
-		E63D2C3C25A33E7D00788375 /* MGLShapeSource+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2C3B25A33E7D00788375 /* MGLShapeSource+Feature.swift */; };
 		E64BDF15265FE48D00069F04 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64BDF14265FE48D00069F04 /* SettingsButton.swift */; };
 		E64BDF18265FE69600069F04 /* SettingsButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64BDF17265FE69600069F04 /* SettingsButtonTests.swift */; };
 		E64FDE8A257D22D200B303C6 /* BathymetryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE89257D22D200B303C6 /* BathymetryApp.swift */; };
@@ -39,19 +37,13 @@
 		E666463C25D29CBA00DC4F17 /* BathymetryDepthsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666463B25D29CBA00DC4F17 /* BathymetryDepthsView.swift */; };
 		E6711BC225D40364007A4A89 /* ARToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6711BC125D40364007A4A89 /* ARToggle.swift */; };
 		E6712C8F2646B5E40078C3A8 /* Logger+Bathymetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6712C8E2646B5E40078C3A8 /* Logger+Bathymetry.swift */; };
-		E684122525A9D70400186A13 /* Euclid in Frameworks */ = {isa = PBXBuildFile; productRef = E684122425A9D70400186A13 /* Euclid */; };
-		E684122A25A9E9A700186A13 /* iShapeTriangulation in Frameworks */ = {isa = PBXBuildFile; productRef = E684122925A9E9A700186A13 /* iShapeTriangulation */; };
 		E694049025C428CF00F047EC /* Bathymetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694048F25C428CF00F047EC /* Bathymetry.swift */; };
-		E698A33025976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A32F25976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift */; };
 		E69BBD12257E50170048050C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69BBD11257E50170048050C /* Preview Assets.xcassets */; };
 		E69D159D25C9809100AD1B0F /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69D159C25C9809100AD1B0F /* CircularButton.swift */; };
 		E6B2866025A47B4600782955 /* ARBathymetryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */; };
 		E6BFC11E25D1479000295FB2 /* BathymetryTileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BFC11D25D1479000295FB2 /* BathymetryTileTests.swift */; };
 		E6CB65BC25ADC3BD00E9070A /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CB65BB25ADC3BD00E9070A /* StorageProvider.swift */; };
 		E6D49D092651352500509DBE /* BathymetrySliderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D49D082651352500509DBE /* BathymetrySliderTests.swift */; };
-		E6D85BBD26B0338700620C3F /* geos in Frameworks */ = {isa = PBXBuildFile; productRef = E6D85BBC26B0338700620C3F /* geos */; };
-		E6D85BC126B0339A00620C3F /* GEOSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E6D85BC026B0339A00620C3F /* GEOSwift */; };
-		E6D85BC226B0347800620C3F /* geos in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E6D85BBC26B0338700620C3F /* geos */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E6DE397625C9735A00D0408A /* BathymetryRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DE397525C9735A00D0408A /* BathymetryRegion.swift */; };
 		E6DE397C25C9756400D0408A /* BathymetryZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DE397B25C9756400D0408A /* BathymetryZoomLevel.swift */; };
 		E6DED60F25A3444D0065B6D7 /* Mapbox-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6DED60E25A3444C0065B6D7 /* Mapbox-Info.plist */; };
@@ -97,7 +89,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				E6203F8A25920600007C8FDA /* MapboxMobileEvents.framework in Embed Frameworks */,
-				E6D85BC226B0347800620C3F /* geos in Embed Frameworks */,
 				E6203F88259205FE007C8FDA /* Mapbox.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -116,7 +107,6 @@
 		E631E59726482BE1007B1BDC /* BathymetrySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetrySlider.swift; sourceTree = "<group>"; };
 		E633CD0925D01A4B00FDB3BA /* BathymetryRegionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryRegionTests.swift; sourceTree = "<group>"; };
 		E63D2BF225A320CC00788375 /* BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTile.swift; sourceTree = "<group>"; };
-		E63D2C3B25A33E7D00788375 /* MGLShapeSource+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLShapeSource+Feature.swift"; sourceTree = "<group>"; };
 		E64BDF14265FE48D00069F04 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
 		E64BDF17265FE69600069F04 /* SettingsButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButtonTests.swift; sourceTree = "<group>"; };
 		E64FDE86257D22D200B303C6 /* Bathymetry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bathymetry.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,7 +131,6 @@
 		E6711BC125D40364007A4A89 /* ARToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARToggle.swift; sourceTree = "<group>"; };
 		E6712C8E2646B5E40078C3A8 /* Logger+Bathymetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Bathymetry.swift"; sourceTree = "<group>"; };
 		E694048F25C428CF00F047EC /* Bathymetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bathymetry.swift; sourceTree = "<group>"; };
-		E698A32F25976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLPointAnnotation+GEOSwift.swift"; sourceTree = "<group>"; };
 		E69BBD11257E50170048050C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E69D159C25C9809100AD1B0F /* CircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
 		E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBathymetryNode.swift; sourceTree = "<group>"; };
@@ -175,12 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6203F87259205FE007C8FDA /* Mapbox.framework in Frameworks */,
-				E6171D5A25B0574900161E28 /* Contentful in Frameworks */,
-				E6D85BC126B0339A00620C3F /* GEOSwift in Frameworks */,
-				E6D85BBD26B0338700620C3F /* geos in Frameworks */,
-				E684122525A9D70400186A13 /* Euclid in Frameworks */,
 				E6F10617258A3068000DDD25 /* ARCL in Frameworks */,
-				E684122A25A9E9A700186A13 /* iShapeTriangulation in Frameworks */,
 				E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */,
 				E6203F8925920600007C8FDA /* MapboxMobileEvents.framework in Frameworks */,
 			);
@@ -206,20 +190,10 @@
 		E6171D6125B080CE00161E28 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E6171D7025B0857600161E28 /* Mapbox */,
 				E6712C8D2646B5B00078C3A8 /* OS */,
 				E69D159B25C9806B00AD1B0F /* SwiftUI */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		E6171D7025B0857600161E28 /* Mapbox */ = {
-			isa = PBXGroup;
-			children = (
-				E698A32F25976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift */,
-				E63D2C3B25A33E7D00788375 /* MGLShapeSource+Feature.swift */,
-			);
-			path = Mapbox;
 			sourceTree = "<group>";
 		};
 		E624EF4E2630544500F10967 /* AR */ = {
@@ -505,11 +479,6 @@
 			packageProductDependencies = (
 				E6F8C1F425811ED70051E68F /* ComposableArchitecture */,
 				E6F10616258A3068000DDD25 /* ARCL */,
-				E684122425A9D70400186A13 /* Euclid */,
-				E684122925A9E9A700186A13 /* iShapeTriangulation */,
-				E6171D5925B0574900161E28 /* Contentful */,
-				E6D85BBC26B0338700620C3F /* geos */,
-				E6D85BC026B0339A00620C3F /* GEOSwift */,
 			);
 			productName = bathymetry;
 			productReference = E64FDE86257D22D200B303C6 /* Bathymetry.app */;
@@ -591,12 +560,7 @@
 			packageReferences = (
 				E6F8C1F325811ED70051E68F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
-				E684122325A9D70400186A13 /* XCRemoteSwiftPackageReference "Euclid" */,
-				E684122825A9E9A700186A13 /* XCRemoteSwiftPackageReference "iShapeTriangulation" */,
-				E6171D5825B0574900161E28 /* XCRemoteSwiftPackageReference "contentful" */,
 				E62B06DF263051A40089C785 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
-				E6D85BBB26B0338700620C3F /* XCRemoteSwiftPackageReference "geos" */,
-				E6D85BBF26B0339A00620C3F /* XCRemoteSwiftPackageReference "GEOSwift" */,
 			);
 			productRefGroup = E64FDE87257D22D200B303C6 /* Products */;
 			projectDirPath = "";
@@ -703,7 +667,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6711BC225D40364007A4A89 /* ARToggle.swift in Sources */,
-				E698A33025976A2D00596795 /* MGLPointAnnotation+GEOSwift.swift in Sources */,
 				E6DE397625C9735A00D0408A /* BathymetryRegion.swift in Sources */,
 				E64BDF15265FE48D00069F04 /* SettingsButton.swift in Sources */,
 				E65CF4182590BBA9008A207C /* AppAction.swift in Sources */,
@@ -720,7 +683,6 @@
 				E6FCE8FE266BB3700000F940 /* BathymetryDepthUnitView.swift in Sources */,
 				E666463C25D29CBA00DC4F17 /* BathymetryDepthsView.swift in Sources */,
 				E6B2866025A47B4600782955 /* ARBathymetryNode.swift in Sources */,
-				E63D2C3C25A33E7D00788375 /* MGLShapeSource+Feature.swift in Sources */,
 				E60C3D3726499213003E0355 /* CustomSlider.swift in Sources */,
 				E65CF41C2590BBFA008A207C /* AppEnvironment.swift in Sources */,
 				E631E59826482BE1007B1BDC /* BathymetrySlider.swift in Sources */,
@@ -1153,52 +1115,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E6171D5825B0574900161E28 /* XCRemoteSwiftPackageReference "contentful" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/contentful/contentful.swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.1;
-			};
-		};
 		E62B06DF263051A40089C785 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.8.2;
-			};
-		};
-		E684122325A9D70400186A13 /* XCRemoteSwiftPackageReference "Euclid" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/nicklockwood/Euclid.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.6;
-			};
-		};
-		E684122825A9E9A700186A13 /* XCRemoteSwiftPackageReference "iShapeTriangulation" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/iShape-Swift/iShapeTriangulation.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.13.0;
-			};
-		};
-		E6D85BBB26B0338700620C3F /* XCRemoteSwiftPackageReference "geos" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/GEOSwift/geos";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.2;
-			};
-		};
-		E6D85BBF26B0339A00620C3F /* XCRemoteSwiftPackageReference "GEOSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/GEOSwift/GEOSwift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.1.0;
 			};
 		};
 		E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */ = {
@@ -1220,35 +1142,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E6171D5925B0574900161E28 /* Contentful */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E6171D5825B0574900161E28 /* XCRemoteSwiftPackageReference "contentful" */;
-			productName = Contentful;
-		};
 		E62B06E0263051A40089C785 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E62B06DF263051A40089C785 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
-		};
-		E684122425A9D70400186A13 /* Euclid */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E684122325A9D70400186A13 /* XCRemoteSwiftPackageReference "Euclid" */;
-			productName = Euclid;
-		};
-		E684122925A9E9A700186A13 /* iShapeTriangulation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E684122825A9E9A700186A13 /* XCRemoteSwiftPackageReference "iShapeTriangulation" */;
-			productName = iShapeTriangulation;
-		};
-		E6D85BBC26B0338700620C3F /* geos */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E6D85BBB26B0338700620C3F /* XCRemoteSwiftPackageReference "geos" */;
-			productName = geos;
-		};
-		E6D85BC026B0339A00620C3F /* GEOSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E6D85BBF26B0339A00620C3F /* XCRemoteSwiftPackageReference "GEOSwift" */;
-			productName = GEOSwift;
 		};
 		E6F10616258A3068000DDD25 /* ARCL */ = {
 			isa = XCSwiftPackageProductDependency;

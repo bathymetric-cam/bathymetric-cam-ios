@@ -1,4 +1,3 @@
-// import GEOSwift
 import CoreLocation
 
 // MARK: - BathymetryTile
@@ -35,7 +34,6 @@ struct BathymetryTile {
   init(coordinate: CLLocationCoordinate2D, zoom: Int) {
     self.zoom = zoom
     zoomLevel = BathymetryZoomLevel(zoom)
-    // super.init(coordinate: coordinate, zoom: zoom)
     x = Int(floor((coordinate.longitude + 180.0) / 360.0 * pow(2.0, BathymetryZoomLevel(zoom))))
     y = Int(floor((1.0 - log(tan(coordinate.latitude * .pi / 180.0) + 1.0 / cos(coordinate.latitude * .pi / 180.0)) / .pi) / 2.0 * pow(2.0, BathymetryZoomLevel(zoom))))
   }
@@ -48,7 +46,6 @@ struct BathymetryTile {
   init(x: Int, y: Int, zoom: Int) {
     self.zoom = zoom
     zoomLevel = BathymetryZoomLevel(zoom)
-    // super.init(x: x, y: y)
     self.x = x
     self.y = y
   }
