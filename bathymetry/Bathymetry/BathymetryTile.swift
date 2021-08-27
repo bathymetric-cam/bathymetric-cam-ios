@@ -1,4 +1,5 @@
 import CoreLocation
+import UIKit
 
 // MARK: - BathymetryTile
 struct BathymetryTile {
@@ -25,17 +26,21 @@ struct BathymetryTile {
     )
   }
   
+  var image: UIImage?
+  
   // MARK: initializer
   
   /// initializer
   /// - Parameters:
   ///   - coordinate: lat, lng coordinate
   ///   - zoom: map zoomLevel
-  init(coordinate: CLLocationCoordinate2D, zoom: Int) {
+  ///   - image: tile image
+  init(coordinate: CLLocationCoordinate2D, zoom: Int, image: UIImage? = nil) {
     self.zoom = zoom
     zoomLevel = BathymetryZoomLevel(zoom)
     x = Int(floor((coordinate.longitude + 180.0) / 360.0 * pow(2.0, BathymetryZoomLevel(zoom))))
     y = Int(floor((1.0 - log(tan(coordinate.latitude * .pi / 180.0) + 1.0 / cos(coordinate.latitude * .pi / 180.0)) / .pi) / 2.0 * pow(2.0, BathymetryZoomLevel(zoom))))
+    self.image = image
   }
   
   /// initializer
@@ -43,11 +48,13 @@ struct BathymetryTile {
   ///   - x: map tile x
   ///   - y: map tile y
   ///   - zoom: map zoomLevel
-  init(x: Int, y: Int, zoom: Int) {
+  ///   - image: tile image   
+  init(x: Int, y: Int, zoom: Int, image: UIImage? = nil) {
     self.zoom = zoom
     zoomLevel = BathymetryZoomLevel(zoom)
     self.x = x
     self.y = y
+    self.image = image
   }
 }
 
