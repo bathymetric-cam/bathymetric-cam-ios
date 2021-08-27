@@ -128,9 +128,9 @@ extension MapView {
       return
     }
     let zoom = Int(mapView.zoomLevel)
-    let swTile = BathymetryTile(coordinate: CLLocationCoordinate2D(latitude: minLat, longitude: minLng), zoom: zoom)
-    let neTile = BathymetryTile(coordinate: CLLocationCoordinate2D(latitude: maxLat, longitude: maxLng), zoom: zoom)
-    if let region = try? BathymetryRegion(swTile: swTile, neTile: neTile) {
+    let swTile = BathymetryTile(zoom: zoom, coordinate: CLLocationCoordinate2D(latitude: minLat, longitude: minLng))
+    let neTile = BathymetryTile(zoom: zoom, coordinate: CLLocationCoordinate2D(latitude: maxLat, longitude: maxLng))
+    if let region = try? MapRegion(swTile: swTile, neTile: neTile) {
       regionDidChangePublisher.send(region)
     }
   }

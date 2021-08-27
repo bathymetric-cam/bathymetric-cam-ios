@@ -6,7 +6,7 @@ struct MapView: UIViewRepresentable {
   
   // MARK: property
   let internalMapView: UIMapView
-  let regionDidChangePublisher = PassthroughSubject<BathymetryRegion, Never>()
+  let regionDidChangePublisher = PassthroughSubject<MapRegion, Never>()
   
   @Binding var bathymetryTiles: [BathymetryTile]
   @Binding var bathymetries: [Bathymetry]
@@ -23,7 +23,7 @@ struct MapView: UIViewRepresentable {
   
   // MARK: public api
   
-  func regionDidChange(perform action: @escaping (_ region: BathymetryRegion) -> Void) -> some View {
+  func regionDidChange(perform action: @escaping (_ region: MapRegion) -> Void) -> some View {
     onReceive(regionDidChangePublisher) { action($0) }
   }
 }

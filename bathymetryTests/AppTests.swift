@@ -1,6 +1,5 @@
 import Combine
 import ComposableArchitecture
-import GEOSwift
 import XCTest
 @testable import Bathymetry
 

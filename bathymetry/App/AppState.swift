@@ -8,9 +8,9 @@ struct AppState: Equatable {
   var bathymetryTiles = [BathymetryTile]()
   var bathymetries: [Bathymetry]
   var zoomLevel = BathymetryZoomLevel.max
-  var region = try? BathymetryRegion(
-    swTile: BathymetryTile(x: 0, y: 0, zoom: Int(BathymetryZoomLevel.max)),
-    neTile: BathymetryTile(x: 0, y: 0, zoom: Int(BathymetryZoomLevel.max))
+  var region = try? MapRegion(
+    swTile: BathymetryTile(zoom: Int(BathymetryZoomLevel.max), x: 0, y: 0),
+    neTile: BathymetryTile(zoom: Int(BathymetryZoomLevel.max), x: 0, y: 0)
   )
   var arIsOn = true
   var waterSurface = -1.5
