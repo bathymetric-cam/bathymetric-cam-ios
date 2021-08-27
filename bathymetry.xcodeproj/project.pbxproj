@@ -52,6 +52,7 @@
 		E6F1060E258A2E05000DDD25 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1060D258A2E05000DDD25 /* ARView.swift */; };
 		E6F10617258A3068000DDD25 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = E6F10616258A3068000DDD25 /* ARCL */; };
 		E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E6F8C1F425811ED70051E68F /* ComposableArchitecture */; };
+		E6FB254126D91CB50033BDB9 /* BathymetryImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FB254026D91CB50033BDB9 /* BathymetryImage.swift */; };
 		E6FCE8FE266BB3700000F940 /* BathymetryDepthUnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FCE8FD266BB3700000F940 /* BathymetryDepthUnitView.swift */; };
 		E6FCE900266BC0E60000F940 /* BathymetryDepthUnitViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FCE8FF266BC0E60000F940 /* BathymetryDepthUnitViewTests.swift */; };
 		E6FE7AC025824B2700C47C2B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FE7ABF25824B2700C47C2B /* MapView.swift */; };
@@ -145,6 +146,7 @@
 		E6F1060D258A2E05000DDD25 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		E6F2243625E51F34000C5465 /* MapZoomButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomButtonTests.swift; sourceTree = "<group>"; };
 		E6F2243E25E52FE2000C5465 /* BathymetryDepthsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryDepthsViewTests.swift; sourceTree = "<group>"; };
+		E6FB254026D91CB50033BDB9 /* BathymetryImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryImage.swift; sourceTree = "<group>"; };
 		E6FCE8FD266BB3700000F940 /* BathymetryDepthUnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryDepthUnitView.swift; sourceTree = "<group>"; };
 		E6FCE8FF266BC0E60000F940 /* BathymetryDepthUnitViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryDepthUnitViewTests.swift; sourceTree = "<group>"; };
 		E6FE7ABF25824B2700C47C2B /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				E694048F25C428CF00F047EC /* Bathymetry.swift */,
 				E666463B25D29CBA00DC4F17 /* BathymetryDepthsView.swift */,
 				E6FCE8FD266BB3700000F940 /* BathymetryDepthUnitView.swift */,
+				E6FB254026D91CB50033BDB9 /* BathymetryImage.swift */,
 				E6DE397525C9735A00D0408A /* BathymetryRegion.swift */,
 				E63D2BF225A320CC00788375 /* BathymetryTile.swift */,
 				E631E59726482BE1007B1BDC /* BathymetrySlider.swift */,
@@ -690,6 +693,7 @@
 				E64FDE8C257D22D200B303C6 /* AppView.swift in Sources */,
 				E6CB65BC25ADC3BD00E9070A /* StorageProvider.swift in Sources */,
 				E69D159D25C9809100AD1B0F /* CircularButton.swift in Sources */,
+				E6FB254126D91CB50033BDB9 /* BathymetryImage.swift in Sources */,
 				E64FDE8A257D22D200B303C6 /* BathymetryApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
