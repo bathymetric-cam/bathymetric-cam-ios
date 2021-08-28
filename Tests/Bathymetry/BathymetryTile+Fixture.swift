@@ -10,6 +10,6 @@ extension BathymetryTile {
   }
   
   static func fixture(zoom: Int, x: Int, y: Int) -> BathymetryTile {
-    BathymetryTile(zoom: 16, x: 57508, y: 25958, image: UIImage(named: "\(zoom).\(x).\(y)"))
+    BathymetryTile(zoom: zoom, x: x, y: y, image: UIImage(named: "\(zoom).\(x).\(y)"))
   }
 }
