@@ -52,6 +52,7 @@
 		E6F10617258A3068000DDD25 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = E6F10616258A3068000DDD25 /* ARCL */; };
 		E6F3288426DA5D5F00311833 /* BathymetryTileClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F3288326DA5D5F00311833 /* BathymetryTileClientStub.swift */; };
 		E6F3288526DA5D5F00311833 /* BathymetryTileClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F3288326DA5D5F00311833 /* BathymetryTileClientStub.swift */; };
+		E6F3288826DA635600311833 /* URLSession.DataTaskPublisher+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F3288726DA635600311833 /* URLSession.DataTaskPublisher+StatusCode.swift */; };
 		E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E6F8C1F425811ED70051E68F /* ComposableArchitecture */; };
 		E6FB254626D9252D0033BDB9 /* BathymetryTileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FB254526D9252D0033BDB9 /* BathymetryTileClient.swift */; };
 		E6FB254826D93A1B0033BDB9 /* MapTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FB254726D93A1B0033BDB9 /* MapTile.swift */; };
@@ -155,6 +156,7 @@
 		E6F2243625E51F34000C5465 /* MapZoomButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomButtonTests.swift; sourceTree = "<group>"; };
 		E6F2243E25E52FE2000C5465 /* BathymetryDepthsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryDepthsViewTests.swift; sourceTree = "<group>"; };
 		E6F3288326DA5D5F00311833 /* BathymetryTileClientStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTileClientStub.swift; sourceTree = "<group>"; };
+		E6F3288726DA635600311833 /* URLSession.DataTaskPublisher+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession.DataTaskPublisher+StatusCode.swift"; sourceTree = "<group>"; };
 		E6FB254526D9252D0033BDB9 /* BathymetryTileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTileClient.swift; sourceTree = "<group>"; };
 		E6FB254726D93A1B0033BDB9 /* MapTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTile.swift; sourceTree = "<group>"; };
 		E6FB254A26D9426D0033BDB9 /* MapTileFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTileFake.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		E6171D6125B080CE00161E28 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E6F3288626DA634200311833 /* Foundation */,
 				E6712C8D2646B5B00078C3A8 /* OS */,
 				E69D159B25C9806B00AD1B0F /* SwiftUI */,
 			);
@@ -425,6 +428,14 @@
 				E6F2243625E51F34000C5465 /* MapZoomButtonTests.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		E6F3288626DA634200311833 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				E6F3288726DA635600311833 /* URLSession.DataTaskPublisher+StatusCode.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		E6FB254926D9410D0033BDB9 /* Map */ = {
@@ -730,6 +741,7 @@
 				E65CF41C2590BBFA008A207C /* AppEnvironment.swift in Sources */,
 				E631E59826482BE1007B1BDC /* BathymetrySlider.swift in Sources */,
 				E694049025C428CF00F047EC /* Bathymetry.swift in Sources */,
+				E6F3288826DA635600311833 /* URLSession.DataTaskPublisher+StatusCode.swift in Sources */,
 				E64FDE8C257D22D200B303C6 /* AppView.swift in Sources */,
 				E6CB65BC25ADC3BD00E9070A /* StorageProvider.swift in Sources */,
 				E69D159D25C9809100AD1B0F /* CircularButton.swift in Sources */,
