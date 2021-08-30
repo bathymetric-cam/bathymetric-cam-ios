@@ -13,22 +13,22 @@ class BathymetryTileClientStub: BathymetryTileClient {
   
   // MARK: property
   
-  let result: Result<[BathymetryTile], Error>
+  let result: Result<BathymetryTile, Error>
   
   // MARK: initializer
   
-  init(result: Result<[BathymetryTile], Error>) {
+  init(result: Result<BathymetryTile, Error>) {
     self.result = result
   }
   
   // MARK: BathymetryTileClient
   
-  func loadBathymetryTile(_ region: MapRegion) -> Effect<[BathymetryTile], Error> {
+  func loadBathymetryTile(_ region: MapRegion) -> Effect<BathymetryTile, Error> {
     Deferred { [weak self] in
-      Future<[BathymetryTile], Error> { [weak self] promise in
+      Future<BathymetryTile, Error> { [weak self] promise in
         switch self?.result {
-        case let .success(tiles):
-          promise(.success(tiles))
+        case let .success(tile):
+          promise(.success(tile))
         case let .failure(error):
           promise(.failure(error))
         case .none:
