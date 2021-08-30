@@ -38,6 +38,8 @@
 		E6711BC225D40364007A4A89 /* ARToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6711BC125D40364007A4A89 /* ARToggle.swift */; };
 		E6712C8F2646B5E40078C3A8 /* Logger+Bathymetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6712C8E2646B5E40078C3A8 /* Logger+Bathymetry.swift */; };
 		E694049025C428CF00F047EC /* Bathymetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694048F25C428CF00F047EC /* Bathymetry.swift */; };
+		E695408026DCD07F00AA6664 /* TileAPI-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E695407F26DCD07F00AA6664 /* TileAPI-Info.plist */; };
+		E695408326DCD1A500AA6664 /* BathymetryTileAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E695408226DCD1A500AA6664 /* BathymetryTileAPIClient.swift */; };
 		E69D159D25C9809100AD1B0F /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69D159C25C9809100AD1B0F /* CircularButton.swift */; };
 		E6B2866025A47B4600782955 /* ARBathymetryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */; };
 		E6BFC11E25D1479000295FB2 /* MapTileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BFC11D25D1479000295FB2 /* MapTileTests.swift */; };
@@ -142,6 +144,8 @@
 		E6711BC125D40364007A4A89 /* ARToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARToggle.swift; sourceTree = "<group>"; };
 		E6712C8E2646B5E40078C3A8 /* Logger+Bathymetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Bathymetry.swift"; sourceTree = "<group>"; };
 		E694048F25C428CF00F047EC /* Bathymetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bathymetry.swift; sourceTree = "<group>"; };
+		E695407F26DCD07F00AA6664 /* TileAPI-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TileAPI-Info.plist"; sourceTree = "<group>"; };
+		E695408226DCD1A500AA6664 /* BathymetryTileAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTileAPIClient.swift; sourceTree = "<group>"; };
 		E69D159C25C9809100AD1B0F /* CircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
 		E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBathymetryNode.swift; sourceTree = "<group>"; };
 		E6BFC11D25D1479000295FB2 /* MapTileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTileTests.swift; sourceTree = "<group>"; };
@@ -293,6 +297,7 @@
 				E64FDE8D257D22D200B303C6 /* Assets.xcassets */,
 				E64FDE97257D22D200B303C6 /* Info.plist */,
 				E6DED60E25A3444C0065B6D7 /* Mapbox-Info.plist */,
+				E695407F26DCD07F00AA6664 /* TileAPI-Info.plist */,
 				E6EF546D25BBFB90004C2478 /* README.md */,
 				E65CF4102590BB0A008A207C /* App */,
 				E6F1060C258A2DDB000DDD25 /* AR */,
@@ -355,6 +360,14 @@
 			path = OS;
 			sourceTree = "<group>";
 		};
+		E695408126DCD11800AA6664 /* TileAPI */ = {
+			isa = PBXGroup;
+			children = (
+				E695408226DCD1A500AA6664 /* BathymetryTileAPIClient.swift */,
+			);
+			path = TileAPI;
+			sourceTree = "<group>";
+		};
 		E69D159B25C9806B00AD1B0F /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -376,6 +389,7 @@
 		E6DD5BAE25A08C7200860C4B /* Bathymetry */ = {
 			isa = PBXGroup;
 			children = (
+				E695408126DCD11800AA6664 /* TileAPI */,
 				E694048F25C428CF00F047EC /* Bathymetry.swift */,
 				E666463B25D29CBA00DC4F17 /* BathymetryDepthsView.swift */,
 				E6FCE8FD266BB3700000F940 /* BathymetryDepthUnitView.swift */,
@@ -637,6 +651,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6EF546E25BBFB90004C2478 /* README.md in Resources */,
+				E695408026DCD07F00AA6664 /* TileAPI-Info.plist in Resources */,
 				E64FDE8E257D22D200B303C6 /* Assets.xcassets in Resources */,
 				E6DED60F25A3444D0065B6D7 /* Mapbox-Info.plist in Resources */,
 			);
@@ -732,6 +747,7 @@
 				E63D2BF325A320CC00788375 /* BathymetryTile.swift in Sources */,
 				E6DE397C25C9756400D0408A /* BathymetryZoomLevel.swift in Sources */,
 				E6FB254826D93A1B0033BDB9 /* MapTile.swift in Sources */,
+				E695408326DCD1A500AA6664 /* BathymetryTileAPIClient.swift in Sources */,
 				E6FE7AC025824B2700C47C2B /* MapView.swift in Sources */,
 				E65CF4122590BB57008A207C /* AppState.swift in Sources */,
 				E6FCE8FE266BB3700000F940 /* BathymetryDepthUnitView.swift in Sources */,

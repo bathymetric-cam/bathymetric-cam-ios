@@ -36,7 +36,7 @@ class AppTests: XCTestCase {
         $0.region = testRegion.largerRegion()
       },
       .do { self.scheduler.advance(by: 0.1) },
-      .receive(.bathymetriesResult(.success(testBathymetryTiles))) {
+      .receive(.bathymetryTileResult(.success(testBathymetryTiles))) {
         $0.bathymetryTiles = testBathymetryTiles
       }
     )

@@ -24,7 +24,7 @@ Then drag the frameworks into `Frameworks/` folder.
 
 ### Plist Settings
 
-bathymetric-cam uses [Mapbox](https://github.com/mapbox/mapbox-gl-native-ios/tree/main/platform/ios).
+bathymetric-cam uses [Mapbox](https://github.com/mapbox/mapbox-gl-native-ios/tree/main/platform/ios) and [map tile server](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Tile_servers).
 Each service has the configuration.
 
 Here is how to set them up.
@@ -41,9 +41,21 @@ Here is how to set them up.
 </plist>
 ```
 
+`TileAPI-Info.plist`
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>baseUrl</key>
+    <string>YOUR_API_BASE_URL</string>
+</dict>
+</plist>
+```
+
 The plist files above go to `bathymetry/` folder.
 
 ### Dependency
 
-bathymetric-cam depends on [Mapbox](https://github.com/mapbox/mapbox-gl-native-ios/tree/main/platform/ios).
-If your application needs to support other map frameworks like [GoogleMaps](https://developers.google.com/maps/documentation/ios-sdk/overview), you can make your own implementation that conforms to MapView's protocol.
+bathymetric-cam depends on [Mapbox](https://github.com/mapbox/mapbox-gl-native-ios/tree/main/platform/ios) and [map tile server](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Tile_servers).
+If your application needs to support other map frameworks like [GoogleMaps](https://developers.google.com/maps/documentation/ios-sdk/overview) and other map tile API, you can make your own implementation that conforms to MapView's protocol and BathymetryTileClient's protocol..

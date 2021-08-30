@@ -67,11 +67,9 @@ struct AppView: View {
             send: AppAction.zoomLevelUpdated
           )
         )
-        /*
         .regionDidChange {
-          viewStore.send(.loadBathymetries($0))
+          viewStore.send(.loadBathymetryTile(region: $0))
         }
-        */
         .modifier(MapViewModifier(metrics: metrics))
       }
     }
@@ -143,7 +141,8 @@ struct AppView_Previews: PreviewProvider {
         initialState: AppState(bathymetries: .default),
         reducer: appReducer,
         environment: AppEnvironment(
-          mainQueue: DispatchQueue.main.eraseToAnyScheduler()
+          mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
+          bathymetryTileClient: BathymetryTileAPIClient()
         )
       ))
       .colorScheme($0)

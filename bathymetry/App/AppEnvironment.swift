@@ -5,4 +5,5 @@ struct AppEnvironment {
   // MARK: property
   
   var mainQueue: AnySchedulerOf<DispatchQueue>
+  var bathymetryTileClient: BathymetryTileClient
 }

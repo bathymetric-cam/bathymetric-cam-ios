@@ -4,6 +4,8 @@ import SwiftUI
 
 // MARK: - AppAction
 enum AppAction: Equatable {
+  case loadBathymetryTile(region: MapRegion)
+  case bathymetryTileResult(Result<BathymetryTile, BathymetryTileClientError>)
   case bathymetryTilesUpdated(bathymetryTiles: [BathymetryTile])
   case bathymetriesUpdated(bathymetries: [Bathymetry])
   case zoomIn

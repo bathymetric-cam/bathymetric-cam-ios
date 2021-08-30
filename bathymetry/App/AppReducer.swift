@@ -4,6 +4,19 @@ import ComposableArchitecture
 // swiftlint:disable closure_body_length
 let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
   switch action {
+  case let .loadBathymetryTile(region):
+    return environment.bathymetryTileClient
+      .loadBathymetryTile(region: region)
+      .receive(on: environment.mainQueue)
+      .catchToEffect()
+      .map(AppAction.bathymetryTileResult)
+  case let .bathymetryTileResult(.success(tile)):
+    if !state.bathymetryTiles.contains(tile) {
+      state.bathymetryTiles.append(tile)
+    }
+    return .none
+  case let .bathymetryTileResult(.failure(error)):
+    return .none
   case let .bathymetryTilesUpdated(bathymetryTiles):
     return .none
   case let .bathymetriesUpdated(bathymetries):

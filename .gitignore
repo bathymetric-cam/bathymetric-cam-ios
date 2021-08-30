@@ -103,7 +103,7 @@ iOSInjectionProject/
 
 Frameworks/*
 bathymetry/Mapbox-Info.plist
-bathymetry/Contentful-Info.plist
+bathymetry/TileAPI-Info.plist
 bathymetry.xcodeproj/xcuserdata
 bathymetry.xcodeproj/project.xcworkspace
 
