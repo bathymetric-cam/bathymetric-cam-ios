@@ -58,4 +58,4 @@ The plist files above go to `bathymetry/` folder.
 ### Dependency
 
 bathymetric-cam depends on [Mapbox](https://github.com/mapbox/mapbox-gl-native-ios/tree/main/platform/ios) and [map tile server](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Tile_servers).
-If your application needs to support other map frameworks like [GoogleMaps](https://developers.google.com/maps/documentation/ios-sdk/overview) and other map tile API, you can make your own implementation that conforms to MapView's protocol and BathymetryTileClient's protocol..
+If your application needs to support other map frameworks like [GoogleMaps](https://developers.google.com/maps/documentation/ios-sdk/overview) and other map tile client, you can make your own implementation that conforms to MapView's protocol and BathymetryTileClient's protocol.

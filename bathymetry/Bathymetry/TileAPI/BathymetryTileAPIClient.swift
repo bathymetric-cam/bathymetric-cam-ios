@@ -12,12 +12,12 @@ struct BathymetryTileAPIClient: BathymetryTileClient {
   // MARK: initializer
   
   init() {
-    guard let path = Bundle.main.path(forResource: "BathymetryTileAPIClient-Info", ofType: "plist") else {
-      fatalError("Cannot open BathymetryTileAPIClient-Info.plist")
+    guard let path = Bundle.main.path(forResource: "TileAPI-Info", ofType: "plist") else {
+      fatalError("Cannot open TileAPI-Info.plist")
     }
     guard let plist = NSDictionary(contentsOfFile: path),
           let baseUrlString = plist["baseUrl"] as? String else {
-      fatalError("Invalid BathymetryTileAPIClient-Info.plist")
+      fatalError("Invalid TileAPI-Info.plist")
     }
     self.baseUrlString = baseUrlString
   }
@@ -31,7 +31,7 @@ struct BathymetryTileAPIClient: BathymetryTileClient {
       }
       .reduce([]) { $0 + $1 }
       .compactMap { (tile: BathymetryTile) -> (tile: BathymetryTile, imageUrl: URL)? in
-        guard let imageUrl = URL(string: "\(baseUrlString)/\(tile.zoom)/\(tile.x)/\(tile.y).png") else {
+        guard let imageUrl = URL(string: "\(baseUrlString)/\(tile.identifier).png") else {
           return nil
         }
         return (tile: tile, imageUrl: imageUrl)

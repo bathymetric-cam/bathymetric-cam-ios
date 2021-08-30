@@ -29,12 +29,49 @@ final class UIMapboxMapViewFactory: UIMapViewFactory {
 }
 
 // MARK: - UIMapboxMapView
-final class UIMapboxMapView: MGLMapView {
+class UIMapboxMapView: MGLMapView {
+  // MARK: property
+  
+  private var sources = [MGLSource]()
+  private var layers = [MGLStyleLayer]()
+  
+  // MARK: deinit
+  
+  deinit {
+    layers.forEach { [weak self] in self?.style?.removeLayer($0) }
+    sources.forEach { [weak self] in self?.style?.removeSource($0) }
+  }
+  
   // MARK: life cycle
   
   override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
     super.traitCollectionDidChange(previousTraitCollection)
     styleURL = traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL(withVersion: 9) : MGLStyle.lightStyleURL(withVersion: 9)
+  }
+  
+  // MARK: public api
+  
+  func updateBathymetryLayer(bathymetryTiles: [BathymetryTile]) {
+    let newSources = bathymetryTiles
+      .compactMap { [weak self] (tile: BathymetryTile) -> MGLImageSource? in
+        guard let self = self,
+              !self.sources.contains(where: { $0.identifier == tile.identifier }),
+              let image = tile.image else {
+          return nil
+        }
+        let quad = MGLCoordinateQuad(
+          topLeft: .init(latitude: tile.ne.latitude, longitude: tile.sw.longitude),
+          bottomLeft: .init(latitude: tile.sw.latitude, longitude: tile.sw.longitude),
+          bottomRight: .init(latitude: tile.sw.latitude, longitude: tile.ne.longitude),
+          topRight: .init(latitude: tile.ne.latitude, longitude: tile.ne.longitude)
+        )
+        return MGLImageSource(identifier: tile.identifier, coordinateQuad: quad, image: image)
+      }
+    newSources.forEach { [weak self] in self?.style?.addSource($0) }
+    let newLayers = newSources.map { MGLRasterStyleLayer(identifier: $0.identifier, source: $0) }
+    newLayers.forEach { [weak self] in self?.style?.addLayer($0) }
+    sources += newSources
+    layers += newLayers
   }
 }
 
@@ -138,6 +175,10 @@ extension MapView {
   /// Updates bathymetry layers
   /// - Parameter mapView: UIKit MapView that inherits MGLMapView
   private func updateBathymetryLayers(mapView: MGLMapView) {
+    guard let mapView = mapView as? UIMapboxMapView else {
+      return
+    }
+    mapView.updateBathymetryLayer(bathymetryTiles: bathymetryTiles)
   }
 }
 

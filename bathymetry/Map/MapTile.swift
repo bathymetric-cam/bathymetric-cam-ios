@@ -17,7 +17,7 @@ protocol MapTile {
 extension MapTile {
   // MARK: property
   
-  var name: String { "\(zoom)/\(x)/\(y)" }
+  var identifier: String { "\(zoom)/\(x)/\(y)" }
   var zoomLevel: BathymetryZoomLevel { BathymetryZoomLevel(zoom) }
   
   /// north and east coordinate
