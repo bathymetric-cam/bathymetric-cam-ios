@@ -51,7 +51,7 @@ class UIMapboxMapView: MGLMapView {
   
   // MARK: public api
   
-  func updateBathymetryLayer(bathymetryTiles: [BathymetryTile]) {
+  func updateBathymetryLayers(bathymetryTiles: [BathymetryTile]) {
     let newSources = bathymetryTiles
       .compactMap { [weak self] (tile: BathymetryTile) -> MGLImageSource? in
         guard let self = self,
@@ -178,7 +178,7 @@ extension MapView {
     guard let mapView = mapView as? UIMapboxMapView else {
       return
     }
-    mapView.updateBathymetryLayer(bathymetryTiles: bathymetryTiles)
+    mapView.updateBathymetryLayers(bathymetryTiles: bathymetryTiles)
   }
 }
 

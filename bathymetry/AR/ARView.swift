@@ -40,7 +40,6 @@ struct ARView: UIViewRepresentable {
         uiView.addLocationNodeWithConfirmedLocation(
           locationNode: ARBathymetryNode(
             bathymetryTile: $0,
-            bathymetries: bathymetries,
             altitude: altitude,
             waterSurface: waterSurface
           )

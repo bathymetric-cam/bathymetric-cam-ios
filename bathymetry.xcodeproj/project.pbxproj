@@ -37,6 +37,7 @@
 		E666463C25D29CBA00DC4F17 /* BathymetryDepthsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666463B25D29CBA00DC4F17 /* BathymetryDepthsView.swift */; };
 		E6711BC225D40364007A4A89 /* ARToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6711BC125D40364007A4A89 /* ARToggle.swift */; };
 		E6712C8F2646B5E40078C3A8 /* Logger+Bathymetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6712C8E2646B5E40078C3A8 /* Logger+Bathymetry.swift */; };
+		E68A859626DD1167001A6EA5 /* Euclid in Frameworks */ = {isa = PBXBuildFile; productRef = E68A859526DD1167001A6EA5 /* Euclid */; };
 		E694049025C428CF00F047EC /* Bathymetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694048F25C428CF00F047EC /* Bathymetry.swift */; };
 		E695408026DCD07F00AA6664 /* TileAPI-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E695407F26DCD07F00AA6664 /* TileAPI-Info.plist */; };
 		E695408326DCD1A500AA6664 /* BathymetryTileAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E695408226DCD1A500AA6664 /* BathymetryTileAPIClient.swift */; };
@@ -111,6 +112,7 @@
 
 /* Begin PBXFileReference section */
 		E60C3D3626499213003E0355 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		E6137B1E26DE7FE000A4E909 /* YabaseKihantou.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = YabaseKihantou.gpx; path = ../../../../../Downloads/YabaseKihantou.gpx; sourceTree = "<group>"; };
 		E6169D3925CAB00200AE1F06 /* MapZoomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomButton.swift; sourceTree = "<group>"; };
 		E6203F83259205FA007C8FDA /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapboxMobileEvents.framework; sourceTree = "<group>"; };
 		E6203F84259205FA007C8FDA /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E68A859626DD1167001A6EA5 /* Euclid in Frameworks */,
 				E6203F87259205FE007C8FDA /* Mapbox.framework in Frameworks */,
 				E6F10617258A3068000DDD25 /* ARCL in Frameworks */,
 				E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */,
@@ -269,6 +272,7 @@
 		E64FDE7D257D22D200B303C6 = {
 			isa = PBXGroup;
 			children = (
+				E6137B1E26DE7FE000A4E909 /* YabaseKihantou.gpx */,
 				E64FDE88257D22D200B303C6 /* bathymetry */,
 				E6FE7AB125823FBA00C47C2B /* Frameworks */,
 				E66B893126AAF85A008DCE2C /* Tests */,
@@ -542,6 +546,7 @@
 			packageProductDependencies = (
 				E6F8C1F425811ED70051E68F /* ComposableArchitecture */,
 				E6F10616258A3068000DDD25 /* ARCL */,
+				E68A859526DD1167001A6EA5 /* Euclid */,
 			);
 			productName = bathymetry;
 			productReference = E64FDE86257D22D200B303C6 /* Bathymetry.app */;
@@ -624,6 +629,7 @@
 				E6F8C1F325811ED70051E68F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
 				E62B06DF263051A40089C785 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				E68A859426DD1167001A6EA5 /* XCRemoteSwiftPackageReference "Euclid" */,
 			);
 			productRefGroup = E64FDE87257D22D200B303C6 /* Products */;
 			projectDirPath = "";
@@ -1199,6 +1205,14 @@
 				minimumVersion = 1.8.2;
 			};
 		};
+		E68A859426DD1167001A6EA5 /* XCRemoteSwiftPackageReference "Euclid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nicklockwood/Euclid.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.9;
+			};
+		};
 		E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ProjectDent/ARKit-CoreLocation.git";
@@ -1222,6 +1236,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E62B06DF263051A40089C785 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
+		};
+		E68A859526DD1167001A6EA5 /* Euclid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E68A859426DD1167001A6EA5 /* XCRemoteSwiftPackageReference "Euclid" */;
+			productName = Euclid;
 		};
 		E6F10616258A3068000DDD25 /* ARCL */ = {
 			isa = XCSwiftPackageProductDependency;
