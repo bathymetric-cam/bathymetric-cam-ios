@@ -61,7 +61,7 @@ extension MapRegion {
   // MARK: public api
   
   /// Returns x times larger MapRegion with BathymetryTile
-  /// - Parameter times: x (Int) times larger
+  /// - Parameter times: x (Int) times larger on a side
   /// - Returns: MapRegion
   func bathymetryRegion(times: Double) throws -> MapRegion {
     try MapRegion(

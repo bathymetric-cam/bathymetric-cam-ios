@@ -10,7 +10,7 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
     }
     state.region = try? region.bathymetryRegion(times: 2.0)
     return environment.bathymetryTileClient
-      .loadBathymetryTile(region: region)
+      .loadBathymetryTile(region: state.region ?? region)
       .receive(on: environment.mainQueue)
       .catchToEffect()
       .map(AppAction.bathymetryTileResult)

@@ -34,4 +34,8 @@ extension MapTile {
       longitude: (Double(x) / pow(2.0, zoomLevel)) * 360.0 - 180.0
     )
   }
+  /// center coordinate
+  var center: CLLocationCoordinate2D {
+    CLLocationCoordinate2D(latitude: (sw.latitude + ne.latitude) / 2, longitude: (sw.longitude + ne.longitude) / 2)
+  }
 }
