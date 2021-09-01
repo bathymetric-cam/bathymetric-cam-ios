@@ -56,7 +56,7 @@ struct BathymetrySlider: View {
   var backgroundView: some View {
     RoundedRectangle(cornerRadius: 8)
       .frame(width: BathymetrySlider.width, height: BathymetrySlider.height)
-      .foregroundColor(colorScheme == .dark ? .black.opacity(0.5) : .white.opacity(0.5))
+      .foregroundColor(colorScheme == .dark ? Color.black.opacity(0.5) : Color.white.opacity(0.5))
   }
   
   var depthsView: some View {
