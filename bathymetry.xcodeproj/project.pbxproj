@@ -534,12 +534,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E64FDEB0257D22D200B303C6 /* Build configuration list for PBXNativeTarget "bathymetry" */;
 			buildPhases = (
+				E663BBB926DFD55A00E0D9D4 /* Mapbox-Info.plist */,
+				E663BBBA26DFD63C00E0D9D4 /* TileAPI-Info.plist */,
 				E64FDE82257D22D200B303C6 /* Sources */,
 				E64FDE83257D22D200B303C6 /* Frameworks */,
 				E64FDE84257D22D200B303C6 /* Resources */,
-				E61F780725878D74001EDAC5 /* Run Script */,
+				E61F780725878D74001EDAC5 /* Swiftlint */,
 				E612C2D5258CCF700093FBC4 /* Embed Frameworks */,
-				E66018A4261B3C170029524B /* ShellScript */,
+				E66018A4261B3C170029524B /* Mapbox Framework */,
 			);
 			buildRules = (
 			);
@@ -684,7 +686,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		E61F780725878D74001EDAC5 /* Run Script */ = {
+		E61F780725878D74001EDAC5 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -693,7 +695,7 @@
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
+			name = Swiftlint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -702,7 +704,7 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		E66018A4261B3C170029524B /* ShellScript */ = {
+		E66018A4261B3C170029524B /* Mapbox Framework */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -711,6 +713,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Mapbox Framework";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -718,6 +721,42 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework/strip-frameworks.sh\"\n";
+		};
+		E663BBB926DFD55A00E0D9D4 /* Mapbox-Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Mapbox-Info.plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ntarget_file=\"${SRCROOT}/bathymetry/Mapbox-Info.plist\"\nexample_file=\"${SRCROOT}/bathymetry/Mapbox-Example-Info.plist\"\nif [ ! -f \"$target_file\" ]; then\n    cp \"$example_file\" \"$target_file\"\nfi\n";
+		};
+		E663BBBA26DFD63C00E0D9D4 /* TileAPI-Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "TileAPI-Info.plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ntarget_file=\"${SRCROOT}/bathymetry/TileAPI-Info.plist\"\nexample_file=\"${SRCROOT}/bathymetry/TileAPI-Example-Info.plist\"\nif [ ! -f \"$target_file\" ]; then\n    cp \"$example_file\" \"$target_file\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
