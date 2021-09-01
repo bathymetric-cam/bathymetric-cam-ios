@@ -738,7 +738,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ntarget_file=\"${SRCROOT}/bathymetry/Mapbox-Info.plist\"\nexample_file=\"${SRCROOT}/bathymetry/Mapbox-Example-Info.plist\"\nif [ ! -f \"$target_file\" ]; then\n    cp \"$example_file\" \"$target_file\"\n    sleep 1\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ntarget_file=\"${SRCROOT}/bathymetry/Mapbox-Info.plist\"\nexample_file=\"${SRCROOT}/bathymetry/Mapbox-Example-Info.plist\"\nif [ ! -f \"$target_file\" ]; then\n    cp \"$example_file\" \"$target_file\"\n    sleep 5\nfi\n";
 		};
 		E663BBBA26DFD63C00E0D9D4 /* TileAPI-Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -756,7 +756,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ntarget_file=\"${SRCROOT}/bathymetry/TileAPI-Info.plist\"\nexample_file=\"${SRCROOT}/bathymetry/TileAPI-Example-Info.plist\"\nif [ ! -f \"$target_file\" ]; then\n    cp \"$example_file\" \"$target_file\"\n    sleep 1\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ntarget_file=\"${SRCROOT}/bathymetry/TileAPI-Info.plist\"\nexample_file=\"${SRCROOT}/bathymetry/TileAPI-Example-Info.plist\"\nif [ ! -f \"$target_file\" ]; then\n    cp \"$example_file\" \"$target_file\"\n    sleep 5\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
