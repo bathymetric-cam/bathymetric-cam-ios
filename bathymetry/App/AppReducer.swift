@@ -5,6 +5,10 @@ import ComposableArchitecture
 let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
   switch action {
   case let .loadBathymetryTile(region):
+    if state.region?.contains(region: region) ?? false {
+      return .none
+    }
+    state.region = try? region.bathymetryRegion(times: 2.0)
     return environment.bathymetryTileClient
       .loadBathymetryTile(region: region)
       .receive(on: environment.mainQueue)

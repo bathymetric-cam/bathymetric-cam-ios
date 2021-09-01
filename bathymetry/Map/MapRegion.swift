@@ -1,4 +1,6 @@
 // MARK: - MapRegion
+
+import CoreLocation
 struct MapRegion {
   
   // MARK: enum
@@ -13,8 +15,11 @@ struct MapRegion {
   
   var swTile: MapTile
   var neTile: MapTile
-  var zoom: Int {
-    swTile.zoom
+  var zoom: Int { swTile.zoom }
+  var sw: CLLocationCoordinate2D { swTile.sw }
+  var ne: CLLocationCoordinate2D { neTile.ne }
+  var center: CLLocationCoordinate2D {
+    CLLocationCoordinate2D(latitude: (sw.latitude + ne.latitude) / 2, longitude: (sw.longitude + ne.longitude) / 2)
   }
   
   // MARK: initializer

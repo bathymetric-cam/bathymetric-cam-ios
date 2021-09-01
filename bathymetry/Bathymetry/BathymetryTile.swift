@@ -38,6 +38,7 @@ struct BathymetryTile: MapTile {
     self.y = y
     self.image = image
   }
+  
 }
 
 // MARK: - BathymetryTile + Equatable
@@ -53,5 +54,19 @@ extension BathymetryTile: Comparable {
     lhs.zoom < rhs.zoom ||
     lhs.zoom == rhs.zoom && lhs.x < rhs.x ||
     lhs.zoom == rhs.zoom && lhs.x == rhs.x && lhs.y < rhs.y
+  }
+}
+
+extension MapRegion {
+  // MARK: public api
+  
+  /// Returns x times larger MapRegion with BathymetryTile
+  /// - Parameter times: x (Int) times larger
+  /// - Returns: MapRegion
+  func bathymetryRegion(times: Double) throws -> MapRegion {
+    try MapRegion(
+      swTile: BathymetryTile(zoom: zoom, coordinate: CLLocationCoordinate2D(latitude: center.latitude + (sw.latitude - center.latitude) * times, longitude: center.longitude + (sw.longitude - center.longitude) * times)),
+      neTile: BathymetryTile(zoom: zoom, coordinate: CLLocationCoordinate2D(latitude: center.latitude + (ne.latitude - center.latitude) * times, longitude: center.longitude + (ne.longitude - center.longitude) * times))
+    )
   }
 }
