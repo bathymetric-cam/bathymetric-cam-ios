@@ -46,7 +46,7 @@ class UIMapboxMapView: MGLMapView {
   
   override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
     super.traitCollectionDidChange(previousTraitCollection)
-    styleURL = traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL(withVersion: 9) : MGLStyle.lightStyleURL(withVersion: 9)
+    // styleURL = traitCollection.userInterfaceStyle == .dark ? MGLStyle.darkStyleURL(withVersion: 9) : MGLStyle.lightStyleURL(withVersion: 9)
   }
   
   // MARK: public api
@@ -67,11 +67,16 @@ class UIMapboxMapView: MGLMapView {
         )
         return MGLImageSource(identifier: tile.identifier, coordinateQuad: quad, image: image)
       }
-    newSources.forEach { [weak self] in self?.style?.addSource($0) }
     let newLayers = newSources.map { MGLRasterStyleLayer(identifier: $0.identifier, source: $0) }
-    newLayers.forEach { [weak self] in self?.style?.addLayer($0) }
     sources += newSources
     layers += newLayers
+    newSources.forEach { [weak self] in self?.style?.addSource($0) }
+    layers.forEach { [weak self] in
+      if self?.style?.layers.contains($0) ?? false {
+        self?.style?.removeLayer($0)
+      }
+      self?.style?.addLayer($0)
+    }
   }
 }
 
