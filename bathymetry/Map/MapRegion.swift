@@ -1,6 +1,6 @@
-// MARK: - MapRegion
-
 import CoreLocation
+
+// MARK: - MapRegion
 struct MapRegion {
   
   // MARK: enum
@@ -47,6 +47,13 @@ struct MapRegion {
     swTile.y >= region.swTile.y &&
     neTile.x >= region.neTile.x &&
     neTile.y <= region.neTile.y
+  }
+}
+
+// MARK: - MapRegion + CustomDebugStringConvertible
+extension MapRegion: CustomStringConvertible {
+  var description: String {
+    "zoom: \(zoom), sw: (\(swTile.x), \(swTile.y)), ne: (\(neTile.x), \(neTile.y))"
   }
 }
 

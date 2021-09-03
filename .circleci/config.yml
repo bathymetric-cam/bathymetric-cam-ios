@@ -91,6 +91,13 @@ jobs:
           path: snapshot_test_output
           destination: scan-output
       - slack_notify_fail
+  slack-notify:
+    executor:
+      name: macos-executor
+    steps:
+      - run: echo "succeeded"
+      - slack_notify_fail
+      - slack_notify_success
 
 workflows:
   version: 2.1
@@ -107,6 +114,15 @@ workflows:
             branches:
               only: main
       - snapshot-tests-on-ipodtouch7thgeneration:
+          context: bathymetric-cam-ios
+          filters:
+            branches:
+              only: main
+      - slack-notify:
+          requires:
+            - unit-tests
+            - snapshot-tests-on-iphone12promax
+            - snapshot-tests-on-ipodtouch7thgeneration
           context: bathymetric-cam-ios
           filters:
             branches:
