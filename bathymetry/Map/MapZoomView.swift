@@ -8,8 +8,6 @@ struct MapZoomView: View {
   @Binding var zoomLevel: BathymetryZoomLevel
   private let tapPublisher = PassthroughSubject<MapZoomButton.ZoomType, Never>()
   
-  // MARK: View
-  
   var body: some View {
     VStack {
       MapZoomButton(

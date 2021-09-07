@@ -21,7 +21,26 @@ struct MapZoomButton: View {
   let type: ZoomType
   @Binding var zoomLevel: BathymetryZoomLevel
   let tapPublisher = PassthroughSubject<Void, Never>()
- 
+  
+  var body: some View {
+    CircularButton(
+      background: Color(.systemBackground),
+      foreground: Color(.label),
+      action: { tapPublisher.send() },
+      content: {
+        Group {
+          if type == .zoomIn {
+            zoomIn
+          } else {
+            zoomOut
+          }
+        }
+      }
+    )
+      .frame(width: MapZoomButton.width, height: MapZoomButton.height)
+      .opacity(opacity)
+  }
+  
   var zoomIn: some View {
     Image(
       systemName: "plus"
@@ -44,27 +63,6 @@ struct MapZoomButton: View {
   
   var opacity: Double {
     (type == .zoomIn && zoomLevel < .max) || (type == .zoomOut && zoomLevel > .min) ? 1.0 : 0.5
-  }
-  
-  // MARK: View
-  
-  var body: some View {
-    CircularButton(
-      background: Color(.systemBackground),
-      foreground: Color(.label),
-      action: { tapPublisher.send() },
-      content: {
-        Group {
-          if type == .zoomIn {
-            zoomIn
-          } else {
-            zoomOut
-          }
-        }
-      }
-    )
-      .frame(width: MapZoomButton.width, height: MapZoomButton.height)
-      .opacity(opacity)
   }
   
   // MARK: public api

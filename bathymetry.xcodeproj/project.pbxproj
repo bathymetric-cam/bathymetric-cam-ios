@@ -16,8 +16,6 @@
 		E624EF502630545100F10967 /* ARToggleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624EF4F2630545100F10967 /* ARToggleTests.swift */; };
 		E62B06E1263051A40089C785 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = E62B06E0263051A40089C785 /* SnapshotTesting */; };
 		E62B06EB263052080089C785 /* MapZoomButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F2243625E51F34000C5465 /* MapZoomButtonTests.swift */; };
-		E62B06F82630531D0089C785 /* BathymetryDepthsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F2243E25E52FE2000C5465 /* BathymetryDepthsViewTests.swift */; };
-		E631E59826482BE1007B1BDC /* BathymetrySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E631E59726482BE1007B1BDC /* BathymetrySlider.swift */; };
 		E633CD0A25D01A4B00FDB3BA /* MapRegionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633CD0925D01A4B00FDB3BA /* MapRegionTests.swift */; };
 		E63D2BF325A320CC00788375 /* BathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2BF225A320CC00788375 /* BathymetryTile.swift */; };
 		E64BDF15265FE48D00069F04 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64BDF14265FE48D00069F04 /* SettingsButton.swift */; };
@@ -37,7 +35,6 @@
 		E65CF4202590BC78008A207C /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF41F2590BC78008A207C /* AppReducer.swift */; };
 		E65ED9902699F94100127725 /* Snapshotting+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65ED98F2699F94100127725 /* Snapshotting+Model.swift */; };
 		E663F85226DF6C7900226F59 /* MapRegionTests+BathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663F85126DF6C7900226F59 /* MapRegionTests+BathymetryTile.swift */; };
-		E666463C25D29CBA00DC4F17 /* BathymetryDepthsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666463B25D29CBA00DC4F17 /* BathymetryDepthsView.swift */; };
 		E6711BC225D40364007A4A89 /* ARToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6711BC125D40364007A4A89 /* ARToggle.swift */; };
 		E6712C8F2646B5E40078C3A8 /* Logger+Bathymetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6712C8E2646B5E40078C3A8 /* Logger+Bathymetry.swift */; };
 		E68A859626DD1167001A6EA5 /* Euclid in Frameworks */ = {isa = PBXBuildFile; productRef = E68A859526DD1167001A6EA5 /* Euclid */; };
@@ -48,7 +45,6 @@
 		E6B2866025A47B4600782955 /* ARBathymetryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */; };
 		E6BFC11E25D1479000295FB2 /* MapTileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BFC11D25D1479000295FB2 /* MapTileTests.swift */; };
 		E6CB65BC25ADC3BD00E9070A /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CB65BB25ADC3BD00E9070A /* StorageProvider.swift */; };
-		E6D49D092651352500509DBE /* BathymetrySliderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D49D082651352500509DBE /* BathymetrySliderTests.swift */; };
 		E6DE397625C9735A00D0408A /* MapRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DE397525C9735A00D0408A /* MapRegion.swift */; };
 		E6DE397C25C9756400D0408A /* BathymetryZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DE397B25C9756400D0408A /* BathymetryZoomLevel.swift */; };
 		E6DED60F25A3444D0065B6D7 /* Mapbox-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6DED60E25A3444C0065B6D7 /* Mapbox-Info.plist */; };
@@ -69,8 +65,6 @@
 		E6FB255326D9480E0033BDB9 /* BathymetryTile+Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FB255126D9480E0033BDB9 /* BathymetryTile+Fixture.swift */; };
 		E6FB255D26D94A210033BDB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6FB255C26D94A210033BDB9 /* Assets.xcassets */; };
 		E6FB255E26D94A210033BDB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6FB255C26D94A210033BDB9 /* Assets.xcassets */; };
-		E6FCE8FE266BB3700000F940 /* BathymetryDepthUnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FCE8FD266BB3700000F940 /* BathymetryDepthUnitView.swift */; };
-		E6FCE900266BC0E60000F940 /* BathymetryDepthUnitViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FCE8FF266BC0E60000F940 /* BathymetryDepthUnitViewTests.swift */; };
 		E6FE7AC025824B2700C47C2B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FE7ABF25824B2700C47C2B /* MapView.swift */; };
 /* End PBXBuildFile section */
 
@@ -122,7 +116,6 @@
 		E624EF4F2630545100F10967 /* ARToggleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARToggleTests.swift; sourceTree = "<group>"; };
 		E62B06C92630516E0089C785 /* bathymetrySnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bathymetrySnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E62B06CD2630516E0089C785 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E631E59726482BE1007B1BDC /* BathymetrySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetrySlider.swift; sourceTree = "<group>"; };
 		E633CD0925D01A4B00FDB3BA /* MapRegionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRegionTests.swift; sourceTree = "<group>"; };
 		E63D2BF225A320CC00788375 /* BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTile.swift; sourceTree = "<group>"; };
 		E64BDF14265FE48D00069F04 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
@@ -148,7 +141,6 @@
 		E65CF41F2590BC78008A207C /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		E65ED98F2699F94100127725 /* Snapshotting+Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Snapshotting+Model.swift"; sourceTree = "<group>"; };
 		E663F85126DF6C7900226F59 /* MapRegionTests+BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapRegionTests+BathymetryTile.swift"; sourceTree = "<group>"; };
-		E666463B25D29CBA00DC4F17 /* BathymetryDepthsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryDepthsView.swift; sourceTree = "<group>"; };
 		E6711BC125D40364007A4A89 /* ARToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARToggle.swift; sourceTree = "<group>"; };
 		E6712C8E2646B5E40078C3A8 /* Logger+Bathymetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Bathymetry.swift"; sourceTree = "<group>"; };
 		E694048F25C428CF00F047EC /* Bathymetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bathymetry.swift; sourceTree = "<group>"; };
@@ -158,7 +150,6 @@
 		E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBathymetryNode.swift; sourceTree = "<group>"; };
 		E6BFC11D25D1479000295FB2 /* MapTileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTileTests.swift; sourceTree = "<group>"; };
 		E6CB65BB25ADC3BD00E9070A /* StorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
-		E6D49D082651352500509DBE /* BathymetrySliderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetrySliderTests.swift; sourceTree = "<group>"; };
 		E6DE397525C9735A00D0408A /* MapRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRegion.swift; sourceTree = "<group>"; };
 		E6DE397B25C9756400D0408A /* BathymetryZoomLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryZoomLevel.swift; sourceTree = "<group>"; };
 		E6DED60E25A3444C0065B6D7 /* Mapbox-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mapbox-Info.plist"; sourceTree = "<group>"; };
@@ -166,7 +157,6 @@
 		E6EF547225BC3534004C2478 /* MapView+MGLMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapView+MGLMapView.swift"; sourceTree = "<group>"; };
 		E6F1060D258A2E05000DDD25 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		E6F2243625E51F34000C5465 /* MapZoomButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomButtonTests.swift; sourceTree = "<group>"; };
-		E6F2243E25E52FE2000C5465 /* BathymetryDepthsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryDepthsViewTests.swift; sourceTree = "<group>"; };
 		E6F3288326DA5D5F00311833 /* BathymetryTileClientStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTileClientStub.swift; sourceTree = "<group>"; };
 		E6F3288726DA635600311833 /* URLSession.DataTaskPublisher+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession.DataTaskPublisher+StatusCode.swift"; sourceTree = "<group>"; };
 		E6FB254526D9252D0033BDB9 /* BathymetryTileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTileClient.swift; sourceTree = "<group>"; };
@@ -175,8 +165,6 @@
 		E6FB254F26D945A70033BDB9 /* BathymetryTileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTileTests.swift; sourceTree = "<group>"; };
 		E6FB255126D9480E0033BDB9 /* BathymetryTile+Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BathymetryTile+Fixture.swift"; sourceTree = "<group>"; };
 		E6FB255C26D94A210033BDB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E6FCE8FD266BB3700000F940 /* BathymetryDepthUnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryDepthUnitView.swift; sourceTree = "<group>"; };
-		E6FCE8FF266BC0E60000F940 /* BathymetryDepthUnitViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryDepthUnitViewTests.swift; sourceTree = "<group>"; };
 		E6FE7ABF25824B2700C47C2B /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,9 +240,6 @@
 		E62B06F1263052FC0089C785 /* Bathymetry */ = {
 			isa = PBXGroup;
 			children = (
-				E6F2243E25E52FE2000C5465 /* BathymetryDepthsViewTests.swift */,
-				E6FCE8FF266BC0E60000F940 /* BathymetryDepthUnitViewTests.swift */,
-				E6D49D082651352500509DBE /* BathymetrySliderTests.swift */,
 			);
 			path = Bathymetry;
 			sourceTree = "<group>";
@@ -401,9 +386,6 @@
 			children = (
 				E695408126DCD11800AA6664 /* TileAPI */,
 				E694048F25C428CF00F047EC /* Bathymetry.swift */,
-				E666463B25D29CBA00DC4F17 /* BathymetryDepthsView.swift */,
-				E6FCE8FD266BB3700000F940 /* BathymetryDepthUnitView.swift */,
-				E631E59726482BE1007B1BDC /* BathymetrySlider.swift */,
 				E63D2BF225A320CC00788375 /* BathymetryTile.swift */,
 				E6FB254526D9252D0033BDB9 /* BathymetryTileClient.swift */,
 				E6DE397B25C9756400D0408A /* BathymetryZoomLevel.swift */,
@@ -773,12 +755,9 @@
 			files = (
 				E654A1CD26E7863A009EE10B /* MapZoomViewTests.swift in Sources */,
 				E624EF502630545100F10967 /* ARToggleTests.swift in Sources */,
-				E6D49D092651352500509DBE /* BathymetrySliderTests.swift in Sources */,
 				E64BDF18265FE69600069F04 /* SettingsButtonTests.swift in Sources */,
 				E62B06EB263052080089C785 /* MapZoomButtonTests.swift in Sources */,
-				E62B06F82630531D0089C785 /* BathymetryDepthsViewTests.swift in Sources */,
 				E65ED9902699F94100127725 /* Snapshotting+Model.swift in Sources */,
-				E6FCE900266BC0E60000F940 /* BathymetryDepthUnitViewTests.swift in Sources */,
 				E6F3288526DA5D5F00311833 /* BathymetryTileClientStub.swift in Sources */,
 				E6FB254D26D942730033BDB9 /* MapTileFake.swift in Sources */,
 				E6FB255326D9480E0033BDB9 /* BathymetryTile+Fixture.swift in Sources */,
@@ -805,12 +784,9 @@
 				E695408326DCD1A500AA6664 /* BathymetryTileAPIClient.swift in Sources */,
 				E6FE7AC025824B2700C47C2B /* MapView.swift in Sources */,
 				E65CF4122590BB57008A207C /* AppState.swift in Sources */,
-				E6FCE8FE266BB3700000F940 /* BathymetryDepthUnitView.swift in Sources */,
-				E666463C25D29CBA00DC4F17 /* BathymetryDepthsView.swift in Sources */,
 				E6B2866025A47B4600782955 /* ARBathymetryNode.swift in Sources */,
 				E60C3D3726499213003E0355 /* CustomSlider.swift in Sources */,
 				E65CF41C2590BBFA008A207C /* AppEnvironment.swift in Sources */,
-				E631E59826482BE1007B1BDC /* BathymetrySlider.swift in Sources */,
 				E654A1CB26E781C9009EE10B /* MapZoomView.swift in Sources */,
 				E694049025C428CF00F047EC /* Bathymetry.swift in Sources */,
 				E6F3288826DA635600311833 /* URLSession.DataTaskPublisher+StatusCode.swift in Sources */,

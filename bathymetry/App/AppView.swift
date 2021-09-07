@@ -21,8 +21,7 @@ struct AppView: View {
       
       SettingsButton {
       }
-      mapZoomButtons
-      // waterSurfaceSlider
+      mapZoomView
     }
   }
   
@@ -75,7 +74,7 @@ struct AppView: View {
     }
   }
   
-  var mapZoomButtons: some View {
+  var mapZoomView: some View {
     GeometryReader { metrics in
       WithViewStore(store) { viewStore in
         MapZoomView(
@@ -99,30 +98,7 @@ struct AppView: View {
       }
     }
   }
-  
-  var waterSurfaceSlider: some View {
-    GeometryReader { metrics in
-      VStack {
-        WithViewStore(store) { viewStore in
-          BathymetrySlider(
-            waterSurface: viewStore.binding(
-              get: { $0.waterSurface },
-              send: AppAction.waterSurfaceUpdated
-            ),
-            depthUnit: viewStore.binding(
-              get: { $0.depthUnit },
-              send: AppAction.depthUnitUpdated
-            )
-          )
-        }
-      }
-      .offset(
-        x: metrics.size.width - BathymetrySlider.width - padding,
-        y: metrics.size.height - MapZoomButton.height * 2 - BathymetrySlider.height - space * 2
-      )
-    }
-  }
-  
+ 
 }
 
 // MARK: - AppView_Previews
