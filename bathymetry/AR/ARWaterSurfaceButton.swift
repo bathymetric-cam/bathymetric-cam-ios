@@ -1,14 +1,14 @@
 import Combine
 import SwiftUI
 
-// MARK: - MapZoomButton
-struct MapZoomButton: View {
+// MARK: - ARWaterSurfaceButton
+struct ARWaterSurfaceButton: View {
   
   // MARK: enum
   
-  enum ZoomType: Hashable {
-    case zoomIn
-    case zoomOut
+  enum ButtonType: Hashable {
+    case up
+    case down
   }
   
   // MARK: static constant
@@ -18,8 +18,10 @@ struct MapZoomButton: View {
   
   // MARK: property
   
-  let type: ZoomType
-  @Binding var zoomLevel: BathymetryZoomLevel
+  let type: ButtonType
+  let top: Double
+  let bottom: Double
+  @Binding var waterSurface: Double
   private let tapPublisher = PassthroughSubject<Void, Never>()
   
   var body: some View {
@@ -29,10 +31,11 @@ struct MapZoomButton: View {
       action: { tapPublisher.send() },
       content: {
         Group {
-          if type == .zoomIn {
-            zoomIn
-          } else {
-            zoomOut
+          switch type {
+          case .up:
+            up
+          case .down:
+            down
           }
         }
       }
@@ -41,28 +44,24 @@ struct MapZoomButton: View {
       .opacity(opacity)
   }
   
-  var zoomIn: some View {
+  var up: some View {
     Image(
-      systemName: "plus"
+      systemName: "chevron.up"
     )
       .font(.title)
-      .padding(.horizontal, 1)
-      .padding(.top, 3)
-      .padding(.bottom, 2)
+      .padding(.vertical, 6)
   }
   
-  var zoomOut: some View {
+  var down: some View {
     Image(
-      systemName: "minus"
+      systemName: "chevron.down"
     )
       .font(.title)
-      .padding(.vertical, 12)
-      .padding(.horizontal, 1)
-      .padding(.top, 1)
+      .padding(.vertical, 6)
   }
   
   var opacity: Double {
-    (type == .zoomIn && zoomLevel < .max) || (type == .zoomOut && zoomLevel > .min) ? 1.0 : 0.5
+    (type == .up && waterSurface < top) || (type == .down && waterSurface > bottom) ? 1.0 : 0.5
   }
   
   // MARK: public api
@@ -72,15 +71,17 @@ struct MapZoomButton: View {
   }
 }
 
-// MARK: - MapZoomButtonZoom_Previews
-struct MapZoomButton_Previews: PreviewProvider {
+// MARK: - ARWaterSurfaceButton_Previews
+struct ARWaterSurfaceButton_Previews: PreviewProvider {
   static var previews: some View {
     ForEach([ColorScheme.dark, ColorScheme.light], id: \.self) { colorScheme in
-      ForEach([MapZoomButton.ZoomType.zoomIn, MapZoomButton.ZoomType.zoomOut], id: \.self) { zoomType in
-        MapZoomButton(
-          type: zoomType,
-          zoomLevel: Binding<BathymetryZoomLevel>(
-            get: { .max },
+      ForEach([ARWaterSurfaceButton.ButtonType.up, ARWaterSurfaceButton.ButtonType.down], id: \.self) { buttonType in
+        ARWaterSurfaceButton(
+          type: buttonType,
+          top: -0.5,
+          bottom: -15.0,
+          waterSurface: Binding<Double>(
+            get: { -0.5 },
             set: { _ in }
           )
         )
