@@ -14,5 +14,7 @@ struct AppState: Equatable {
   )
   var arIsOn = true
   var waterSurface = -1.5
+  let waterSurfaceTop = -0.5
+  let waterSurfaceBottom = -15.0
   var depthUnit: BathymetryDepthUnit = .meter
 }

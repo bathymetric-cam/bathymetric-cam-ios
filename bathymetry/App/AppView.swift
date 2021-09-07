@@ -19,8 +19,8 @@ struct AppView: View {
       }
       .edgesIgnoringSafeArea(.all)
       
-      SettingsButton {
-      }
+      settingsButton
+      arWaterSurfaceView
       mapZoomView
     }
   }
@@ -96,6 +96,36 @@ struct AppView: View {
           y: metrics.size.height - MapZoomButton.height * 2 - space
         )
       }
+    }
+  }
+  
+  var arWaterSurfaceView: some View {
+    GeometryReader { metrics in
+      VStack {
+        WithViewStore(store) { viewStore in
+          ARWaterSurfaceView(
+            waterSurface: viewStore.binding(
+              get: { $0.waterSurface },
+              send: AppAction.waterSurfaceUpdated
+            ),
+            depthUnit: viewStore.binding(
+              get: { $0.depthUnit },
+              send: AppAction.depthUnitUpdated
+            ),
+            top: viewStore.waterSurfaceTop,
+            bottom: viewStore.waterSurfaceBottom
+          )
+        }
+      }
+      .offset(
+        x: padding,
+        y: metrics.size.height - MapZoomButton.height * 2 - ARWaterSurfaceView.height - space * 2
+      )
+    }
+  }
+  
+  var settingsButton: some View {
+    SettingsButton {
     }
   }
  
