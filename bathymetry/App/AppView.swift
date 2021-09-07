@@ -22,7 +22,7 @@ struct AppView: View {
       SettingsButton {
       }
       mapZoomButtons
-      waterSurfaceSlider
+      // waterSurfaceSlider
     }
   }
   
@@ -77,34 +77,26 @@ struct AppView: View {
   
   var mapZoomButtons: some View {
     GeometryReader { metrics in
-      VStack {
-        WithViewStore(store) { viewStore in
-          MapZoomButton(
-            type: .zoomIn,
-            zoomLevel: viewStore.binding(
-              get: { $0.zoomLevel },
-              send: AppAction.zoomLevelUpdated
-            )
+      WithViewStore(store) { viewStore in
+        MapZoomView(
+          zoomLevel: viewStore.binding(
+            get: { $0.zoomLevel },
+            send: AppAction.zoomLevelUpdated
           )
-          .onTap {
+        )
+        .onTap {
+          switch $0 {
+          case .zoomIn:
             viewStore.send(.zoomIn)
-          }
-          MapZoomButton(
-            type: .zoomOut,
-            zoomLevel: viewStore.binding(
-              get: { $0.zoomLevel },
-              send: AppAction.zoomLevelUpdated
-            )
-          )
-          .onTap {
+          case .zoomOut:
             viewStore.send(.zoomOut)
           }
         }
+        .offset(
+          x: metrics.size.width - MapZoomButton.width - padding,
+          y: metrics.size.height - MapZoomButton.height * 2 - space
+        )
       }
-      .offset(
-        x: metrics.size.width - MapZoomButton.width - padding,
-        y: metrics.size.height - MapZoomButton.height * 2 - space
-      )
     }
   }
   
