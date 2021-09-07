@@ -18,6 +18,7 @@
 		E62B06EB263052080089C785 /* MapZoomButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F2243625E51F34000C5465 /* MapZoomButtonTests.swift */; };
 		E633CD0A25D01A4B00FDB3BA /* MapRegionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633CD0925D01A4B00FDB3BA /* MapRegionTests.swift */; };
 		E63D2BF325A320CC00788375 /* BathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D2BF225A320CC00788375 /* BathymetryTile.swift */; };
+		E642E3FE26E7C0E7004FFD40 /* ARWaterSurfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E642E3FD26E7C0E7004FFD40 /* ARWaterSurfaceView.swift */; };
 		E64BDF15265FE48D00069F04 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64BDF14265FE48D00069F04 /* SettingsButton.swift */; };
 		E64BDF18265FE69600069F04 /* SettingsButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64BDF17265FE69600069F04 /* SettingsButtonTests.swift */; };
 		E64FDE8A257D22D200B303C6 /* BathymetryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDE89257D22D200B303C6 /* BathymetryApp.swift */; };
@@ -120,6 +121,7 @@
 		E62B06CD2630516E0089C785 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E633CD0925D01A4B00FDB3BA /* MapRegionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRegionTests.swift; sourceTree = "<group>"; };
 		E63D2BF225A320CC00788375 /* BathymetryTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryTile.swift; sourceTree = "<group>"; };
+		E642E3FD26E7C0E7004FFD40 /* ARWaterSurfaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARWaterSurfaceView.swift; sourceTree = "<group>"; };
 		E64BDF14265FE48D00069F04 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
 		E64BDF17265FE69600069F04 /* SettingsButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButtonTests.swift; sourceTree = "<group>"; };
 		E64FDE86257D22D200B303C6 /* Bathymetry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bathymetry.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -430,6 +432,7 @@
 				E6711BC125D40364007A4A89 /* ARToggle.swift */,
 				E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */,
 				E654A1CE26E7A924009EE10B /* ARWaterSurfaceButton.swift */,
+				E642E3FD26E7C0E7004FFD40 /* ARWaterSurfaceView.swift */,
 			);
 			path = AR;
 			sourceTree = "<group>";
@@ -798,6 +801,7 @@
 				E654A1CB26E781C9009EE10B /* MapZoomView.swift in Sources */,
 				E694049025C428CF00F047EC /* Bathymetry.swift in Sources */,
 				E6F3288826DA635600311833 /* URLSession.DataTaskPublisher+StatusCode.swift in Sources */,
+				E642E3FE26E7C0E7004FFD40 /* ARWaterSurfaceView.swift in Sources */,
 				E64FDE8C257D22D200B303C6 /* AppView.swift in Sources */,
 				E6CB65BC25ADC3BD00E9070A /* StorageProvider.swift in Sources */,
 				E69D159D25C9809100AD1B0F /* CircularButton.swift in Sources */,
