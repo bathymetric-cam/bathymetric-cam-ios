@@ -61,9 +61,7 @@ struct ARWaterSurfaceButton: View {
   }
   
   var opacity: Double {
-    let val = (type == .up && waterSurface < top) || (type == .down && waterSurface > bottom) ? 1.0 : 0.5
-    print(waterSurface)
-    return val
+    (type == .up && waterSurface < top) || (type == .down && waterSurface > bottom) ? 1.0 : 0.5
   }
   
   // MARK: public api

@@ -8,7 +8,7 @@ class AppTests: XCTestCase {
 
   // MARK: property
   
-  let scheduler = DispatchQueue.testScheduler
+  let scheduler = DispatchQueue.test
   
   // MARK: life cycle
   

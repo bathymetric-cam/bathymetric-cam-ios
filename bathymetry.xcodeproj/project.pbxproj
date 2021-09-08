@@ -39,6 +39,7 @@
 		E65CF4202590BC78008A207C /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF41F2590BC78008A207C /* AppReducer.swift */; };
 		E65ED9902699F94100127725 /* Snapshotting+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65ED98F2699F94100127725 /* Snapshotting+Model.swift */; };
 		E663F85226DF6C7900226F59 /* MapRegionTests+BathymetryTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663F85126DF6C7900226F59 /* MapRegionTests+BathymetryTile.swift */; };
+		E66550D526E8F32B006FBF17 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E66550D426E8F32B006FBF17 /* ComposableArchitecture */; };
 		E6711BC225D40364007A4A89 /* ARToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6711BC125D40364007A4A89 /* ARToggle.swift */; };
 		E6712C8F2646B5E40078C3A8 /* Logger+Bathymetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6712C8E2646B5E40078C3A8 /* Logger+Bathymetry.swift */; };
 		E68A859626DD1167001A6EA5 /* Euclid in Frameworks */ = {isa = PBXBuildFile; productRef = E68A859526DD1167001A6EA5 /* Euclid */; };
@@ -59,7 +60,6 @@
 		E6F3288426DA5D5F00311833 /* BathymetryTileClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F3288326DA5D5F00311833 /* BathymetryTileClientStub.swift */; };
 		E6F3288526DA5D5F00311833 /* BathymetryTileClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F3288326DA5D5F00311833 /* BathymetryTileClientStub.swift */; };
 		E6F3288826DA635600311833 /* URLSession.DataTaskPublisher+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F3288726DA635600311833 /* URLSession.DataTaskPublisher+StatusCode.swift */; };
-		E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E6F8C1F425811ED70051E68F /* ComposableArchitecture */; };
 		E6FB254626D9252D0033BDB9 /* BathymetryTileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FB254526D9252D0033BDB9 /* BathymetryTileClient.swift */; };
 		E6FB254826D93A1B0033BDB9 /* MapTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FB254726D93A1B0033BDB9 /* MapTile.swift */; };
 		E6FB254D26D942730033BDB9 /* MapTileFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FB254A26D9426D0033BDB9 /* MapTileFake.swift */; };
@@ -189,10 +189,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E66550D526E8F32B006FBF17 /* ComposableArchitecture in Frameworks */,
 				E68A859626DD1167001A6EA5 /* Euclid in Frameworks */,
 				E6203F87259205FE007C8FDA /* Mapbox.framework in Frameworks */,
 				E6F10617258A3068000DDD25 /* ARCL in Frameworks */,
-				E6F8C1F525811ED70051E68F /* ComposableArchitecture in Frameworks */,
 				E6203F8925920600007C8FDA /* MapboxMobileEvents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,9 +549,9 @@
 			);
 			name = bathymetry;
 			packageProductDependencies = (
-				E6F8C1F425811ED70051E68F /* ComposableArchitecture */,
 				E6F10616258A3068000DDD25 /* ARCL */,
 				E68A859526DD1167001A6EA5 /* Euclid */,
+				E66550D426E8F32B006FBF17 /* ComposableArchitecture */,
 			);
 			productName = bathymetry;
 			productReference = E64FDE86257D22D200B303C6 /* Bathymetry.app */;
@@ -631,10 +631,10 @@
 			);
 			mainGroup = E64FDE7D257D22D200B303C6;
 			packageReferences = (
-				E6F8C1F325811ED70051E68F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
 				E62B06DF263051A40089C785 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 				E68A859426DD1167001A6EA5 /* XCRemoteSwiftPackageReference "Euclid" */,
+				E66550D326E8F32B006FBF17 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = E64FDE87257D22D200B303C6 /* Products */;
 			projectDirPath = "";
@@ -1248,6 +1248,14 @@
 				minimumVersion = 1.8.2;
 			};
 		};
+		E66550D326E8F32B006FBF17 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.27.0;
+			};
+		};
 		E68A859426DD1167001A6EA5 /* XCRemoteSwiftPackageReference "Euclid" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nicklockwood/Euclid.git";
@@ -1264,14 +1272,6 @@
 				minimumVersion = 1.3.0;
 			};
 		};
-		E6F8C1F325811ED70051E68F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1279,6 +1279,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E62B06DF263051A40089C785 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
+		};
+		E66550D426E8F32B006FBF17 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E66550D326E8F32B006FBF17 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
 		};
 		E68A859526DD1167001A6EA5 /* Euclid */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1289,11 +1294,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E6F10615258A3068000DDD25 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */;
 			productName = ARCL;
-		};
-		E6F8C1F425811ED70051E68F /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E6F8C1F325811ED70051E68F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
 		};
 /* End XCSwiftPackageProductDependency section */
 
