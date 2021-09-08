@@ -11,6 +11,7 @@ struct MapView: UIViewRepresentable {
   @Binding var bathymetryTiles: [BathymetryTile]
   @Binding var bathymetries: [Bathymetry]
   @Binding var zoomLevel: BathymetryZoomLevel
+  @Binding var region: MapRegion?
   
   // MARK: UIViewRepresentable
   
@@ -19,12 +20,6 @@ struct MapView: UIViewRepresentable {
   
   func makeCoordinator() -> MapView.Coordinator {
     Coordinator(self)
-  }
-  
-  // MARK: public api
-  
-  func regionDidChange(perform action: @escaping (_ region: MapRegion) -> Void) -> some View {
-    onReceive(regionDidChangePublisher) { action($0) }
   }
 }
 

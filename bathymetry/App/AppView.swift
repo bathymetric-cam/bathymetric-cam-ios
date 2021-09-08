@@ -64,11 +64,12 @@ struct AppView: View {
           zoomLevel: viewStore.binding(
             get: { $0.zoomLevel },
             send: AppAction.zoomLevelUpdated
+          ),
+          region: viewStore.binding(
+            get: { $0.region },
+            send: { AppAction.loadBathymetryTile(region: $0) }
           )
         )
-        .regionDidChange {
-          viewStore.send(.loadBathymetryTile(region: $0))
-        }
         .modifier(MapViewModifier(metrics: metrics))
       }
     }

@@ -1,4 +1,3 @@
-import Combine
 import Mapbox
 import SwiftUI
 
@@ -172,9 +171,7 @@ extension MapView {
     let zoom = Int(mapView.zoomLevel)
     let swTile = BathymetryTile(zoom: zoom, coordinate: CLLocationCoordinate2D(latitude: minLat, longitude: minLng))
     let neTile = BathymetryTile(zoom: zoom, coordinate: CLLocationCoordinate2D(latitude: maxLat, longitude: maxLng))
-    if let region = try? MapRegion(swTile: swTile, neTile: neTile) {
-      regionDidChangePublisher.send(region)
-    }
+    region = try? MapRegion(swTile: swTile, neTile: neTile)
   }
   
   /// Updates bathymetry layers
@@ -202,6 +199,10 @@ struct MapView_Previews: PreviewProvider {
       ),
       zoomLevel: Binding<BathymetryZoomLevel>(
         get: { BathymetryZoomLevel.max },
+        set: { _ in }
+      ),
+      region: Binding<MapRegion?>(
+        get: { try? MapRegion(swTile: BathymetryTile(zoom: 16, x: 1, y: 1), neTile: BathymetryTile(zoom: 16, x: 0, y: 0)) },
         set: { _ in }
       )
     )
