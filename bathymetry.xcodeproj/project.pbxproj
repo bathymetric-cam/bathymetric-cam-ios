@@ -30,8 +30,6 @@
 		E64FDEAC257D22D200B303C6 /* BathymetryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64FDEAB257D22D200B303C6 /* BathymetryUITests.swift */; };
 		E654A1CB26E781C9009EE10B /* MapZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E654A1CA26E781C9009EE10B /* MapZoomView.swift */; };
 		E654A1CD26E7863A009EE10B /* MapZoomViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E654A1CC26E7863A009EE10B /* MapZoomViewTests.swift */; };
-		E654A1CF26E7A924009EE10B /* ARWaterSurfaceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E654A1CE26E7A924009EE10B /* ARWaterSurfaceButton.swift */; };
-		E654A1D126E7BB3C009EE10B /* ARWaterSurfaceButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E654A1D026E7BB3C009EE10B /* ARWaterSurfaceButtonTests.swift */; };
 		E659F6BD25E6851100058394 /* BathymetryZoomLevelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E659F6BC25E6851100058394 /* BathymetryZoomLevelTests.swift */; };
 		E65CF4122590BB57008A207C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF4112590BB57008A207C /* AppState.swift */; };
 		E65CF4182590BBA9008A207C /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65CF4172590BBA9008A207C /* AppAction.swift */; };
@@ -140,8 +138,6 @@
 		E64FDEAD257D22D200B303C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E654A1CA26E781C9009EE10B /* MapZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomView.swift; sourceTree = "<group>"; };
 		E654A1CC26E7863A009EE10B /* MapZoomViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomViewTests.swift; sourceTree = "<group>"; };
-		E654A1CE26E7A924009EE10B /* ARWaterSurfaceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARWaterSurfaceButton.swift; sourceTree = "<group>"; };
-		E654A1D026E7BB3C009EE10B /* ARWaterSurfaceButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARWaterSurfaceButtonTests.swift; sourceTree = "<group>"; };
 		E659F6BC25E6851100058394 /* BathymetryZoomLevelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathymetryZoomLevelTests.swift; sourceTree = "<group>"; };
 		E65CF4112590BB57008A207C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E65CF4172590BBA9008A207C /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
@@ -228,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				E624EF4F2630545100F10967 /* ARToggleTests.swift */,
-				E654A1D026E7BB3C009EE10B /* ARWaterSurfaceButtonTests.swift */,
 				E642E3FF26E7C574004FFD40 /* ARWaterSurfaceViewTests.swift */,
 			);
 			path = AR;
@@ -434,7 +429,6 @@
 				E6F1060D258A2E05000DDD25 /* ARView.swift */,
 				E6711BC125D40364007A4A89 /* ARToggle.swift */,
 				E6B2865F25A47B4600782955 /* ARBathymetryNode.swift */,
-				E654A1CE26E7A924009EE10B /* ARWaterSurfaceButton.swift */,
 				E642E3FD26E7C0E7004FFD40 /* ARWaterSurfaceView.swift */,
 			);
 			path = AR;
@@ -771,7 +765,6 @@
 				E642E40026E7C574004FFD40 /* ARWaterSurfaceViewTests.swift in Sources */,
 				E62B06EB263052080089C785 /* MapZoomButtonTests.swift in Sources */,
 				E65ED9902699F94100127725 /* Snapshotting+Model.swift in Sources */,
-				E654A1D126E7BB3C009EE10B /* ARWaterSurfaceButtonTests.swift in Sources */,
 				E6F3288526DA5D5F00311833 /* BathymetryTileClientStub.swift in Sources */,
 				E6FB254D26D942730033BDB9 /* MapTileFake.swift in Sources */,
 				E6FB255326D9480E0033BDB9 /* BathymetryTile+Fixture.swift in Sources */,
@@ -786,7 +779,6 @@
 				E6DE397625C9735A00D0408A /* MapRegion.swift in Sources */,
 				E64BDF15265FE48D00069F04 /* SettingsButton.swift in Sources */,
 				E65CF4182590BBA9008A207C /* AppAction.swift in Sources */,
-				E654A1CF26E7A924009EE10B /* ARWaterSurfaceButton.swift in Sources */,
 				E6169D3A25CAB00200AE1F06 /* MapZoomButton.swift in Sources */,
 				E6712C8F2646B5E40078C3A8 /* Logger+Bathymetry.swift in Sources */,
 				E6EF547325BC3534004C2478 /* MapView+MGLMapView.swift in Sources */,

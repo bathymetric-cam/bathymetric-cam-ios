@@ -118,7 +118,7 @@ struct AppView: View {
         }
       }
       .offset(
-        x: padding,
+        x: metrics.size.width - ARWaterSurfaceView.width - padding,
         y: metrics.size.height - MapZoomButton.height * 2 - ARWaterSurfaceView.height - space * 2
       )
     }
