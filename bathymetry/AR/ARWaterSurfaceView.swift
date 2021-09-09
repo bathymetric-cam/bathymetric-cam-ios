@@ -7,8 +7,7 @@ struct ARWaterSurfaceView: View {
   // MARK: static constant
   
   static let width = CGFloat(64)
-  static let height = CGFloat(188)
-  static let depthsViewPlusSliderHeight = CGFloat(128)
+  static let height = CGFloat(208)
   
   // MARK: property
   
@@ -21,14 +20,18 @@ struct ARWaterSurfaceView: View {
   
   let sliderHeight = CGFloat(128)
   var sliderOffsetY: CGFloat {
-    sliderHeight + depthTextOffsetY + depthTextFontSize + textOffset
+    sliderHeight + depthTextOffsetY + depthTextFontSize + textOffset + 4
   }
   let textOffset = CGFloat(8)
   let waterSurfaceTextFontSize = CGFloat(8)
-  let waterSurfaceTextOffsetY = CGFloat(12)
+  let textOffsetY = CGFloat(12)
   let depthTextFontSize = CGFloat(16)
   var depthTextOffsetY: CGFloat {
-    waterSurfaceTextOffsetY + waterSurfaceTextFontSize + 4
+    textOffsetY + waterSurfaceTextFontSize + 4
+  }
+  let underWaterTextFontSize = CGFloat(8)
+  var underWaterTextOffsetY: CGFloat {
+    ARWaterSurfaceView.height - underWaterTextFontSize - textOffsetY
   }
   
   var body: some View {
@@ -38,6 +41,7 @@ struct ARWaterSurfaceView: View {
         slider
         waterSurfaceText
         depthText
+        underWaterText
       }
     }
   }
@@ -67,7 +71,7 @@ struct ARWaterSurfaceView: View {
         alignment: .center
       )
       .font(.system(size: waterSurfaceTextFontSize))
-      .offset(x: 0, y: waterSurfaceTextOffsetY)
+      .offset(x: 0, y: textOffsetY)
   }
   
   var depthText: some View {
@@ -83,6 +87,16 @@ struct ARWaterSurfaceView: View {
       )
       .font(.system(size: depthTextFontSize))
       .offset(x: 0, y: depthTextOffsetY)
+  }
+  
+  var underWaterText: some View {
+    Text("Under Water")
+      .frame(
+        maxWidth: ARWaterSurfaceView.width,
+        alignment: .center
+      )
+      .font(.system(size: underWaterTextFontSize))
+      .offset(x: 0, y: underWaterTextOffsetY)
   }
 }
 
