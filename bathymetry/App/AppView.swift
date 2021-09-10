@@ -19,7 +19,6 @@ struct AppView: View {
       }
       .edgesIgnoringSafeArea(.all)
       
-      settingsButton
       arWaterSurfaceView
       mapZoomView
     }
@@ -124,12 +123,6 @@ struct AppView: View {
       )
     }
   }
-  
-  var settingsButton: some View {
-    SettingsButton {
-    }
-  }
- 
 }
 
 // MARK: - AppView_Previews
