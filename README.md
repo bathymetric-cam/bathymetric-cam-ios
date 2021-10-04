@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="https://avatars.githubusercontent.com/u/77539627?u=f07a00cbf7503ce555bdf8848cdacb31705e801c" width="120" alt="App Icon" />
-</p>
+[![bathymetric-cam](https://img.youtube.com/vi/HrZpjp9iqkA/0.jpg)](https://youtu.be/HrZpjp9iqkA "bathymetric-cam")
 
 # bathymetric-cam-ios
 
