@@ -152,7 +152,7 @@ var model: Model = {
       return "iPod touch (7th generation)"
     case "iPhone13,4":
       return "iPhone 12 Pro Max"
-    case "i386", "x86_64":
+    case "arm64", "i386", "x86_64":
       return "Simulator \(mapToDevice(identifier: ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] ?? "iOS"))"
     default:
       return identifier
